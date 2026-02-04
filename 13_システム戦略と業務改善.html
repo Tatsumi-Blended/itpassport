@@ -22,8 +22,8 @@
   <div class="reveal">
     <div class="slides">
       <!-- タイトル -->
-      <section class="title-slide step4">
-        <p><span class="step-badge">STEP4</span> 経営とITの関係を理解する</p>
+      <section class="title-slide step5">
+        <p><span class="step-badge">STEP5</span> 製造DXへの応用</p>
         <h1>システム戦略と業務改善</h1>
         <p class="subtitle">セッション 25-26h</p>
         <p class="level-stars">学習レベル: ★★★★☆（応用レベル）</p>
@@ -32,351 +32,928 @@
       <!-- アジェンダ -->
       <section>
         <h2>本日のゴール</h2>
-        <ul>
-          <li>業務プロセス改善の手法を理解する</li>
-          <li>IT投資の考え方を身につける</li>
-          <li>DXの基本概念を理解する</li>
-        </ul>
-        <p style="margin-top:1em;"><strong>対応テキスト:</strong> 第5章 システム戦略（5-01, 5-02, 5-04）</p>
+        <div class="card-grid">
+          <div class="card">
+            <h4>理解</h4>
+            <p>DXの本質と、IT化との違いを理解する</p>
+          </div>
+          <div class="card">
+            <h4>習得</h4>
+            <p>業務プロセス改善の手法（BPR・BPM・DFD）を習得する</p>
+          </div>
+          <div class="card">
+            <h4>実践</h4>
+            <p>データ活用（BI・データマイニング）の考え方を実践できる</p>
+          </div>
+        </div>
+        <p class="text-center" style="margin-top:1em;"><strong>対応テキスト:</strong> 第5章 システム戦略</p>
       </section>
 
-      <!-- STEP4 完了告知 -->
+      <!-- ============================================= -->
+      <!-- 第1章：DXとは -->
+      <!-- ============================================= -->
       <section>
-        <h2>STEP4 完了セッション!</h2>
-        <p style="font-size:1.2em;">このセッションで<strong>STEP4「経営とITの関係を理解する」</strong>が完了します。</p>
+        <h2>第1章 DX（デジタルトランスフォーメーション）</h2>
+        <p class="text-secondary">デジタル技術による変革の本質</p>
       </section>
 
-      <!-- 1. 業務プロセスの可視化 -->
       <section>
-        <h2>1. 業務プロセスの可視化</h2>
+        <h3>DXとは何か</h3>
+        <div class="highlight-box">
+          <p><strong>DX（Digital Transformation）</strong></p>
+          <p>デジタル技術を使って、経営や人々の生活をより良くするための組織的な取り組み</p>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>単なるIT化ではない</h4>
+            <p>既存業務をデジタルに置き換えるだけでは不十分</p>
+          </div>
+          <div class="card">
+            <h4>DXの本質</h4>
+            <p>業務そのものを<strong>デジタル技術に合わせて作り替える</strong></p>
+          </div>
+        </div>
+        <p class="text-secondary text-center" style="margin-top: 1em;">
+          「DX」の由来：「Trans」に「交差」の意味があるため「X」を使用
+        </p>
+      </section>
+
+      <section>
+        <h3>DXの具体例</h3>
+        <div class="compare-cards">
+          <div class="compare-card">
+            <h4>IT化（デジタル化）</h4>
+            <ul>
+              <li>紙の帳票をExcelに置き換え</li>
+              <li>FAX注文をメール注文に変更</li>
+              <li>対面会議をWeb会議に変更</li>
+            </ul>
+            <p class="text-secondary">→ 既存プロセスの電子化</p>
+          </div>
+          <div class="compare-card">
+            <h4>DX（デジタル変革）</h4>
+            <ul>
+              <li>AIによる需要予測で在庫最適化</li>
+              <li>ECサイトで24時間自動受注</li>
+              <li>センサーデータで予知保全</li>
+            </ul>
+            <p class="text-secondary">→ ビジネスモデルの変革</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>デジタル化の3段階</h3>
+        <div class="flow-chart">
+          <div class="flow-box" style="min-width: 180px;">
+            <strong>デジタイゼーション</strong><br>
+            <span class="text-secondary small">アナログ→デジタル</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box" style="min-width: 180px;">
+            <strong>デジタライゼーション</strong><br>
+            <span class="text-secondary small">業務プロセスの効率化</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box" style="min-width: 180px;">
+            <strong>DX</strong><br>
+            <span class="text-secondary small">事業・組織の変革</span>
+          </div>
+        </div>
+        <table style="margin-top: 1em;">
+          <thead>
+            <tr><th>段階</th><th>内容</th><th>例</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>デジタイゼーション</strong></td>
+              <td>アナログ情報のデジタル化</td>
+              <td>紙の書類をPDF化、手書きをExcel入力</td>
+            </tr>
+            <tr>
+              <td><strong>デジタライゼーション</strong></td>
+              <td>デジタルで業務効率化</td>
+              <td>システムで在庫管理、電子承認ワークフロー</td>
+            </tr>
+            <tr>
+              <td><strong>DX</strong></td>
+              <td>デジタルで事業変革</td>
+              <td>データ活用で新サービス創出、ビジネスモデル転換</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3>DX関連の重要用語</h3>
+        <table>
+          <thead>
+            <tr><th>用語</th><th>説明</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>デジタルディバイド</strong></td>
+              <td>情報リテラシーの違いによる経済的・社会的格差<br>（情報格差）</td>
+            </tr>
+            <tr>
+              <td><strong>情報リテラシー</strong></td>
+              <td>情報を活用する能力、ITを使いこなす能力</td>
+            </tr>
+            <tr>
+              <td><strong>SoE</strong><br>(Systems of Engagement)</td>
+              <td>顧客視点を取り入れ、ユーザーとのつながりを強化するシステム</td>
+            </tr>
+            <tr>
+              <td><strong>SoR</strong><br>(Systems of Record)</td>
+              <td>従来型の手作業を自動化するシステム（基幹システムなど）</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3>製造業のDXレベル</h3>
+        <table>
+          <thead>
+            <tr><th>レベル</th><th>内容</th><th>具体例</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>見える化</strong></td>
+              <td>データ収集・可視化</td>
+              <td>設備稼働監視ダッシュボード</td>
+            </tr>
+            <tr>
+              <td><strong>分析</strong></td>
+              <td>データ分析・改善</td>
+              <td>不良要因分析、歩留まり改善</td>
+            </tr>
+            <tr>
+              <td><strong>予測</strong></td>
+              <td>AIで予測</td>
+              <td>予知保全、需要予測</td>
+            </tr>
+            <tr>
+              <td><strong>自律</strong></td>
+              <td>自動最適化</td>
+              <td>自律制御、スマートファクトリー</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ============================================= -->
+      <!-- 第2章：エンタープライズアーキテクチャ -->
+      <!-- ============================================= -->
+      <section>
+        <h2>第2章 エンタープライズアーキテクチャ</h2>
+        <p class="text-secondary">企業全体を最適化する設計思想</p>
+      </section>
+
+      <section>
+        <h3>EA（Enterprise Architecture）とは</h3>
+        <div class="highlight-box">
+          <p><strong>EA（エンタープライズアーキテクチャ）</strong></p>
+          <p>「現状」と「あるべき姿」を比較して差を分析し、最適化を実践して<strong>企業全体を改革する</strong>考え方</p>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>As-Is（現状）</h4>
+            <p>現在の業務・システムの状態</p>
+            <ul>
+              <li>業務プロセス</li>
+              <li>システム構成</li>
+              <li>データの流れ</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>To-Be（あるべき姿）</h4>
+            <p>目指すべき業務・システムの状態</p>
+            <ul>
+              <li>理想の業務プロセス</li>
+              <li>最適なシステム構成</li>
+              <li>効率的なデータ管理</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>EAの4つの体系</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>BA（Business Architecture）</h4>
+            <p>ビジネス・業務の体系</p>
+            <p class="text-secondary">業務プロセス、組織構造</p>
+          </div>
+          <div class="card">
+            <h4>DA（Data Architecture）</h4>
+            <p>データの体系</p>
+            <p class="text-secondary">データモデル、マスタ管理</p>
+          </div>
+          <div class="card">
+            <h4>AA（Application Architecture）</h4>
+            <p>アプリケーションの体系</p>
+            <p class="text-secondary">システム機能、連携</p>
+          </div>
+          <div class="card">
+            <h4>TA（Technology Architecture）</h4>
+            <p>技術基盤の体系</p>
+            <p class="text-secondary">インフラ、ネットワーク</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>エンタープライズサーチ</h3>
+        <div class="highlight-box">
+          <p><strong>エンタープライズサーチ</strong></p>
+          <p>企業内のさまざまなシステムに蓄積されているデータを<strong>一元的に検索するための仕組み</strong></p>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>検索対象</h4>
+            <ul>
+              <li>データベース</li>
+              <li>業務システム</li>
+              <li>共有ファイルサーバー</li>
+              <li>社内ポータル</li>
+              <li>メール</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>メリット</h4>
+            <ul>
+              <li>必要な情報への素早いアクセス</li>
+              <li>部門間の情報共有促進</li>
+              <li>ナレッジの有効活用</li>
+              <li>業務効率の向上</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================= -->
+      <!-- 第3章：業務プロセス -->
+      <!-- ============================================= -->
+      <section>
+        <h2>第3章 業務プロセスとモデリング</h2>
+        <p class="text-secondary">仕事の流れを可視化する</p>
       </section>
 
       <section>
         <h3>業務プロセスとは</h3>
-        <p><strong>仕事の流れ・手順のこと</strong></p>
-        <pre class="ascii">
-[受注] → [生産計画] → [製造] → [検査] → [出荷]
-        </pre>
-        <p>業務を「見える化」することで、改善点が明確になる</p>
+        <div class="highlight-box">
+          <p><strong>業務プロセス</strong> = 「仕事の手順」のこと</p>
+          <p class="text-secondary">手作業とシステムを組み合わせたもの</p>
+        </div>
+        <div class="flow-chart" style="margin-top: 1em;">
+          <div class="flow-box">受注</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">生産計画</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">製造</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">検査</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">出荷</div>
+        </div>
+        <p class="text-secondary text-center" style="margin-top: 1em;">
+          システム化の前提として、業務プロセスの把握が必要
+        </p>
       </section>
 
       <section>
-        <h3>As-Is / To-Be分析</h3>
-        <p><strong>As-Is:</strong> 現状の業務プロセス</p>
-        <p><strong>To-Be:</strong> あるべき姿の業務プロセス</p>
-        <pre class="ascii">
-【As-Is（現状）】
-[受注FAX] → [手入力] → [Excel] → [電話確認] → [出荷指示]
-               ↑
-            転記ミス発生
+        <h3>モデリングとは</h3>
+        <div class="highlight-box">
+          <p><strong>モデリング</strong>：現実世界の複雑なモノを<strong>単純化してわかりやすくすること</strong></p>
+          <p class="text-secondary">単純化して性質だけを抽出したものを「モデル」という</p>
+        </div>
+        <div class="card-grid cols-3" style="margin-top: 1em;">
+          <div class="card">
+            <h4>業務モデル</h4>
+            <p>業務プロセスを図や表で表現</p>
+          </div>
+          <div class="card">
+            <h4>データモデル</h4>
+            <p>データの構造を図で表現</p>
+          </div>
+          <div class="card">
+            <h4>システムモデル</h4>
+            <p>システム構成を図で表現</p>
+          </div>
+        </div>
+      </section>
 
-【To-Be（あるべき姿）】
-[Web受注] → [自動取込] → [システム] → [自動通知] → [出荷指示]
-               ↑
-            ミスなし
-        </pre>
+      <!-- ============================================= -->
+      <!-- 第4章：業務フロー図 -->
+      <!-- ============================================= -->
+      <section>
+        <h2>第4章 業務フロー図</h2>
+        <p class="text-secondary">データと処理の流れを可視化する</p>
       </section>
 
       <section>
-        <h3>業務フロー図の書き方</h3>
-        <pre class="ascii">
-部門A        部門B        部門C
-  │            │            │
-  ●開始        │            │
-  │            │            │
-  ▼            │            │
-┌───┐          │            │
-│処理1│ ───────→▼            │
-└───┘        ┌───┐          │
-              │処理2│ ────────→▼
-              └───┘        ┌───┐
-                           │処理3│
-                           └─┬─┘
-                             │
-                             ●終了
-        </pre>
+        <h3>DFD（データフロー図）とは</h3>
+        <div class="highlight-box">
+          <p><strong>DFD（Data Flow Diagram）</strong>：データの流れを表す図</p>
+          <p class="text-secondary">業務プロセスの中のデータに関する問題を発見できる</p>
+        </div>
+        <table style="margin-top: 1em;">
+          <thead>
+            <tr><th>記号</th><th>名称</th><th>意味</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>□（四角形）</td>
+              <td><strong>外部</strong></td>
+              <td>データの入出力を行う外部（人、システムなど）</td>
+            </tr>
+            <tr>
+              <td>○（円）</td>
+              <td><strong>プロセス</strong></td>
+              <td>データフローを処理するもの</td>
+            </tr>
+            <tr>
+              <td>→（矢印）</td>
+              <td><strong>データフロー</strong></td>
+              <td>データの流れを表す</td>
+            </tr>
+            <tr>
+              <td>＝（二重線）</td>
+              <td><strong>データストア</strong></td>
+              <td>データの保存場所（通常はデータベース）</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
 
-      <!-- 2. 業務改善の手法 -->
       <section>
-        <h2>2. 業務改善の手法</h2>
+        <h3>DFDの例：受注処理</h3>
+        <div class="highlight-box" style="text-align: left;">
+          <pre style="font-family: monospace; margin: 0; font-size: 0.9em;">
+              注文情報          売上情報
+  [顧客] ─────────→ (受注) ─────────→ (出荷)
+                       │
+                       ↓ 在庫照会
+                   ═════════
+                   商品ファイル
+                   ═════════
+          </pre>
+        </div>
+        <div class="highlight-box" style="margin-top: 1em;">
+          <p><strong>重要</strong>：DFDは時間の流れや処理の順序は示さない。あくまで「<strong>データの流れ</strong>」を表す図</p>
+        </div>
+      </section>
+
+      <section>
+        <h3>3つの図の違い</h3>
+        <table>
+          <thead>
+            <tr><th>図</th><th>主軸</th><th>用途</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>流れ図（フローチャート）</strong></td>
+              <td>アルゴリズム</td>
+              <td>処理の順序・分岐を表現</td>
+            </tr>
+            <tr>
+              <td><strong>DFD</strong></td>
+              <td>データ</td>
+              <td>データの流れと変換を表現</td>
+            </tr>
+            <tr>
+              <td><strong>BPMN</strong></td>
+              <td>ビジネスプロセス</td>
+              <td>業務フローの標準的表記</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>E-R図</h4>
+            <p>データの関係性を「エンティティ（実体）」と「リレーションシップ（関連）」で表す</p>
+            <p class="text-secondary">データベース設計で使用</p>
+          </div>
+          <div class="card">
+            <h4>BPMN</h4>
+            <p>Business Process Modeling Notation</p>
+            <p class="text-secondary">ビジネスプロセスの国際標準表記法</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================= -->
+      <!-- 第5章：業務プロセスの改善 -->
+      <!-- ============================================= -->
+      <section>
+        <h2>第5章 業務プロセスの改善</h2>
+        <p class="text-secondary">BPRとBPMの違いを理解する</p>
       </section>
 
       <section>
         <h3>BPR（Business Process Reengineering）</h3>
-        <p><strong>業務プロセスを根本から再設計</strong></p>
-        <pre class="ascii">
-従来の改善: 既存プロセスの効率化
-            ┌───┐   ┌───┐   ┌───┐
-            │A  │→  │B  │→  │C  │  を速くする
-            └───┘   └───┘   └───┘
-
-BPR: プロセス自体を見直す
-            ┌───┐
-            │A' │  で完結させる
-            └───┘
-        </pre>
-        <p>「改善」ではなく「再設計」がポイント</p>
+        <div class="highlight-box">
+          <p><strong>BPR</strong>：企業全体の業務プロセスを<strong>抜本的</strong>に再設計する手法</p>
+          <p class="text-secondary">部分最適ではなく<strong>全体最適</strong>を考えて大改革を実施</p>
+        </div>
+        <div class="compare-cards" style="margin-top: 1em;">
+          <div class="compare-card">
+            <h4>従来の改善</h4>
+            <p>既存プロセスの効率化</p>
+            <pre style="font-family: monospace; font-size: 0.8em;">
+[A]→[B]→[C] を速くする
+            </pre>
+          </div>
+          <div class="compare-card">
+            <h4>BPR</h4>
+            <p>プロセス自体を見直す</p>
+            <pre style="font-family: monospace; font-size: 0.8em;">
+[A'] で完結させる
+            </pre>
+          </div>
+        </div>
+        <p class="text-secondary text-center" style="margin-top: 0.5em;">分業による部分最適化への反省から生まれた手法</p>
       </section>
 
       <section>
         <h3>BPM（Business Process Management）</h3>
-        <p><strong>業務プロセスを継続的に改善</strong></p>
-        <pre class="ascii">
-[計画] → [実行] → [評価] → [改善]
-   ↑                         │
-   └─────────────────────────┘
-         PDCAサイクル
-        </pre>
-        <p>一度きりではなく、継続的に回すことが重要</p>
+        <div class="highlight-box">
+          <p><strong>BPM</strong>：業務プロセスを見直して<strong>継続的</strong>に改善する手法</p>
+          <p class="text-secondary">BPRで再設計した後、継続的に改善を続ける</p>
+        </div>
+        <div class="flow-chart" style="margin-top: 1em;">
+          <div class="flow-box">Plan<br><span class="text-secondary small">計画</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">Do<br><span class="text-secondary small">実行</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">Check<br><span class="text-secondary small">評価</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">Act<br><span class="text-secondary small">改善</span></div>
+        </div>
+        <p class="text-secondary text-center" style="margin-top: 0.5em;">PDCAサイクルを継続的に回す</p>
+      </section>
+
+      <section>
+        <h3>BPRとBPMの違い</h3>
+        <table>
+          <thead>
+            <tr><th>項目</th><th>BPR</th><th>BPM</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>特徴</td>
+              <td><strong>抜本的</strong>・一度きりの大改革</td>
+              <td><strong>継続的</strong>な改善</td>
+            </tr>
+            <tr>
+              <td>範囲</td>
+              <td>企業全体（全体最適）</td>
+              <td>各業務プロセス</td>
+            </tr>
+            <tr>
+              <td>頻度</td>
+              <td>数年に一度の大規模改革</td>
+              <td>日常的な改善活動</td>
+            </tr>
+            <tr>
+              <td>リスク</td>
+              <td>大きい（失敗時の影響大）</td>
+              <td>小さい（段階的改善）</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="highlight-box" style="margin-top: 1em;">
+          <p><strong>試験ポイント</strong>：BPRは「抜本的」、BPMは「継続的」がキーワード</p>
+        </div>
       </section>
 
       <section>
         <h3>RPA（Robotic Process Automation）</h3>
-        <p><strong>定型業務をソフトウェアロボットで自動化</strong></p>
-        <p><strong>向いている業務:</strong></p>
-        <ul>
-          <li>定型的で繰り返しが多い</li>
-          <li>ルールが明確</li>
-          <li>デジタルデータを扱う</li>
-        </ul>
+        <div class="highlight-box">
+          <p><strong>RPA</strong>：定型業務をソフトウェアロボットで自動化する技術</p>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>RPAに向いている業務</h4>
+            <ul>
+              <li>定型的で繰り返しが多い</li>
+              <li>ルールが明確</li>
+              <li>デジタルデータを扱う</li>
+              <li>大量処理</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>製造業での活用例</h4>
+            <table class="small">
+              <tr><th>業務</th><th>自動化内容</th></tr>
+              <tr><td>発注業務</td><td>在庫確認→発注書作成→送信</td></tr>
+              <tr><td>検査成績表</td><td>データ収集→帳票作成</td></tr>
+              <tr><td>勤怠集計</td><td>データ取込→集計→報告</td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================= -->
+      <!-- 第6章：データの活用 -->
+      <!-- ============================================= -->
+      <section>
+        <h2>第6章 データの活用</h2>
+        <p class="text-secondary">BI、データウェアハウス、データマイニング</p>
       </section>
 
       <section>
-        <h3>製造業でのRPA活用例</h3>
-        <table>
-          <tr><th>業務</th><th>自動化内容</th></tr>
-          <tr><td>発注業務</td><td>在庫確認→発注書作成→送信</td></tr>
-          <tr><td>検査成績表</td><td>データ収集→帳票作成</td></tr>
-          <tr><td>勤怠集計</td><td>データ取込→集計→報告</td></tr>
+        <h3>BI（Business Intelligence）</h3>
+        <div class="highlight-box">
+          <p><strong>BI</strong>：自社に蓄積されているデータを分析して、経営の意思決定に役立てる手法や技術</p>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>BIの機能</h4>
+            <ul>
+              <li>データの収集・統合</li>
+              <li>レポート・ダッシュボード</li>
+              <li>OLAP（多次元分析）</li>
+              <li>データビジュアライゼーション</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>BIツールの例</h4>
+            <ul>
+              <li>Tableau</li>
+              <li>Power BI</li>
+              <li>Looker</li>
+              <li>QlikView</li>
+            </ul>
+            <p class="text-secondary">専門知識がなくてもデータ分析可能</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>データウェアハウス</h3>
+        <div class="highlight-box">
+          <p><strong>データウェアハウス</strong>：意思決定に役立てるための<strong>データの倉庫</strong></p>
+        </div>
+        <div class="flow-chart" style="margin-top: 1em;">
+          <div class="flow-box">ERP</div>
+          <div class="flow-arrow" style="transform: rotate(45deg);">→</div>
+          <div class="flow-box" style="min-width: 180px;">
+            <strong>データウェアハウス</strong><br>
+            <span class="text-secondary small">データを蓄積・統合</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">BIツール</div>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>データソース</h4>
+            <ul>
+              <li>ERP（基幹システム）</li>
+              <li>CRM（顧客管理）</li>
+              <li>SCM（サプライチェーン）</li>
+              <li>外部データ</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>特徴</h4>
+            <ul>
+              <li>古いデータも<strong>削除せずに蓄積</strong></li>
+              <li>過去のトレンド分析が可能</li>
+              <li>有益な情報が得られる可能性</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>ビッグデータ</h3>
+        <div class="highlight-box">
+          <p><strong>ビッグデータ</strong>：従来のDBMSでは扱いが困難な、大きく複雑なデータの集まり</p>
+        </div>
+        <div class="card-grid cols-3" style="margin-top: 1em;">
+          <div class="card">
+            <h4>Volume（量）</h4>
+            <p>データの量が大きい</p>
+            <p class="text-secondary">テラバイト〜ペタバイト級</p>
+          </div>
+          <div class="card">
+            <h4>Velocity（速度）</h4>
+            <p>データの更新頻度が高い</p>
+            <p class="text-secondary">リアルタイム、ストリーミング</p>
+          </div>
+          <div class="card">
+            <h4>Variety（多様性）</h4>
+            <p>データの種類が多様</p>
+            <p class="text-secondary">テキスト、画像、動画、センサー</p>
+          </div>
+        </div>
+        <p class="text-secondary text-center" style="margin-top: 0.5em;">ビッグデータの<strong>3V</strong>として覚える</p>
+      </section>
+
+      <section>
+        <h3>データマイニング</h3>
+        <div class="highlight-box">
+          <p><strong>データマイニング</strong>：蓄積されている膨大なデータから<strong>有益な情報を取り出すための方法</strong></p>
+          <p class="text-secondary">「マイニング」= 金を掘る → データの山から価値を発掘</p>
+        </div>
+        <table style="margin-top: 1em;">
+          <thead>
+            <tr><th>用語</th><th>説明</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>テキストマイニング</strong></td>
+              <td>文字列（テキスト）を対象としたデータマイニング<br>例：SNSの口コミ分析</td>
+            </tr>
+            <tr>
+              <td><strong>データサイエンス</strong></td>
+              <td>統計学やAI技術でデータから価値を取り出す学問・手法</td>
+            </tr>
+            <tr>
+              <td><strong>ゲーミフィケーション</strong></td>
+              <td>ゲームの仕組み（ポイント、ランキング等）をビジネスに取り入れる</td>
+            </tr>
+          </tbody>
         </table>
       </section>
 
-      <!-- 3. システム化の企画 -->
+      <!-- ============================================= -->
+      <!-- 第7章：システム化の企画 -->
+      <!-- ============================================= -->
       <section>
-        <h2>3. システム化の企画</h2>
+        <h2>第7章 システム化の企画</h2>
+        <p class="text-secondary">IT投資の考え方と評価</p>
       </section>
 
       <section>
         <h3>システム化の手順</h3>
-        <pre class="ascii">
-[経営戦略]
-     ↓
-[IT戦略]
-     ↓
-[システム化計画]
-     ↓
-[要件定義]
-     ↓
-[開発・導入]
-        </pre>
-        <p>経営戦略から落とし込むことが重要</p>
-      </section>
-
-      <section>
-        <h3>企業のシステム構成</h3>
-        <pre class="ascii">
-┌─────────────────────────────────────┐
-│           基幹システム（ERP）        │
-│  ┌─────┐ ┌─────┐ ┌─────┐ ┌─────┐  │
-│  │販売 │ │生産 │ │購買 │ │会計 │  │
-│  │管理 │ │管理 │ │管理 │ │管理 │  │
-│  └──┬──┘ └──┬──┘ └──┬──┘ └──┬──┘  │
-│     └────────┼────────┼────────┘     │
-│              │        │               │
-└──────────────┼────────┼───────────────┘
-               │        │
-        ┌──────┴────────┴──────┐
-        │    データベース      │
-        └──────────────────────┘
-        </pre>
+        <div class="flow-chart">
+          <div class="flow-box">経営戦略</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">IT戦略</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">システム化計画</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">要件定義</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">開発・導入</div>
+        </div>
+        <div class="highlight-box" style="margin-top: 1em;">
+          <p><strong>重要</strong>：<strong>経営戦略に基づいて</strong>IT戦略・システム化計画を立てる</p>
+          <p class="text-secondary">「あるべき姿」を特定し、<strong>全体最適</strong>を考える</p>
+        </div>
       </section>
 
       <section>
         <h3>主なソリューション</h3>
         <table>
-          <tr><th>略称</th><th>名称</th><th>機能</th></tr>
-          <tr><td>ERP</td><td>統合基幹業務システム</td><td>経営資源の一元管理</td></tr>
-          <tr><td>SCM</td><td>サプライチェーン管理</td><td>調達〜販売の最適化</td></tr>
-          <tr><td>CRM</td><td>顧客関係管理</td><td>顧客情報の管理・活用</td></tr>
-          <tr><td>MES</td><td>製造実行システム</td><td>製造現場の管理</td></tr>
-        </table>
-      </section>
-
-      <!-- 4. IT投資の評価 -->
-      <section>
-        <h2>4. IT投資の評価</h2>
-      </section>
-
-      <section>
-        <h3>IT投資の効果</h3>
-        <table>
-          <tr><th>効果</th><th>例</th></tr>
-          <tr><td>コスト削減</td><td>人件費減、在庫削減</td></tr>
-          <tr><td>売上向上</td><td>納期短縮、品質向上</td></tr>
-          <tr><td>リスク低減</td><td>ミス防止、セキュリティ</td></tr>
-          <tr><td>戦略的価値</td><td>競争優位、新事業</td></tr>
-        </table>
-      </section>
-
-      <section>
-        <h3>ROI（投資対効果）</h3>
-        <pre class="ascii">
-ROI = (効果 - 投資額) ÷ 投資額 × 100%
-        </pre>
-        <p><strong>例:</strong></p>
-        <ul>
-          <li>投資額: 500万円</li>
-          <li>年間効果: 200万円</li>
-          <li>3年間の効果: 600万円</li>
-        </ul>
-        <pre class="ascii">
-ROI = (600 - 500) ÷ 500 × 100% = 20%
-        </pre>
-      </section>
-
-      <section>
-        <h3>TCO（総所有コスト）</h3>
-        <p><strong>システムのライフサイクル全体のコスト</strong></p>
-        <pre class="ascii">
-TCO = 初期費用 + 運用費用 × 年数
-
-初期費用: ハード、ソフト、開発、導入
-運用費用: 保守、ライセンス、人件費、電力
-        </pre>
-        <p>初期費用だけでなく、運用費用も含めて判断する</p>
-      </section>
-
-      <!-- 5. DXの基本 -->
-      <section>
-        <h2>5. DXの基本</h2>
-      </section>
-
-      <section>
-        <h3>DXとは</h3>
-        <p><strong>Digital Transformation</strong></p>
-        <blockquote>デジタル技術で、ビジネスや組織を根本から変革すること</blockquote>
-      </section>
-
-      <section>
-        <h3>デジタル化の段階</h3>
-        <pre class="ascii">
-デジタイゼーション: アナログ → デジタル化
-                   （例: 紙の書類をPDF化）
-
-デジタライゼーション: デジタルで業務効率化
-                     （例: システムで在庫管理）
-
-DX: デジタルで事業・組織を変革
-    （例: データ活用で新サービス創出）
-        </pre>
-      </section>
-
-      <section>
-        <h3>製造業のDX</h3>
-        <table>
-          <tr><th>レベル</th><th>内容</th><th>例</th></tr>
-          <tr><td>見える化</td><td>データ収集・可視化</td><td>設備稼働監視</td></tr>
-          <tr><td>分析</td><td>データ分析・改善</td><td>不良要因分析</td></tr>
-          <tr><td>予測</td><td>AIで予測</td><td>予知保全</td></tr>
-          <tr><td>自律</td><td>自動最適化</td><td>自律制御</td></tr>
+          <thead>
+            <tr><th>略称</th><th>名称</th><th>機能</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>ERP</strong></td>
+              <td>Enterprise Resource Planning<br>統合基幹業務システム</td>
+              <td>経営資源（ヒト・モノ・カネ・情報）の一元管理</td>
+            </tr>
+            <tr>
+              <td><strong>SCM</strong></td>
+              <td>Supply Chain Management<br>サプライチェーン管理</td>
+              <td>調達〜製造〜物流〜販売の最適化</td>
+            </tr>
+            <tr>
+              <td><strong>CRM</strong></td>
+              <td>Customer Relationship Management<br>顧客関係管理</td>
+              <td>顧客情報の管理・活用、顧客満足度向上</td>
+            </tr>
+            <tr>
+              <td><strong>MES</strong></td>
+              <td>Manufacturing Execution System<br>製造実行システム</td>
+              <td>製造現場のリアルタイム管理</td>
+            </tr>
+          </tbody>
         </table>
       </section>
 
       <section>
-        <h3>DXが必要な理由</h3>
-        <ul>
-          <li>人手不足への対応</li>
-          <li>熟練技能の継承</li>
-          <li>変化への迅速な対応</li>
-          <li>新たな価値創出</li>
-        </ul>
-      </section>
-
-      <!-- 6. STEP4 完了！ -->
-      <section>
-        <h2>6. STEP4 完了!</h2>
-      </section>
-
-      <section style="background: linear-gradient(135deg, #fff3e0 0%, #fff 100%);">
-        <h3>おめでとうございます!</h3>
-        <p style="font-size:1.2em;">STEP4<strong>「経営とITの関係を理解する」</strong>が完了しました。</p>
-        <p><strong>学んだこと:</strong></p>
-        <ul>
-          <li>企業活動と経営戦略（損益分岐点、SWOT）</li>
-          <li>法務と知的財産（特許、派遣・請負）</li>
-          <li>システム戦略と業務改善（BPR、DX）</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>次のSTEP5（最終）では</h3>
-        <div class="next-preview">
-          <p>製造業の<strong>IoT・AI活用</strong>と<strong>総合演習</strong>を行います。</p>
-          <p>これまで学んだ知識を統合し、実践的な力を身につけましょう！</p>
+        <h3>IT投資の効果と評価</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>IT投資の効果</h4>
+            <table class="small">
+              <tr><th>効果</th><th>例</th></tr>
+              <tr><td>コスト削減</td><td>人件費減、在庫削減</td></tr>
+              <tr><td>売上向上</td><td>納期短縮、品質向上</td></tr>
+              <tr><td>リスク低減</td><td>ミス防止、セキュリティ</td></tr>
+              <tr><td>戦略的価値</td><td>競争優位、新事業</td></tr>
+            </table>
+          </div>
+          <div class="card">
+            <h4>ROI（投資対効果）</h4>
+            <div class="highlight-box">
+              <p>ROI = (効果 - 投資額) ÷ 投資額 × 100%</p>
+            </div>
+            <p class="text-secondary">例：投資500万円、3年効果600万円<br>ROI = (600-500)÷500×100 = <strong>20%</strong></p>
+          </div>
         </div>
       </section>
 
+      <section>
+        <h3>TCO（Total Cost of Ownership）</h3>
+        <div class="highlight-box">
+          <p><strong>TCO（総所有コスト）</strong>：システムのライフサイクル全体のコスト</p>
+        </div>
+        <div class="highlight-box" style="margin-top: 1em;">
+          <p>TCO = 初期費用 + 運用費用 × 年数</p>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>初期費用</h4>
+            <ul>
+              <li>ハードウェア購入</li>
+              <li>ソフトウェアライセンス</li>
+              <li>開発・カスタマイズ</li>
+              <li>導入・教育</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>運用費用</h4>
+            <ul>
+              <li>保守・サポート</li>
+              <li>ライセンス更新</li>
+              <li>運用人件費</li>
+              <li>電力・設備費</li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-secondary text-center" style="margin-top: 0.5em;">初期費用だけでなく、運用費用も含めて判断する</p>
+      </section>
+
+      <!-- ============================================= -->
       <!-- 演習 -->
+      <!-- ============================================= -->
       <section class="exercise-slide">
         <h2>演習</h2>
+        <p class="text-secondary">理解度を確認しましょう</p>
       </section>
 
       <section class="exercise-slide">
-        <h3>演習1: As-Is / To-Be</h3>
-        <p>自部門の業務で改善したいプロセスを1つ選び、As-IsとTo-Beを描いてください。</p>
-        <div class="exercise-box">
-          <p><strong>As-Is（現状）:</strong></p>
-          <p style="color:#999;">[ ] → [ ] → [ ] → [ ]</p>
-          <p><strong>To-Be（あるべき姿）:</strong></p>
-          <p style="color:#999;">[ ] → [ ] → [ ] → [ ]</p>
+        <h3>演習1: DX段階の分類</h3>
+        <p>以下の取り組みを「デジタイゼーション」「デジタライゼーション」「DX」に分類：</p>
+        <table>
+          <thead>
+            <tr><th>取り組み</th><th>段階</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>紙の検査記録をExcelに入力</td><td class="exercise-box"></td></tr>
+            <tr><td>在庫管理システムで自動発注</td><td class="exercise-box"></td></tr>
+            <tr><td>AIで予知保全を実現し、サービス事業を開始</td><td class="exercise-box"></td></tr>
+            <tr><td>FAXをメールに置き換え</td><td class="exercise-box"></td></tr>
+            <tr><td>IoTデータで新しい課金モデルを構築</td><td class="exercise-box"></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習2: As-Is / To-Be分析</h3>
+        <p>自部門の業務で改善したいプロセスを1つ選び、As-IsとTo-Beを描いてください：</p>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>As-Is（現状）</h4>
+            <div class="exercise-box">
+              <p>[ ] → [ ] → [ ] → [ ]</p>
+              <p>問題点：_______________</p>
+            </div>
+          </div>
+          <div class="card">
+            <h4>To-Be（あるべき姿）</h4>
+            <div class="exercise-box">
+              <p>[ ] → [ ] → [ ]</p>
+              <p>改善効果：_______________</p>
+            </div>
+          </div>
         </div>
       </section>
 
       <section class="exercise-slide">
-        <h3>演習2: DXレベル</h3>
-        <p>自社の現状はどのレベル？次に目指すべきは？</p>
-        <table class="small">
-          <tr><th>レベル</th><th>現状</th><th>目標</th></tr>
-          <tr><td>見える化</td><td style="text-align:center;">□</td><td style="text-align:center;">□</td></tr>
-          <tr><td>分析</td><td style="text-align:center;">□</td><td style="text-align:center;">□</td></tr>
-          <tr><td>予測</td><td style="text-align:center;">□</td><td style="text-align:center;">□</td></tr>
-          <tr><td>自律</td><td style="text-align:center;">□</td><td style="text-align:center;">□</td></tr>
+        <h3>演習3: BPRとBPMの違い</h3>
+        <p>以下の取り組みはBPRとBPMのどちらか：</p>
+        <table>
+          <thead>
+            <tr><th>取り組み</th><th>BPR/BPM</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>承認フローを7段階から3段階に大幅削減</td><td class="exercise-box"></td></tr>
+            <tr><td>毎月のプロセス改善会議で小さな改善を積み重ね</td><td class="exercise-box"></td></tr>
+            <tr><td>紙ベースの業務をすべてデジタル化し、組織再編</td><td class="exercise-box"></td></tr>
+            <tr><td>KPIを設定し、PDCAサイクルで継続改善</td><td class="exercise-box"></td></tr>
+          </tbody>
         </table>
       </section>
 
-      <!-- キーワード -->
+      <section class="exercise-slide">
+        <h3>演習4: ROI計算</h3>
+        <div class="highlight-box" style="text-align: left;">
+          <p><strong>状況</strong>：生産管理システムの導入を検討しています</p>
+          <ul>
+            <li>初期投資：1,000万円</li>
+            <li>年間運用費：200万円</li>
+            <li>年間削減効果：500万円</li>
+            <li>運用期間：5年</li>
+          </ul>
+        </div>
+        <div class="exercise-box" style="margin-top: 1em;">
+          <p>5年間のTCO：_______________万円</p>
+          <p>5年間の効果：_______________万円</p>
+          <p>ROI：_______________%</p>
+        </div>
+      </section>
+
+      <!-- まとめ -->
       <section>
         <h2>キーワード</h2>
         <div class="keywords">
+          <span class="keyword-tag">DX</span>
+          <span class="keyword-tag">デジタルディバイド</span>
+          <span class="keyword-tag">EA</span>
+          <span class="keyword-tag">SoE</span>
+          <span class="keyword-tag">SoR</span>
           <span class="keyword-tag">業務プロセス</span>
-          <span class="keyword-tag">As-Is</span>
-          <span class="keyword-tag">To-Be</span>
+          <span class="keyword-tag">モデリング</span>
+          <span class="keyword-tag">DFD</span>
+          <span class="keyword-tag">BPMN</span>
           <span class="keyword-tag">BPR</span>
           <span class="keyword-tag">BPM</span>
           <span class="keyword-tag">RPA</span>
+          <span class="keyword-tag">BI</span>
+          <span class="keyword-tag">データウェアハウス</span>
+          <span class="keyword-tag">ビッグデータ</span>
+          <span class="keyword-tag">データマイニング</span>
           <span class="keyword-tag">ERP</span>
           <span class="keyword-tag">SCM</span>
+          <span class="keyword-tag">CRM</span>
           <span class="keyword-tag">ROI</span>
           <span class="keyword-tag">TCO</span>
-          <span class="keyword-tag">DX</span>
         </div>
       </section>
 
-      <!-- 確認問題 -->
+      <section>
+        <h2>試験対策ポイント</h2>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>DX関連</h4>
+            <ul>
+              <li><strong>DX</strong>：デジタル技術で事業変革</li>
+              <li><strong>デジタルディバイド</strong>：情報格差</li>
+              <li><strong>SoE</strong>：顧客とのつながり強化</li>
+              <li><strong>SoR</strong>：従来型基幹システム</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>業務改善</h4>
+            <ul>
+              <li><strong>BPR</strong>：抜本的な業務再設計</li>
+              <li><strong>BPM</strong>：継続的な業務改善</li>
+              <li><strong>DFD</strong>：データの流れを表す図</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>データ活用</h4>
+            <ul>
+              <li><strong>ビッグデータの3V</strong>：Volume、Velocity、Variety</li>
+              <li><strong>データマイニング</strong>：データから価値を発掘</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>IT投資</h4>
+            <ul>
+              <li><strong>ROI</strong>：投資対効果</li>
+              <li><strong>TCO</strong>：総所有コスト（初期+運用）</li>
+              <li>経営戦略に基づいて<strong>全体最適</strong>を考える</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section class="quiz-slide">
         <h2>確認問題</h2>
         <div class="quiz-item">
-          <p><strong>1.</strong> As-Is分析とTo-Be分析の違いは何ですか？</p>
+          <p><strong>1.</strong> DXと単なるIT化の違いを説明してください</p>
         </div>
         <div class="quiz-item">
-          <p><strong>2.</strong> RPAに向いている業務の特徴を3つ挙げてください</p>
+          <p><strong>2.</strong> BPRとBPMの違いを「抜本的」「継続的」を使って説明してください</p>
         </div>
         <div class="quiz-item">
-          <p><strong>3.</strong> ERPとは何ですか？</p>
+          <p><strong>3.</strong> DFDの4つの記号（外部、プロセス、データフロー、データストア）を説明してください</p>
         </div>
         <div class="quiz-item">
-          <p><strong>4.</strong> DXとデジタル化の違いを説明してください</p>
+          <p><strong>4.</strong> ビッグデータの3V（Volume、Velocity、Variety）を説明してください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>5.</strong> TCO（総所有コスト）とは何ですか？なぜ重要ですか？</p>
         </div>
       </section>
 
@@ -385,12 +962,20 @@ DX: デジタルで事業・組織を変革
         <h2>次回予告</h2>
         <div class="next-preview">
           <h4>セッション27-28h: 製造業のIoT・AI活用</h4>
-          <ul>
-            <li>IoTの基本</li>
-            <li>製造業でのAI活用</li>
-            <li>スマートファクトリー</li>
-          </ul>
-          <p style="margin-top:1em;"><strong>STEP5「製造DXを実践する」</strong>がスタートします！</p>
+          <div class="card-grid cols-3">
+            <div class="card">
+              <h4>IoT基礎</h4>
+              <p>センサー、エッジ<br>コンピューティング</p>
+            </div>
+            <div class="card">
+              <h4>AI活用</h4>
+              <p>機械学習<br>予知保全</p>
+            </div>
+            <div class="card">
+              <h4>スマートファクトリー</h4>
+              <p>自律制御<br>デジタルツイン</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>

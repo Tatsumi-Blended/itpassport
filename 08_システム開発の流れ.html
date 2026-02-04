@@ -40,276 +40,767 @@
       <section>
         <h2>本日のゴール</h2>
         <ul>
-          <li>システム開発の全体像を理解する</li>
-          <li>要件定義の重要性を説明できる</li>
-          <li>主な開発モデルの特徴を理解する</li>
+          <li>システム開発の全体像（SLCP）を理解する</li>
+          <li>要件定義と設計工程の詳細を説明できる</li>
+          <li>テストの種類と目的を理解する</li>
+          <li>主な開発モデルの特徴と使い分けを理解する</li>
         </ul>
         <p style="margin-top:1em;"><strong>対応テキスト:</strong> 第6章 開発技術、第5章 システム戦略（5-07 要件定義）</p>
       </section>
 
-      <!-- 1. システム開発の全体像 -->
-      <section>
-        <h2>1. システム開発の全体像</h2>
+      <!-- ========================================== -->
+      <!-- 第1章: システム開発の全体像 -->
+      <!-- ========================================== -->
+      <section data-background-color="#6f42c1">
+        <h1 style="color: white;">第1章</h1>
+        <p style="color: white; font-size: 1.5em;">システム開発の全体像</p>
       </section>
 
       <section>
-        <h3>なぜ開発の流れを知る必要があるか</h3>
-        <p><strong>製造現場で起こること:</strong></p>
+        <h3>1-1. なぜ開発の流れを知る必要があるか</h3>
+        <p><strong>製造現場で起こりがちな問題:</strong></p>
         <ul>
           <li>「使いにくいシステムが導入された」</li>
           <li>「現場の意見が反映されていない」</li>
           <li>「何を伝えればいいかわからない」</li>
+          <li>「いつ意見を言えばよかったのか...」</li>
         </ul>
-        <blockquote>開発の流れを知れば、適切なタイミングで意見を言える</blockquote>
+        <blockquote style="margin-top: 1em;">開発の流れを知れば、適切なタイミングで適切な意見を言える</blockquote>
       </section>
 
       <section>
-        <h3>システム開発の基本フェーズ</h3>
-        <pre class="ascii">
-[企画] → [要件定義] → [設計] → [開発] → [テスト] → [運用]
-  │         │           │        │         │         │
-  │     ★最重要★      │        │         │         │
-  │   ここで決まる      │        │    現場が      現場が
-  │                     │        │    確認       使用
-  │                     │        │
- 何を作るか        どう作るか   作る
-        </pre>
-      </section>
-
-      <section>
-        <h3>各フェーズの役割</h3>
+        <h3>1-2. システムの構成要素</h3>
         <table>
+          <tr><th>構成要素</th><th>説明</th><th>例</th></tr>
+          <tr><td><strong>ハードウェア</strong></td><td>物理的な機器</td><td>サーバ、PC、電話機、ネットワーク機器</td></tr>
+          <tr><td><strong>ソフトウェア</strong></td><td>プログラムやデータ</td><td>OS、業務アプリ、データベース</td></tr>
+          <tr><td><strong>手作業</strong></td><td>人間が行う作業</td><td>データ入力、承認作業、帳票確認</td></tr>
+        </table>
+        <p style="margin-top: 1em; text-align: center;"><strong>システム = ハードウェア + ソフトウェア</strong></p>
+        <p style="text-align: center;"><strong>業務 = システム + 手作業（人による活用）</strong></p>
+      </section>
+
+      <section>
+        <h3>1-3. ソフトウェアライフサイクルプロセス（SLCP）</h3>
+        <p><strong>システム開発の標準的なプロセス体系</strong></p>
+        <pre class="ascii">
+┌─────────────────────────────────────────────────────────────┐
+│  [企画] → [要件定義] → [開発] → [運用] → [保守]             │
+│    │          │          │        │        │               │
+│  目的・     何を     どう作り   使い     維持・            │
+│  計画を    作るか    テストする 続ける   改善する          │
+│  決める    決める                                          │
+└─────────────────────────────────────────────────────────────┘
+        </pre>
+        <p style="text-align: center;"><strong>SLCP = Software Life Cycle Process</strong></p>
+      </section>
+
+      <section>
+        <h3>1-4. SLCPの5つのプロセス</h3>
+        <table class="small">
+          <tr><th>プロセス</th><th>内容</th><th>主な担当</th></tr>
+          <tr><td><strong>企画</strong></td><td>目的・予算・範囲を決める</td><td>発注者（企業側）</td></tr>
+          <tr><td><strong>要件定義</strong></td><td>何を作るか明確にする</td><td>発注者 + 開発者</td></tr>
+          <tr><td><strong>開発</strong></td><td>設計・プログラミング・テスト</td><td>開発者</td></tr>
+          <tr><td><strong>運用</strong></td><td>本番環境で稼働させる</td><td>運用担当者</td></tr>
+          <tr><td><strong>保守</strong></td><td>バグ修正・機能追加</td><td>開発者・保守担当者</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>1-5. 開発プロセスの詳細構成</h3>
+        <table class="small">
+          <tr><th>SLCP</th><th>工程</th><th>下位工程</th></tr>
+          <tr><td rowspan="8"><strong>開発<br>プロセス</strong></td><td rowspan="4">システム開発</td><td>システム方式設計</td></tr>
+          <tr><td>ソフトウェア要件定義</td></tr>
+          <tr><td>ソフトウェア方式設計</td></tr>
+          <tr><td>プログラミング</td></tr>
+          <tr><td rowspan="4">テスト</td><td>単体テスト</td></tr>
+          <tr><td>結合テスト</td></tr>
+          <tr><td>システムテスト</td></tr>
+          <tr><td>運用テスト（受入テスト）</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>1-6. 各フェーズでの現場の関わり方</h3>
+        <table class="small">
           <tr><th>フェーズ</th><th>内容</th><th>現場の関わり</th></tr>
           <tr><td>企画</td><td>目的・予算・範囲を決める</td><td>課題を伝える</td></tr>
-          <tr><td>要件定義</td><td>何を作るか明確にする</td><td><strong>要望を詳しく伝える</strong></td></tr>
+          <tr><td>要件定義</td><td>何を作るか明確にする</td><td><strong style="color:#dc3545;">要望を詳しく伝える（最重要）</strong></td></tr>
           <tr><td>設計</td><td>どう作るか決める</td><td>画面イメージ確認</td></tr>
           <tr><td>開発</td><td>プログラミング</td><td>―</td></tr>
           <tr><td>テスト</td><td>動作確認</td><td><strong>受入テストに参加</strong></td></tr>
           <tr><td>運用</td><td>使い始める</td><td>実際に使用</td></tr>
+          <tr><td>保守</td><td>改善・修正</td><td>改善要望を伝える</td></tr>
         </table>
       </section>
 
-      <!-- 2. 要件定義の重要性 -->
-      <section>
-        <h2>2. 要件定義の重要性</h2>
+      <!-- ========================================== -->
+      <!-- 第2章: 要件定義 -->
+      <!-- ========================================== -->
+      <section data-background-color="#6f42c1">
+        <h1 style="color: white;">第2章</h1>
+        <p style="color: white; font-size: 1.5em;">要件定義の重要性</p>
       </section>
 
       <section>
-        <h3>要件定義とは</h3>
+        <h3>2-1. 要件定義とは</h3>
         <p><strong>システムが「何をすべきか」を明確にするプロセス</strong></p>
+        <ul>
+          <li>開発会社と「どのようなシステムを作るのか」を明確化</li>
+          <li>責任の所在を明確にする（契約の基礎）</li>
+          <li>後工程での手戻りを防ぐ最重要フェーズ</li>
+        </ul>
         <pre class="ascii">
 現場の声: 「在庫がすぐ見たい」
-            ↓
-要件定義: 「在庫照会画面で、部品番号を入力すると
-           3秒以内に現在在庫数と保管場所が表示される」
+            ↓ 要件定義で具体化
+要件: 「在庫照会画面で、部品番号を入力すると
+       3秒以内に現在在庫数と保管場所が表示される」
         </pre>
       </section>
 
       <section>
-        <h3>要件定義が不十分だと...</h3>
-        <p><strong>よくある失敗:</strong></p>
+        <h3>2-2. 要件定義が不十分だと...</h3>
+        <p><strong>よくある失敗パターン:</strong></p>
         <pre class="ascii">
-現場: 「すぐ見たい」
+現場: 「すぐ見たい」（曖昧な要望）
   ↓ 曖昧なまま開発
 ベンダー: 「表示は1秒で出ます」（技術的な速度）
-  ↓
+  ↓ 実際に使ってみると...
 現場: 「3回もクリックしないと見れない！」（操作が多い）
   ↓
-「思っていたのと違う...」
+結果: 「思っていたのと違う...」
         </pre>
+        <blockquote style="color: #dc3545;">後から変更すると、コストが10倍以上になることも</blockquote>
       </section>
 
       <section>
-        <h3>機能要件と非機能要件</h3>
+        <h3>2-3. 機能要件と非機能要件</h3>
         <table>
-          <tr><th>種類</th><th>内容</th><th>例</th></tr>
-          <tr><td>機能要件</td><td>何ができるか</td><td>在庫検索、発注登録</td></tr>
-          <tr><td>非機能要件</td><td>どのように動くか</td><td>応答3秒以内、稼働率99%</td></tr>
+          <tr><th>種類</th><th>説明</th><th>例</th></tr>
+          <tr>
+            <td><strong>機能要件</strong></td>
+            <td>システムが<strong>何をするか</strong><br>（ユーザーが把握している機能）</td>
+            <td>在庫検索、発注登録、<br>帳票出力</td>
+          </tr>
+          <tr>
+            <td><strong>非機能要件</strong></td>
+            <td>システムが<strong>どのように動くか</strong><br>（ユーザーが把握しきれていない性能）</td>
+            <td>応答3秒以内、稼働率99%、<br>同時100人アクセス</td>
+          </tr>
         </table>
       </section>
 
       <section>
-        <h3>非機能要件の例</h3>
+        <h3>2-4. 機能要件の例</h3>
         <table class="small">
-          <tr><th>カテゴリ</th><th>要件例</th></tr>
-          <tr><td>性能</td><td>検索応答3秒以内、同時100人アクセス</td></tr>
-          <tr><td>可用性</td><td>稼働率99.5%、障害時2時間以内復旧</td></tr>
-          <tr><td>セキュリティ</td><td>パスワード認証、操作ログ記録</td></tr>
-          <tr><td>使用性</td><td>3クリック以内で主要機能にアクセス</td></tr>
+          <tr><th>カテゴリ</th><th>機能要件の例</th></tr>
+          <tr><td>認証機能</td><td>ログイン/ログアウト機能</td></tr>
+          <tr><td>検索機能</td><td>データの検索・絞り込み機能</td></tr>
+          <tr><td>登録機能</td><td>データの登録・変更・削除機能</td></tr>
+          <tr><td>出力機能</td><td>帳票/レポート出力機能</td></tr>
+          <tr><td>通知機能</td><td>アラート・メール通知機能</td></tr>
+          <tr><td>連携機能</td><td>他システムとのデータ連携</td></tr>
         </table>
       </section>
 
       <section>
-        <h3>要件の伝え方（悪い例）</h3>
-        <blockquote>「在庫管理を楽にしてほしい」</blockquote>
-        <p style="color: #dc3545; font-size: 0.9em;">曖昧すぎて、何をどう改善すればよいかわからない</p>
+        <h3>2-5. 非機能要件の詳細</h3>
+        <table class="small">
+          <tr><th>カテゴリ</th><th>要件例</th><th>具体的な数値例</th></tr>
+          <tr><td><strong>性能</strong></td><td>応答時間、処理能力</td><td>検索応答3秒以内、同時100人</td></tr>
+          <tr><td><strong>可用性</strong></td><td>稼働率、復旧時間</td><td>稼働率99.5%、2時間以内復旧</td></tr>
+          <tr><td><strong>セキュリティ</strong></td><td>認証、ログ記録</td><td>パスワード認証、操作ログ5年保持</td></tr>
+          <tr><td><strong>使用性</strong></td><td>操作性、学習容易性</td><td>3クリック以内でアクセス</td></tr>
+          <tr><td><strong>保守性</strong></td><td>変更容易性</td><td>設定変更は再起動不要</td></tr>
+          <tr><td><strong>移植性</strong></td><td>他環境への移行</td><td>クラウド移行可能</td></tr>
+        </table>
       </section>
 
       <section>
-        <h3>要件の伝え方（良い例）</h3>
-        <blockquote>「現在、部品番号を調べるのに平均5分かかっている。<br>
+        <h3>2-6. 品質特性（6つ）</h3>
+        <p><strong>ISO/IEC 9126で定義されたソフトウェア品質特性:</strong></p>
+        <table class="small">
+          <tr><th>品質特性</th><th>説明</th></tr>
+          <tr><td><strong>機能性</strong></td><td>要求された機能を提供できるか</td></tr>
+          <tr><td><strong>信頼性</strong></td><td>障害が起きにくく、起きても回復できるか</td></tr>
+          <tr><td><strong>使用性</strong></td><td>使いやすく、わかりやすいか</td></tr>
+          <tr><td><strong>効率性</strong></td><td>リソースを効率的に使えるか</td></tr>
+          <tr><td><strong>保守性</strong></td><td>修正・変更がしやすいか</td></tr>
+          <tr><td><strong>移植性</strong></td><td>他の環境に移行しやすいか</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>2-7. 要件の伝え方（悪い例 vs 良い例）</h3>
+        <p><strong style="color: #dc3545;">悪い例:</strong></p>
+        <blockquote>「在庫管理を楽にしてほしい」</blockquote>
+        <p style="font-size: 0.9em; color: #666;">→ 曖昧すぎて、何をどう改善すればよいかわからない</p>
+
+        <p><strong style="color: #28a745;">良い例:</strong></p>
+        <blockquote style="font-size: 0.85em;">「現在、部品番号を調べるのに平均5分かかっている。<br>
 部品番号を入力したら3秒以内に在庫数と棚番号が<br>
 表示されるようにしたい。対象は約5,000品目。<br>
 使用者は現場スタッフ30名。」</blockquote>
       </section>
 
       <section>
-        <h3>伝えるべきこと</h3>
+        <h3>2-8. 要件を伝えるためのチェックリスト</h3>
         <ol>
-          <li>現状の課題（定量的に）</li>
-          <li>期待する動作（具体的に）</li>
-          <li>対象データの規模</li>
-          <li>使用者の情報</li>
+          <li><strong>現状の課題</strong>（定量的に）
+            <ul><li>現在何分かかっているか、何回操作が必要か</li></ul>
+          </li>
+          <li><strong>期待する動作</strong>（具体的に）
+            <ul><li>どんな操作で、何秒以内に、何が表示されるか</li></ul>
+          </li>
+          <li><strong>対象データの規模</strong>
+            <ul><li>何件のデータを扱うか、どのくらい増えるか</li></ul>
+          </li>
+          <li><strong>使用者の情報</strong>
+            <ul><li>何人が使うか、ITスキルレベルはどうか</li></ul>
+          </li>
         </ol>
       </section>
 
-      <!-- 3. 開発モデル -->
-      <section>
-        <h2>3. 開発モデル</h2>
+      <!-- ========================================== -->
+      <!-- 第3章: システム設計 -->
+      <!-- ========================================== -->
+      <section data-background-color="#6f42c1">
+        <h1 style="color: white;">第3章</h1>
+        <p style="color: white; font-size: 1.5em;">システム設計の工程</p>
       </section>
 
       <section>
-        <h3>ウォーターフォールモデル</h3>
-        <p><strong>工程を順番に進める（後戻りしにくい）</strong></p>
+        <h3>3-1. システム設計の4つの工程</h3>
+        <pre class="ascii">
+[要件定義] ──────────────────────────────────────→
+     │
+     ↓
+[1.システム方式設計] ハード/ソフト/手作業に振り分け
+     │
+     ↓
+[2.ソフトウェア要件定義] ソフトウェアの機能・性能を決める
+     │
+     ↓
+[3.ソフトウェア方式設計] プログラム単位に分割
+     │
+     ↓
+[4.ソフトウェア詳細設計] コーディング単位まで分割
+     │
+     ↓
+[プログラミング] ──────────────────────────────→
+        </pre>
+      </section>
+
+      <section>
+        <h3>3-2. システム方式設計</h3>
+        <p><strong>システム要件を3つに振り分ける</strong></p>
+        <table>
+          <tr><th>振り分け先</th><th>内容</th><th>例</th></tr>
+          <tr><td><strong>ハードウェア</strong></td><td>物理的な機器で実現</td><td>サーバ、ネットワーク</td></tr>
+          <tr><td><strong>ソフトウェア</strong></td><td>プログラムで実現</td><td>業務アプリケーション</td></tr>
+          <tr><td><strong>手作業</strong></td><td>人間が行う作業</td><td>データ確認、承認</td></tr>
+        </table>
+        <p style="margin-top: 1em;"><strong>決めること:</strong> システムに何がいくつ必要か</p>
+      </section>
+
+      <section>
+        <h3>3-3. ソフトウェア要件定義</h3>
+        <p><strong>ソフトウェアの要件を詳細化</strong></p>
+        <table class="small">
+          <tr><th>定義する要件</th><th>内容</th></tr>
+          <tr><td><strong>機能要件</strong></td><td>ソフトウェアが提供する機能</td></tr>
+          <tr><td><strong>性能要件</strong></td><td>処理速度、同時接続数など</td></tr>
+          <tr><td><strong>インタフェース要件</strong></td><td>画面、帳票、ファイル形式</td></tr>
+          <tr><td><strong>データ要件</strong></td><td>データの種類、データベース構造</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>3-4. ソフトウェア方式設計</h3>
+        <p><strong>ソフトウェア要件を「プログラムの単位」まで分割</strong></p>
+        <pre class="ascii">
+[在庫管理システム]
+  │
+  ├── [在庫照会プログラム]
+  │     ├── 検索処理
+  │     └── 表示処理
+  │
+  ├── [入庫登録プログラム]
+  │     ├── 入力処理
+  │     └── DB更新処理
+  │
+  └── [帳票出力プログラム]
+        ├── データ集計処理
+        └── PDF生成処理
+        </pre>
+        <p style="text-align: center;"><strong>「どのように実現するか」を決める</strong></p>
+      </section>
+
+      <section>
+        <h3>3-5. ソフトウェア詳細設計</h3>
+        <p><strong>「コーディングができる単位」まで分割</strong></p>
+        <ul>
+          <li>フローチャート（流れ図）を作成</li>
+          <li>処理の詳細なロジックを設計</li>
+          <li>分割されたプログラム = <strong>ソフトウェアユニット</strong></li>
+        </ul>
+        <pre class="ascii">
+┌─────────────────────────────────────┐
+│ [検索処理] の詳細設計              │
+│   1. 入力値の検証                   │
+│   2. SQLの組み立て                  │
+│   3. DBへクエリ発行                 │
+│   4. 結果の整形                     │
+│   5. 画面への返却                   │
+└─────────────────────────────────────┘
+        </pre>
+      </section>
+
+      <section>
+        <h3>3-6. 外部設計と内部設計</h3>
+        <table>
+          <tr><th>設計区分</th><th>視点</th><th>該当工程</th></tr>
+          <tr>
+            <td><strong>外部設計</strong></td>
+            <td><strong>ユーザーの立場</strong>から見た<br>業務機能を中心に設計</td>
+            <td>システム要件定義<br>ソフトウェア要件定義</td>
+          </tr>
+          <tr>
+            <td><strong>内部設計</strong></td>
+            <td><strong>ユーザーから見えない</strong><br>箇所の設計</td>
+            <td>ソフトウェア方式設計<br>ソフトウェア詳細設計</td>
+          </tr>
+        </table>
+        <p style="margin-top: 1em; text-align: center;">
+          <strong>外部設計</strong> = 「何を作るか」<br>
+          <strong>内部設計</strong> = 「どう作るか」
+        </p>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- 第4章: プログラミング -->
+      <!-- ========================================== -->
+      <section data-background-color="#6f42c1">
+        <h1 style="color: white;">第4章</h1>
+        <p style="color: white; font-size: 1.5em;">プログラミング</p>
+      </section>
+
+      <section>
+        <h3>4-1. プログラミングとは</h3>
+        <table>
+          <tr><th>用語</th><th>説明</th></tr>
+          <tr>
+            <td><strong>プログラミング</strong></td>
+            <td>プログラム言語の文法に従って<br>処理手順を書く工程</td>
+          </tr>
+          <tr>
+            <td><strong>コーディング</strong></td>
+            <td>ソースコードを記述すること</td>
+          </tr>
+          <tr>
+            <td><strong>プログラマ</strong></td>
+            <td>プログラミングを行う担当者</td>
+          </tr>
+        </table>
+        <p style="margin-top: 1em;"><strong>タイミング:</strong> ソフトウェア詳細設計の後に行う</p>
+      </section>
+
+      <section>
+        <h3>4-2. コンパイラとインタプリタ</h3>
+        <table>
+          <tr><th>方式</th><th>説明</th><th>特徴</th></tr>
+          <tr>
+            <td><strong>コンパイラ</strong></td>
+            <td>ソースコード全体を<br>一括で機械語に変換</td>
+            <td>実行速度が速い<br>（C言語、Javaなど）</td>
+          </tr>
+          <tr>
+            <td><strong>インタプリタ</strong></td>
+            <td>ソースコードを<br>1行ずつ変換しながら実行</td>
+            <td>開発しやすい<br>（Python、JavaScriptなど）</td>
+          </tr>
+        </table>
+        <p style="margin-top: 1em; font-size: 0.9em;">
+          <strong>コンパイル:</strong> 人間が書いたプログラムを<strong>機械語</strong>に変換すること
+        </p>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- 第5章: テスト -->
+      <!-- ========================================== -->
+      <section data-background-color="#6f42c1">
+        <h1 style="color: white;">第5章</h1>
+        <p style="color: white; font-size: 1.5em;">テストの種類と方法</p>
+      </section>
+
+      <section>
+        <h3>5-1. V字モデル</h3>
+        <p><strong>開発工程とテスト工程の対応関係</strong></p>
+        <pre class="ascii">
+[要件定義] ─────────────────────── [運用テスト（受入テスト）]
+     ↓                                    ↑
+  [外部設計] ──────────────────── [システムテスト]
+       ↓                              ↑
+    [内部設計] ─────────────── [結合テスト]
+         ↓                        ↑
+        [プログラミング] ←→ [単体テスト]
+        </pre>
+        <p style="text-align: center; font-size: 0.9em;">
+          各設計工程に対応するテストで、その工程の成果物を検証
+        </p>
+      </section>
+
+      <section>
+        <h3>5-2. テストの種類と対応</h3>
+        <table class="small">
+          <tr><th>テスト</th><th>対応する工程</th><th>検証内容</th><th>実施者</th></tr>
+          <tr>
+            <td><strong>単体テスト</strong></td>
+            <td>プログラミング</td>
+            <td>個々のプログラムの誤り</td>
+            <td>開発者</td>
+          </tr>
+          <tr>
+            <td><strong>結合テスト</strong></td>
+            <td>内部設計</td>
+            <td>プログラム間の連携</td>
+            <td>開発者</td>
+          </tr>
+          <tr>
+            <td><strong>システムテスト</strong></td>
+            <td>外部設計</td>
+            <td>システム全体の動作</td>
+            <td>開発者</td>
+          </tr>
+          <tr>
+            <td><strong>運用テスト</strong></td>
+            <td>要件定義</td>
+            <td>要件を満たすか</td>
+            <td><strong>発注者</strong></td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>5-3. ホワイトボックステストとブラックボックステスト</h3>
+        <table>
+          <tr><th>テスト手法</th><th>視点</th><th>確認内容</th><th>主な適用</th></tr>
+          <tr>
+            <td><strong>ホワイトボックス<br>テスト</strong></td>
+            <td>プログラムの<br><strong>内部構造</strong></td>
+            <td>すべての処理経路が<br>正しく動作するか</td>
+            <td>単体テスト</td>
+          </tr>
+          <tr>
+            <td><strong>ブラックボックス<br>テスト</strong></td>
+            <td><strong>入力と出力</strong><br>のみ</td>
+            <td>仕様どおりの結果が<br>得られるか</td>
+            <td>結合テスト<br>システムテスト</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>5-4. テスト関連用語</h3>
+        <table class="small">
+          <tr><th>用語</th><th>説明</th></tr>
+          <tr><td><strong>バグ</strong></td><td>プログラムの誤り・不具合</td></tr>
+          <tr><td><strong>デバッグ</strong></td><td>バグを発見し、修正する作業</td></tr>
+          <tr><td><strong>コードレビュー</strong></td><td>ソースコードを目視で確認し、問題点を指摘</td></tr>
+          <tr><td><strong>回帰テスト<br>（リグレッションテスト）</strong></td><td>修正後に他の部分に不具合が<br>発生していないか確認するテスト</td></tr>
+          <tr><td><strong>テストケース</strong></td><td>テストの入力値と期待結果を定義したもの</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>5-5. 受入テストの重要性</h3>
+        <p><strong>現場がチェックすべきこと:</strong></p>
+        <ul>
+          <li>要件通りの機能があるか</li>
+          <li>操作が想定通りか（使いやすさ）</li>
+          <li>エラー時の動作は適切か</li>
+          <li>性能は問題ないか（応答速度など）</li>
+          <li>実際のデータで問題ないか</li>
+        </ul>
+        <blockquote style="margin-top: 1em;">
+          <strong>受入テストを経て「検収」</strong> = 納品完了となる
+        </blockquote>
+      </section>
+
+      <section>
+        <h3>5-6. テストケースの例</h3>
+        <table class="small">
+          <tr><th>No</th><th>テスト内容</th><th>入力</th><th>期待結果</th><th>OK/NG</th></tr>
+          <tr><td>1</td><td>正常検索</td><td>存在する部品番号</td><td>在庫数が表示される</td><td></td></tr>
+          <tr><td>2</td><td>該当なし</td><td>存在しない部品番号</td><td>エラーメッセージ表示</td><td></td></tr>
+          <tr><td>3</td><td>在庫0</td><td>在庫0の部品番号</td><td>「0」と表示される</td><td></td></tr>
+          <tr><td>4</td><td>空入力</td><td>何も入力しない</td><td>入力を促すメッセージ</td><td></td></tr>
+          <tr><td>5</td><td>特殊文字</td><td>記号を含む文字列</td><td>適切なエラー処理</td><td></td></tr>
+        </table>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- 第6章: ソフトウェア受入れと運用・保守 -->
+      <!-- ========================================== -->
+      <section data-background-color="#6f42c1">
+        <h1 style="color: white;">第6章</h1>
+        <p style="color: white; font-size: 1.5em;">受入れと運用・保守</p>
+      </section>
+
+      <section>
+        <h3>6-1. ソフトウェア受入れ</h3>
+        <p><strong>開発者が作成したソフトウェアを発注者に納品する工程</strong></p>
+        <table class="small">
+          <tr><th>作業</th><th>内容</th><th>担当</th></tr>
+          <tr>
+            <td><strong>ソフトウェア導入</strong></td>
+            <td>本番環境にソフトウェアをインストール</td>
+            <td>開発者</td>
+          </tr>
+          <tr>
+            <td><strong>移行</strong></td>
+            <td>既存システムから新システムへの切り替え</td>
+            <td>開発者+発注者</td>
+          </tr>
+          <tr>
+            <td><strong>受入テスト</strong></td>
+            <td>契約どおりに完成しているか確認</td>
+            <td><strong>発注者</strong></td>
+          </tr>
+          <tr>
+            <td><strong>検収</strong></td>
+            <td>問題なければ納品完了</td>
+            <td>発注者</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>6-2. 移行の方式</h3>
+        <table class="small">
+          <tr><th>移行方式</th><th>内容</th><th>メリット</th><th>デメリット</th></tr>
+          <tr>
+            <td><strong>一斉移行</strong></td>
+            <td>ある時点で一気に切り替え</td>
+            <td>移行期間が短い</td>
+            <td>リスクが高い</td>
+          </tr>
+          <tr>
+            <td><strong>段階移行</strong></td>
+            <td>機能や部門ごとに段階的に移行</td>
+            <td>リスクを分散</td>
+            <td>移行期間が長い</td>
+          </tr>
+          <tr>
+            <td><strong>並行運用</strong></td>
+            <td>新旧システムを並行稼働</td>
+            <td>安全に移行可能</td>
+            <td>コストがかかる</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>6-3. 運用プロセス</h3>
+        <p><strong>完成したシステムを本番環境で動かす工程</strong></p>
+        <table class="small">
+          <tr><th>作業</th><th>内容</th></tr>
+          <tr><td><strong>システム監視</strong></td><td>システムの稼働状況を監視</td></tr>
+          <tr><td><strong>障害対応</strong></td><td>問題発生時の対応と復旧</td></tr>
+          <tr><td><strong>バックアップ</strong></td><td>データの定期的なバックアップ</td></tr>
+          <tr><td><strong>利用者教育</strong></td><td>継続的な操作教育の実施</td></tr>
+          <tr><td><strong>ヘルプデスク</strong></td><td>利用者からの問い合わせ対応</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>6-4. 保守プロセス</h3>
+        <p><strong>稼働中の本番環境に対して行う作業</strong></p>
+        <table class="small">
+          <tr><th>保守の種類</th><th>内容</th><th>例</th></tr>
+          <tr>
+            <td><strong>是正保守</strong></td>
+            <td>バグの修正</td>
+            <td>不具合の改修</td>
+          </tr>
+          <tr>
+            <td><strong>適応保守</strong></td>
+            <td>環境変化への対応</td>
+            <td>OS更新対応、法改正対応</td>
+          </tr>
+          <tr>
+            <td><strong>完全化保守</strong></td>
+            <td>機能の追加・改善</td>
+            <td>新機能の追加</td>
+          </tr>
+          <tr>
+            <td><strong>予防保守</strong></td>
+            <td>将来の問題を予防</td>
+            <td>性能改善、リファクタリング</td>
+          </tr>
+        </table>
+        <p style="margin-top: 0.5em; font-size: 0.9em;">これらをまとめて<strong>「ソフトウェア保守」</strong>と呼ぶ</p>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- 第7章: 開発モデル -->
+      <!-- ========================================== -->
+      <section data-background-color="#6f42c1">
+        <h1 style="color: white;">第7章</h1>
+        <p style="color: white; font-size: 1.5em;">ソフトウェア開発モデル</p>
+      </section>
+
+      <section>
+        <h3>7-1. ウォーターフォールモデル</h3>
+        <p><strong>上流工程から下流工程へ順番に進める（滝のように）</strong></p>
         <pre class="ascii">
 [要件定義]
-     ↓ 完了してから
+     ↓ 完了してから次へ
 [設計]
-     ↓ 完了してから
+     ↓ 完了してから次へ
 [開発]
-     ↓ 完了してから
+     ↓ 完了してから次へ
 [テスト]
-     ↓ 完了してから
+     ↓ 完了してから次へ
 [運用]
         </pre>
       </section>
 
       <section>
-        <h3>ウォーターフォールの特徴</h3>
-        <p><strong>特徴:</strong></p>
-        <ul>
-          <li>計画が立てやすい</li>
-          <li>進捗管理しやすい</li>
-          <li>要件変更に弱い</li>
-        </ul>
-        <p><strong>向いているケース:</strong></p>
-        <ul>
-          <li>要件が明確で変わらない</li>
-          <li>大規模システム</li>
-          <li>品質重視</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>V字モデル</h3>
-        <p><strong>開発とテストを対応づけ</strong></p>
-        <pre class="ascii">
-[要件定義] ─────────────────── [受入テスト]
-     ↓                              ↑
-  [基本設計] ─────────────── [結合テスト]
-       ↓                        ↑
-    [詳細設計] ──────── [単体テスト]
-         ↓                  ↑
-        [開発] ─────────────┘
-        </pre>
-      </section>
-
-      <section>
-        <h3>V字モデルのテスト対応</h3>
+        <h3>7-2. ウォーターフォールの特徴</h3>
         <table>
-          <tr><th>工程</th><th>テスト</th><th>確認内容</th></tr>
-          <tr><td>要件定義</td><td>受入テスト</td><td>要件を満たすか</td></tr>
-          <tr><td>基本設計</td><td>結合テスト</td><td>機能間の連携</td></tr>
-          <tr><td>詳細設計</td><td>単体テスト</td><td>個々の機能</td></tr>
+          <tr><th>メリット</th><th>デメリット</th></tr>
+          <tr>
+            <td>
+              <ul style="margin: 0;">
+                <li>計画が立てやすい</li>
+                <li>進捗管理しやすい</li>
+                <li>成果物が明確</li>
+                <li>大人数での開発向き</li>
+              </ul>
+            </td>
+            <td>
+              <ul style="margin: 0;">
+                <li>後戻りしにくい</li>
+                <li>要件変更に弱い</li>
+                <li>完成まで動くものが見れない</li>
+                <li>漏れがあると遡って修正</li>
+              </ul>
+            </td>
+          </tr>
         </table>
+        <p style="margin-top: 1em;"><strong>向いているケース:</strong> 要件が明確、大規模システム、品質重視</p>
       </section>
 
       <section>
-        <h3>アジャイル開発</h3>
-        <p><strong>短いサイクルで開発・フィードバックを繰り返す</strong></p>
+        <h3>7-3. アジャイル開発</h3>
+        <p><strong>短期間で開発とリリースを繰り返す（素早く）</strong></p>
         <pre class="ascii">
-┌────────────────────────────┐
-│ スプリント1（2週間）       │
-│ [計画]→[開発]→[レビュー]  │
-└────────────┬───────────────┘
+┌────────────────────────────────┐
+│ スプリント1（2週間）           │
+│ [計画]→[開発]→[テスト]→[レビュー] │
+└────────────┬───────────────────┘
              ↓ フィードバック反映
-┌────────────────────────────┐
-│ スプリント2（2週間）       │
-│ [計画]→[開発]→[レビュー]  │
-└────────────┬───────────────┘
-             ↓ 繰り返し
+┌────────────────────────────────┐
+│ スプリント2（2週間）           │
+│ [計画]→[開発]→[テスト]→[レビュー] │
+└────────────┬───────────────────┘
+             ↓ 繰り返し...
         </pre>
+        <p style="text-align: center;"><strong>Agile = 素早い、機敏な</strong></p>
       </section>
 
       <section>
-        <h3>アジャイルの特徴</h3>
-        <p><strong>特徴:</strong></p>
-        <ul>
-          <li>変更に柔軟</li>
-          <li>早期にフィードバック</li>
-          <li>密なコミュニケーション必要</li>
-        </ul>
-        <p><strong>向いているケース:</strong></p>
-        <ul>
-          <li>要件が変わりやすい</li>
-          <li>小〜中規模</li>
-          <li>スピード重視</li>
-        </ul>
+        <h3>7-4. アジャイルの特徴</h3>
+        <table>
+          <tr><th>メリット</th><th>デメリット</th></tr>
+          <tr>
+            <td>
+              <ul style="margin: 0;">
+                <li>変更に柔軟</li>
+                <li>早期にフィードバック</li>
+                <li>優先度の高い機能から開発</li>
+                <li>ユーザーニーズに対応</li>
+              </ul>
+            </td>
+            <td>
+              <ul style="margin: 0;">
+                <li>全体の計画が立てにくい</li>
+                <li>密なコミュニケーション必要</li>
+                <li>ドキュメントが少ない</li>
+                <li>スコープが膨らみやすい</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+        <p style="margin-top: 1em;"><strong>向いているケース:</strong> 要件が変わりやすい、小〜中規模、スピード重視</p>
       </section>
 
       <section>
-        <h3>開発モデルの比較</h3>
+        <h3>7-5. 開発モデルの比較</h3>
         <table class="small">
           <tr><th>項目</th><th>ウォーターフォール</th><th>アジャイル</th></tr>
+          <tr><td>計画段階</td><td>しっかり決める</td><td>大まかに決める</td></tr>
           <tr><td>計画性</td><td>高い</td><td>低い</td></tr>
           <tr><td>柔軟性</td><td>低い</td><td>高い</td></tr>
-          <tr><td>成果物の早さ</td><td>遅い</td><td>早い</td></tr>
+          <tr><td>成果物の早さ</td><td>遅い（最後に完成）</td><td>早い（段階的に）</td></tr>
           <tr><td>文書量</td><td>多い</td><td>少ない</td></tr>
+          <tr><td>仕様変更</td><td>しにくい</td><td>しやすい</td></tr>
           <tr><td>向いている規模</td><td>大規模</td><td>小〜中規模</td></tr>
         </table>
       </section>
 
-      <!-- 4. テストの種類 -->
       <section>
-        <h2>4. テストの種類</h2>
-      </section>
-
-      <section>
-        <h3>テストの段階</h3>
-        <table>
-          <tr><th>テスト</th><th>実施者</th><th>内容</th></tr>
-          <tr><td>単体テスト</td><td>開発者</td><td>個々の機能を確認</td></tr>
-          <tr><td>結合テスト</td><td>開発者</td><td>機能間の連携を確認</td></tr>
-          <tr><td>システムテスト</td><td>開発者</td><td>全体の動作を確認</td></tr>
-          <tr><td>受入テスト</td><td><strong>発注者</strong></td><td>要件を満たすか確認</td></tr>
-        </table>
-      </section>
-
-      <section>
-        <h3>受入テストの重要性</h3>
-        <p><strong>現場がチェックすべきこと:</strong></p>
-        <ul>
-          <li>要件通りの機能があるか</li>
-          <li>操作が想定通りか</li>
-          <li>エラー時の動作は適切か</li>
-          <li>性能は問題ないか（応答速度など）</li>
-          <li>実際のデータで問題ないか</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>テストケースの例</h3>
+        <h3>7-6. その他の開発手法・概念</h3>
         <table class="small">
-          <tr><th>No</th><th>操作</th><th>期待結果</th><th>OK/NG</th></tr>
-          <tr><td>1</td><td>存在する部品番号で検索</td><td>在庫数が表示される</td><td></td></tr>
-          <tr><td>2</td><td>存在しない部品番号で検索</td><td>エラーメッセージが表示される</td><td></td></tr>
-          <tr><td>3</td><td>在庫0の部品番号で検索</td><td>0と表示される</td><td></td></tr>
+          <tr><th>手法</th><th>説明</th></tr>
+          <tr>
+            <td><strong>DevOps</strong></td>
+            <td>開発担当者（Dev）と運用担当者（Ops）が連携して開発・運用</td>
+          </tr>
+          <tr>
+            <td><strong>XP<br>（エクストリームプログラミング）</strong></td>
+            <td>アジャイル開発の手法の一つ。19のプラクティス（実践）を定義</td>
+          </tr>
+          <tr>
+            <td><strong>テスト駆動開発<br>（TDD）</strong></td>
+            <td>テストを先に書いてからプログラムを書く手法</td>
+          </tr>
+          <tr>
+            <td><strong>ペアプログラミング</strong></td>
+            <td>2人で1つのパソコンを使って開発（ドライバーとナビゲーター）</td>
+          </tr>
+          <tr>
+            <td><strong>リファクタリング</strong></td>
+            <td>機能は変えずに内部構造を改善し、保守性を向上</td>
+          </tr>
         </table>
       </section>
 
-      <!-- 5. 演習とまとめ -->
-      <section class="exercise-slide">
-        <h2>5. 演習とまとめ</h2>
+      <section>
+        <h3>7-7. ファンクションポイント法</h3>
+        <p><strong>システムの機能に点数をつけて開発費用を見積もる方法</strong></p>
+        <table class="small">
+          <tr><th>機能タイプ</th><th>説明</th><th>ポイント例</th></tr>
+          <tr><td>外部入力</td><td>データの入力処理</td><td>3〜6点</td></tr>
+          <tr><td>外部出力</td><td>データの出力処理</td><td>4〜7点</td></tr>
+          <tr><td>外部照会</td><td>データの参照処理</td><td>3〜6点</td></tr>
+          <tr><td>内部論理ファイル</td><td>システム内のデータ</td><td>7〜15点</td></tr>
+          <tr><td>外部インタフェースファイル</td><td>外部システムのデータ</td><td>5〜10点</td></tr>
+        </table>
+        <p style="margin-top: 0.5em; font-size: 0.9em;">
+          <strong>開発費用 = 合計ファンクションポイント × 単価</strong>
+        </p>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- 第8章: 演習とまとめ -->
+      <!-- ========================================== -->
+      <section class="exercise-slide" data-background-color="#e7f3ff">
+        <h1>第8章</h1>
+        <p style="font-size: 1.5em;">演習問題</p>
       </section>
 
       <section class="exercise-slide">
@@ -328,6 +819,31 @@
       </section>
 
       <section class="exercise-slide">
+        <h3>演習1: 解答例</h3>
+        <table class="small">
+          <tr><th>機能要件</th><th>非機能要件</th></tr>
+          <tr>
+            <td>
+              <ol style="margin: 0;">
+                <li>生産数量の入力機能</li>
+                <li>不良品数の入力機能</li>
+                <li>日報の一覧表示・検索機能</li>
+                <li>月次集計レポート出力機能</li>
+              </ol>
+            </td>
+            <td>
+              <ol style="margin: 0;">
+                <li>応答時間3秒以内</li>
+                <li>同時20人アクセス可能</li>
+                <li>データ保持期間5年</li>
+                <li>タブレットでも操作可能</li>
+              </ol>
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="exercise-slide">
         <h3>演習2: 開発モデルの選択</h3>
         <p>以下のケースに適した開発モデルは?</p>
         <table class="small">
@@ -338,18 +854,197 @@
         </table>
       </section>
 
+      <section class="exercise-slide">
+        <h3>演習2: 解答例</h3>
+        <table class="small">
+          <tr><th>ケース</th><th>適したモデル</th><th>理由</th></tr>
+          <tr>
+            <td>基幹システムの刷新</td>
+            <td><strong>ウォーターフォール</strong></td>
+            <td>大規模で要件が明確、計画的に進める必要</td>
+          </tr>
+          <tr>
+            <td>新サービスのアプリ</td>
+            <td><strong>アジャイル</strong></td>
+            <td>要件が変わりやすい、早期リリースが重要</td>
+          </tr>
+          <tr>
+            <td>法改正対応の緊急改修</td>
+            <td><strong>アジャイル</strong></td>
+            <td>スピード重視、小規模な変更</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習3: テストの分類</h3>
+        <p>以下のテストは何テストに該当しますか?</p>
+        <table class="small">
+          <tr><th>テスト内容</th><th>テスト種類</th></tr>
+          <tr><td>プログラム内のすべての分岐を通過するか確認</td><td></td></tr>
+          <tr><td>在庫検索と発注登録の連携が正しく動くか確認</td><td></td></tr>
+          <tr><td>要件どおりにシステムが動作するか発注者が確認</td><td></td></tr>
+          <tr><td>入力値に対して正しい出力が得られるか確認</td><td></td></tr>
+        </table>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習3: 解答</h3>
+        <table class="small">
+          <tr><th>テスト内容</th><th>テスト種類</th></tr>
+          <tr>
+            <td>プログラム内のすべての分岐を通過するか確認</td>
+            <td><strong>単体テスト<br>（ホワイトボックステスト）</strong></td>
+          </tr>
+          <tr>
+            <td>在庫検索と発注登録の連携が正しく動くか確認</td>
+            <td><strong>結合テスト</strong></td>
+          </tr>
+          <tr>
+            <td>要件どおりにシステムが動作するか発注者が確認</td>
+            <td><strong>運用テスト（受入テスト）</strong></td>
+          </tr>
+          <tr>
+            <td>入力値に対して正しい出力が得られるか確認</td>
+            <td><strong>ブラックボックステスト</strong></td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習4: 設計工程の並べ替え</h3>
+        <p>以下の工程を正しい順序に並べ替えてください:</p>
+        <ul>
+          <li>A. ソフトウェア詳細設計</li>
+          <li>B. システム方式設計</li>
+          <li>C. ソフトウェア方式設計</li>
+          <li>D. ソフトウェア要件定義</li>
+        </ul>
+        <p style="margin-top: 1em;"><strong>正しい順序: ___ → ___ → ___ → ___</strong></p>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習4: 解答</h3>
+        <p><strong>正しい順序:</strong></p>
+        <pre class="ascii">
+B. システム方式設計
+    ↓ ハード/ソフト/手作業に振り分け
+D. ソフトウェア要件定義
+    ↓ ソフトウェアの機能・性能を決める
+C. ソフトウェア方式設計
+    ↓ プログラム単位に分割
+A. ソフトウェア詳細設計
+    ↓ コーディング単位まで分割
+        </pre>
+      </section>
+
+      <!-- 試験対策ポイント -->
+      <section>
+        <h2>試験対策ポイント</h2>
+      </section>
+
+      <section>
+        <h3>SLCP（ソフトウェアライフサイクルプロセス）</h3>
+        <table class="small">
+          <tr><th>プロセス</th><th>内容</th></tr>
+          <tr><td><strong>企画</strong></td><td>目的・予算・範囲を決める</td></tr>
+          <tr><td><strong>要件定義</strong></td><td>何を作るか明確にする</td></tr>
+          <tr><td><strong>開発</strong></td><td>設計・プログラミング・テスト</td></tr>
+          <tr><td><strong>運用</strong></td><td>本番環境で稼働</td></tr>
+          <tr><td><strong>保守</strong></td><td>バグ修正・機能追加</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>要件定義</h3>
+        <table>
+          <tr><th>種類</th><th>説明</th><th>覚え方</th></tr>
+          <tr>
+            <td><strong>機能要件</strong></td>
+            <td>ユーザーが把握している<br>システムに必要な<strong>機能</strong></td>
+            <td>「何ができるか」</td>
+          </tr>
+          <tr>
+            <td><strong>非機能要件</strong></td>
+            <td>ユーザーが把握しきれていない<br>システムに必要な<strong>性能</strong></td>
+            <td>「どのように動くか」</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>システム設計の4工程</h3>
+        <table class="small">
+          <tr><th>工程</th><th>内容</th><th>設計区分</th></tr>
+          <tr><td><strong>システム方式設計</strong></td><td>ハード/ソフト/手作業に振り分け</td><td rowspan="2">外部設計</td></tr>
+          <tr><td><strong>ソフトウェア要件定義</strong></td><td>ソフトウェアの機能・性能を決める</td></tr>
+          <tr><td><strong>ソフトウェア方式設計</strong></td><td>プログラム単位に分割</td><td rowspan="2">内部設計</td></tr>
+          <tr><td><strong>ソフトウェア詳細設計</strong></td><td>コーディング単位まで分割</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>テストの種類（V字モデル）</h3>
+        <table class="small">
+          <tr><th>テスト</th><th>対応工程</th><th>検証内容</th></tr>
+          <tr><td><strong>単体テスト</strong></td><td>プログラミング</td><td>プログラムの誤り検証</td></tr>
+          <tr><td><strong>結合テスト</strong></td><td>内部設計</td><td>インタフェースの検証</td></tr>
+          <tr><td><strong>システムテスト</strong></td><td>外部設計</td><td>全体の検証</td></tr>
+          <tr><td><strong>運用テスト</strong></td><td>要件定義</td><td>要件どおりか検証（発注者が実施）</td></tr>
+        </table>
+        <p style="margin-top: 0.5em; font-size: 0.9em;">
+          <strong>ホワイトボックス:</strong> 内部構造を確認（単体テスト）<br>
+          <strong>ブラックボックス:</strong> 入出力のみ確認（結合・システムテスト）
+        </p>
+      </section>
+
+      <section>
+        <h3>開発モデルの比較</h3>
+        <table class="small">
+          <tr><th>観点</th><th>ウォーターフォール</th><th>アジャイル</th></tr>
+          <tr><td>進め方</td><td>順番に進める</td><td>短期間で繰り返す</td></tr>
+          <tr><td>計画性</td><td>高い</td><td>低い</td></tr>
+          <tr><td>柔軟性</td><td>低い</td><td>高い</td></tr>
+          <tr><td>規模</td><td>大規模向き</td><td>小〜中規模向き</td></tr>
+        </table>
+        <p style="margin-top: 0.5em; font-size: 0.9em;">
+          <strong>DevOps:</strong> 開発と運用の連携<br>
+          <strong>テスト駆動開発:</strong> テストを先に書く<br>
+          <strong>リファクタリング:</strong> 機能は変えず内部構造を改善
+        </p>
+      </section>
+
       <!-- キーワード -->
       <section>
         <h2>キーワード</h2>
         <div class="keywords">
-          <span class="keyword-tag">システム開発</span>
+          <span class="keyword-tag">SLCP</span>
           <span class="keyword-tag">要件定義</span>
           <span class="keyword-tag">機能要件</span>
           <span class="keyword-tag">非機能要件</span>
-          <span class="keyword-tag">ウォーターフォール</span>
+          <span class="keyword-tag">システム方式設計</span>
+          <span class="keyword-tag">ソフトウェア詳細設計</span>
+          <span class="keyword-tag">外部設計</span>
+          <span class="keyword-tag">内部設計</span>
+          <span class="keyword-tag">コンパイラ</span>
           <span class="keyword-tag">V字モデル</span>
-          <span class="keyword-tag">アジャイル</span>
+          <span class="keyword-tag">単体テスト</span>
+          <span class="keyword-tag">結合テスト</span>
+          <span class="keyword-tag">システムテスト</span>
+          <span class="keyword-tag">運用テスト</span>
+          <span class="keyword-tag">ホワイトボックステスト</span>
+          <span class="keyword-tag">ブラックボックステスト</span>
+          <span class="keyword-tag">回帰テスト</span>
           <span class="keyword-tag">受入テスト</span>
+          <span class="keyword-tag">検収</span>
+          <span class="keyword-tag">移行</span>
+          <span class="keyword-tag">保守</span>
+          <span class="keyword-tag">ウォーターフォール</span>
+          <span class="keyword-tag">アジャイル</span>
+          <span class="keyword-tag">DevOps</span>
+          <span class="keyword-tag">テスト駆動開発</span>
+          <span class="keyword-tag">リファクタリング</span>
+          <span class="keyword-tag">ファンクションポイント法</span>
         </div>
       </section>
 
@@ -357,16 +1052,26 @@
       <section class="quiz-slide">
         <h2>確認問題</h2>
         <div class="quiz-item">
-          <p><strong>1.</strong> 要件定義とは何ですか?なぜ重要ですか?</p>
+          <p><strong>1.</strong> SLCPの5つのプロセスを順番に挙げてください</p>
         </div>
         <div class="quiz-item">
           <p><strong>2.</strong> 機能要件と非機能要件の違いを説明してください</p>
         </div>
         <div class="quiz-item">
-          <p><strong>3.</strong> ウォーターフォールとアジャイルの違いは?</p>
+          <p><strong>3.</strong> 外部設計と内部設計の違いは何ですか?</p>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2>確認問題（続き）</h2>
+        <div class="quiz-item">
+          <p><strong>4.</strong> V字モデルにおける各テストの対応工程を説明してください</p>
         </div>
         <div class="quiz-item">
-          <p><strong>4.</strong> 受入テストで現場がチェックすべきことは?</p>
+          <p><strong>5.</strong> ホワイトボックステストとブラックボックステストの違いは?</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>6.</strong> ウォーターフォールとアジャイルの使い分けを説明してください</p>
         </div>
       </section>
 
@@ -376,9 +1081,11 @@
         <div class="next-preview">
           <h4>セッション17-18h: プロジェクトマネジメント</h4>
           <ul>
-            <li>プロジェクトとは</li>
+            <li>プロジェクトとは（3つの制約）</li>
+            <li>PMBOK（10の知識エリア）</li>
             <li>WBSとガントチャート</li>
-            <li>進捗管理</li>
+            <li>アローダイアグラムとクリティカルパス</li>
+            <li>リスクマネジメント</li>
           </ul>
         </div>
       </section>

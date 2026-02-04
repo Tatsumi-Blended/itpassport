@@ -32,579 +32,1025 @@
       <!-- アジェンダ -->
       <section>
         <h2>本日のゴール</h2>
-        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
-          <div class="card">
-            <h4>目標1</h4>
-            <p>OSの役割と主な機能を説明できる</p>
-          </div>
-          <div class="card">
-            <h4>目標2</h4>
-            <p>ソフトウェアの種類を理解する</p>
-          </div>
-          <div class="card">
-            <h4>目標3</h4>
-            <p>ファイル管理の基本を身につける</p>
-          </div>
-        </div>
-        <div class="highlight-box" style="margin-top:1.5em;">
-          <strong>対応テキスト:</strong> 第12章 ソフトウェア
-        </div>
+        <ul>
+          <li>OSの役割と主な機能を説明できる</li>
+          <li>ファイルシステムとパス指定を理解する</li>
+          <li>バックアップの種類と特徴を理解する</li>
+          <li>表計算ソフトの基本操作を理解する</li>
+          <li>情報デザインとOSSの概念を説明できる</li>
+        </ul>
+        <p style="margin-top:1em;"><strong>対応テキスト:</strong> 第12章 ソフトウェア</p>
       </section>
 
-      <!-- 前回の振り返り -->
-      <section>
-        <h2>前回の振り返り</h2>
-        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
-          <div class="card">
-            <h4>🔢 2進数</h4>
-            <p>変換方法と計算</p>
-          </div>
-          <div class="card">
-            <h4>📊 ビット・バイト</h4>
-            <p>データ量の単位</p>
-          </div>
-          <div class="card">
-            <h4>🖼️ データ表現</h4>
-            <p>文字コード、画像</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 1. ソフトウェアとは -->
-      <section>
-        <h2>1. ソフトウェアとは</h2>
-        <p style="color: var(--text-secondary);">コンピュータを動かすプログラム</p>
+      <!-- ========================================== -->
+      <!-- 第1章: ソフトウェアの分類 -->
+      <!-- ========================================== -->
+      <section data-background-color="#1e3a5f">
+        <h1 style="color: white;">第1章</h1>
+        <p style="color: white; font-size: 1.5em;">ソフトウェアの分類</p>
       </section>
 
       <section>
-        <h3>ハードウェアとソフトウェア</h3>
-        <div class="compare-cards">
-          <div class="compare-card">
-            <div class="card-header">🔩 ハードウェア</div>
-            <div style="text-align:left; padding:1em;">
-              <p><strong>定義:</strong> 物理的な機器</p>
-              <ul>
-                <li>PC本体</li>
-                <li>キーボード</li>
-                <li>モニター</li>
-                <li>メモリ、HDD</li>
-              </ul>
-            </div>
-          </div>
-          <div class="compare-card">
-            <div class="card-header">💿 ソフトウェア</div>
-            <div style="text-align:left; padding:1em;">
-              <p><strong>定義:</strong> プログラムやデータ</p>
-              <ul>
-                <li>OS</li>
-                <li>アプリ</li>
-                <li>ファイル</li>
-                <li>ドライバー</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="highlight-box fragment" style="margin-top:1em;">
+        <h3>1-1. ハードウェアとソフトウェア</h3>
+        <table>
+          <tr><th>区分</th><th>説明</th><th>例</th></tr>
+          <tr>
+            <td><strong>ハードウェア</strong></td>
+            <td>物理的な機器・装置</td>
+            <td>PC本体、キーボード、モニター、メモリ、HDD</td>
+          </tr>
+          <tr>
+            <td><strong>ソフトウェア</strong></td>
+            <td>プログラムやデータ</td>
+            <td>OS、アプリ、ファイル、ドライバー</td>
+          </tr>
+        </table>
+        <p style="margin-top: 1em; text-align: center;">
           <strong>例え:</strong> ハードウェア = 楽器（ピアノ）、ソフトウェア = 楽譜と演奏技術
-        </div>
+        </p>
       </section>
 
       <section>
-        <h3>ソフトウェアの分類</h3>
-        <div class="card" style="max-width:700px; margin:0 auto; padding:1.5em;">
-          <div style="text-align:center; font-weight:700; color:var(--ink-navy-900); margin-bottom:1em;">📦 ソフトウェア</div>
-          <div class="two-column" style="gap:1.5em;">
-            <div class="card" style="padding:1em;">
-              <h4 style="text-align:center;">🔧 システムソフトウェア</h4>
-              <div style="margin-top:0.5em;">
-                <div class="card fragment" style="margin:0.3em 0; padding:0.5em; background:var(--border-subtle);">
-                  <strong>OS（基本ソフト）</strong><br>
-                  <span style="color:var(--text-secondary);">Windows, Linux</span>
-                </div>
-                <div class="card fragment" style="margin:0.3em 0; padding:0.5em; background:var(--border-subtle);">
-                  <strong>ミドルウェア</strong><br>
-                  <span style="color:var(--text-secondary);">データベース, Webサーバー</span>
-                </div>
-              </div>
-            </div>
-            <div class="card" style="padding:1em;">
-              <h4 style="text-align:center;">📱 アプリケーション</h4>
-              <div style="margin-top:0.5em;">
-                <div class="card fragment" style="margin:0.3em 0; padding:0.5em; background:var(--border-subtle);">
-                  <strong>業務用</strong><br>
-                  <span style="color:var(--text-secondary);">生産管理, CAD</span>
-                </div>
-                <div class="card fragment" style="margin:0.3em 0; padding:0.5em; background:var(--border-subtle);">
-                  <strong>汎用</strong><br>
-                  <span style="color:var(--text-secondary);">Office, ブラウザ</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 2. OSの役割と機能 -->
-      <section>
-        <h2>2. OSの役割と機能</h2>
-        <p style="color: var(--text-secondary);">コンピュータの司令塔</p>
+        <h3>1-2. ソフトウェアの分類</h3>
+        <table>
+          <tr><th>分類</th><th>種類</th><th>説明</th><th>例</th></tr>
+          <tr>
+            <td rowspan="2"><strong>システム<br>ソフトウェア</strong></td>
+            <td><strong>OS（基本ソフト）</strong></td>
+            <td>ハードウェアを管理</td>
+            <td>Windows、Linux、macOS</td>
+          </tr>
+          <tr>
+            <td><strong>ミドルウェア</strong></td>
+            <td>OSとアプリの中間</td>
+            <td>データベース、Webサーバー</td>
+          </tr>
+          <tr>
+            <td rowspan="2"><strong>アプリケーション<br>ソフトウェア</strong></td>
+            <td><strong>業務用</strong></td>
+            <td>特定業務向け</td>
+            <td>生産管理、CAD</td>
+          </tr>
+          <tr>
+            <td><strong>汎用</strong></td>
+            <td>一般向け</td>
+            <td>Office、ブラウザ</td>
+          </tr>
+        </table>
       </section>
 
       <section>
-        <h3>OSとは</h3>
-        <p><strong>Operating System（基本ソフトウェア）</strong></p>
-        <div class="os-layers" style="margin:1.5em 0;">
-          <div class="os-layer app fragment">
-            📱 アプリケーション
-            <div style="font-weight:400;">Excel、生産管理システムなど</div>
-          </div>
-          <div class="os-layer os fragment">
-            💻 OS（オペレーティングシステム）
-            <div style="font-weight:400;">Windows、Linux、macOSなど</div>
-          </div>
-          <div class="os-layer hardware fragment">
-            🔩 ハードウェア
-            <div style="font-weight:400;">CPU、メモリ、ディスクなど</div>
-          </div>
-        </div>
-        <div class="highlight-box fragment">
-          <strong>OSの役割:</strong> ハードウェアとアプリの仲介役
-        </div>
+        <h3>1-3. ソフトウェアの階層構造</h3>
+        <pre class="ascii">
+┌─────────────────────────────────────────────┐
+│      ユーザー（利用者）                      │
+└─────────────────────────────────────────────┘
+                 ↓ 操作
+┌─────────────────────────────────────────────┐
+│  アプリケーションソフトウェア               │
+│  （Excel、生産管理システムなど）            │
+└─────────────────────────────────────────────┘
+                 ↓ 依頼
+┌─────────────────────────────────────────────┐
+│  OS（オペレーティングシステム）             │
+│  （Windows、Linux、macOSなど）              │
+└─────────────────────────────────────────────┘
+                 ↓ 制御
+┌─────────────────────────────────────────────┐
+│  ハードウェア                               │
+│  （CPU、メモリ、ディスクなど）              │
+└─────────────────────────────────────────────┘
+        </pre>
+        <p style="text-align: center;"><strong>OSはアプリとハードウェアをつなぐ「架け橋」</strong></p>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- 第2章: OSの役割と機能 -->
+      <!-- ========================================== -->
+      <section data-background-color="#1e3a5f">
+        <h1 style="color: white;">第2章</h1>
+        <p style="color: white; font-size: 1.5em;">OSの役割と機能</p>
       </section>
 
       <section>
-        <h3>OSの主な機能</h3>
-        <div class="card-grid" style="grid-template-columns: repeat(5, 1fr);">
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:2em;">⚙️</div>
-            <h4>プロセス管理</h4>
-            <p>プログラムの実行管理</p>
-            <p><strong>タスクマネージャー</strong></p>
-          </div>
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:2em;">📋</div>
-            <h4>メモリ管理</h4>
-            <p>メモリの割り当て</p>
-            <p><strong>仮想メモリ</strong></p>
-          </div>
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:2em;">📁</div>
-            <h4>ファイル管理</h4>
-            <p>データの保存・整理</p>
-            <p><strong>エクスプローラー</strong></p>
-          </div>
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:2em;">🖨️</div>
-            <h4>デバイス管理</h4>
-            <p>周辺機器の制御</p>
-            <p><strong>ドライバー</strong></p>
-          </div>
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:2em;">👤</div>
-            <h4>ユーザー管理</h4>
-            <p>認証・権限管理</p>
-            <p><strong>ログイン</strong></p>
-          </div>
-        </div>
+        <h3>2-1. OSとは</h3>
+        <p><strong>Operating System（オペレーティングシステム）= 基本ソフトウェア</strong></p>
+        <table class="small">
+          <tr><th>OSの役割</th><th>説明</th></tr>
+          <tr><td><strong>ハードウェア管理</strong></td><td>CPU、メモリ、ディスクなどを効率的に管理</td></tr>
+          <tr><td><strong>アプリの実行環境提供</strong></td><td>アプリケーションが動作する土台を提供</td></tr>
+          <tr><td><strong>ユーザーインタフェース</strong></td><td>人間がコンピュータを操作する手段を提供</td></tr>
+          <tr><td><strong>セキュリティ管理</strong></td><td>認証、アクセス制御などを実現</td></tr>
+        </table>
       </section>
 
       <section>
-        <h3>プロセス管理</h3>
-        <p><strong>プロセス:</strong> 実行中のプログラム</p>
-        <div class="card" style="max-width:700px; margin:1em auto; padding:1em;">
-          <div style="text-align:center; margin-bottom:0.5em; font-weight:700;">📊 タスクマネージャーの見方</div>
-          <div style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:0.5em;">
-            <div style="background:var(--ink-navy-800); color:white; padding:0.5em; font-weight:700;">プロセス名</div>
-            <div style="background:var(--ink-navy-800); color:white; padding:0.5em; font-weight:700;">CPU</div>
-            <div style="background:var(--ink-navy-800); color:white; padding:0.5em; font-weight:700;">メモリ</div>
-            <div style="background:var(--ink-navy-800); color:white; padding:0.5em; font-weight:700;">状態</div>
-
-            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">🏭 生産管理.exe</div>
-            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">
-              <div class="progress-container" style="padding:0;"><div class="progress-bar" style="width:15%; height:15px;"></div></div>
-            </div>
-            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">500MB</div>
-            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">実行中</div>
-
-            <div style="background:white; padding:0.5em;" class="fragment">📊 Excel.exe</div>
-            <div style="background:white; padding:0.5em;" class="fragment">
-              <div class="progress-container" style="padding:0;"><div class="progress-bar" style="width:5%; height:15px;"></div></div>
-            </div>
-            <div style="background:white; padding:0.5em;" class="fragment">300MB</div>
-            <div style="background:white; padding:0.5em;" class="fragment">実行中</div>
-
-            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">🌐 Chrome.exe</div>
-            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">
-              <div class="progress-container" style="padding:0;"><div class="progress-bar" style="width:10%; height:15px;"></div></div>
-            </div>
-            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">800MB</div>
-            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">実行中</div>
-          </div>
-        </div>
-        <div class="highlight-box fragment">
-          <strong>マルチタスク:</strong> 複数のプログラムを同時に動かす仕組み
-        </div>
+        <h3>2-2. OSの5つの主な機能</h3>
+        <table class="small">
+          <tr><th>機能</th><th>説明</th><th>具体例</th></tr>
+          <tr>
+            <td><strong>プロセス管理</strong></td>
+            <td>プログラムの実行を管理</td>
+            <td>タスクマネージャー</td>
+          </tr>
+          <tr>
+            <td><strong>メモリ管理</strong></td>
+            <td>メモリの割り当て・解放</td>
+            <td>仮想メモリ</td>
+          </tr>
+          <tr>
+            <td><strong>ファイル管理</strong></td>
+            <td>データの保存・整理</td>
+            <td>エクスプローラー</td>
+          </tr>
+          <tr>
+            <td><strong>デバイス管理</strong></td>
+            <td>周辺機器の制御</td>
+            <td>ドライバー</td>
+          </tr>
+          <tr>
+            <td><strong>ユーザー管理</strong></td>
+            <td>認証・権限管理</td>
+            <td>ログイン</td>
+          </tr>
+        </table>
       </section>
 
       <section>
-        <h3>メモリ管理</h3>
-        <p><strong>仮想メモリ:</strong> 物理メモリが足りない時、HDDの一部を使う</p>
-        <div class="flow-chart" style="margin:1.5em 0;">
-          <div class="flow-box">
-            <span class="icon">📋</span>
-            物理メモリ
-            <small>8GB</small>
-          </div>
-          <div class="labeled-arrow">
-            <span class="arrow-line" style="font-size:2em;">⟷</span>
-            <span class="arrow-label">スワップ</span>
-          </div>
-          <div class="flow-box secondary">
-            <span class="icon">💾</span>
-            仮想メモリ
-            <small>（HDD上）</small>
-          </div>
-        </div>
-        <div class="card" style="max-width:500px; margin:1em auto;">
-          <h4>メモリ不足の症状</h4>
-          <ul style="margin:0;">
-            <li class="fragment">PCの動作が遅い</li>
-            <li class="fragment">アプリが固まる</li>
-            <li class="fragment">「メモリが不足しています」エラー</li>
-          </ul>
-        </div>
+        <h3>2-3. マルチタスク</h3>
+        <p><strong>複数のプロセスを順番に切り替えて、同時に処理しているように見せる機能</strong></p>
+        <pre class="ascii">
+┌─────────────────────────────────────────────────────┐
+│  CPU（1つ）は一度に1つのプロセスしか実行できない     │
+└─────────────────────────────────────────────────────┘
+
+時間軸 →
+┌──┐  ┌──┐  ┌──┐  ┌──┐  ┌──┐  ┌──┐
+│A │  │B │  │C │  │A │  │B │  │C │  ...
+└──┘  └──┘  └──┘  └──┘  └──┘  └──┘
+
+A = Excelの処理
+B = ブラウザの処理
+C = 生産管理システムの処理
+
+→ 高速に切り替えるので「同時に動いている」ように見える
+        </pre>
+        <blockquote style="margin-top: 0.5em;">
+          <strong>ポイント:</strong> 実際には同時に処理しているわけではない
+        </blockquote>
       </section>
 
       <section>
-        <h3>主なOSの種類</h3>
-        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
-          <div class="card fragment">
-            <div style="font-size:2em; text-align:center;">🪟</div>
-            <h4>Windows</h4>
-            <p>GUI充実、普及率高い</p>
-            <p><strong>用途:</strong> 事務PC、HMI端末</p>
-          </div>
-          <div class="card fragment">
-            <div style="font-size:2em; text-align:center;">🐧</div>
-            <h4>Linux</h4>
-            <p>無料、安定、サーバー向き</p>
-            <p><strong>用途:</strong> サーバー、組込み</p>
-          </div>
-          <div class="card fragment">
-            <div style="font-size:2em; text-align:center;">🍎</div>
-            <h4>macOS</h4>
-            <p>Apple製PC用</p>
-            <p><strong>用途:</strong> デザイン、開発</p>
-          </div>
-          <div class="card fragment">
-            <div style="font-size:2em; text-align:center;">⏱️</div>
-            <h4>リアルタイムOS</h4>
-            <p>時間制約を保証</p>
-            <p><strong>用途:</strong> PLC、ロボット制御</p>
-          </div>
-          <div class="card fragment">
-            <div style="font-size:2em; text-align:center;">📱</div>
-            <h4>Android/iOS</h4>
-            <p>スマートフォン用</p>
-            <p><strong>用途:</strong> タブレット端末</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3. ファイル管理 -->
-      <section>
-        <h2>3. ファイル管理</h2>
-        <p style="color: var(--text-secondary);">データの整理と管理</p>
+        <h3>2-4. メモリ管理と仮想メモリ</h3>
+        <table>
+          <tr><th>概念</th><th>説明</th></tr>
+          <tr>
+            <td><strong>物理メモリ</strong></td>
+            <td>実際に搭載されているRAM（例: 8GB）</td>
+          </tr>
+          <tr>
+            <td><strong>仮想メモリ</strong></td>
+            <td>物理メモリが足りない時、HDDの一部をメモリとして使う</td>
+          </tr>
+          <tr>
+            <td><strong>スワップ</strong></td>
+            <td>物理メモリと仮想メモリ間でデータを入れ替える処理</td>
+          </tr>
+        </table>
+        <p style="margin-top: 1em;"><strong>メモリ不足の症状:</strong></p>
+        <ul>
+          <li>PCの動作が遅い</li>
+          <li>アプリが固まる（フリーズ）</li>
+          <li>「メモリが不足しています」エラー</li>
+        </ul>
       </section>
 
       <section>
-        <h3>ファイルとフォルダ</h3>
-        <div class="two-column">
-          <div>
-            <div class="card" style="margin-bottom:0.5em;">
-              <h4>📄 ファイル</h4>
-              <p>データの単位（文書、画像など）</p>
-            </div>
-            <div class="card">
-              <h4>📁 フォルダ</h4>
-              <p>ファイルを整理する入れ物</p>
-            </div>
-          </div>
-          <div class="card" style="padding:1em; font-family:'JetBrains Mono', monospace;">
-            <div style="font-weight:700; margin-bottom:0.5em;">🏭 工場サーバー</div>
-            <div style="padding-left:1em;">
-              <div class="fragment">📁 製造部</div>
-              <div style="padding-left:1.5em;">
-                <div class="fragment">📁 図面</div>
-                <div style="padding-left:1.5em;">
-                  <div class="fragment">📄 製品A.pdf</div>
-                  <div class="fragment">📄 製品B.pdf</div>
-                </div>
-                <div class="fragment">📁 手順書</div>
-                <div style="padding-left:1.5em;">
-                  <div class="fragment">📄 組立手順.docx</div>
-                </div>
-              </div>
-              <div class="fragment">📁 品質管理部</div>
-              <div style="padding-left:1.5em;">
-                <div class="fragment">📁 検査記録</div>
-                <div style="padding-left:1.5em;">
-                  <div class="fragment">📄 2024年01月.xlsx</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <h3>2-5. BIOS</h3>
+        <p><strong>Basic Input Output System</strong></p>
+        <table>
+          <tr><th>特徴</th><th>説明</th></tr>
+          <tr><td><strong>役割</strong></td><td>PCの起動設定を行うソフトウェア</td></tr>
+          <tr><td><strong>起動タイミング</strong></td><td>OSより先に起動する</td></tr>
+          <tr><td><strong>機能</strong></td><td>接続されている機器をチェック</td></tr>
+          <tr><td><strong>格納場所</strong></td><td>マザーボード上のROMチップ</td></tr>
+        </table>
+        <pre class="ascii" style="margin-top: 1em;">
+PC電源ON → BIOS起動 → 機器チェック → OS起動 → 使用可能
+        </pre>
       </section>
 
       <section>
-        <h3>パス（Path）</h3>
-        <p><strong>ファイルの住所を表す文字列</strong></p>
-        <div class="card-grid" style="grid-template-columns: repeat(2, 1fr); margin:1em 0;">
-          <div class="card fragment">
-            <h4>📍 絶対パス</h4>
-            <p>ルート（起点）から完全に記述</p>
-            <div style="background:var(--border-subtle); padding:0.5em; border-radius:4px; font-family:'JetBrains Mono', monospace;">
-              C:\製造部\図面\製品A.pdf
-            </div>
-          </div>
-          <div class="card fragment">
-            <h4>📍 相対パス</h4>
-            <p>現在地からの相対位置</p>
-            <div style="background:var(--border-subtle); padding:0.5em; border-radius:4px; font-family:'JetBrains Mono', monospace;">
-              ..\図面\製品A.pdf
-            </div>
-          </div>
-        </div>
-        <div class="highlight-box fragment">
-          <strong>ポイント:</strong>
-          <code>..</code> = 1つ上のフォルダ、
-          <code>.</code> = 現在のフォルダ
-        </div>
+        <h3>2-6. 主なOSの種類</h3>
+        <table class="small">
+          <tr><th>OS名</th><th>特徴</th><th>主な用途</th></tr>
+          <tr><td><strong>Windows</strong></td><td>GUI充実、普及率高い</td><td>事務PC、HMI端末</td></tr>
+          <tr><td><strong>Linux</strong></td><td>無料、安定、サーバー向き</td><td>サーバー、組込み機器</td></tr>
+          <tr><td><strong>macOS</strong></td><td>Apple製PC用</td><td>デザイン、開発</td></tr>
+          <tr><td><strong>iOS</strong></td><td>iPhone/iPad用</td><td>モバイル端末</td></tr>
+          <tr><td><strong>Android</strong></td><td>スマートフォン用</td><td>タブレット端末</td></tr>
+          <tr><td><strong>リアルタイムOS</strong></td><td>時間制約を保証</td><td>PLC、ロボット制御</td></tr>
+        </table>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- 第3章: ファイルシステム -->
+      <!-- ========================================== -->
+      <section data-background-color="#1e3a5f">
+        <h1 style="color: white;">第3章</h1>
+        <p style="color: white; font-size: 1.5em;">ファイルシステム</p>
       </section>
 
       <section>
-        <h3>拡張子</h3>
+        <h3>3-1. ファイルシステムとは</h3>
+        <p><strong>データのまとまりを「ファイル」として扱い、管理しやすくする機能</strong></p>
+        <table>
+          <tr><th>用語</th><th>説明</th></tr>
+          <tr>
+            <td><strong>ファイル</strong></td>
+            <td>記憶装置に記録された情報の集まり（データの単位）</td>
+          </tr>
+          <tr>
+            <td><strong>ディレクトリ<br>（フォルダ）</strong></td>
+            <td>ファイルを格納する場所（整理するための入れ物）</td>
+          </tr>
+        </table>
+        <p style="margin-top: 1em; text-align: center;">
+          2進数の羅列 → ファイルシステムで管理 → 人間に扱いやすい形に
+        </p>
+      </section>
+
+      <section>
+        <h3>3-2. ツリー構造</h3>
+        <p><strong>ファイルやディレクトリを階層的に管理する方法</strong></p>
+        <pre class="ascii">
+🏭 工場サーバー（ルートディレクトリ）
+  │
+  ├── 📁 製造部
+  │     ├── 📁 図面
+  │     │     ├── 📄 製品A.pdf
+  │     │     └── 📄 製品B.pdf
+  │     └── 📁 手順書
+  │           └── 📄 組立手順.docx
+  │
+  └── 📁 品質管理部
+        └── 📁 検査記録
+              └── 📄 2024年01月.xlsx
+        </pre>
+        <p style="text-align: center;">木の枝分かれのような構造</p>
+      </section>
+
+      <section>
+        <h3>3-3. 重要なディレクトリ用語</h3>
+        <table>
+          <tr><th>用語</th><th>説明</th><th>例</th></tr>
+          <tr>
+            <td><strong>ルートディレクトリ</strong></td>
+            <td>階層構造の<strong>最も上位</strong>のディレクトリ</td>
+            <td>C:\（Windows）<br>/（Linux/Mac）</td>
+          </tr>
+          <tr>
+            <td><strong>カレントディレクトリ</strong></td>
+            <td>ユーザーが<strong>現在作業している</strong>ディレクトリ</td>
+            <td>C:\製造部\図面\</td>
+          </tr>
+          <tr>
+            <td><strong>親ディレクトリ</strong></td>
+            <td>1つ上の階層のディレクトリ</td>
+            <td>「図面」から見た「製造部」</td>
+          </tr>
+          <tr>
+            <td><strong>サブディレクトリ</strong></td>
+            <td>1つ下の階層のディレクトリ</td>
+            <td>「製造部」から見た「図面」</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>3-4. パス（Path）とは</h3>
+        <p><strong>ファイルやディレクトリの場所を示す文字列（住所）</strong></p>
+        <table>
+          <tr><th>種類</th><th>説明</th><th>例</th></tr>
+          <tr>
+            <td><strong>絶対パス</strong></td>
+            <td><strong>ルートディレクトリ</strong>を<br>基点として記述</td>
+            <td>/画像/高解像度/みかん.jpg<br>C:\製造部\図面\製品A.pdf</td>
+          </tr>
+          <tr>
+            <td><strong>相対パス</strong></td>
+            <td><strong>カレントディレクトリ</strong>を<br>基点として記述</td>
+            <td>./高解像度/みかん.jpg<br>..\図面\製品A.pdf</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>3-5. パス指定の4つのルール</h3>
+        <table class="small">
+          <tr><th>ルール</th><th>説明</th><th>例</th></tr>
+          <tr>
+            <td><strong>1. 区切り文字</strong></td>
+            <td>ディレクトリやファイルは「/」で区切る<br>（Windowsは「\」も可）</td>
+            <td>/画像/高解像度/</td>
+          </tr>
+          <tr>
+            <td><strong>2. ルート省略</strong></td>
+            <td>パスの始まりが「/」の時は<br>ルートディレクトリが省略されている</td>
+            <td>/画像 = ルート/画像</td>
+          </tr>
+          <tr>
+            <td><strong>3. カレント表記</strong></td>
+            <td>カレントディレクトリは「<strong>.</strong>」で表す</td>
+            <td>./ファイル.txt</td>
+          </tr>
+          <tr>
+            <td><strong>4. 親ディレクトリ</strong></td>
+            <td>1階層上のディレクトリは「<strong>..</strong>」で表す</td>
+            <td>../音楽/曲名.mp3</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>3-6. パス指定の具体例</h3>
+        <pre class="ascii">
+現在地（カレントディレクトリ）: /製造部/手順書/
+
+【目的1】製品A.pdfにアクセス（/製造部/図面/製品A.pdf）
+  絶対パス: /製造部/図面/製品A.pdf
+  相対パス: ../図面/製品A.pdf
+                ↑ 1つ上に移動して「図面」へ
+
+【目的2】2024年01月.xlsxにアクセス（/品質管理部/検査記録/2024年01月.xlsx）
+  絶対パス: /品質管理部/検査記録/2024年01月.xlsx
+  相対パス: ../../品質管理部/検査記録/2024年01月.xlsx
+                ↑ 2つ上（ルート）まで移動
+        </pre>
+      </section>
+
+      <section>
+        <h3>3-7. 拡張子</h3>
         <p><strong>ファイルの種類を示す末尾の文字</strong></p>
-        <div class="card-grid" style="grid-template-columns: repeat(4, 1fr);">
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:1.8em;">📄</div>
-            <strong>.txt</strong>
-            <p style="margin:0;">テキスト</p>
-          </div>
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:1.8em;">📕</div>
-            <strong>.pdf</strong>
-            <p style="margin:0;">PDF文書</p>
-          </div>
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:1.8em;">📊</div>
-            <strong>.xlsx</strong>
-            <p style="margin:0;">Excel</p>
-          </div>
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:1.8em;">📝</div>
-            <strong>.docx</strong>
-            <p style="margin:0;">Word</p>
-          </div>
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:1.8em;">🖼️</div>
-            <strong>.jpg .png</strong>
-            <p style="margin:0;">画像</p>
-          </div>
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:1.8em;">🎬</div>
-            <strong>.mp4</strong>
-            <p style="margin:0;">動画</p>
-          </div>
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:1.8em;">📋</div>
-            <strong>.csv</strong>
-            <p style="margin:0;">カンマ区切り</p>
-          </div>
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:1.8em;">⚙️</div>
-            <strong>.exe</strong>
-            <p style="margin:0;">実行ファイル</p>
-          </div>
-        </div>
-        <div class="highlight-box warning fragment" style="margin-top:0.8em;">
+        <table class="small">
+          <tr><th>拡張子</th><th>種類</th><th>拡張子</th><th>種類</th></tr>
+          <tr><td><strong>.txt</strong></td><td>テキストファイル</td><td><strong>.pdf</strong></td><td>PDF文書</td></tr>
+          <tr><td><strong>.xlsx</strong></td><td>Excelファイル</td><td><strong>.docx</strong></td><td>Wordファイル</td></tr>
+          <tr><td><strong>.jpg/.png</strong></td><td>画像ファイル</td><td><strong>.mp4</strong></td><td>動画ファイル</td></tr>
+          <tr><td><strong>.csv</strong></td><td>カンマ区切りデータ</td><td><strong>.exe</strong></td><td>実行ファイル</td></tr>
+        </table>
+        <blockquote style="margin-top: 1em;">
           <strong>注意:</strong> 拡張子を変えてもファイルの中身は変わらない
-        </div>
+        </blockquote>
       </section>
 
       <section>
-        <h3>アクセス権限</h3>
+        <h3>3-8. アクセス権限</h3>
         <p><strong>誰が何をできるかの制御</strong></p>
-        <div class="card-grid" style="grid-template-columns: repeat(4, 1fr); margin:1em 0;">
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:1.5em;">🔓</div>
-            <h4>フルコントロール</h4>
-            <p>全操作可能</p>
-          </div>
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:1.5em;">✏️</div>
-            <h4>変更</h4>
-            <p>読み書き可能</p>
-          </div>
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:1.5em;">👁️</div>
-            <h4>読み取り</h4>
-            <p>閲覧のみ</p>
-          </div>
-          <div class="card fragment" style="text-align:center;">
-            <div style="font-size:1.5em;">🚫</div>
-            <h4>なし</h4>
-            <p>アクセス不可</p>
-          </div>
-        </div>
-        <div class="card" style="max-width:500px; margin:0 auto; padding:1em;">
-          <div style="font-weight:700; margin-bottom:0.5em;">📁 共有フォルダ\図面</div>
-          <div style="display:flex; gap:0.5em; flex-wrap:wrap;">
-            <span style="background:var(--ink-navy-800); color:white; padding:0.3em 0.6em; border-radius:4px;">最新版 👁️ 一般社員</span>
-            <span style="background:var(--ink-navy-700); color:white; padding:0.3em 0.6em; border-radius:4px;">作業用 ✏️ 設計担当</span>
-            <span style="background:var(--ink-navy-600); color:white; padding:0.3em 0.6em; border-radius:4px;">承認済 👁️ 全員</span>
-          </div>
-        </div>
+        <table>
+          <tr><th>権限</th><th>できること</th></tr>
+          <tr><td><strong>フルコントロール</strong></td><td>読み取り、書き込み、削除、権限変更すべて可能</td></tr>
+          <tr><td><strong>変更</strong></td><td>読み取り、書き込み、削除が可能</td></tr>
+          <tr><td><strong>読み取り</strong></td><td>閲覧のみ可能（編集不可）</td></tr>
+          <tr><td><strong>なし</strong></td><td>アクセス不可</td></tr>
+        </table>
+        <p style="margin-top: 1em; font-size: 0.9em;">
+          <strong>例:</strong> 最新版図面フォルダは一般社員「読み取り」、設計担当「変更」
+        </p>
       </section>
 
-      <!-- 4. ソフトウェアのライセンス -->
-      <section>
-        <h2>4. ソフトウェアのライセンス</h2>
-        <p style="color: var(--text-secondary);">ソフトウェアの利用条件</p>
+      <!-- ========================================== -->
+      <!-- 第4章: バックアップ -->
+      <!-- ========================================== -->
+      <section data-background-color="#1e3a5f">
+        <h1 style="color: white;">第4章</h1>
+        <p style="color: white; font-size: 1.5em;">バックアップ</p>
       </section>
 
       <section>
-        <h3>ライセンスの種類</h3>
-        <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
-          <div class="card fragment">
-            <h4>💰 プロプライエタリ</h4>
-            <p>有料、ソース非公開</p>
-            <div style="color:var(--text-secondary);">例: Windows、Office、Adobe製品</div>
-          </div>
-          <div class="card fragment">
-            <h4>🆓 オープンソース</h4>
-            <p>無料、ソース公開</p>
-            <div style="color:var(--text-secondary);">例: Linux、LibreOffice、Firefox</div>
-          </div>
-          <div class="card fragment">
-            <h4>🎁 フリーウェア</h4>
-            <p>無料、ソース非公開</p>
-            <div style="color:var(--text-secondary);">例: 各種フリーソフト</div>
-          </div>
-          <div class="card fragment">
-            <h4>⏰ シェアウェア</h4>
-            <p>試用後有料</p>
-            <div style="color:var(--text-secondary);">例: 一部の専門ソフト</div>
-          </div>
-        </div>
+        <h3>4-1. バックアップとは</h3>
+        <p><strong>通常使用している補助記憶装置とは別の装置にデータの複製を取っておくこと</strong></p>
+        <table>
+          <tr><th>目的</th><th>説明</th></tr>
+          <tr><td><strong>データ保護</strong></td><td>障害や誤操作からデータを守る</td></tr>
+          <tr><td><strong>災害対策</strong></td><td>火災、地震などからの復旧</td></tr>
+          <tr><td><strong>ランサムウェア対策</strong></td><td>暗号化されてもバックアップから復旧</td></tr>
+        </table>
       </section>
 
       <section>
-        <h3>ライセンス違反に注意</h3>
-        <div class="two-column">
-          <div class="card" style="padding:1em;">
-            <h4>よくある違反</h4>
-            <ul style="margin:0;">
-              <li class="fragment">1ライセンスを複数PCで使用</li>
-              <li class="fragment">会社のソフトを自宅PCにインストール</li>
-              <li class="fragment">ライセンス切れのまま使用</li>
-            </ul>
-          </div>
-          <div class="card" style="padding:1em;">
-            <h4>リスク</h4>
-            <ul style="margin:0;">
-              <li class="fragment">法的問題（著作権法違反）</li>
-              <li class="fragment">セキュリティリスク（更新できない）</li>
-              <li class="fragment">監査時の問題</li>
-            </ul>
-          </div>
-        </div>
-        <div class="highlight-box warning fragment" style="margin-top:1em;">
+        <h3>4-2. 3種類のバックアップ</h3>
+        <table class="small">
+          <tr><th>種類</th><th>バックアップ対象</th><th>特徴</th></tr>
+          <tr>
+            <td><strong>フルバックアップ</strong></td>
+            <td><strong>すべてのデータ</strong></td>
+            <td>作業が簡易<br>バックアップ時間が長い<br>復旧が簡単</td>
+          </tr>
+          <tr>
+            <td><strong>差分バックアップ</strong></td>
+            <td><strong>フルバックアップ以降</strong>の<br>追加・変更分</td>
+            <td>復旧時はフル+差分の<br>2つのファイルが必要</td>
+          </tr>
+          <tr>
+            <td><strong>増分バックアップ</strong></td>
+            <td><strong>前回のバックアップ以降</strong>の<br>追加・変更分のみ</td>
+            <td>最も時間が短い<br>復旧が複雑（全ファイル必要）</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>4-3. バックアップの比較図</h3>
+        <pre class="ascii">
+日曜日: フルバックアップ [ABCDE] ← 全データ
+
+【差分バックアップの場合】
+月曜日: 差分 [F]        ← 日曜日以降の追加分
+火曜日: 差分 [FG]       ← 日曜日以降の追加分（累積）
+水曜日: 差分 [FGH]      ← 日曜日以降の追加分（累積）
+復旧時: フル + 最新の差分 = 2ファイル必要
+
+【増分バックアップの場合】
+月曜日: 増分 [F]        ← 日曜日以降の追加分
+火曜日: 増分 [G]        ← 月曜日以降の追加分
+水曜日: 増分 [H]        ← 火曜日以降の追加分
+復旧時: フル + 全ての増分 = 4ファイル必要
+        </pre>
+      </section>
+
+      <section>
+        <h3>4-4. 関連用語の違い</h3>
+        <table>
+          <tr><th>用語</th><th>目的</th><th>タイミング</th></tr>
+          <tr>
+            <td><strong>レプリケーション</strong></td>
+            <td>システムの<strong>継続</strong>（可用性確保）</td>
+            <td>即時同期（自動・リアルタイム）</td>
+          </tr>
+          <tr>
+            <td><strong>バックアップ</strong></td>
+            <td>データの<strong>保護</strong>（復旧用）</td>
+            <td>定期的（1日1回など）</td>
+          </tr>
+          <tr>
+            <td><strong>アーカイブ</strong></td>
+            <td>データの<strong>長期保管</strong></td>
+            <td>数カ月〜年に1回程度</td>
+          </tr>
+        </table>
+        <p style="margin-top: 1em; font-size: 0.9em;">
+          <strong>レプリケーション:</strong> 主に冗長化目的でリアルタイムにコピーを維持<br>
+          <strong>アーカイブ:</strong> 法令対応や履歴保存のための長期保管
+        </p>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- 第5章: 表計算ソフト -->
+      <!-- ========================================== -->
+      <section data-background-color="#1e3a5f">
+        <h1 style="color: white;">第5章</h1>
+        <p style="color: white; font-size: 1.5em;">表計算ソフト</p>
+      </section>
+
+      <section>
+        <h3>5-1. 表計算ソフトの基本用語</h3>
+        <table>
+          <tr><th>用語</th><th>説明</th></tr>
+          <tr><td><strong>ワークシート</strong></td><td>作業スペース全体（1つの表）</td></tr>
+          <tr><td><strong>セル</strong></td><td>1つ1つのマス目（データを入力する場所）</td></tr>
+          <tr><td><strong>行</strong></td><td>横方向の並び（1, 2, 3...）</td></tr>
+          <tr><td><strong>列</strong></td><td>縦方向の並び（A, B, C...）</td></tr>
+          <tr><td><strong>セル番地</strong></td><td>セルの位置を示す（例: A2, B3, C10）</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>5-2. セル番地の読み方</h3>
+        <pre class="ascii">
+      A列   B列   C列   D列
+    ┌─────┬─────┬─────┬─────┐
+ 1行│ A1  │ B1  │ C1  │ D1  │
+    ├─────┼─────┼─────┼─────┤
+ 2行│ A2  │ B2  │ C2  │ D2  │
+    ├─────┼─────┼─────┼─────┤
+ 3行│ A3  │ B3  │ C3  │ D3  │
+    └─────┴─────┴─────┴─────┘
+
+セル番地 = 列のアルファベット + 行の番号
+例: B2 = B列の2行目のセル
+        </pre>
+      </section>
+
+      <section>
+        <h3>5-3. セル範囲の指定</h3>
+        <p><strong>長方形エリアに含まれるセルの集まりを指定</strong></p>
+        <table>
+          <tr><th>記法</th><th>説明</th><th>例</th></tr>
+          <tr>
+            <td><strong>: (コロン)</strong></td>
+            <td>範囲の始まりと終わりを指定</td>
+            <td>B2:D2（B2からD2まで）</td>
+          </tr>
+        </table>
+        <pre class="ascii" style="margin-top: 1em;">
+      A列   B列   C列   D列
+    ┌─────┬─────┬─────┬─────┐
+ 1行│     │ 1月 │ 2月 │ 3月 │
+    ├─────┼─────┼─────┼─────┤
+ 2行│売上 │ 100 │ 150 │ 200 │ ← B2:D2 の範囲
+    └─────┴─────┴─────┴─────┘
+
+合計(B2:D2) → 100 + 150 + 200 = 450
+        </pre>
+      </section>
+
+      <section>
+        <h3>5-4. 主な関数</h3>
+        <table class="small">
+          <tr><th>関数</th><th>機能</th><th>使用例</th><th>結果</th></tr>
+          <tr><td><strong>SUM</strong></td><td>合計</td><td>=SUM(B2:D2)</td><td>450</td></tr>
+          <tr><td><strong>AVERAGE</strong></td><td>平均</td><td>=AVERAGE(B2:D2)</td><td>150</td></tr>
+          <tr><td><strong>MAX</strong></td><td>最大値</td><td>=MAX(B2:D2)</td><td>200</td></tr>
+          <tr><td><strong>MIN</strong></td><td>最小値</td><td>=MIN(B2:D2)</td><td>100</td></tr>
+          <tr><td><strong>COUNT</strong></td><td>個数</td><td>=COUNT(B2:D2)</td><td>3</td></tr>
+          <tr><td><strong>IF</strong></td><td>条件分岐</td><td>=IF(B2>100,"OK","NG")</td><td>NG</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>5-5. 複写（コピー）と参照</h3>
+        <p><strong>あるセルの内容を別のセルにコピーすること</strong></p>
+        <table>
+          <tr><th>種類</th><th>説明</th><th>記法</th></tr>
+          <tr>
+            <td><strong>相対参照</strong></td>
+            <td>複写時にセル番地が<strong>自動調整</strong>される</td>
+            <td>B2</td>
+          </tr>
+          <tr>
+            <td><strong>絶対参照</strong></td>
+            <td>複写時にセル番地を<strong>固定</strong>する</td>
+            <td>$B$2</td>
+          </tr>
+        </table>
+        <p style="margin-top: 1em; font-size: 0.9em;">
+          <strong>$（ドル記号）</strong>で列や行を固定
+        </p>
+      </section>
+
+      <section>
+        <h3>5-6. 絶対参照の詳細</h3>
+        <table>
+          <tr><th>指定</th><th>説明</th><th>コピー時の動作</th></tr>
+          <tr>
+            <td><strong>B2</strong></td>
+            <td>相対参照（固定なし）</td>
+            <td>列も行も変わる</td>
+          </tr>
+          <tr>
+            <td><strong>$B2</strong></td>
+            <td>列を固定</td>
+            <td>列はB固定、行は変わる</td>
+          </tr>
+          <tr>
+            <td><strong>B$2</strong></td>
+            <td>行を固定</td>
+            <td>列は変わる、行は2固定</td>
+          </tr>
+          <tr>
+            <td><strong>$B$2</strong></td>
+            <td>列と行の両方を固定</td>
+            <td>常にB2を参照</td>
+          </tr>
+        </table>
+        <p style="margin-top: 1em; font-size: 0.9em;">
+          <strong>例:</strong> 税率セル（$A$1）を常に参照したい場合は絶対参照を使用
+        </p>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- 第6章: 情報デザイン -->
+      <!-- ========================================== -->
+      <section data-background-color="#1e3a5f">
+        <h1 style="color: white;">第6章</h1>
+        <p style="color: white; font-size: 1.5em;">情報デザイン</p>
+      </section>
+
+      <section>
+        <h3>6-1. ユニバーサルデザイン</h3>
+        <p><strong>年齢、文化、言語、能力、障害の有無にかかわらず、<br>できるだけ多くの人が利用できることを目指した設計</strong></p>
+        <table>
+          <tr><th>比較</th><th>バリアフリー</th><th>ユニバーサルデザイン</th></tr>
+          <tr>
+            <td><strong>対象</strong></td>
+            <td>障害者・高齢者向け</td>
+            <td><strong>すべての人</strong>向け</td>
+          </tr>
+          <tr>
+            <td><strong>アプローチ</strong></td>
+            <td>障壁を取り除く</td>
+            <td>最初から誰でも使えるように設計</td>
+          </tr>
+          <tr>
+            <td><strong>例</strong></td>
+            <td>スロープの設置</td>
+            <td>自動ドア、ピクトグラム</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>6-2. アクセシビリティとユーザビリティ</h3>
+        <table>
+          <tr><th>用語</th><th>意味</th><th>具体例</th></tr>
+          <tr>
+            <td><strong>アクセシビリティ<br>（Accessibility）</strong></td>
+            <td>すべての人がサービスを<br><strong>制限なく利用できる</strong>こと<br>（アクセスのしやすさ）</td>
+            <td>音声読み上げ対応<br>高コントラスト表示<br>字幕の提供</td>
+          </tr>
+          <tr>
+            <td><strong>ユーザビリティ<br>（Usability）</strong></td>
+            <td>利用者にとって<br><strong>ストレスなく使える</strong>こと<br>（使いやすさ）</td>
+            <td>直感的な操作<br>分かりやすいメニュー<br>エラー防止</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- 第7章: オープンソースソフトウェア（OSS） -->
+      <!-- ========================================== -->
+      <section data-background-color="#1e3a5f">
+        <h1 style="color: white;">第7章</h1>
+        <p style="color: white; font-size: 1.5em;">オープンソースソフトウェア（OSS）</p>
+      </section>
+
+      <section>
+        <h3>7-1. OSSとは</h3>
+        <p><strong>ソースコードが公開されていて、改良や再配布を自由に行えるソフトウェア</strong></p>
+        <table>
+          <tr><th>比較</th><th>プロプライエタリ</th><th>OSS</th></tr>
+          <tr>
+            <td><strong>ソースコード</strong></td>
+            <td>非公開</td>
+            <td><strong>公開</strong></td>
+          </tr>
+          <tr>
+            <td><strong>費用</strong></td>
+            <td>有料（ライセンス料）</td>
+            <td>基本無料</td>
+          </tr>
+          <tr>
+            <td><strong>カスタマイズ</strong></td>
+            <td>制限あり</td>
+            <td><strong>自由に改良可能</strong></td>
+          </tr>
+          <tr>
+            <td><strong>例</strong></td>
+            <td>Windows、Office</td>
+            <td>Linux、Firefox</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>7-2. OSSの具体例</h3>
+        <table>
+          <tr><th>用途</th><th>OSS名</th><th>代替する商用製品</th></tr>
+          <tr><td><strong>OS</strong></td><td>Linux</td><td>Windows</td></tr>
+          <tr><td><strong>Webサーバー</strong></td><td>Apache</td><td>IIS</td></tr>
+          <tr><td><strong>データベース</strong></td><td>MySQL、PostgreSQL</td><td>Oracle、SQL Server</td></tr>
+          <tr><td><strong>Webブラウザ</strong></td><td>Firefox</td><td>―</td></tr>
+          <tr><td><strong>メールソフト</strong></td><td>Thunderbird</td><td>Outlook</td></tr>
+          <tr><td><strong>オフィスソフト</strong></td><td>LibreOffice</td><td>Microsoft Office</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>7-3. OSSの4つの特徴</h3>
+        <table>
+          <tr><th>特徴</th><th>説明</th></tr>
+          <tr>
+            <td><strong>1. ソースコード公開</strong></td>
+            <td>誰でもソースコードを見て、自由に改良できる</td>
+          </tr>
+          <tr>
+            <td><strong>2. 有料販売可能</strong></td>
+            <td>付加価値（サポートなど）をつけて販売できる</td>
+          </tr>
+          <tr>
+            <td><strong>3. 著作権あり</strong></td>
+            <td>権利フリーではない（著作者の権利は保護される）</td>
+          </tr>
+          <tr>
+            <td><strong>4. 再配布ルールあり</strong></td>
+            <td>ライセンスに従って再配布する必要がある</td>
+          </tr>
+        </table>
+        <blockquote style="margin-top: 1em;">
+          <strong>注意:</strong> 「無料」≠「何でも自由」。ライセンス条件の確認が必要
+        </blockquote>
+      </section>
+
+      <section>
+        <h3>7-4. ライセンスの種類</h3>
+        <table class="small">
+          <tr><th>種類</th><th>説明</th><th>例</th></tr>
+          <tr>
+            <td><strong>プロプライエタリ</strong></td>
+            <td>有料、ソース非公開</td>
+            <td>Windows、Office、Adobe製品</td>
+          </tr>
+          <tr>
+            <td><strong>オープンソース</strong></td>
+            <td>ソース公開、改良・再配布自由</td>
+            <td>Linux、Firefox、LibreOffice</td>
+          </tr>
+          <tr>
+            <td><strong>フリーウェア</strong></td>
+            <td>無料、ソース非公開</td>
+            <td>各種フリーソフト</td>
+          </tr>
+          <tr>
+            <td><strong>シェアウェア</strong></td>
+            <td>試用後有料</td>
+            <td>一部の専門ソフト</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>7-5. ライセンス違反に注意</h3>
+        <table>
+          <tr><th>よくある違反</th><th>リスク</th></tr>
+          <tr>
+            <td>1ライセンスを複数PCで使用</td>
+            <td rowspan="3">
+              <ul style="margin: 0;">
+                <li>法的問題（著作権法違反）</li>
+                <li>セキュリティリスク（更新不可）</li>
+                <li>監査時の問題（罰金など）</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>会社のソフトを自宅PCにインストール</td>
+          </tr>
+          <tr>
+            <td>ライセンス切れのまま使用継続</td>
+          </tr>
+        </table>
+        <p style="margin-top: 1em; font-size: 0.9em;">
           <strong>対策:</strong> ライセンス管理台帳を作成し、定期的に確認する
-        </div>
+        </p>
       </section>
 
-      <!-- 5. 演習 -->
-      <section class="exercise-slide">
-        <h2>5. 演習とまとめ</h2>
-        <p>学んだ知識を確認しよう</p>
+      <!-- ========================================== -->
+      <!-- 第8章: 演習とまとめ -->
+      <!-- ========================================== -->
+      <section class="exercise-slide" data-background-color="#e7f3ff">
+        <h1>第8章</h1>
+        <p style="font-size: 1.5em;">演習問題</p>
       </section>
 
       <section class="exercise-slide">
         <h3>演習1: OSの機能確認</h3>
         <p>Windowsのタスクマネージャーを開いて確認:</p>
-        <div class="card-grid" style="grid-template-columns: 1fr;">
-          <div class="card">
-            <h4>Q1: 現在実行中のプロセス数は？</h4>
-            <div class="exercise-box" style="padding:0.5em;">________ 個</div>
-          </div>
-          <div class="card">
-            <h4>Q2: メモリ使用率は何%？</h4>
-            <div class="exercise-box" style="padding:0.5em;">________ %</div>
-          </div>
-          <div class="card">
-            <h4>Q3: 最もメモリを使っているアプリは？</h4>
-            <div class="exercise-box" style="padding:0.5em;">________________</div>
-          </div>
+        <div class="exercise-box">
+          <p><strong>Q1:</strong> 現在実行中のプロセス数は？ ________ 個</p>
+          <p><strong>Q2:</strong> メモリ使用率は何%？ ________ %</p>
+          <p><strong>Q3:</strong> 最もメモリを使っているアプリは？ ________________</p>
         </div>
+        <p style="margin-top: 1em; font-size: 0.9em;">
+          <strong>起動方法:</strong> Ctrl + Shift + Esc または タスクバー右クリック
+        </p>
       </section>
 
       <section class="exercise-slide">
-        <h3>演習2: ファイル管理</h3>
-        <p>自部門の共有フォルダに必要なフォルダ構造を設計:</p>
-        <div class="card" style="padding:1em; font-family:'JetBrains Mono', monospace;">
-          <div>📁 _________________</div>
-          <div style="padding-left:1.5em;">📁 _________________</div>
-          <div style="padding-left:3em;">📁 _________________</div>
-          <div style="padding-left:3em;">📁 _________________</div>
-          <div style="padding-left:1.5em;">📁 _________________</div>
-          <div style="padding-left:1.5em;">📁 _________________</div>
-        </div>
-      </section>
-
-      <section class="exercise-slide">
-        <h3>演習3: パスの理解</h3>
+        <h3>演習2: パスの理解</h3>
         <p>以下の状況でファイルのパスを書いてください:</p>
-        <div class="card" style="padding:1em;">
+        <div class="exercise-box">
           <p><strong>現在地:</strong> C:\製造部\手順書\</p>
           <p><strong>目的ファイル:</strong> C:\製造部\図面\製品A.pdf</p>
-          <div class="exercise-box" style="margin-top:1em;">
-            <p>絶対パス: ___________________________</p>
-            <p>相対パス: ___________________________</p>
-          </div>
+          <p style="margin-top: 1em;">
+            絶対パス: ___________________________<br>
+            相対パス: ___________________________
+          </p>
         </div>
       </section>
 
-      <!-- まとめ -->
+      <section class="exercise-slide">
+        <h3>演習2: 解答</h3>
+        <div class="exercise-box">
+          <p><strong>現在地:</strong> C:\製造部\手順書\</p>
+          <p><strong>目的ファイル:</strong> C:\製造部\図面\製品A.pdf</p>
+          <p style="margin-top: 1em;">
+            絶対パス: <strong>C:\製造部\図面\製品A.pdf</strong><br>
+            相対パス: <strong>..\図面\製品A.pdf</strong>
+          </p>
+        </div>
+        <p style="margin-top: 1em; font-size: 0.9em;">
+          「..」で1つ上の「製造部」に移動し、そこから「図面」へ
+        </p>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習3: バックアップの選択</h3>
+        <p>以下の状況に適したバックアップ方式を選んでください:</p>
+        <table class="small">
+          <tr><th>状況</th><th>適した方式</th><th>理由</th></tr>
+          <tr><td>毎日大量のデータが追加される</td><td></td><td></td></tr>
+          <tr><td>復旧を最も簡単にしたい</td><td></td><td></td></tr>
+          <tr><td>バックアップ時間を最短にしたい</td><td></td><td></td></tr>
+        </table>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習3: 解答</h3>
+        <table class="small">
+          <tr><th>状況</th><th>適した方式</th><th>理由</th></tr>
+          <tr>
+            <td>毎日大量のデータが追加される</td>
+            <td><strong>増分バックアップ</strong></td>
+            <td>追加分のみでバックアップ時間を短縮</td>
+          </tr>
+          <tr>
+            <td>復旧を最も簡単にしたい</td>
+            <td><strong>フルバックアップ</strong></td>
+            <td>1ファイルから復旧可能</td>
+          </tr>
+          <tr>
+            <td>バックアップ時間を最短にしたい</td>
+            <td><strong>増分バックアップ</strong></td>
+            <td>前回からの追加分のみ</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習4: 表計算の参照</h3>
+        <p>以下の数式をB2からD2にコピーした時、参照先はどうなる？</p>
+        <table class="small">
+          <tr><th>元の数式（B2）</th><th>C2にコピー</th><th>D2にコピー</th></tr>
+          <tr><td>=A1*B1</td><td></td><td></td></tr>
+          <tr><td>=$A$1*B1</td><td></td><td></td></tr>
+          <tr><td>=A$1*$B1</td><td></td><td></td></tr>
+        </table>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習4: 解答</h3>
+        <table class="small">
+          <tr><th>元の数式（B2）</th><th>C2にコピー</th><th>D2にコピー</th></tr>
+          <tr>
+            <td>=A1*B1</td>
+            <td>=B1*C1</td>
+            <td>=C1*D1</td>
+          </tr>
+          <tr>
+            <td>=$A$1*B1</td>
+            <td>=$A$1*C1</td>
+            <td>=$A$1*D1</td>
+          </tr>
+          <tr>
+            <td>=A$1*$B1</td>
+            <td>=B$1*$B1</td>
+            <td>=C$1*$B1</td>
+          </tr>
+        </table>
+        <p style="margin-top: 1em; font-size: 0.9em;">
+          <strong>$</strong>がついた列/行は固定され、ついていない部分は移動に合わせて変化
+        </p>
+      </section>
+
+      <!-- 試験対策ポイント -->
+      <section>
+        <h2>試験対策ポイント</h2>
+      </section>
+
+      <section>
+        <h3>OS関連</h3>
+        <table class="small">
+          <tr><th>用語</th><th>説明</th></tr>
+          <tr><td><strong>OS</strong></td><td>アプリとハードウェアをつなぐ基本ソフトウェア</td></tr>
+          <tr><td><strong>マルチタスク</strong></td><td>複数プログラムを順番に切り替えて並行実行するように見せる機能<br>（実際には同時ではない）</td></tr>
+          <tr><td><strong>BIOS</strong></td><td>PCの起動設定を行うソフトウェア（OSより先に起動）</td></tr>
+          <tr><td><strong>仮想メモリ</strong></td><td>物理メモリ不足時にHDDの一部をメモリとして使う仕組み</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>パス関連</h3>
+        <table class="small">
+          <tr><th>用語</th><th>説明</th></tr>
+          <tr><td><strong>ルートディレクトリ</strong></td><td>最上位のディレクトリ</td></tr>
+          <tr><td><strong>カレントディレクトリ</strong></td><td>現在作業中のディレクトリ</td></tr>
+          <tr><td><strong>絶対パス</strong></td><td>ルートディレクトリを基点として記述</td></tr>
+          <tr><td><strong>相対パス</strong></td><td>カレントディレクトリを基点として記述</td></tr>
+          <tr><td><strong>. (ドット)</strong></td><td>カレントディレクトリ</td></tr>
+          <tr><td><strong>.. (ドットドット)</strong></td><td>1つ上の階層（親ディレクトリ）</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>バックアップ関連</h3>
+        <table class="small">
+          <tr><th>種類</th><th>対象</th><th>特徴</th></tr>
+          <tr><td><strong>フルバックアップ</strong></td><td>すべてのデータ</td><td>復旧簡単、時間長い</td></tr>
+          <tr><td><strong>差分バックアップ</strong></td><td>フル以降の追加分</td><td>復旧時2ファイル必要</td></tr>
+          <tr><td><strong>増分バックアップ</strong></td><td>前回からの追加分のみ</td><td>最短時間、復旧複雑</td></tr>
+        </table>
+        <p style="margin-top: 0.5em; font-size: 0.9em;">
+          <strong>レプリケーション:</strong> 即時同期（システム継続目的）<br>
+          <strong>アーカイブ:</strong> 長期保管（数カ月〜年単位）
+        </p>
+      </section>
+
+      <section>
+        <h3>表計算関連</h3>
+        <table class="small">
+          <tr><th>用語</th><th>説明</th></tr>
+          <tr><td><strong>相対参照</strong></td><td>複写時にセル番地が自動調整（B2）</td></tr>
+          <tr><td><strong>絶対参照</strong></td><td>「$」で列や行を固定（$B$2）</td></tr>
+          <tr><td><strong>$B2</strong></td><td>列Bを固定</td></tr>
+          <tr><td><strong>B$2</strong></td><td>行2を固定</td></tr>
+          <tr><td><strong>$B$2</strong></td><td>列B・行2の両方を固定</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>情報デザイン・OSS関連</h3>
+        <table class="small">
+          <tr><th>用語</th><th>説明</th></tr>
+          <tr><td><strong>ユニバーサルデザイン</strong></td><td>できるだけ多くの人が利用できる設計</td></tr>
+          <tr><td><strong>アクセシビリティ</strong></td><td>制限なく利用できること（アクセスのしやすさ）</td></tr>
+          <tr><td><strong>ユーザビリティ</strong></td><td>ストレスなく使えること（使いやすさ）</td></tr>
+          <tr><td><strong>OSS</strong></td><td>ソースコード公開、改良・再配布自由</td></tr>
+        </table>
+        <p style="margin-top: 0.5em; font-size: 0.9em;">
+          <strong>OSSの注意点:</strong> 著作権はあり、ライセンス条件に従う必要がある
+        </p>
+      </section>
+
+      <!-- キーワード -->
       <section>
         <h2>キーワード</h2>
         <div class="keywords">
           <span class="keyword-tag">OS</span>
+          <span class="keyword-tag">マルチタスク</span>
+          <span class="keyword-tag">BIOS</span>
+          <span class="keyword-tag">仮想メモリ</span>
           <span class="keyword-tag">プロセス</span>
-          <span class="keyword-tag">メモリ管理</span>
           <span class="keyword-tag">ファイルシステム</span>
-          <span class="keyword-tag">パス</span>
+          <span class="keyword-tag">ルートディレクトリ</span>
+          <span class="keyword-tag">カレントディレクトリ</span>
+          <span class="keyword-tag">絶対パス</span>
+          <span class="keyword-tag">相対パス</span>
           <span class="keyword-tag">拡張子</span>
           <span class="keyword-tag">アクセス権限</span>
+          <span class="keyword-tag">フルバックアップ</span>
+          <span class="keyword-tag">差分バックアップ</span>
+          <span class="keyword-tag">増分バックアップ</span>
+          <span class="keyword-tag">レプリケーション</span>
+          <span class="keyword-tag">アーカイブ</span>
+          <span class="keyword-tag">セル</span>
+          <span class="keyword-tag">相対参照</span>
+          <span class="keyword-tag">絶対参照</span>
+          <span class="keyword-tag">ユニバーサルデザイン</span>
+          <span class="keyword-tag">アクセシビリティ</span>
+          <span class="keyword-tag">ユーザビリティ</span>
+          <span class="keyword-tag">OSS</span>
           <span class="keyword-tag">ライセンス</span>
-          <span class="keyword-tag">オープンソース</span>
+        </div>
+      </section>
+
+      <!-- 確認問題 -->
+      <section class="quiz-slide">
+        <h2>確認問題</h2>
+        <div class="quiz-item">
+          <p><strong>1.</strong> OSの主な機能を5つ挙げてください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>2.</strong> マルチタスクとは何ですか？「同時に処理している」のですか？</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>3.</strong> ルートディレクトリとカレントディレクトリの違いは何ですか？</p>
         </div>
       </section>
 
       <section class="quiz-slide">
-        <h2>確認問題</h2>
-        <div class="quiz-item fragment">
-          <p><strong>1.</strong> OSの主な機能を3つ挙げてください</p>
+        <h2>確認問題（続き）</h2>
+        <div class="quiz-item">
+          <p><strong>4.</strong> 絶対パスと相対パスの違いを説明してください</p>
         </div>
-        <div class="quiz-item fragment">
-          <p><strong>2.</strong> ファイルとフォルダの違いを説明してください</p>
+        <div class="quiz-item">
+          <p><strong>5.</strong> フル・差分・増分バックアップの違いは何ですか？</p>
         </div>
-        <div class="quiz-item fragment">
-          <p><strong>3.</strong> 絶対パスと相対パスの違いは何ですか？</p>
+        <div class="quiz-item">
+          <p><strong>6.</strong> 表計算で「$B$2」と「B2」の違いは何ですか？</p>
         </div>
-        <div class="quiz-item fragment">
-          <p><strong>4.</strong> ライセンス違反のリスクを説明してください</p>
+        <div class="quiz-item">
+          <p><strong>7.</strong> OSSの4つの特徴を挙げてください</p>
         </div>
       </section>
 
@@ -613,20 +1059,13 @@
         <h2>次回予告</h2>
         <div class="next-preview">
           <h4>セッション7-8h: ネットワークの基礎</h4>
-          <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); margin-top:1em;">
-            <div class="card">
-              <h4>🌐 LAN/WAN</h4>
-              <p>ネットワークの仕組み</p>
-            </div>
-            <div class="card">
-              <h4>🔢 IPアドレス</h4>
-              <p>ネットワーク上の住所</p>
-            </div>
-            <div class="card">
-              <h4>🌍 インターネット</h4>
-              <p>Web、メールの仕組み</p>
-            </div>
-          </div>
+          <ul>
+            <li>LAN/WANとは</li>
+            <li>IPアドレスとサブネットマスク</li>
+            <li>プロトコル（TCP/IP）</li>
+            <li>インターネットの仕組み</li>
+            <li>Web、メールの基礎</li>
+          </ul>
         </div>
       </section>
     </div>

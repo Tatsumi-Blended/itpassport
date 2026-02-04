@@ -32,298 +32,852 @@
       <!-- アジェンダ -->
       <section>
         <h2>本日のゴール</h2>
-        <ul>
-          <li>知的財産権の種類と保護方法を理解する</li>
-          <li>労働関連法規（派遣・請負）のリスクを認識する</li>
-          <li>コンプライアンスの重要性を理解する</li>
-        </ul>
-        <p style="margin-top:1em;"><strong>対応テキスト:</strong> 第2章 法務（2-01 知的財産権、2-04 労働関連法規）</p>
+        <div class="card-grid">
+          <div class="card">
+            <h4>理解</h4>
+            <p>知的財産権の種類と保護方法を体系的に理解する</p>
+          </div>
+          <div class="card">
+            <h4>識別</h4>
+            <p>セキュリティ関連法規と取引関連法規のポイントを押さえる</p>
+          </div>
+          <div class="card">
+            <h4>実践</h4>
+            <p>製造現場でのコンプライアンス対応を実践できる</p>
+          </div>
+        </div>
+        <p class="text-center" style="margin-top:1em;"><strong>対応テキスト:</strong> 第2章 法務（2-01〜2-04）</p>
       </section>
 
-      <!-- 1. 知的財産権の概要 -->
+      <!-- ============================================= -->
+      <!-- 第1章：知的財産権 -->
+      <!-- ============================================= -->
       <section>
-        <h2>1. 知的財産権の概要</h2>
+        <h2>第1章 知的財産権</h2>
+        <p class="text-secondary">形のない財産を守る権利体系</p>
       </section>
 
       <section>
         <h3>知的財産権とは</h3>
-        <p><strong>人間の知的創造活動から生まれた財産の権利</strong></p>
-        <pre class="ascii">
-知的財産権
-├── 産業財産権（特許庁管轄）
-│   ├── 特許権
-│   ├── 実用新案権
-│   ├── 意匠権
-│   └── 商標権
-│
-├── 著作権（無方式主義）
-│
-└── その他
-    ├── 営業秘密
-    └── 不正競争防止法
-        </pre>
+        <div class="highlight-box">
+          <p><strong>定義</strong>：人の知恵から生み出された発明やデザインといった「形のない財産」を所有する権利</p>
+          <p class="text-secondary">経営資源の「ヒト・モノ・カネ・<strong>情報</strong>」の「情報」にあたる</p>
+        </div>
+        <div class="card-grid cols-3" style="margin-top: 1em;">
+          <div class="card">
+            <h4>著作権</h4>
+            <p>本、音楽、プログラムなど創作物の権利</p>
+          </div>
+          <div class="card">
+            <h4>産業財産権</h4>
+            <p>発明、デザイン、商標など産業に関する権利</p>
+          </div>
+          <div class="card">
+            <h4>その他の権利</h4>
+            <p>営業秘密、回路配置利用権など</p>
+          </div>
+        </div>
       </section>
 
+      <section>
+        <h3>知的財産権の全体像</h3>
+        <div class="highlight-box" style="text-align: left;">
+          <pre style="font-family: monospace; margin: 0;">
+知的財産権
+├── 著作権 ─────────── 本、音楽、プログラムなど
+│
+├── 産業財産権（特許庁管轄）
+│   ├── 特許権 ────── 発明（高度な技術）
+│   ├── 実用新案権 ── 考案（小発明）
+│   ├── 意匠権 ────── デザイン
+│   └── 商標権 ────── マーク・ブランド名
+│
+└── その他の権利
+    ├── 営業秘密 ──── 不正競争防止法で保護
+    ├── 回路配置利用権
+    └── 育成者権（植物新品種）
+          </pre>
+        </div>
+      </section>
+
+      <!-- 著作権 -->
+      <section>
+        <h3>著作権の基本</h3>
+        <div class="compare-cards">
+          <div class="compare-card">
+            <h4>著作権の特徴</h4>
+            <ul>
+              <li><strong>無方式主義</strong>：申請不要</li>
+              <li><strong>創作時に発生</strong>：作った瞬間に権利発生</li>
+              <li><strong>保護期間</strong>：著作者の死後70年</li>
+              <li>文化庁が管轄</li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <h4>産業財産権との違い</h4>
+            <ul>
+              <li>産業財産権は<strong>申請が必要</strong></li>
+              <li>特許庁への出願・審査が必要</li>
+              <li>登録されて初めて権利発生</li>
+              <li>保護期間は有限（10〜25年）</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>著作権法で保護されるもの・されないもの</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>保護される著作物</h4>
+            <ul>
+              <li>本・雑誌・論文</li>
+              <li>音楽・歌詞</li>
+              <li>写真・映像</li>
+              <li>取扱説明書・マニュアル</li>
+              <li><strong>プログラム</strong>（ソースコード）</li>
+              <li><strong>データベース</strong>（構成に創作性あれば）</li>
+              <li>美術作品・建築物</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>保護されないもの</h4>
+            <ul>
+              <li><strong>プログラム言語</strong>（Java、Pythonなど）</li>
+              <li><strong>アルゴリズム</strong>（処理手順の考え方）</li>
+              <li><strong>プロトコル</strong>（通信規約）</li>
+              <li>事実・データそのもの</li>
+              <li>アイデア・発想</li>
+              <li>法令・判決文</li>
+            </ul>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top: 1em;">
+          <p><strong>試験頻出</strong>：プログラム言語、アルゴリズム、プロトコルには著作権がない</p>
+        </div>
+      </section>
+
+      <section>
+        <h3>製造現場での著作権</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>著作物の例</h4>
+            <table class="small">
+              <tr><th>種類</th><th>具体例</th></tr>
+              <tr><td>文書</td><td>作業手順書、マニュアル</td></tr>
+              <tr><td>図面</td><td>CADデータ、設計図</td></tr>
+              <tr><td>プログラム</td><td>PLCラダー、制御ソフト</td></tr>
+              <tr><td>映像</td><td>作業教育ビデオ</td></tr>
+            </table>
+          </div>
+          <div class="card">
+            <h4>注意すべきポイント</h4>
+            <ul>
+              <li>外注先が作成した図面の権利は<strong>契約で明確化</strong></li>
+              <li>他社マニュアルの無断コピーは<strong>著作権侵害</strong></li>
+              <li>フリー素材でも<strong>利用条件を確認</strong></li>
+              <li>社内教育でも複製は注意</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 産業財産権 -->
       <section>
         <h3>産業財産権の比較</h3>
         <table>
-          <tr><th>権利</th><th>保護対象</th><th>保護期間</th></tr>
-          <tr><td>特許権</td><td>発明（高度な技術）</td><td>出願から20年</td></tr>
-          <tr><td>実用新案権</td><td>考案（小発明）</td><td>出願から10年</td></tr>
-          <tr><td>意匠権</td><td>デザイン</td><td>出願から25年</td></tr>
-          <tr><td>商標権</td><td>ブランド名・ロゴ</td><td>登録から10年（更新可）</td></tr>
+          <thead>
+            <tr><th>権利</th><th>保護対象</th><th>保護期間</th><th>例</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>特許権</strong></td>
+              <td>高度な発明</td>
+              <td>出願から<strong>20年</strong></td>
+              <td>新しい加工方法、検査装置</td>
+            </tr>
+            <tr>
+              <td><strong>実用新案権</strong></td>
+              <td>物品の形状・構造の工夫<br>（小発明）</td>
+              <td>出願から<strong>10年</strong></td>
+              <td>使いやすい工具、治具</td>
+            </tr>
+            <tr>
+              <td><strong>意匠権</strong></td>
+              <td>物品のデザイン</td>
+              <td>出願から<strong>25年</strong></td>
+              <td>製品の外観デザイン</td>
+            </tr>
+            <tr>
+              <td><strong>商標権</strong></td>
+              <td>ブランド名・ロゴ</td>
+              <td>登録から<strong>10年</strong><br>（更新可能）</td>
+              <td>会社名、製品ブランド</td>
+            </tr>
+          </tbody>
         </table>
-      </section>
-
-      <!-- 2. 特許と営業秘密 -->
-      <section>
-        <h2>2. 特許と営業秘密</h2>
+        <p class="text-secondary text-center" style="margin-top: 0.5em;">すべて<strong>特許庁</strong>が管轄</p>
       </section>
 
       <section>
-        <h3>特許権</h3>
-        <p><strong>発明を保護する権利</strong></p>
-        <p><strong>特許の要件:</strong></p>
-        <ul>
-          <li><strong>新規性</strong> - 世の中にない新しいもの</li>
-          <li><strong>進歩性</strong> - 容易に思いつかない</li>
-          <li><strong>産業上の利用可能性</strong> - 実際に使える</li>
-        </ul>
-        <p><strong>製造現場での特許例:</strong></p>
-        <ul>
-          <li>新しい加工方法</li>
-          <li>独自の検査装置</li>
-          <li>効率的な製造システム</li>
-        </ul>
+        <h3>特許権の詳細</h3>
+        <div class="highlight-box">
+          <p><strong>特許権</strong>：新しい発明を保護する権利</p>
+        </div>
+        <div class="card-grid cols-3">
+          <div class="card">
+            <h4>特許の3要件</h4>
+            <ul>
+              <li><strong>新規性</strong><br>世の中にない新しいもの</li>
+              <li><strong>進歩性</strong><br>容易に思いつかない</li>
+              <li><strong>産業上の利用可能性</strong><br>実際に使える</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>製造現場での例</h4>
+            <ul>
+              <li>新しい加工方法</li>
+              <li>独自の検査装置</li>
+              <li>効率的な製造システム</li>
+              <li>新素材の製法</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>注意点</h4>
+            <ul>
+              <li>公開前に出願が必要</li>
+              <li>展示会・学会発表で<strong>新規性を失う</strong></li>
+              <li>特許公報で内容が公開される</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section>
-        <h3>特許の注意点</h3>
-        <blockquote>
-          <p>公開前に出願が必要</p>
-          <p>展示会・学会発表で新規性を失う</p>
-        </blockquote>
+        <h3>特許権と実用新案権の違い</h3>
+        <div class="compare-cards">
+          <div class="compare-card">
+            <h4>特許権</h4>
+            <ul>
+              <li>保護対象：<strong>高度な発明</strong></li>
+              <li>審査：実体審査あり（時間がかかる）</li>
+              <li>保護期間：出願から20年</li>
+              <li>権利行使：そのまま可能</li>
+            </ul>
+            <p class="text-secondary">例：新しい製造プロセス</p>
+          </div>
+          <div class="compare-card">
+            <h4>実用新案権</h4>
+            <ul>
+              <li>保護対象：<strong>物品の形状・構造の工夫</strong></li>
+              <li>審査：方式審査のみ（早い）</li>
+              <li>保護期間：出願から10年</li>
+              <li>権利行使：技術評価書が必要</li>
+            </ul>
+            <p class="text-secondary">例：改良された治具のデザイン</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 営業秘密 -->
+      <section>
+        <h3>営業秘密とは</h3>
+        <div class="highlight-box">
+          <p><strong>営業秘密</strong>：企業が秘密として管理するノウハウや技術情報</p>
+          <p class="text-secondary">不正競争防止法で保護される</p>
+        </div>
+        <div class="card-grid cols-3">
+          <div class="card">
+            <h4>秘密管理性</h4>
+            <p>秘密として管理されていること</p>
+            <ul>
+              <li>「秘」「社外秘」マーク</li>
+              <li>アクセス制限</li>
+              <li>施錠管理</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>有用性</h4>
+            <p>商売上のメリットがある情報</p>
+            <ul>
+              <li>技術的価値</li>
+              <li>営業的価値</li>
+              <li>コスト削減効果</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>非公知性</h4>
+            <p>世の中に公開されていないこと</p>
+            <ul>
+              <li>社外非公開</li>
+              <li>一般に入手不可</li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-secondary text-center" style="margin-top: 0.5em;">3要件すべてを満たさないと営業秘密として保護されない</p>
       </section>
 
       <section>
-        <h3>営業秘密</h3>
-        <p><strong>企業が秘密として管理するノウハウ</strong></p>
-        <p><strong>営業秘密の3要件:</strong></p>
+        <h3>特許 vs 営業秘密：戦略的選択</h3>
         <table>
-          <tr><th>要件</th><th>内容</th><th>対策例</th></tr>
-          <tr><td>秘密管理性</td><td>秘密として管理</td><td>「秘」マーク、アクセス制限</td></tr>
-          <tr><td>有用性</td><td>事業に有用</td><td>技術的・営業的価値</td></tr>
-          <tr><td>非公知性</td><td>公に知られていない</td><td>社外非公開</td></tr>
+          <thead>
+            <tr><th>項目</th><th>特許</th><th>営業秘密</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>公開</td><td>公開される</td><td>非公開</td></tr>
+            <tr><td>保護期間</td><td>20年（有限）</td><td>管理し続ける限り無期限</td></tr>
+            <tr><td>権利主張</td><td>他社の侵害を差し止め可能</td><td>差し止め困難</td></tr>
+            <tr><td>リスク</td><td>公開後は模倣される可能性</td><td>漏洩リスク</td></tr>
+            <tr><td>費用</td><td>出願・維持に費用がかかる</td><td>管理費用のみ</td></tr>
+          </tbody>
         </table>
+        <div class="highlight-box" style="margin-top: 1em;">
+          <p><strong>判断基準</strong></p>
+          <ul style="margin: 0;">
+            <li>リバースエンジニアリングで判明する → <strong>特許向き</strong></li>
+            <li>製品を見てもわからない → <strong>営業秘密向き</strong></li>
+          </ul>
+        </div>
       </section>
 
+      <!-- 不正競争防止法 -->
       <section>
-        <h3>特許 vs 営業秘密</h3>
+        <h3>不正競争防止法</h3>
+        <div class="highlight-box">
+          <p><strong>不正競争防止法</strong>：事業者間の公正な競争を守るための法律</p>
+        </div>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>違反行為の例</h4>
+            <ul>
+              <li><strong>営業秘密の不正取得</strong><br>窃取、詐欺、脅迫による取得</li>
+              <li><strong>コピープロテクト解除装置の提供</strong></li>
+              <li><strong>ドメイン名の不正取得</strong><br>他社商品名に似たドメイン取得</li>
+              <li><strong>周知表示混同惹起行為</strong><br>有名な商品名に似せる</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>罰則</h4>
+            <ul>
+              <li>営業秘密侵害：10年以下の懲役または2000万円以下の罰金</li>
+              <li>法人両罰規定：5億円以下の罰金</li>
+              <li>差止請求・損害賠償請求</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- その他の知的財産関連用語 -->
+      <section>
+        <h3>その他の重要用語</h3>
         <table>
-          <tr><th>項目</th><th>特許</th><th>営業秘密</th></tr>
-          <tr><td>公開</td><td>公開される</td><td>非公開</td></tr>
-          <tr><td>保護期間</td><td>20年（有限）</td><td>管理続ける限り</td></tr>
-          <tr><td>権利主張</td><td>他社の侵害を止められる</td><td>止められない</td></tr>
-          <tr><td>リスク</td><td>公開後は真似される</td><td>漏洩リスク</td></tr>
+          <thead>
+            <tr><th>用語</th><th>説明</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>肖像権</strong></td>
+              <td>自身の肖像をみだりに撮影・公表されない権利</td>
+            </tr>
+            <tr>
+              <td><strong>パブリシティ権</strong></td>
+              <td>有名人の氏名や肖像の顧客吸引力に関する権利</td>
+            </tr>
+            <tr>
+              <td><strong>クロスライセンス</strong></td>
+              <td>特許権者同士がお互いに使用を許諾すること</td>
+            </tr>
+            <tr>
+              <td><strong>パブリックドメイン</strong></td>
+              <td>著作権が放棄または消滅したソフトウェア</td>
+            </tr>
+            <tr>
+              <td><strong>ビジネスモデル特許</strong></td>
+              <td>ITを利用した新しいビジネスモデルへの特許<br>例：Amazonの1-Click特許</td>
+            </tr>
+          </tbody>
         </table>
-        <p><strong>判断基準:</strong></p>
-        <ul>
-          <li>リバースエンジニアリングで判明する → 特許向き</li>
-          <li>製品を見てもわからない → 営業秘密向き</li>
-        </ul>
       </section>
 
-      <!-- 3. 著作権 -->
+      <!-- ============================================= -->
+      <!-- 第2章：セキュリティ関連法規 -->
+      <!-- ============================================= -->
       <section>
-        <h2>3. 著作権</h2>
-      </section>
-
-      <section>
-        <h3>著作権とは</h3>
-        <p><strong>創作物を保護する権利（登録不要）</strong></p>
-        <pre class="ascii">
-著作権の発生: 創作と同時に自動的に発生
-保護期間: 著作者の死後70年
-        </pre>
+        <h2>第2章 セキュリティ関連法規</h2>
+        <p class="text-secondary">情報を守るための法的枠組み</p>
       </section>
 
       <section>
-        <h3>製造現場での著作物</h3>
+        <h3>サイバーセキュリティ基本法</h3>
+        <div class="highlight-box">
+          <p><strong>定義</strong>：サイバー攻撃から国を守るための<strong>基本理念</strong>を定めた法律</p>
+          <p><strong>対象</strong>：<strong>国全体</strong>（国、地方公共団体、企業、国民）</p>
+        </div>
+        <table style="margin-top: 1em;">
+          <thead>
+            <tr><th>対象者</th><th>責務</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>国</strong></td><td>総合的な施策の策定・実施</td></tr>
+            <tr><td><strong>地方公共団体</strong></td><td>国との連携、地域特性に応じた施策</td></tr>
+            <tr><td><strong>重要社会基盤事業者</strong></td><td>自主的・積極的なセキュリティ確保</td></tr>
+            <tr><td><strong>サイバー関連事業者</strong></td><td>取り組みの積極的推進</td></tr>
+            <tr><td><strong>教育研究機関</strong></td><td>人材育成などの自主的取り組み</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3>不正アクセス禁止法</h3>
+        <div class="highlight-box">
+          <p><strong>定義</strong>：不正なアクセスを禁止する法律</p>
+          <p><strong>対象</strong>：<strong>ネットワークを通じたアクセス</strong>のみ</p>
+        </div>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>禁止される4つの行為</h4>
+            <ol>
+              <li><strong>なりすましによるアクセス</strong><br>他人のID・パスワードを不正利用</li>
+              <li><strong>セキュリティホールからのアクセス</strong><br>脆弱性を悪用した侵入</li>
+              <li><strong>他人のID・パスワードを取得する行為</strong></li>
+              <li><strong>他人のID・パスワードを無断で第三者に教える行為</strong></li>
+            </ol>
+          </div>
+          <div class="card">
+            <h4>注意点</h4>
+            <ul>
+              <li>スタンドアロンPCへの不正アクセスは対象外</li>
+              <li>ウイルス作成は不正アクセス禁止法違反では<strong>ない</strong><br>（→ウイルス作成罪）</li>
+              <li>パスワードの使い回しは利用者側のリスク</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>その他のセキュリティ関連法規</h3>
         <table>
-          <tr><th>著作物</th><th>例</th></tr>
-          <tr><td>文書</td><td>マニュアル、手順書</td></tr>
-          <tr><td>図面</td><td>CADデータ、設計図</td></tr>
-          <tr><td>プログラム</td><td>PLCラダー、制御ソフト</td></tr>
-          <tr><td>写真・動画</td><td>作業手順動画</td></tr>
+          <thead>
+            <tr><th>法律・ガイドライン</th><th>内容</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>ウイルス作成罪</strong><br>（刑法168条の2）</td>
+              <td>ウイルスの作成・提供・供用・取得・保管は犯罪</td>
+            </tr>
+            <tr>
+              <td><strong>迷惑メール防止法</strong><br>（特定電子メール法）</td>
+              <td>広告・宣伝メールの送信規制（オプトイン規制）</td>
+            </tr>
+            <tr>
+              <td><strong>プロバイダ責任制限法</strong></td>
+              <td>被害者の情報開示請求権を定めた法律</td>
+            </tr>
+            <tr>
+              <td><strong>システム管理基準</strong></td>
+              <td>経産省がまとめた情報システム戦略のための実践規範</td>
+            </tr>
+            <tr>
+              <td><strong>サイバーセキュリティ経営ガイドライン</strong></td>
+              <td>経営者が認識すべき3原則と重要10項目</td>
+            </tr>
+          </tbody>
         </table>
       </section>
 
       <section>
-        <h3>著作権の注意点</h3>
-        <ul>
-          <li>外注先が作成した図面の権利は契約で確認</li>
-          <li>他社マニュアルの無断コピーはNG</li>
-          <li>フリー素材でも利用条件を確認</li>
-        </ul>
+        <h3>個人情報保護法</h3>
+        <div class="highlight-box">
+          <p><strong>個人情報</strong>：生存する個人に関する情報で、特定の個人を識別できるもの</p>
+        </div>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>個人情報の例</h4>
+            <ul>
+              <li>氏名、住所、電話番号</li>
+              <li>メールアドレス（氏名含む場合）</li>
+              <li>顔写真</li>
+              <li>マイナンバー（個人識別符号）</li>
+              <li>指紋、虹彩データ</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>事業者の義務</h4>
+            <ul>
+              <li><strong>利用目的の特定・通知</strong></li>
+              <li><strong>適正な取得</strong></li>
+              <li><strong>安全管理措置</strong></li>
+              <li><strong>第三者提供の制限</strong></li>
+              <li><strong>本人からの開示・訂正・削除請求への対応</strong></li>
+            </ul>
+          </div>
+        </div>
       </section>
 
-      <!-- 4. 労働関連法規 -->
+      <!-- ============================================= -->
+      <!-- 第3章：取引関連法規 -->
+      <!-- ============================================= -->
       <section>
-        <h2>4. 労働関連法規</h2>
+        <h2>第3章 取引関連法規</h2>
+        <p class="text-secondary">雇用・契約・取引のルール</p>
+      </section>
+
+      <section>
+        <h3>労働基準法</h3>
+        <div class="highlight-box">
+          <p><strong>定義</strong>：労働条件の<strong>最低基準</strong>を定めた法律</p>
+        </div>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>規定される内容</h4>
+            <ul>
+              <li>労働時間（1日8時間、週40時間）</li>
+              <li>休憩時間</li>
+              <li>休日（週1日以上）</li>
+              <li>賃金（最低賃金以上）</li>
+              <li>年次有給休暇</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>36協定</h4>
+            <p>時間外労働・休日労働に関する労使協定</p>
+            <table class="small">
+              <tr><th>項目</th><th>上限</th></tr>
+              <tr><td>原則</td><td>月45時間、年360時間</td></tr>
+              <tr><td>特別条項</td><td>年720時間、月100時間未満</td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>3つの契約形態</h3>
+        <div class="card-grid cols-3">
+          <div class="card">
+            <h4>雇用契約</h4>
+            <p>労働者が会社から直接、雇用と報酬を受ける</p>
+            <ul>
+              <li>正社員、契約社員</li>
+              <li>アルバイト、パート</li>
+            </ul>
+            <p class="text-secondary">指示：<strong>契約した企業</strong>から受ける</p>
+          </div>
+          <div class="card">
+            <h4>労働者派遣契約</h4>
+            <p>派遣会社から派遣され、派遣先で働く</p>
+            <ul>
+              <li>派遣社員</li>
+            </ul>
+            <p class="text-secondary">指示：<strong>派遣先の会社</strong>から受ける</p>
+          </div>
+          <div class="card">
+            <h4>請負契約</h4>
+            <p>業務の成果物の完成を依頼する</p>
+            <ul>
+              <li>外注、業務委託</li>
+            </ul>
+            <p class="text-secondary">指示：<strong>発注者は指示を出せない</strong></p>
+          </div>
+        </div>
       </section>
 
       <section>
         <h3>派遣と請負の違い</h3>
-        <pre class="ascii">
-【請負契約】
-発注者 ────契約──── 請負業者
-                         │
-                    指揮命令
-                         ↓
-                    請負労働者
-
-【派遣契約】
-派遣先 ────契約──── 派遣元
-  │
-  指揮命令
-  ↓
-派遣労働者
-        </pre>
-      </section>
-
-      <section>
-        <h3>派遣と請負の比較</h3>
-        <table>
-          <tr><th>項目</th><th>請負</th><th>派遣</th></tr>
-          <tr><td>指揮命令</td><td>請負業者が行う</td><td>派遣先が行う</td></tr>
-          <tr><td>完成責任</td><td>請負業者にあり</td><td>なし</td></tr>
-          <tr><td>労務管理</td><td>請負業者が行う</td><td>派遣元が行う</td></tr>
+        <div class="highlight-box" style="text-align: left;">
+          <pre style="font-family: monospace; margin: 0;">
+【請負契約】                    【派遣契約】
+発注者 ──契約── 請負業者      派遣先 ──契約── 派遣元
+                   │              │
+              指揮命令            指揮命令
+                   ↓              ↓
+              請負労働者        派遣労働者
+          </pre>
+        </div>
+        <table style="margin-top: 1em;">
+          <thead>
+            <tr><th>項目</th><th>請負</th><th>派遣</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>指揮命令</td><td>請負業者が行う</td><td><strong>派遣先が行う</strong></td></tr>
+            <tr><td>完成責任</td><td><strong>請負業者にあり</strong></td><td>なし</td></tr>
+            <tr><td>労務管理</td><td>請負業者が行う</td><td>派遣元が行う</td></tr>
+            <tr><td>瑕疵担保責任</td><td><strong>あり</strong></td><td>なし</td></tr>
+          </tbody>
         </table>
       </section>
 
       <section>
-        <h3>偽装請負</h3>
-        <p><strong>請負契約なのに、発注者が直接指揮命令すること</strong></p>
-        <p><strong>偽装請負の例:</strong></p>
-        <ul>
-          <li>発注者が直接作業指示を出す</li>
-          <li>発注者が勤怠管理を行う</li>
-          <li>発注者の朝礼に参加させる</li>
-          <li>残業を直接指示する</li>
-        </ul>
+        <h3>偽装請負の問題</h3>
+        <div class="highlight-box">
+          <p><strong>偽装請負</strong>：請負契約なのに、発注者が直接指揮命令すること</p>
+          <p class="text-secondary">→ 労働者派遣法違反となる</p>
+        </div>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>偽装請負の例（NG）</h4>
+            <ul>
+              <li>発注者が直接作業指示を出す</li>
+              <li>発注者が勤怠管理を行う</li>
+              <li>発注者の朝礼に参加させる</li>
+              <li>残業を直接指示する</li>
+              <li>発注者の制服を着用させる</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>正しい対応（OK）</h4>
+            <ul>
+              <li>請負業者のリーダーを通じて依頼</li>
+              <li>作業仕様書で範囲を明確化</li>
+              <li>請負業者が自社で勤怠管理</li>
+              <li>請負業者が自社の教育・指導</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section>
-        <h3>偽装請負のリスク</h3>
-        <ul>
-          <li>労働者派遣法違反</li>
-          <li>行政処分</li>
-          <li>企業イメージ低下</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>正しい対応</h3>
-        <p><strong>OK:</strong></p>
-        <ul>
-          <li>請負業者のリーダーを通じて依頼</li>
-          <li>作業仕様書で範囲を明確化</li>
-          <li>請負業者が自社で勤怠管理</li>
-        </ul>
-        <p><strong>NG:</strong></p>
-        <ul>
-          <li>「○○さん、これやって」と直接指示</li>
-          <li>勤務時間を発注者が決める</li>
-          <li>発注者の制服を着用させる</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>36協定</h3>
-        <p><strong>時間外労働・休日労働に関する労使協定</strong></p>
+        <h3>著作権の帰属</h3>
         <table>
-          <tr><th>項目</th><th>上限</th></tr>
-          <tr><td>原則</td><td>月45時間、年360時間</td></tr>
-          <tr><td>特別条項</td><td>年720時間、月100時間未満</td></tr>
+          <thead>
+            <tr><th>契約形態</th><th>指示（指揮命令）</th><th>完成責任</th><th>著作権の帰属</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>雇用契約</td>
+              <td>あり</td>
+              <td>なし</td>
+              <td><strong>雇用主</strong></td>
+            </tr>
+            <tr>
+              <td>派遣契約</td>
+              <td>派遣先から受ける</td>
+              <td>なし</td>
+              <td><strong>派遣先</strong></td>
+            </tr>
+            <tr>
+              <td>請負契約</td>
+              <td>なし</td>
+              <td>あり</td>
+              <td><strong>受注者</strong><br>（契約で変更可）</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="highlight-box" style="margin-top: 1em;">
+          <p><strong>重要</strong>：請負で作成したプログラムの著作権は、契約で定めない限り<strong>受注者（制作会社）</strong>に帰属する</p>
+        </div>
+      </section>
+
+      <section>
+        <h3>労働関連の重要用語</h3>
+        <table>
+          <thead>
+            <tr><th>用語</th><th>説明</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>裁量労働制</strong></td>
+              <td>業務の<strong>進行方法</strong>や<strong>時間配分</strong>を労働者の裁量に委ねる制度<br>実際の労働時間に関わらず、一定時間働いたとみなす</td>
+            </tr>
+            <tr>
+              <td><strong>フレックスタイム制</strong></td>
+              <td>始業・終業時刻を労働者が決められる制度<br>コアタイム（必須勤務時間帯）を設けることが多い</td>
+            </tr>
+            <tr>
+              <td><strong>SES契約</strong></td>
+              <td>System Engineering Service契約<br>技術者の労働力を提供する契約（準委任契約の一種）</td>
+            </tr>
+          </tbody>
         </table>
       </section>
 
-      <!-- 5. コンプライアンス -->
+      <!-- ============================================= -->
+      <!-- 第4章：コンプライアンス -->
+      <!-- ============================================= -->
       <section>
-        <h2>5. コンプライアンス</h2>
+        <h2>第4章 コンプライアンス</h2>
+        <p class="text-secondary">製造業で注意すべき法令と企業倫理</p>
       </section>
 
       <section>
         <h3>コンプライアンスとは</h3>
-        <p><strong>法令遵守 + 倫理・社会規範の遵守</strong></p>
-        <pre class="ascii">
+        <div class="highlight-box">
+          <p><strong>コンプライアンス</strong>：法令遵守 + 倫理・社会規範の遵守</p>
+        </div>
+        <div class="highlight-box" style="text-align: left; margin-top: 1em;">
+          <pre style="font-family: monospace; margin: 0;">
 コンプライアンス
 ├── 法令遵守（法律を守る）
+│   ├── 業界規制法
+│   ├── 労働法
+│   └── 税法
 ├── 社内規則遵守
+│   ├── 就業規則
+│   └── 情報セキュリティポリシー
 └── 社会的責任（CSR）
-        </pre>
+    ├── 環境配慮
+    └── 倫理的行動
+          </pre>
+        </div>
       </section>
 
       <section>
         <h3>製造業で注意すべき法令</h3>
         <table>
-          <tr><th>法令</th><th>内容</th></tr>
-          <tr><td>製造物責任法（PL法）</td><td>製品の欠陥による賠償責任</td></tr>
-          <tr><td>下請法</td><td>下請取引の適正化</td></tr>
-          <tr><td>景品表示法</td><td>不当表示の禁止</td></tr>
-          <tr><td>個人情報保護法</td><td>個人情報の適切な取り扱い</td></tr>
+          <thead>
+            <tr><th>法令</th><th>内容</th><th>対策</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>製造物責任法<br>（PL法）</strong></td>
+              <td>製品の欠陥による損害の賠償責任</td>
+              <td>品質記録の保管<br>トレーサビリティ確保</td>
+            </tr>
+            <tr>
+              <td><strong>下請法</strong></td>
+              <td>下請取引の適正化</td>
+              <td>支払い期日の遵守<br>買いたたき禁止</td>
+            </tr>
+            <tr>
+              <td><strong>景品表示法</strong></td>
+              <td>不当表示の禁止</td>
+              <td>誇大広告の禁止</td>
+            </tr>
+            <tr>
+              <td><strong>輸出管理法</strong></td>
+              <td>安全保障貿易管理</td>
+              <td>該非判定の実施</td>
+            </tr>
+          </tbody>
         </table>
       </section>
 
       <section>
         <h3>製造物責任法（PL法）</h3>
-        <p><strong>製品の欠陥で損害が生じた場合の賠償責任</strong></p>
-        <p><strong>対策:</strong></p>
-        <ul>
-          <li>トレーサビリティの確保</li>
-          <li>品質記録の保管</li>
-          <li>設計・製造の注意義務</li>
-        </ul>
+        <div class="highlight-box">
+          <p><strong>製造物責任法</strong>：製品の欠陥で損害が生じた場合、製造業者等に賠償責任を負わせる法律</p>
+        </div>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>欠陥の3類型</h4>
+            <ul>
+              <li><strong>設計上の欠陥</strong><br>設計自体に問題がある</li>
+              <li><strong>製造上の欠陥</strong><br>製造過程で生じた問題</li>
+              <li><strong>指示・警告上の欠陥</strong><br>取扱説明書の不備など</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>製造業者の対策</h4>
+            <ul>
+              <li>トレーサビリティの確保</li>
+              <li>品質記録の保管（10年程度）</li>
+              <li>設計・製造の注意義務</li>
+              <li>適切な警告表示</li>
+              <li>PL保険への加入</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section>
         <h3>下請法</h3>
-        <p><strong>親事業者の禁止行為:</strong></p>
-        <ul>
-          <li>支払遅延</li>
-          <li>代金減額</li>
-          <li>返品</li>
-          <li>買いたたき</li>
-        </ul>
+        <div class="highlight-box">
+          <p><strong>下請法</strong>：親事業者と下請事業者の取引を公正にするための法律</p>
+        </div>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>親事業者の禁止行為</h4>
+            <ul>
+              <li><strong>支払遅延</strong>：60日以内に支払う義務</li>
+              <li><strong>代金減額</strong>：発注後の値下げ要求</li>
+              <li><strong>返品</strong>：不当な返品</li>
+              <li><strong>買いたたき</strong>：不当に低い代金の決定</li>
+              <li><strong>購入強制</strong>：不要な物品の購入強制</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>親事業者の義務</h4>
+            <ul>
+              <li><strong>発注書面の交付</strong></li>
+              <li><strong>取引記録の作成・保存</strong>（2年間）</li>
+              <li><strong>遅延利息の支払い</strong></li>
+            </ul>
+            <p class="text-secondary" style="margin-top: 1em;">違反した場合：公正取引委員会による勧告・公表</p>
+          </div>
+        </div>
       </section>
 
-      <!-- 6. 演習 -->
+      <!-- ============================================= -->
+      <!-- 演習 -->
+      <!-- ============================================= -->
       <section class="exercise-slide">
-        <h2>6. 演習とまとめ</h2>
+        <h2>演習</h2>
+        <p class="text-secondary">理解度を確認しましょう</p>
       </section>
 
       <section class="exercise-slide">
         <h3>演習1: 権利の分類</h3>
-        <p>以下を適切な権利に分類してください:</p>
-        <table class="small">
-          <tr><th>保護対象</th><th>権利</th></tr>
-          <tr><td>新しい加工方法</td><td></td></tr>
-          <tr><td>会社のロゴ</td><td></td></tr>
-          <tr><td>製品のデザイン</td><td></td></tr>
-          <tr><td>作業マニュアル</td><td></td></tr>
-          <tr><td>製造ノウハウ</td><td></td></tr>
+        <p>以下を適切な権利に分類してください：</p>
+        <table>
+          <thead>
+            <tr><th>保護対象</th><th>権利の種類</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>新しい加工方法の発明</td><td class="exercise-box"></td></tr>
+            <tr><td>会社のロゴマーク</td><td class="exercise-box"></td></tr>
+            <tr><td>製品の外観デザイン</td><td class="exercise-box"></td></tr>
+            <tr><td>作業マニュアル</td><td class="exercise-box"></td></tr>
+            <tr><td>秘伝の製造ノウハウ</td><td class="exercise-box"></td></tr>
+            <tr><td>プログラムのソースコード</td><td class="exercise-box"></td></tr>
+          </tbody>
         </table>
       </section>
 
       <section class="exercise-slide">
-        <h3>演習2: 偽装請負チェック</h3>
-        <p>以下の行為は偽装請負になるか？</p>
-        <table class="small">
-          <tr><th>行為</th><th>OK/NG</th></tr>
-          <tr><td>請負作業員に直接残業を依頼</td><td></td></tr>
-          <tr><td>請負業者のリーダーに作業変更を依頼</td><td></td></tr>
-          <tr><td>請負作業員を自社の朝礼に参加させる</td><td></td></tr>
+        <h3>演習2: 著作権の有無</h3>
+        <p>著作権で保護されるものに〇、されないものに×を記入：</p>
+        <table>
+          <thead>
+            <tr><th>対象</th><th>〇/×</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Java言語の文法</td><td class="exercise-box"></td></tr>
+            <tr><td>Javaで書いたプログラム</td><td class="exercise-box"></td></tr>
+            <tr><td>ソートアルゴリズムの考え方</td><td class="exercise-box"></td></tr>
+            <tr><td>TCP/IPプロトコルの仕様</td><td class="exercise-box"></td></tr>
+            <tr><td>データベースの構造（創作性あり）</td><td class="exercise-box"></td></tr>
+          </tbody>
         </table>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習3: 偽装請負チェック</h3>
+        <p>以下の行為は偽装請負になるか判定してください：</p>
+        <table>
+          <thead>
+            <tr><th>行為</th><th>OK/NG</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>請負作業員に直接「この作業を急いでください」と指示</td><td class="exercise-box"></td></tr>
+            <tr><td>請負業者のリーダーに作業変更を依頼</td><td class="exercise-box"></td></tr>
+            <tr><td>請負作業員を自社の朝礼に参加させる</td><td class="exercise-box"></td></tr>
+            <tr><td>請負作業員の出退勤時間を発注者が記録</td><td class="exercise-box"></td></tr>
+            <tr><td>作業仕様書に基づいて成果物を検収</td><td class="exercise-box"></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習4: ケーススタディ</h3>
+        <div class="highlight-box" style="text-align: left;">
+          <p><strong>状況</strong>：</p>
+          <p>あなたの会社が開発した新しい金型製造技術について、特許出願か営業秘密として管理するか検討しています。</p>
+          <p>この技術は、製品を見ただけでは製造方法がわかりませんが、競合他社が同じ技術を独自に開発する可能性があります。</p>
+        </div>
+        <div class="exercise-box" style="margin-top: 1em;">
+          <p>どちらを選択すべきか、理由とともに回答してください：</p>
+          <p>選択: _______________</p>
+          <p>理由: _______________</p>
+        </div>
       </section>
 
       <!-- まとめ -->
@@ -331,31 +885,81 @@
         <h2>キーワード</h2>
         <div class="keywords">
           <span class="keyword-tag">知的財産権</span>
-          <span class="keyword-tag">特許権</span>
-          <span class="keyword-tag">営業秘密</span>
           <span class="keyword-tag">著作権</span>
+          <span class="keyword-tag">特許権</span>
+          <span class="keyword-tag">実用新案権</span>
+          <span class="keyword-tag">意匠権</span>
+          <span class="keyword-tag">商標権</span>
+          <span class="keyword-tag">営業秘密</span>
+          <span class="keyword-tag">不正競争防止法</span>
+          <span class="keyword-tag">サイバーセキュリティ基本法</span>
+          <span class="keyword-tag">不正アクセス禁止法</span>
+          <span class="keyword-tag">個人情報保護法</span>
           <span class="keyword-tag">派遣</span>
           <span class="keyword-tag">請負</span>
           <span class="keyword-tag">偽装請負</span>
           <span class="keyword-tag">36協定</span>
           <span class="keyword-tag">コンプライアンス</span>
           <span class="keyword-tag">PL法</span>
+          <span class="keyword-tag">下請法</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>試験対策ポイント</h2>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>知的財産権</h4>
+            <ul>
+              <li>高度な発明 → <strong>特許権</strong></li>
+              <li>高度でない考案 → <strong>実用新案権</strong></li>
+              <li>デザイン → <strong>意匠権</strong></li>
+              <li>マーク → <strong>商標権</strong></li>
+              <li>プログラム言語・アルゴリズム・プロトコル → <strong>著作権なし</strong></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>セキュリティ関連法規</h4>
+            <ul>
+              <li>サイバーセキュリティ基本法の対象 → <strong>国全体</strong></li>
+              <li>不正アクセス禁止法 → <strong>ネットワーク経由</strong>のみ</li>
+              <li>ウイルス作成 → <strong>ウイルス作成罪</strong>（不正アクセス禁止法ではない）</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>取引関連法規</h4>
+            <ul>
+              <li>派遣契約 → 派遣先が指示可能</li>
+              <li>請負契約 → <strong>発注者は指示不可</strong></li>
+              <li>請負の著作権 → <strong>受注者</strong>に帰属</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>コンプライアンス</h4>
+            <ul>
+              <li>PL法 → 製品欠陥の賠償責任</li>
+              <li>下請法 → 支払遅延・買いたたき禁止</li>
+            </ul>
+          </div>
         </div>
       </section>
 
       <section class="quiz-slide">
         <h2>確認問題</h2>
         <div class="quiz-item">
-          <p><strong>1.</strong> 特許と営業秘密の違いを説明してください</p>
+          <p><strong>1.</strong> 特許権と著作権の違いを3つ挙げてください</p>
         </div>
         <div class="quiz-item">
-          <p><strong>2.</strong> 営業秘密の3要件は何ですか？</p>
+          <p><strong>2.</strong> 営業秘密として保護されるための3要件は何ですか？</p>
         </div>
         <div class="quiz-item">
-          <p><strong>3.</strong> 派遣と請負の違いは何ですか？</p>
+          <p><strong>3.</strong> プログラム言語・アルゴリズム・プロトコルに著作権がない理由は？</p>
         </div>
         <div class="quiz-item">
-          <p><strong>4.</strong> 偽装請負とは何ですか？</p>
+          <p><strong>4.</strong> 派遣と請負の違いを「指揮命令」の観点から説明してください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>5.</strong> 不正アクセス禁止法で禁止される4つの行為は何ですか？</p>
         </div>
       </section>
 
@@ -364,11 +968,20 @@
         <h2>次回予告</h2>
         <div class="next-preview">
           <h4>セッション25-26h: システム戦略と業務改善</h4>
-          <ul>
-            <li>業務プロセス改善</li>
-            <li>IT投資の考え方</li>
-            <li>DXの基本</li>
-          </ul>
+          <div class="card-grid cols-3">
+            <div class="card">
+              <h4>DX</h4>
+              <p>デジタルトランス<br>フォーメーション</p>
+            </div>
+            <div class="card">
+              <h4>業務プロセス改善</h4>
+              <p>BPR・BPM<br>DFD・BPMN</p>
+            </div>
+            <div class="card">
+              <h4>データ活用</h4>
+              <p>BI・データウェア<br>ハウス・マイニング</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>

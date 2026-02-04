@@ -262,13 +262,14 @@
         <h3>主キー（Primary Key）</h3>
         <div class="highlight-box">
           <p><strong>主キー</strong>：各レコードを一意に識別するためのフィールド</p>
+          <p class="text-secondary">「一意」= 1つに限定する、重複しない</p>
         </div>
         <div class="card-grid cols-2">
           <div class="card">
             <h4>主キーの条件</h4>
             <ul>
               <li><strong>一意性</strong>：重複した値は不可</li>
-              <li><strong>NOT NULL</strong>：空値は不可</li>
+              <li><strong>NOT NULL</strong>：空値（NULL）は不可</li>
               <li><strong>不変性</strong>：原則として変更しない</li>
             </ul>
           </div>
@@ -285,6 +286,25 @@
         <p class="text-secondary" style="margin-top: 1em;">
           製造現場では「品番」「ロット番号」「設備コード」などが主キーになることが多い
         </p>
+      </section>
+
+      <section>
+        <h3>複合主キー</h3>
+        <p><strong>単独で主キーになれる列がない場合、複数の列を組み合わせて主キーにする</strong></p>
+        <table class="small">
+          <thead>
+            <tr><th>受注No</th><th>明細No</th><th>商品コード</th><th>数量</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>ORD-001</td><td>1</td><td>P001</td><td>100</td></tr>
+            <tr><td>ORD-001</td><td>2</td><td>P002</td><td>50</td></tr>
+            <tr><td>ORD-002</td><td>1</td><td>P001</td><td>200</td></tr>
+          </tbody>
+        </table>
+        <div class="highlight-box" style="margin-top: 1em;">
+          <p><strong>複合主キー</strong>：「受注No」+「明細No」の組み合わせ</p>
+          <p class="text-secondary">→ 受注Noだけでは一意にならないが、明細Noと組み合わせると一意に識別できる</p>
+        </div>
       </section>
 
       <section>
@@ -339,6 +359,52 @@
             </table>
           </div>
         </div>
+      </section>
+
+      <!-- 2-2. E-R図 -->
+      <section>
+        <h3>E-R図（Entity-Relationship図）</h3>
+        <div class="highlight-box">
+          <p><strong>E-R図</strong>：データの関係性を「エンティティ」と「リレーションシップ」で表した設計図</p>
+        </div>
+        <table>
+          <tr><th>用語</th><th>説明</th><th>例</th></tr>
+          <tr>
+            <td><strong>エンティティ（実体）</strong></td>
+            <td>人物、物など実世界の実体</td>
+            <td>学生、教員、部品、製品</td>
+          </tr>
+          <tr>
+            <td><strong>リレーションシップ（関連）</strong></td>
+            <td>エンティティ間の関係</td>
+            <td>「担当する」「所属する」「構成する」</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>リレーションシップの種類</h3>
+        <table>
+          <tr><th>種類</th><th>説明</th><th>例</th></tr>
+          <tr>
+            <td><strong>1対1</strong></td>
+            <td>1つの実体に1つの実体が対応</td>
+            <td>校長と学校（1人の校長に1つの学校）<br>社員と社員証</td>
+          </tr>
+          <tr>
+            <td><strong>1対多</strong></td>
+            <td>1つの実体に複数の実体が対応</td>
+            <td>学校と学生（1つの学校に複数の学生）<br>部門と社員</td>
+          </tr>
+          <tr>
+            <td><strong>多対多</strong></td>
+            <td>複数の実体に複数の実体が対応</td>
+            <td>学生と受講科目（多くの学生が多くの科目を受講）<br>部品と製品</td>
+          </tr>
+        </table>
+        <p class="text-secondary text-center" style="margin-top: 1em;">
+          多対多の関係は、中間テーブルを使って2つの1対多に分解することが多い
+        </p>
       </section>
 
       <!-- 3. データの正規化 -->
@@ -459,6 +525,57 @@
         <p class="text-secondary text-center" style="margin-top: 1em;">
           ITパスポート試験では「正規化の目的」と「基本的な考え方」が問われる
         </p>
+      </section>
+
+      <!-- 3-2. データ操作の基本 -->
+      <section>
+        <h3>データ操作の4つの基本</h3>
+        <table>
+          <tr><th>操作</th><th>説明</th><th>イメージ</th></tr>
+          <tr>
+            <td><strong>選択</strong></td>
+            <td>特定の<strong>行</strong>（レコード）を取り出す</td>
+            <td>「学生番号=2の学生を取得」</td>
+          </tr>
+          <tr>
+            <td><strong>射影</strong></td>
+            <td>特定の<strong>列</strong>（フィールド）を取り出す</td>
+            <td>「学生名だけを取得」</td>
+          </tr>
+          <tr>
+            <td><strong>結合</strong></td>
+            <td>複数の表を<strong>1つにまとめる</strong></td>
+            <td>「学生と教員を教員番号で結合」</td>
+          </tr>
+          <tr>
+            <td><strong>挿入/削除/更新</strong></td>
+            <td>データの<strong>追加・削除・変更</strong></td>
+            <td>「新しい学生を登録」</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>選択と射影のイメージ</h3>
+        <pre class="ascii">
+【元のテーブル】
+| 学生番号 | 学生名   | 電話番号         |
+|---------|---------|-----------------|
+| 1       | 山田太郎 | 090-9999-9999   |
+| 2       | 鈴木愛子 | 080-8888-8888   |
+| 3       | 上條恵   | 090-7777-7777   |
+
+【選択】学生番号=2の行を取り出す（横方向）
+| 学生番号 | 学生名   | 電話番号         |
+| 2       | 鈴木愛子 | 080-8888-8888   |
+
+【射影】学生名の列だけを取り出す（縦方向）
+| 学生名   |
+| 山田太郎 |
+| 鈴木愛子 |
+| 上條恵   |
+        </pre>
+        <p class="text-secondary text-center">選択 = 行（レコード）、射影 = 列（フィールド）と覚える</p>
       </section>
 
       <!-- 4. SQL入門 -->
@@ -655,6 +772,28 @@ WHERE 在庫テーブル.数量 < 50;</code></pre>
       </section>
 
       <section>
+        <h3>コミットとロールバック</h3>
+        <table>
+          <tr><th>用語</th><th>説明</th><th>タイミング</th></tr>
+          <tr>
+            <td><strong>コミット（COMMIT）</strong></td>
+            <td>トランザクションが正常に完了した際に<br>更新内容を<strong>確定</strong>すること</td>
+            <td>すべての処理が成功した時</td>
+          </tr>
+          <tr>
+            <td><strong>ロールバック（ROLLBACK）</strong></td>
+            <td>トランザクションを<strong>取り消し</strong>て<br>開始前の状態に戻すこと</td>
+            <td>エラー発生時、処理中断時</td>
+          </tr>
+        </table>
+        <pre class="ascii" style="margin-top: 1em;">
+トランザクション開始 → 処理1 → 処理2 → 処理3 → コミット → 確定!
+                              ↓ エラー発生
+                         ロールバック → 処理1から全て取り消し
+        </pre>
+      </section>
+
+      <section>
         <h3>ACID特性</h3>
         <p><strong>信頼性の高いトランザクション処理に必要な4つの特性</strong></p>
         <div class="card-grid cols-2">
@@ -678,6 +817,68 @@ WHERE 在庫テーブル.数量 < 50;</code></pre>
         <p class="text-secondary text-center" style="margin-top: 1em;">
           ITパスポート試験では「ACID特性」の名称と概要が問われる
         </p>
+      </section>
+
+      <!-- 5-2. 排他制御 -->
+      <section>
+        <h3>排他制御</h3>
+        <div class="highlight-box">
+          <p><strong>排他制御</strong>：複数の人が同じデータを同時に更新しようとした場合に<br>
+          <strong>矛盾が生じないようにする</strong>機能</p>
+          <p class="text-secondary">→ データの<strong>一貫性</strong>を保つ</p>
+        </div>
+        <p style="margin-top: 1em;"><strong>問題が発生するケース:</strong></p>
+        <pre class="ascii">
+ユーザーA: 在庫数100を読み取り → 100-10=90 で更新しようとする
+ユーザーB: 在庫数100を読み取り → 100-20=80 で更新しようとする
+  ↓
+同時に更新すると、最後に書いた方だけが反映される（10個分の出庫が消える）
+        </pre>
+      </section>
+
+      <section>
+        <h3>ロック（Lock）</h3>
+        <p><strong>データベースへのデータの読み書きを一時的に制限する機能</strong></p>
+        <pre class="ascii">
+1. ユーザーAがデータを読む前に【ロック】をかける
+2. ユーザーBはロック中はデータにアクセスできない（待機）
+3. ユーザーAが処理完了後、【アンロック】（ロック解除）
+4. ユーザーBがデータにアクセス可能になる
+        </pre>
+        <table style="margin-top: 1em;">
+          <tr><th>ロックの種類</th><th>説明</th></tr>
+          <tr>
+            <td><strong>共有ロック</strong></td>
+            <td>読み取り専用。複数ユーザーが同時に読める</td>
+          </tr>
+          <tr>
+            <td><strong>排他ロック</strong></td>
+            <td>更新用。他のユーザーは読み取りも更新もできない</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- 5-3. DBMS -->
+      <section>
+        <h3>DBMSとNoSQL</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>DBMS</h4>
+            <p><strong>Database Management System</strong></p>
+            <p>アプリケーションの要求に応じてデータベースを操作するシステム</p>
+            <pre class="ascii" style="font-size: 0.8em;">
+操作 → アプリ → DBMS → データベース
+            </pre>
+          </div>
+          <div class="card">
+            <h4>RDBMS vs NoSQL</h4>
+            <table class="small">
+              <tr><th>種類</th><th>特徴</th></tr>
+              <tr><td><strong>RDBMS</strong></td><td>関係データベース<br>（MySQL、Oracle等）</td></tr>
+              <tr><td><strong>NoSQL</strong></td><td>RDBMS以外<br>（MongoDB、Redis等）</td></tr>
+            </table>
+          </div>
+        </div>
       </section>
 
       <!-- 6. 演習 -->
@@ -735,6 +936,63 @@ ORDER BY I.数量 ASC;</code></pre>
         </div>
       </section>
 
+      <!-- 試験対策ポイント -->
+      <section>
+        <h2>試験対策ポイント</h2>
+      </section>
+
+      <section>
+        <h3>関係データベースの基本</h3>
+        <table class="small">
+          <tr><th>用語</th><th>説明</th></tr>
+          <tr><td><strong>関係データベース</strong></td><td>データを<strong>表形式</strong>で管理するデータベース</td></tr>
+          <tr><td><strong>主キー</strong></td><td>行を一意に識別。<strong>重複不可、NULL不可</strong></td></tr>
+          <tr><td><strong>複合主キー</strong></td><td>複数の列を組み合わせた主キー</td></tr>
+          <tr><td><strong>外部キー</strong></td><td>別の表の主キーを参照する列</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>データ操作とSQL</h3>
+        <table class="small">
+          <tr><th>用語</th><th>説明</th></tr>
+          <tr><td><strong>選択</strong></td><td>特定の<strong>行</strong>を取り出す操作</td></tr>
+          <tr><td><strong>射影</strong></td><td>特定の<strong>列</strong>を取り出す操作</td></tr>
+          <tr><td><strong>結合</strong></td><td>複数の表を1つにまとめる操作</td></tr>
+          <tr><td><strong>SQL</strong></td><td>関係データベースを操作する言語</td></tr>
+        </table>
+        <p class="text-secondary" style="margin-top: 0.5em;">
+          <strong>覚え方:</strong> 選択 = 行（横）、射影 = 列（縦）
+        </p>
+      </section>
+
+      <section>
+        <h3>データベース設計</h3>
+        <table class="small">
+          <tr><th>用語</th><th>説明</th></tr>
+          <tr><td><strong>E-R図</strong></td><td>エンティティとリレーションシップで表間の関連を表す</td></tr>
+          <tr><td><strong>1対1</strong></td><td>1つの実体に1つが対応（校長と学校）</td></tr>
+          <tr><td><strong>1対多</strong></td><td>1つの実体に複数が対応（学校と学生）</td></tr>
+          <tr><td><strong>多対多</strong></td><td>複数に複数が対応（学生と科目）</td></tr>
+          <tr><td><strong>正規化の目的</strong></td><td>データの<strong>重複・矛盾を防ぐ</strong>（最頻出）</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>トランザクションと排他制御</h3>
+        <table class="small">
+          <tr><th>用語</th><th>説明</th></tr>
+          <tr><td><strong>トランザクション</strong></td><td>一連の処理のまとまり</td></tr>
+          <tr><td><strong>コミット</strong></td><td>更新内容の<strong>確定</strong></td></tr>
+          <tr><td><strong>ロールバック</strong></td><td>処理の<strong>取り消し</strong></td></tr>
+          <tr><td><strong>排他制御</strong></td><td>データの<strong>一貫性</strong>を保つ機能</td></tr>
+          <tr><td><strong>ロック</strong></td><td>データへのアクセスを一時的に制限</td></tr>
+        </table>
+        <p class="text-secondary" style="margin-top: 0.5em;">
+          <strong>ACID特性:</strong> 原子性(A)、一貫性(C)、独立性(I)、永続性(D)
+        </p>
+      </section>
+
       <!-- まとめ -->
       <section>
         <h2>キーワード</h2>
@@ -745,14 +1003,24 @@ ORDER BY I.数量 ASC;</code></pre>
           <span class="keyword-tag">レコード</span>
           <span class="keyword-tag">フィールド</span>
           <span class="keyword-tag">主キー</span>
+          <span class="keyword-tag">複合主キー</span>
           <span class="keyword-tag">外部キー</span>
+          <span class="keyword-tag">E-R図</span>
           <span class="keyword-tag">正規化</span>
+          <span class="keyword-tag">選択</span>
+          <span class="keyword-tag">射影</span>
+          <span class="keyword-tag">結合</span>
           <span class="keyword-tag">SQL</span>
           <span class="keyword-tag">SELECT</span>
           <span class="keyword-tag">WHERE</span>
           <span class="keyword-tag">JOIN</span>
           <span class="keyword-tag">トランザクション</span>
+          <span class="keyword-tag">コミット</span>
+          <span class="keyword-tag">ロールバック</span>
+          <span class="keyword-tag">排他制御</span>
+          <span class="keyword-tag">ロック</span>
           <span class="keyword-tag">ACID特性</span>
+          <span class="keyword-tag">NoSQL</span>
         </div>
       </section>
 

@@ -32,88 +32,350 @@
       <!-- アジェンダ -->
       <section>
         <h2>本日のゴール</h2>
-        <ul>
-          <li>プロジェクトの定義と特徴を理解する</li>
-          <li>WBSとガントチャートを作成できる</li>
-          <li>進捗管理の基本を身につける</li>
-        </ul>
-        <p style="margin-top:1em;"><strong>対応テキスト:</strong> 第7章 プロジェクトマネジメント（7-01 PMBOK、7-03 スケジュール）</p>
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card">
+            <h4>目標1</h4>
+            <p>プロジェクトの定義と3つの制約を理解する</p>
+          </div>
+          <div class="card">
+            <h4>目標2</h4>
+            <p>PMBOKの知識エリアを把握する</p>
+          </div>
+          <div class="card">
+            <h4>目標3</h4>
+            <p>WBS、ガントチャート、アローダイアグラムを理解する</p>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top:1.5em;">
+          <strong>対応テキスト:</strong> 第7章 プロジェクトマネジメント（7-01 PMBOK、7-03 スケジュール）
+        </div>
       </section>
 
-      <!-- 1. プロジェクトとは -->
+      <!-- ========================================
+           第1章: プロジェクトとは
+           ======================================== -->
       <section>
-        <h2>1. プロジェクトとは</h2>
+        <h2 style="color: #e67e22;">第1章</h2>
+        <h2>プロジェクトとは</h2>
+        <p style="color: var(--text-secondary);">独自の成果物を生み出す有期的な活動</p>
       </section>
 
       <section>
         <h3>プロジェクトの定義</h3>
-        <p><strong>独自の成果物を生み出す有期的な活動</strong></p>
-        <pre class="ascii">
-プロジェクトの特徴:
-・開始と終了がある（有期性）
-・独自の成果物を作る（独自性）
-・定常業務とは異なる
-        </pre>
+        <p><strong>期限内に独自のモノやサービスを作るための業務</strong></p>
+        <div class="card" style="max-width:650px; margin:1em auto; padding:1.5em;">
+          <h4>プロジェクトの2つの特徴</h4>
+          <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="card">
+              <h4>1. 有期性</h4>
+              <p><strong>期限がある</strong><br>開始と終了が明確</p>
+            </div>
+            <div class="card">
+              <h4>2. 独自性</h4>
+              <p><strong>成果が唯一無二</strong><br>一度きりの活動</p>
+            </div>
+          </div>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>ITパスポートでは:</strong> 主に「システム開発」をプロジェクトの例として扱う
+        </div>
       </section>
 
       <section>
         <h3>プロジェクトと定常業務の違い</h3>
-        <table>
-          <tr><th>項目</th><th>プロジェクト</th><th>定常業務</th></tr>
-          <tr><td>期間</td><td>有限（終わりがある）</td><td>継続的</td></tr>
-          <tr><td>内容</td><td>一度きりの独自作業</td><td>反復・ルーチン</td></tr>
-          <tr><td>目標</td><td>成果物の完成</td><td>業務の継続</td></tr>
-          <tr><td>組織</td><td>一時的なチーム</td><td>恒久的な部署</td></tr>
-        </table>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1em;">
+          <table style="width:100%; font-size:0.85em;">
+            <tr><th>項目</th><th>プロジェクト</th><th>定常業務</th></tr>
+            <tr><td>期間</td><td><strong>有限</strong>（終わりがある）</td><td>継続的</td></tr>
+            <tr><td>内容</td><td>一度きりの<strong>独自作業</strong></td><td>反復・ルーチン</td></tr>
+            <tr><td>目標</td><td><strong>成果物の完成</strong></td><td>業務の継続</td></tr>
+            <tr><td>組織</td><td>一時的なチーム</td><td>恒久的な部署</td></tr>
+            <tr><td>例</td><td>システム導入、新製品開発</td><td>経理処理、製造ライン稼働</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h3>プロジェクトの構成員</h3>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1.5em;">
+          <pre style="font-family: monospace; font-size:0.75em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px;">
+  ┌────────────────────────────────────────────┐
+  │           プロジェクトオーナー              │
+  │        （発起・提案する人、スポンサー）       │
+  └────────────────────────────────────────────┘
+                       ↓ 承認・支援
+  ┌────────────────────────────────────────────┐
+  │          プロジェクトマネージャ             │
+  │       （プロジェクトを管理する人＝プロマネ）   │
+  └────────────────────────────────────────────┘
+                       ↓ 指示・調整
+  ┌────────────────────────────────────────────┐
+  │           プロジェクトメンバー              │
+  │        （プロジェクトを遂行する人員）         │
+  └────────────────────────────────────────────┘
+          </pre>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>プロジェクトマネージャの役割:</strong> 作業範囲、期限、費用を調整してプロジェクトを成功させる
+        </div>
       </section>
 
       <section>
         <h3>製造現場のプロジェクト例</h3>
-        <ul>
-          <li>新規設備導入</li>
-          <li>新製品の量産立ち上げ</li>
-          <li>工場移転</li>
-          <li>システム導入</li>
-          <li>ISO認証取得</li>
-          <li>自動化ライン構築</li>
-        </ul>
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card">
+            <h4>設備・施設</h4>
+            <ul style="font-size:0.8em; text-align:left;">
+              <li>新規設備導入</li>
+              <li>工場移転</li>
+              <li>自動化ライン構築</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>製品・品質</h4>
+            <ul style="font-size:0.8em; text-align:left;">
+              <li>新製品の量産立ち上げ</li>
+              <li>ISO認証取得</li>
+              <li>品質改善活動</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>IT・システム</h4>
+            <ul style="font-size:0.8em; text-align:left;">
+              <li>生産管理システム導入</li>
+              <li>IoTセンサー設置</li>
+              <li>DX推進</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
-      <!-- 2. WBS（作業分解構成図） -->
+      <!-- ========================================
+           第2章: 3つの制約（トリプルコンストレイント）
+           ======================================== -->
       <section>
-        <h2>2. WBS（作業分解構成図）</h2>
+        <h2 style="color: #e67e22;">第2章</h2>
+        <h2>3つの制約</h2>
+        <p style="color: var(--text-secondary);">トリプルコンストレイント</p>
+      </section>
+
+      <section>
+        <h3>3つの制約とは</h3>
+        <p><strong>プロジェクトを制約する3つの要素</strong></p>
+        <div class="card" style="max-width:600px; margin:1em auto; padding:1.5em;">
+          <pre style="font-family: monospace; font-size:0.8em; text-align:center; background:#f5f5f5; padding:1em; border-radius:8px;">
+             スコープ
+            （作業範囲）
+                △
+               / \
+              /   \
+             /     \
+            /       \
+           ◯─────────◯
+      コスト           スケジュール
+     （費用）            （期限）
+          </pre>
+        </div>
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card">
+            <h4>1. スコープ</h4>
+            <p>作業範囲<br>（何をするか）</p>
+          </div>
+          <div class="card">
+            <h4>2. スケジュール</h4>
+            <p>期限<br>（いつまでに）</p>
+          </div>
+          <div class="card">
+            <h4>3. コスト</h4>
+            <p>費用<br>（いくらで）</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>3つの制約の関係</h3>
+        <p><strong>三角形の3辺のような関係 - 相互に関わり合う</strong></p>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1.5em;">
+          <pre style="font-family: monospace; font-size:0.75em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px;">
+  【変更の影響】
+
+  スコープを増やす → 期限延長 or コスト増加 が必要
+  期限を短縮する → スコープ縮小 or コスト増加 が必要
+  コストを削減する → スコープ縮小 or 期限延長 が必要
+
+  ※ 1つを変更すると、他の1つまたは2つの変更が必要
+  ※ 3つは独立していない、常にバランスを取る必要がある
+          </pre>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>試験ポイント:</strong> 選択肢に「リスク」が含まれることがあるが、<strong>3つの制約には含まれない</strong>
+        </div>
+      </section>
+
+      <section>
+        <h3>3つの制約の例</h3>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1em;">
+          <h4>例: システム導入プロジェクト</h4>
+          <table style="width:100%; font-size:0.8em;">
+            <tr><th>状況</th><th>対応策</th></tr>
+            <tr>
+              <td>追加機能の要望が発生<br>（スコープ増加）</td>
+              <td>・期限を延長する<br>・予算を増やす<br>・他の機能を削る</td>
+            </tr>
+            <tr>
+              <td>納期を2週間前倒し<br>（期限短縮）</td>
+              <td>・人員を増やす（コスト増）<br>・機能を減らす（スコープ縮小）</td>
+            </tr>
+            <tr>
+              <td>予算が10%削減<br>（コスト削減）</td>
+              <td>・機能を絞る<br>・期限を延長して人件費を分散</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- ========================================
+           第3章: PMBOK
+           ======================================== -->
+      <section>
+        <h2 style="color: #e67e22;">第3章</h2>
+        <h2>PMBOK</h2>
+        <p style="color: var(--text-secondary);">プロジェクトマネジメントの知識体系</p>
+      </section>
+
+      <section>
+        <h3>PMBOKとは</h3>
+        <p><strong>Project Management Body of Knowledge</strong></p>
+        <div class="card" style="max-width:650px; margin:1em auto; padding:1.5em;">
+          <ul style="font-size:0.9em;">
+            <li>プロジェクトマネジメントの<strong>体系化された知識</strong></li>
+            <li>「プロジェクトマネージャのための<strong>教科書</strong>」</li>
+            <li>PMI（米国プロジェクトマネジメント協会）が策定</li>
+            <li>世界標準として広く活用されている</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h3>プロジェクト憲章</h3>
+        <p><strong>プロジェクト立ち上げ時に定める文書</strong></p>
+        <div class="card" style="max-width:650px; margin:1em auto; padding:1em;">
+          <h4>プロジェクト憲章の内容</h4>
+          <table style="width:100%; font-size:0.8em;">
+            <tr><th>項目</th><th>内容</th></tr>
+            <tr><td>プロジェクトの目的</td><td>なぜこのプロジェクトを行うか</td></tr>
+            <tr><td>成功基準</td><td>何をもって成功とするか</td></tr>
+            <tr><td>PMの責任と権限</td><td>プロジェクトマネージャの役割を明確化</td></tr>
+            <tr><td>主要なステークホルダ</td><td>関係者は誰か</td></tr>
+            <tr><td>予算・期限の概要</td><td>大まかな制約</td></tr>
+          </table>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>ポイント:</strong> プロジェクト憲章は「プロジェクトの存在を正式に認める文書」
+        </div>
+      </section>
+
+      <section>
+        <h3>PMBOKの10の知識エリア</h3>
+        <div class="card" style="max-width:750px; margin:1em auto; padding:1em;">
+          <table style="width:100%; font-size:0.7em;">
+            <tr><th>知識エリア</th><th>説明</th></tr>
+            <tr><td><strong>統合</strong>マネジメント</td><td>5つのプロセスを<strong>統合的に管理</strong></td></tr>
+            <tr><td><strong>スコープ</strong>マネジメント</td><td><strong>作業範囲</strong>の管理</td></tr>
+            <tr><td><strong>ステークホルダ</strong>マネジメント</td><td><strong>利害関係者</strong>の管理</td></tr>
+            <tr><td><strong>スケジュール</strong>マネジメント</td><td><strong>期限</strong>の管理</td></tr>
+            <tr><td><strong>コスト</strong>マネジメント</td><td><strong>費用</strong>の管理</td></tr>
+            <tr><td><strong>品質</strong>マネジメント</td><td><strong>成果物の品質</strong>管理</td></tr>
+            <tr><td><strong>資源</strong>マネジメント</td><td>材料や設備、<strong>人員</strong>の管理</td></tr>
+            <tr><td><strong>コミュニケーション</strong>マネジメント</td><td><strong>情報伝達</strong>の管理</td></tr>
+            <tr><td><strong>リスク</strong>マネジメント</td><td><strong>リスク対処</strong>の管理</td></tr>
+            <tr><td><strong>調達</strong>マネジメント</td><td>必要な<strong>モノ・サービスの調達</strong></td></tr>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h3>ステークホルダとは</h3>
+        <p><strong>プロジェクトから影響を受ける可能性のある「すべての人」</strong></p>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1.5em;">
+          <pre style="font-family: monospace; font-size:0.7em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px;">
+  【プロジェクトのステークホルダ例】
+
+  ┌─ 直接関係者 ─────────────────────────────────┐
+  │ ・プロジェクトマネージャ                      │
+  │ ・プロジェクトメンバー                        │
+  │ ・プロジェクトオーナー/スポンサ               │
+  └────────────────────────────────────────────┘
+
+  ┌─ 間接関係者 ─────────────────────────────────┐
+  │ ・経営者                                     │
+  │ ・取引先、顧客                               │
+  │ ・株主                                       │
+  │ ・地域社会（工事の影響を受けるなど）           │
+  └────────────────────────────────────────────┘
+          </pre>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>ポイント:</strong> ステークホルダの範囲は想像以上に広い（直接関係ない人も含む）
+        </div>
+      </section>
+
+      <!-- ========================================
+           第4章: スコープマネジメント（WBS）
+           ======================================== -->
+      <section>
+        <h2 style="color: #e67e22;">第4章</h2>
+        <h2>スコープマネジメント</h2>
+        <p style="color: var(--text-secondary);">WBS（作業分解構成図）</p>
       </section>
 
       <section>
         <h3>WBSとは</h3>
         <p><strong>Work Breakdown Structure</strong></p>
-        <ul>
-          <li>プロジェクトの作業を階層的に分解</li>
-          <li>「何をするか」を漏れなく洗い出す</li>
-        </ul>
-        <pre class="ascii">
+        <div class="card" style="max-width:650px; margin:1em auto; padding:1.5em;">
+          <ul style="font-size:0.9em;">
+            <li>プロジェクトの作業を<strong>階層的に分割</strong>したもの</li>
+            <li>Work（作業）をBreakdown（分割）</li>
+            <li>「何をするか」を漏れなく洗い出す</li>
+          </ul>
+          <pre style="font-family: monospace; font-size:0.75em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px; margin-top:1em;">
 プロジェクト
 ├── 大項目1
 │   ├── 中項目1.1
-│   │   ├── 作業1.1.1
-│   │   └── 作業1.1.2
+│   │   ├── 作業1.1.1  ← ワークパッケージ
+│   │   └── 作業1.1.2  ← ワークパッケージ
 │   └── 中項目1.2
 └── 大項目2
     └── ...
-        </pre>
+          </pre>
+        </div>
       </section>
 
       <section>
-        <h3>WBS作成のルール</h3>
-        <p><strong>100%ルール:</strong></p>
-        <p>下位の作業を合計すると上位の100%になる</p>
-        <p><strong>8/80ルール:</strong></p>
-        <p>最小作業単位は8時間〜80時間（1日〜2週間）</p>
+        <h3>ワークパッケージ</h3>
+        <p><strong>WBSの最も小さい作業単位</strong></p>
+        <div class="card" style="max-width:650px; margin:1em auto; padding:1.5em;">
+          <h4>8/80ルール</h4>
+          <p>最小作業単位は<strong>8時間〜80時間</strong>（1日〜2週間）程度</p>
+          <pre style="font-family: monospace; font-size:0.75em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px; margin-top:1em;">
+  【良い分割の例】
+  ○ 「仕様書作成」（20時間）
+  ○ 「テスト実施」（40時間）
+
+  【悪い分割の例】
+  × 「コードを書く」（200時間）← 大きすぎる
+  × 「コメント追加」（1時間）← 小さすぎる
+          </pre>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>100%ルール:</strong> 下位の作業を合計すると上位の100%になる
+        </div>
       </section>
 
       <section>
         <h3>WBS作成の手順</h3>
-        <pre class="ascii">
+        <div class="card" style="max-width:650px; margin:1em auto; padding:1.5em;">
+          <pre style="font-family: monospace; font-size:0.8em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px;">
 1. ゴールを明確にする
    「何ができたら完了か？」
 
@@ -125,12 +387,15 @@
 
 4. 作業に分解する
    「具体的に何をするか？」
-        </pre>
+   → ワークパッケージまで分解
+          </pre>
+        </div>
       </section>
 
       <section>
-        <h3>演習: 設備導入プロジェクトのWBS（1/2）</h3>
-        <pre class="ascii">
+        <h3>WBS例: 設備導入プロジェクト</h3>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1em;">
+          <pre style="font-family: monospace; font-size:0.65em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px;">
 加工機導入プロジェクト
 │
 ├── 1. 企画・計画
@@ -143,12 +408,7 @@
 │   ├── 2.1 発注手続き
 │   ├── 2.2 納期調整
 │   └── 2.3 検収準備
-        </pre>
-      </section>
-
-      <section>
-        <h3>演習: 設備導入プロジェクトのWBS（2/2）</h3>
-        <pre class="ascii">
+│
 ├── 3. 設置準備
 │   ├── 3.1 レイアウト設計
 │   ├── 3.2 電気工事
@@ -169,18 +429,24 @@
     ├── 6.1 作業者教育
     ├── 6.2 マニュアル整備
     └── 6.3 引き継ぎ
-        </pre>
+          </pre>
+        </div>
       </section>
 
-      <!-- 3. ガントチャート -->
+      <!-- ========================================
+           第5章: スケジュールマネジメント
+           ======================================== -->
       <section>
-        <h2>3. ガントチャート</h2>
+        <h2 style="color: #e67e22;">第5章</h2>
+        <h2>スケジュールマネジメント</h2>
+        <p style="color: var(--text-secondary);">ガントチャートとアローダイアグラム</p>
       </section>
 
       <section>
         <h3>ガントチャートとは</h3>
         <p><strong>作業スケジュールを視覚化した図</strong></p>
-        <pre class="ascii">
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1em;">
+          <pre style="font-family: monospace; font-size:0.7em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px;">
 作業           |週1|週2|週3|週4|週5|週6|週7|週8|
 ───────────────────────────────────────────────
 1.1 要件整理   |███|   |   |   |   |   |   |   |
@@ -193,25 +459,56 @@
 4.2 据付       |   |   |   |   |███|███|   |   |
 5.1 試運転     |   |   |   |   |   |███|███|   |
 6.1 教育       |   |   |   |   |   |   |███|███|
-        </pre>
+
+横軸 = 時間（日、週、月）
+縦軸 = 作業項目
+バーの長さ = 作業期間
+          </pre>
+        </div>
       </section>
 
       <section>
         <h3>ガントチャートの要素</h3>
-        <table>
-          <tr><th>要素</th><th>説明</th></tr>
-          <tr><td>タスク</td><td>作業項目（縦軸）</td></tr>
-          <tr><td>期間</td><td>バーの長さ（横軸）</td></tr>
-          <tr><td>開始日/終了日</td><td>バーの位置</td></tr>
-          <tr><td>マイルストーン</td><td>重要な節目（&#9670;で表示）</td></tr>
-          <tr><td>依存関係</td><td>前後関係を矢印で表示</td></tr>
-        </table>
+        <div class="card" style="max-width:650px; margin:1em auto; padding:1em;">
+          <table style="width:100%; font-size:0.85em;">
+            <tr><th>要素</th><th>説明</th></tr>
+            <tr><td><strong>タスク</strong></td><td>作業項目（縦軸）</td></tr>
+            <tr><td><strong>期間</strong></td><td>バーの長さ（横軸）</td></tr>
+            <tr><td><strong>開始日/終了日</strong></td><td>バーの位置</td></tr>
+            <tr><td><strong>マイルストーン</strong></td><td>重要な節目（◆で表示）</td></tr>
+            <tr><td><strong>依存関係</strong></td><td>前後関係を矢印で表示</td></tr>
+            <tr><td><strong>予定/実績</strong></td><td>2本のバーで比較表示</td></tr>
+          </table>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>ガントチャートの特徴:</strong> 進捗状況を視覚的に把握できる
+        </div>
+      </section>
+
+      <section>
+        <h3>アローダイアグラムとは</h3>
+        <p><strong>作業の流れを矢印で表した図</strong></p>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1.5em;">
+          <pre style="font-family: monospace; font-size:0.75em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px;">
+  【アローダイアグラムの記号】
+
+  ●───────→●    矢印 = 作業（所要日数）
+                  ○ = 結合点（ノード）
+
+  ○ - - - →○    点線 = ダミー作業（所要日数0日）
+                  作業の順序関係だけを表す
+          </pre>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>目的:</strong> 作業の順序関係や依存関係を表現し、最長経路を求める
+        </div>
       </section>
 
       <section>
         <h3>クリティカルパス</h3>
-        <p><strong>プロジェクト全体の期間を決める最長経路</strong></p>
-        <pre class="ascii">
+        <p><strong>プロジェクトで最も時間のかかる経路</strong></p>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1.5em;">
+          <pre style="font-family: monospace; font-size:0.75em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px;">
       ┌─A(3日)─┐
 開始─┤        ├─D(2日)─終了
       └─B(5日)─┘
@@ -223,107 +520,403 @@
 経路3: B→C = 5+4 = 9日 ← クリティカルパス
 
 プロジェクト全体: 9日
-        </pre>
+          </pre>
+        </div>
+        <div class="card-grid" style="grid-template-columns: repeat(2, 1fr); margin-top:1em;">
+          <div class="card">
+            <h4>クリティカルパス上の作業</h4>
+            <p><strong>余裕がゼロ</strong><br>遅延 = 全体の遅延</p>
+          </div>
+          <div class="card">
+            <h4>それ以外の作業</h4>
+            <p><strong>余裕（フロート）あり</strong><br>多少遅れても影響なし</p>
+          </div>
+        </div>
       </section>
 
       <section>
-        <h3>クリティカルパスの重要性</h3>
-        <ul>
-          <li>クリティカルパス上の遅延 = 全体の遅延</li>
-          <li>重点的に管理すべき作業がわかる</li>
-        </ul>
-        <blockquote>クリティカルパス上の作業は「余裕がゼロ」</blockquote>
+        <h3>クリティカルパスの計算問題</h3>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1.5em;">
+          <h4>問題</h4>
+          <pre style="font-family: monospace; font-size:0.75em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px;">
+      ┌─A(4日)─┬─C(3日)─┐
+開始─┤        │        ├─終了
+      └─B(6日)─┴─D(2日)─┘
+
+各経路の所要日数を計算し、クリティカルパスを求めよ
+          </pre>
+          <div class="fragment" style="margin-top:1em;">
+            <h4>解答</h4>
+            <ul style="font-size:0.85em;">
+              <li>経路1: A→C = 4+3 = 7日</li>
+              <li>経路2: A→D = 4+2 = 6日</li>
+              <li>経路3: B→C = 6+3 = 9日</li>
+              <li>経路4: B→D = 6+2 = <strong>8日</strong></li>
+            </ul>
+            <p><strong>クリティカルパス: B→C = 9日</strong></p>
+          </div>
+        </div>
       </section>
 
-      <!-- 4. 進捗管理 -->
+      <!-- ========================================
+           第6章: 資源マネジメント
+           ======================================== -->
       <section>
-        <h2>4. 進捗管理</h2>
-      </section>
-
-      <section>
-        <h3>進捗の測定</h3>
-        <p><strong>計画と実績の比較:</strong></p>
-        <pre class="ascii">
-作業A:
-予定: ████████████░░░░ 75%
-実績: ████████░░░░░░░░ 50%（25%遅れ）
-        </pre>
-      </section>
-
-      <section>
-        <h3>遅延への対策</h3>
-        <table class="small">
-          <tr><th>対策</th><th>内容</th><th>トレードオフ</th></tr>
-          <tr><td>クラッシング</td><td>要員追加で短縮</td><td>コスト増加</td></tr>
-          <tr><td>ファストトラッキング</td><td>作業の並行実施</td><td>リスク増加</td></tr>
-          <tr><td>スコープ変更</td><td>範囲を縮小</td><td>成果物縮小</td></tr>
-          <tr><td>期限延長</td><td>スケジュール変更</td><td>影響大</td></tr>
-        </table>
-      </section>
-
-      <section>
-        <h3>進捗会議のポイント</h3>
-        <p><strong>報告すべきこと:</strong></p>
-        <ol>
-          <li>予定と実績の差</li>
-          <li>課題と対策</li>
-          <li>今後の見通し</li>
-        </ol>
+        <h2 style="color: #e67e22;">第6章</h2>
+        <h2>資源マネジメント</h2>
+        <p style="color: var(--text-secondary);">工数計算と効率</p>
       </section>
 
       <section>
-        <h3>良い報告と悪い報告</h3>
-        <p><strong>悪い報告:</strong></p>
-        <blockquote>「だいたい順調です」</blockquote>
-        <p><strong>良い報告:</strong></p>
-        <blockquote>「作業Aは予定の80%完了。電気工事が1日遅れているが、据付との並行作業で吸収予定。全体期限への影響なし」</blockquote>
+        <h3>作業量（工数）の計算</h3>
+        <p><strong>新人とベテランでは作業効率が異なる</strong></p>
+        <div class="card" style="max-width:650px; margin:1em auto; padding:1.5em;">
+          <h4>計算例</h4>
+          <pre style="font-family: monospace; font-size:0.8em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px;">
+【条件】
+・ベテラン: 1日で10件処理
+・新人: 1日で5件処理（ベテランの半分の効率）
+
+【問題】
+100件の処理に必要な工数は？
+
+【解答】
+ベテラン2人×5日 = 100件 → 10人日
+新人4人×5日×0.5 = 100件 → 10人日（実質20人日必要）
+          </pre>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>ポイント:</strong> 工数計算時は<strong>効率を考慮</strong>する
+        </div>
       </section>
 
-      <!-- 5. リスク管理 -->
+      <!-- ========================================
+           第7章: コミュニケーションマネジメント
+           ======================================== -->
       <section>
-        <h2>5. リスク管理</h2>
+        <h2 style="color: #e67e22;">第7章</h2>
+        <h2>コミュニケーションマネジメント</h2>
+        <p style="color: var(--text-secondary);">伝達経路の計算</p>
+      </section>
+
+      <section>
+        <h3>コミュニケーション管理の目的</h3>
+        <p><strong>誰が、誰に、いつ、どうやって、何を伝達するかを管理</strong></p>
+        <div class="card" style="max-width:650px; margin:1em auto; padding:1.5em;">
+          <h4>コミュニケーションで大切なこと</h4>
+          <ol style="font-size:0.9em;">
+            <li><strong>情報の伝達遅れを防ぐ</strong></li>
+            <li><strong>知らせるべき人に送る</strong></li>
+            <li><strong>知らせてはいけない人に送らない</strong></li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h3>伝達経路の計算</h3>
+        <p><strong>メンバーが増えると伝達経路も増加する</strong></p>
+        <div class="card" style="max-width:650px; margin:1em auto; padding:1.5em;">
+          <h4>計算式</h4>
+          <div style="background:#e8f4f8; padding:1em; border-radius:8px; text-align:center; font-size:1.2em;">
+            <strong>伝達経路 = n × (n-1) / 2</strong>
+          </div>
+          <table style="width:100%; font-size:0.8em; margin-top:1em;">
+            <tr><th>メンバー数（n）</th><th>伝達経路</th><th>計算式</th></tr>
+            <tr><td>2人</td><td>1</td><td>2×1/2=1</td></tr>
+            <tr><td>3人</td><td>3</td><td>3×2/2=3</td></tr>
+            <tr><td>4人</td><td>6</td><td>4×3/2=6</td></tr>
+            <tr><td>5人</td><td>10</td><td>5×4/2=10</td></tr>
+            <tr><td>10人</td><td>45</td><td>10×9/2=45</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h3>組合せの計算（nCr）</h3>
+        <p><strong>n人からr人を選ぶ組合せの数</strong></p>
+        <div class="card" style="max-width:650px; margin:1em auto; padding:1.5em;">
+          <h4>計算式</h4>
+          <div style="background:#e8f4f8; padding:1em; border-radius:8px; text-align:center; font-size:1.1em;">
+            <strong>nCr = n! / (r! × (n-r)!)</strong>
+          </div>
+          <div style="margin-top:1em;">
+            <h4>計算例: 5人から2人を選ぶ（5C2）</h4>
+            <pre style="font-family: monospace; font-size:0.8em; background:#f5f5f5; padding:0.5em; border-radius:4px;">
+5C2 = 5! / (2! × 3!)
+    = (5×4×3×2×1) / ((2×1) × (3×2×1))
+    = 120 / (2 × 6)
+    = 120 / 12
+    = 10通り
+
+【簡単な計算方法】
+5C2 = (5×4) / (2×1) = 20/2 = 10通り
+            </pre>
+          </div>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>伝達経路との関係:</strong> n人の伝達経路 = nC2 = n×(n-1)/2
+        </div>
+      </section>
+
+      <!-- ========================================
+           第8章: リスクマネジメント
+           ======================================== -->
+      <section>
+        <h2 style="color: #e67e22;">第8章</h2>
+        <h2>リスクマネジメント</h2>
+        <p style="color: var(--text-secondary);">リスクの対処方法</p>
       </section>
 
       <section>
         <h3>リスクとは</h3>
         <p><strong>将来起こりうる問題</strong></p>
-        <table class="small">
-          <tr><th>リスク</th><th>発生確率</th><th>影響度</th><th>対策</th></tr>
-          <tr><td>設備納期遅延</td><td>中</td><td>高</td><td>代替ベンダー確保</td></tr>
-          <tr><td>作業者の病欠</td><td>中</td><td>中</td><td>複数人で担当</td></tr>
-          <tr><td>仕様変更</td><td>高</td><td>高</td><td>変更管理プロセス</td></tr>
-        </table>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1em;">
+          <h4>リスクの評価</h4>
+          <table style="width:100%; font-size:0.8em;">
+            <tr><th>リスク</th><th>発生確率</th><th>影響度</th><th>対策</th></tr>
+            <tr><td>設備納期遅延</td><td>中</td><td>高</td><td>代替ベンダー確保</td></tr>
+            <tr><td>作業者の病欠</td><td>中</td><td>中</td><td>複数人で担当</td></tr>
+            <tr><td>仕様変更</td><td>高</td><td>高</td><td>変更管理プロセス</td></tr>
+            <tr><td>予算超過</td><td>中</td><td>高</td><td>予備費確保</td></tr>
+          </table>
+        </div>
       </section>
 
       <section>
-        <h3>リスク対応の種類</h3>
-        <table>
-          <tr><th>対応</th><th>説明</th></tr>
-          <tr><td>回避</td><td>リスクを発生させない</td></tr>
-          <tr><td>軽減</td><td>影響を小さくする</td></tr>
-          <tr><td>転嫁</td><td>保険や契約で移転</td></tr>
-          <tr><td>受容</td><td>そのまま受け入れる</td></tr>
-        </table>
+        <h3>4つのリスク対応策</h3>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1em;">
+          <table style="width:100%; font-size:0.85em;">
+            <tr><th>対応策</th><th>説明</th><th>例</th></tr>
+            <tr>
+              <td><strong>リスク回避</strong></td>
+              <td>リスクを<strong>発生させない</strong><br>（スコープから外すなど）</td>
+              <td>難しい機能は実装しない</td>
+            </tr>
+            <tr>
+              <td><strong>リスク転嫁</strong></td>
+              <td>他者にリスクを<strong>持ってもらう</strong><br>（外部委託、保険）</td>
+              <td>保険加入、外注化</td>
+            </tr>
+            <tr>
+              <td><strong>リスク軽減</strong></td>
+              <td>リスクを<strong>減らす</strong><br>（発生確率・影響を下げる）</td>
+              <td>多くのテスト実施</td>
+            </tr>
+            <tr>
+              <td><strong>リスク受容</strong></td>
+              <td>リスクを<strong>そのまま受け入れる</strong><br>（何もしない）</td>
+              <td>影響が小さいので対応しない</td>
+            </tr>
+          </table>
+        </div>
       </section>
 
-      <!-- 6. 演習とまとめ -->
+      <!-- ========================================
+           第9章: 進捗管理
+           ======================================== -->
+      <section>
+        <h2 style="color: #e67e22;">第9章</h2>
+        <h2>進捗管理</h2>
+        <p style="color: var(--text-secondary);">計画と実績の比較</p>
+      </section>
+
+      <section>
+        <h3>進捗の測定</h3>
+        <p><strong>計画と実績の比較</strong></p>
+        <div class="card" style="max-width:600px; margin:1em auto; padding:1.5em;">
+          <pre style="font-family: monospace; font-size:0.85em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px;">
+作業A:
+予定: ████████████░░░░ 75%
+実績: ████████░░░░░░░░ 50%（25%遅れ）
+
+作業B:
+予定: ████████░░░░░░░░ 50%
+実績: ██████████████░░ 87%（37%先行）
+          </pre>
+        </div>
+      </section>
+
+      <section>
+        <h3>遅延への対策</h3>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1em;">
+          <table style="width:100%; font-size:0.85em;">
+            <tr><th>対策</th><th>内容</th><th>トレードオフ</th></tr>
+            <tr>
+              <td><strong>クラッシング</strong></td>
+              <td>要員追加で短縮</td>
+              <td>コスト増加</td>
+            </tr>
+            <tr>
+              <td><strong>ファストトラッキング</strong></td>
+              <td>作業の並行実施<br>（本来は順番にやる作業を同時に）</td>
+              <td>リスク増加、手戻り可能性</td>
+            </tr>
+            <tr>
+              <td><strong>スコープ変更</strong></td>
+              <td>範囲を縮小</td>
+              <td>成果物縮小</td>
+            </tr>
+            <tr>
+              <td><strong>期限延長</strong></td>
+              <td>スケジュール変更</td>
+              <td>ビジネスへの影響大</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h3>良い報告と悪い報告</h3>
+        <div class="compare-cards">
+          <div class="compare-card">
+            <div class="card-header" style="background:#ffcccc;">悪い報告</div>
+            <p style="padding:1em; font-style:italic;">「だいたい順調です」</p>
+            <ul style="text-align:left; font-size:0.8em;">
+              <li>具体性がない</li>
+              <li>問題を隠している可能性</li>
+              <li>対策が立てられない</li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <div class="card-header" style="background:#ccffcc;">良い報告</div>
+            <p style="padding:1em; font-style:italic;">「作業Aは予定の80%完了。電気工事が1日遅れているが、据付との並行作業で吸収予定。全体期限への影響なし」</p>
+            <ul style="text-align:left; font-size:0.8em;">
+              <li>数字で具体的</li>
+              <li>問題と対策を明示</li>
+              <li>影響範囲も報告</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================
+           第10章: 演習とまとめ
+           ======================================== -->
       <section class="exercise-slide">
-        <h2>6. 演習とまとめ</h2>
+        <h2 style="color: #e67e22;">第10章</h2>
+        <h2>演習とまとめ</h2>
+        <p>学んだ知識を確認しよう</p>
       </section>
 
       <section class="exercise-slide">
-        <h3>演習: WBSとガントチャート</h3>
-        <p>以下のプロジェクトのWBSを作成してください:</p>
-        <p><strong>「職場の5S活動プロジェクト（1ヶ月）」</strong></p>
-        <pre class="ascii">
-5Sプロジェクト
-├── 1. _______________
-│   ├── 1.1 _______________
-│   └── 1.2 _______________
-├── 2. _______________
-│   └── ...
-└── 3. _______________
-        </pre>
+        <h3>演習1: 3つの制約</h3>
+        <div class="card" style="padding:1.5em;">
+          <h4>問題</h4>
+          <p>プロジェクトの3つの制約を答えなさい</p>
+          <div class="exercise-box" style="margin-top:1em;">
+            <p>1. ____________（作業範囲）</p>
+            <p>2. ____________（期限）</p>
+            <p>3. ____________（費用）</p>
+          </div>
+        </div>
+        <div class="card fragment" style="margin-top:1em; padding:1em; background:#e8f8e8;">
+          <h4>解答</h4>
+          <p>1. スコープ　2. スケジュール　3. コスト</p>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習2: 伝達経路の計算</h3>
+        <div class="card" style="padding:1.5em;">
+          <h4>問題</h4>
+          <p>プロジェクトメンバーが8人いる場合、伝達経路は何本か？</p>
+          <div class="exercise-box" style="margin-top:1em;">
+            <p>計算式: n × (n-1) / 2</p>
+            <p>n = 8 の場合:</p>
+            <p>___ × ___ / 2 = ___本</p>
+          </div>
+        </div>
+        <div class="card fragment" style="margin-top:1em; padding:1em; background:#e8f8e8;">
+          <h4>解答</h4>
+          <p>8 × 7 / 2 = 56 / 2 = <strong>28本</strong></p>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習3: クリティカルパス</h3>
+        <div class="card" style="padding:1.5em;">
+          <h4>問題</h4>
+          <pre style="font-family: monospace; font-size:0.8em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px;">
+      ┌─A(5日)─┬─C(4日)─┐
+開始─┤        │        ├─終了
+      └─B(3日)─┴─D(6日)─┘
+
+クリティカルパスと所要日数を求めよ
+          </pre>
+        </div>
+        <div class="card fragment" style="margin-top:1em; padding:1em; background:#e8f8e8;">
+          <h4>解答</h4>
+          <ul style="font-size:0.85em;">
+            <li>A→C = 5+4 = 9日</li>
+            <li>A→D = 5+6 = 11日</li>
+            <li>B→C = 3+4 = 7日</li>
+            <li>B→D = 3+6 = 9日</li>
+          </ul>
+          <p><strong>クリティカルパス: A→D = 11日</strong></p>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習4: リスク対応</h3>
+        <div class="card" style="padding:1.5em;">
+          <h4>問題: 適切なリスク対応を選びなさい</h4>
+          <table style="width:100%; font-size:0.8em;">
+            <tr><th>リスク状況</th><th>対応策</th></tr>
+            <tr><td>技術的に難しい機能を実装しないことにした</td><td>（　　）</td></tr>
+            <tr><td>万が一に備えて保険に加入した</td><td>（　　）</td></tr>
+            <tr><td>テスト回数を増やしてバグを減らした</td><td>（　　）</td></tr>
+            <tr><td>影響が小さいので特に対策しなかった</td><td>（　　）</td></tr>
+          </table>
+        </div>
+        <div class="card fragment" style="margin-top:1em; padding:1em; background:#e8f8e8;">
+          <h4>解答</h4>
+          <p>回避、転嫁、軽減、受容</p>
+        </div>
+      </section>
+
+      <!-- 試験対策ポイント -->
+      <section>
+        <h2>試験対策ポイント</h2>
+        <div class="card" style="max-width:750px; margin:1em auto; padding:1.5em;">
+          <h4>3つの制約（トリプルコンストレイント）</h4>
+          <ul style="font-size:0.8em;">
+            <li><strong>スコープ</strong>（作業範囲）</li>
+            <li><strong>スケジュール</strong>（期限）</li>
+            <li><strong>コスト</strong>（費用）</li>
+            <li>※「リスク」は3つの制約に<strong>含まれない</strong></li>
+          </ul>
+          <h4 style="margin-top:1em;">PMBOK関連</h4>
+          <ul style="font-size:0.8em;">
+            <li><strong>WBS:</strong> プロジェクトの作業を階層的に分割</li>
+            <li><strong>ワークパッケージ:</strong> WBSの最小作業単位</li>
+            <li><strong>ステークホルダ:</strong> プロジェクトから影響を受けるすべての人</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>試験対策ポイント（続き）</h2>
+        <div class="card" style="max-width:750px; margin:1em auto; padding:1.5em;">
+          <h4>スケジュール管理</h4>
+          <ul style="font-size:0.8em;">
+            <li><strong>ガントチャート:</strong> 進捗を視覚的に表示（横棒グラフ）</li>
+            <li><strong>アローダイアグラム:</strong> 作業の流れを矢印で表示</li>
+            <li><strong>クリティカルパス:</strong> 最も時間のかかる経路</li>
+          </ul>
+          <h4 style="margin-top:1em;">計算問題</h4>
+          <ul style="font-size:0.8em;">
+            <li><strong>伝達経路:</strong> n×(n-1)/2</li>
+            <li><strong>組合せ:</strong> nCr = n! / (r!×(n-r)!)</li>
+            <li><strong>工数計算:</strong> 作業効率の差を考慮</li>
+          </ul>
+          <h4 style="margin-top:1em;">リスク対応の4つ</h4>
+          <ul style="font-size:0.8em;">
+            <li><strong>回避:</strong> 発生させない</li>
+            <li><strong>転嫁:</strong> 他者に持ってもらう（保険、外注）</li>
+            <li><strong>軽減:</strong> 減らす（テスト増加など）</li>
+            <li><strong>受容:</strong> 受け入れる（何もしない）</li>
+          </ul>
+        </div>
       </section>
 
       <!-- キーワード -->
@@ -331,29 +924,349 @@
         <h2>キーワード</h2>
         <div class="keywords">
           <span class="keyword-tag">プロジェクト</span>
+          <span class="keyword-tag">有期性</span>
+          <span class="keyword-tag">独自性</span>
+          <span class="keyword-tag">プロジェクトマネージャ</span>
+          <span class="keyword-tag">3つの制約</span>
+          <span class="keyword-tag">スコープ</span>
+          <span class="keyword-tag">スケジュール</span>
+          <span class="keyword-tag">コスト</span>
+          <span class="keyword-tag">PMBOK</span>
+          <span class="keyword-tag">プロジェクト憲章</span>
+          <span class="keyword-tag">ステークホルダ</span>
           <span class="keyword-tag">WBS</span>
+          <span class="keyword-tag">ワークパッケージ</span>
           <span class="keyword-tag">ガントチャート</span>
+          <span class="keyword-tag">アローダイアグラム</span>
           <span class="keyword-tag">クリティカルパス</span>
-          <span class="keyword-tag">進捗管理</span>
-          <span class="keyword-tag">リスク管理</span>
           <span class="keyword-tag">マイルストーン</span>
+          <span class="keyword-tag">伝達経路</span>
+          <span class="keyword-tag">組合せ（nCr）</span>
+          <span class="keyword-tag">リスク回避</span>
+          <span class="keyword-tag">リスク転嫁</span>
+          <span class="keyword-tag">リスク軽減</span>
+          <span class="keyword-tag">リスク受容</span>
+          <span class="keyword-tag">クラッシング</span>
+          <span class="keyword-tag">ファストトラッキング</span>
+        </div>
+      </section>
+
+      <!-- ========================================
+           第11章: プロダクトマネジメント（補足）
+           ======================================== -->
+      <section>
+        <h2 style="color: #9b59b6;">補足</h2>
+        <h2>プロダクトマネジメント</h2>
+        <p style="color: var(--text-secondary);">プロジェクトマネジメントとの違いを理解する</p>
+      </section>
+
+      <section>
+        <h3>プロジェクトとプロダクトの違い</h3>
+        <div class="compare-cards">
+          <div class="compare-card">
+            <div class="card-header">プロジェクトマネジメント</div>
+            <ul style="text-align:left; font-size:0.85em;">
+              <li>対象: <strong>プロジェクト</strong>（一時的な活動）</li>
+              <li>目的: <strong>期限内に成果物を完成</strong></li>
+              <li>期間: <strong>有期</strong>（終わりがある）</li>
+              <li>例: システム導入プロジェクト</li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <div class="card-header">プロダクトマネジメント</div>
+            <ul style="text-align:left; font-size:0.85em;">
+              <li>対象: <strong>プロダクト</strong>（継続的な製品）</li>
+              <li>目的: <strong>製品価値の最大化</strong></li>
+              <li>期間: <strong>継続的</strong>（終わりがない）</li>
+              <li>例: スマホアプリの継続開発</li>
+            </ul>
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:1em;">
+          <strong>ポイント:</strong> プロジェクトは「作って終わり」、プロダクトは「作った後も価値を高め続ける」
+        </div>
+      </section>
+
+      <section>
+        <h3>プロダクトマネジメントとは</h3>
+        <p><strong>製品やサービスの価値を最大化するための活動</strong></p>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1.5em;">
+          <h4>ユーザー中心設計</h4>
+          <ul style="font-size:0.9em;">
+            <li>ユーザーのニーズや課題を理解することが起点</li>
+            <li><strong>「作りたいもの」ではなく「ユーザーが求めるもの」を作る</strong></li>
+          </ul>
+          <pre style="font-family: monospace; font-size:0.8em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px; margin-top:1em;">
+  × 技術者視点: 「この技術を使いたい」
+  ○ ユーザー視点: 「この課題を解決したい」
+          </pre>
+        </div>
+      </section>
+
+      <section>
+        <h3>ペルソナとユーザーストーリー</h3>
+        <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="card">
+            <h4>ペルソナ</h4>
+            <p><strong>典型的なユーザー像</strong>を具体的に設定したもの</p>
+            <p style="font-size:0.8em; color:var(--text-secondary);">年齢、職業、行動パターン、課題などを詳細に記述</p>
+            <div style="background:#f5f5f5; padding:0.5em; border-radius:4px; font-size:0.75em; margin-top:0.5em;">
+              例: 「35歳、製造現場の班長、紙の報告書作成に時間を取られている」
+            </div>
+          </div>
+          <div class="card">
+            <h4>ユーザーストーリー</h4>
+            <p>ユーザーの視点で機能の目的を明確化</p>
+            <div style="background:#e8f4f8; padding:0.5em; border-radius:4px; font-size:0.75em; margin-top:0.5em;">
+              <strong>形式:</strong><br>
+              「○○として、△△したい。<br>なぜなら□□だから」
+            </div>
+            <div style="background:#f5f5f5; padding:0.5em; border-radius:4px; font-size:0.75em; margin-top:0.5em;">
+              例: 「班長として、スマホで報告を入力したい。移動時間を有効活用したいから」
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>優先順位づけ</h3>
+        <p><strong>リソースには限りがある - 価値の高いものから着手</strong></p>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1em;">
+          <h4>優先順位の判断基準</h4>
+          <table style="width:100%; font-size:0.8em;">
+            <tr><th>基準</th><th>説明</th></tr>
+            <tr><td><strong>ビジネス価値</strong></td><td>売上・利益への貢献度</td></tr>
+            <tr><td><strong>ユーザー価値</strong></td><td>ユーザーの課題解決への貢献度</td></tr>
+            <tr><td><strong>緊急度</strong></td><td>すぐに対応が必要か</td></tr>
+            <tr><td><strong>実現可能性</strong></td><td>技術的・コスト的に実現できるか</td></tr>
+            <tr><td><strong>依存関係</strong></td><td>他の機能との関係性</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h3>MoSCoW法</h3>
+        <p><strong>優先順位を4段階で分類する手法</strong></p>
+        <div class="card" style="max-width:650px; margin:1em auto; padding:1em;">
+          <table style="width:100%; font-size:0.85em;">
+            <tr><th>分類</th><th>意味</th><th>説明</th></tr>
+            <tr>
+              <td style="background:#ffcccc;"><strong>Must</strong></td>
+              <td>必須</td>
+              <td>なければ成立しない機能</td>
+            </tr>
+            <tr>
+              <td style="background:#ffffcc;"><strong>Should</strong></td>
+              <td>重要</td>
+              <td>できれば実装したい機能</td>
+            </tr>
+            <tr>
+              <td style="background:#ccffcc;"><strong>Could</strong></td>
+              <td>あれば良い</td>
+              <td>余裕があれば実装する機能</td>
+            </tr>
+            <tr>
+              <td style="background:#cccccc;"><strong>Won't</strong></td>
+              <td>今回は実装しない</td>
+              <td>次回以降に検討する機能</td>
+            </tr>
+          </table>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>覚え方:</strong> M-o-S-C-o-W の大文字を取って「モスクワ法」
+        </div>
+      </section>
+
+      <section>
+        <h3>MVP（Minimum Viable Product）</h3>
+        <p><strong>最小限の機能を持つ実用可能な製品</strong></p>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1.5em;">
+          <ul style="font-size:0.9em;">
+            <li><strong>Minimum</strong>（最小限）</li>
+            <li><strong>Viable</strong>（実用可能な）</li>
+            <li><strong>Product</strong>（製品）</li>
+          </ul>
+          <h4 style="margin-top:1em;">MVPの目的</h4>
+          <ul style="font-size:0.85em;">
+            <li>早期にユーザーから<strong>フィードバック</strong>を得る</li>
+            <li><strong>仮説を検証</strong>する</li>
+            <li><strong>リスクを最小化</strong>しながら学習する</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h3>MVPの考え方</h3>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1.5em;">
+          <pre style="font-family: monospace; font-size:0.8em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px;">
+  【従来の考え方】
+  × 機能をすべて作ってからリリース
+    → 完成まで時間がかかる
+    → ユーザーの反応が遅れてわかる
+    → 修正が大規模になる
+
+  【MVPの考え方】
+  ○ 最小限の機能でリリース → フィードバック → 改善
+    → 早くリリースできる
+    → 早期にユーザーの声が聞ける
+    → 小さく修正できる
+          </pre>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>例:</strong> 最初から100点を目指すのではなく、60点でリリースして改善を繰り返す
+        </div>
+      </section>
+
+      <section>
+        <h3>プロダクトバックログ</h3>
+        <p><strong>開発すべき機能や改善点を優先順位順に並べたリスト</strong></p>
+        <div class="card" style="max-width:650px; margin:1em auto; padding:1.5em;">
+          <h4>バックログの管理</h4>
+          <ul style="font-size:0.85em;">
+            <li>常に<strong>優先順位を見直す</strong></li>
+            <li>新しい要望や課題を追加</li>
+            <li>完了したものは削除</li>
+          </ul>
+          <h4 style="margin-top:1em;">バックログアイテムの内容</h4>
+          <ul style="font-size:0.85em;">
+            <li>機能の説明</li>
+            <li>ユーザーストーリー</li>
+            <li>受け入れ条件</li>
+            <li>見積もり（工数）</li>
+          </ul>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>イメージ:</strong> プロダクトの「やることリスト」を優先順位で管理
+        </div>
+      </section>
+
+      <section>
+        <h3>ロードマップ</h3>
+        <p><strong>プロダクトの将来計画を時系列で示したもの</strong></p>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1em;">
+          <pre style="font-family: monospace; font-size:0.7em; text-align:left; background:#f5f5f5; padding:1em; border-radius:8px;">
+  【ロードマップ例】
+
+  Q1（1-3月）    Q2（4-6月）    Q3（7-9月）    Q4（10-12月）
+  ────────────────────────────────────────────────────
+  基本機能       レポート機能   分析機能       AI予測機能
+  リリース       追加          追加          追加
+          </pre>
+          <h4 style="margin-top:1em;">ロードマップの活用</h4>
+          <ul style="font-size:0.85em;">
+            <li>ステークホルダーとの<strong>共有</strong></li>
+            <li>チームの<strong>方向性の統一</strong></li>
+            <li>リソース計画の基礎</li>
+          </ul>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>注意:</strong> 詳細すぎる計画は変更に弱い。柔軟性を持たせることが重要
+        </div>
+      </section>
+
+      <section>
+        <h3>KPIとメトリクス</h3>
+        <p><strong>プロダクトの成功を測定する指標</strong></p>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1em;">
+          <h4>KPI（Key Performance Indicator）= 重要業績評価指標</h4>
+          <table style="width:100%; font-size:0.8em; margin-top:0.5em;">
+            <tr><th>メトリクス</th><th>説明</th></tr>
+            <tr><td><strong>アクティブユーザー数</strong></td><td>実際に使っているユーザー数</td></tr>
+            <tr><td><strong>継続率（リテンション）</strong></td><td>継続して使い続ける割合</td></tr>
+            <tr><td><strong>コンバージョン率</strong></td><td>目標行動を達成した割合</td></tr>
+            <tr><td><strong>顧客満足度</strong></td><td>ユーザーの満足度</td></tr>
+            <tr><td><strong>NPS</strong></td><td>他者への推奨意向（Net Promoter Score）</td></tr>
+          </table>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>データに基づく意思決定:</strong> 主観ではなく客観的なデータで判断
+        </div>
+      </section>
+
+      <section>
+        <h3>プロダクトマネージャの役割</h3>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1em;">
+          <h4>主な責任</h4>
+          <ul style="font-size:0.85em;">
+            <li>プロダクトの<strong>ビジョン策定</strong></li>
+            <li><strong>ユーザーニーズ</strong>の理解</li>
+            <li><strong>優先順位</strong>の決定</li>
+            <li>ステークホルダーとの<strong>調整</strong></li>
+            <li>成果の<strong>測定と改善</strong></li>
+          </ul>
+          <h4 style="margin-top:1em;">関係者との連携</h4>
+          <table style="width:100%; font-size:0.75em;">
+            <tr><th>関係者</th><th>連携内容</th></tr>
+            <tr><td>開発チーム</td><td>要件の伝達、技術的制約の理解</td></tr>
+            <tr><td>デザイナー</td><td>ユーザー体験の設計</td></tr>
+            <tr><td>営業・マーケティング</td><td>市場ニーズ、競合情報の共有</td></tr>
+            <tr><td>経営層</td><td>ビジネス目標との整合</td></tr>
+            <tr><td>ユーザー</td><td>フィードバックの収集</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h3>プロダクトマネジメント まとめ</h3>
+        <div class="card" style="max-width:750px; margin:1em auto; padding:1.5em;">
+          <h4>試験対策ポイント</h4>
+          <ul style="font-size:0.85em;">
+            <li><strong>プロダクトマネジメント:</strong> 製品価値の最大化が目的（継続的）</li>
+            <li><strong>プロジェクトマネジメント:</strong> 期限内の成果物完成が目的（有期）</li>
+            <li><strong>ペルソナ:</strong> 典型的なユーザー像</li>
+            <li><strong>ユーザーストーリー:</strong> 「○○として△△したい」の形式</li>
+            <li><strong>MoSCoW法:</strong> Must / Should / Could / Won't</li>
+            <li><strong>MVP:</strong> 最小限の機能を持つ実用可能な製品</li>
+            <li><strong>プロダクトバックログ:</strong> 優先順位順の「やることリスト」</li>
+            <li><strong>KPI:</strong> 重要業績評価指標</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- キーワード（プロダクトマネジメント追加） -->
+      <section>
+        <h2>キーワード（プロダクトマネジメント）</h2>
+        <div class="keywords">
+          <span class="keyword-tag">プロダクトマネジメント</span>
+          <span class="keyword-tag">ユーザー中心設計</span>
+          <span class="keyword-tag">ペルソナ</span>
+          <span class="keyword-tag">ユーザーストーリー</span>
+          <span class="keyword-tag">優先順位</span>
+          <span class="keyword-tag">MoSCoW法</span>
+          <span class="keyword-tag">MVP</span>
+          <span class="keyword-tag">プロダクトバックログ</span>
+          <span class="keyword-tag">ロードマップ</span>
+          <span class="keyword-tag">KPI</span>
+          <span class="keyword-tag">アクティブユーザー</span>
+          <span class="keyword-tag">リテンション</span>
+          <span class="keyword-tag">NPS</span>
+          <span class="keyword-tag">プロダクトマネージャ</span>
         </div>
       </section>
 
       <!-- 確認問題 -->
       <section class="quiz-slide">
         <h2>確認問題</h2>
-        <div class="quiz-item">
-          <p><strong>1.</strong> プロジェクトと定常業務の違いは何ですか？</p>
+        <div class="quiz-item fragment">
+          <p><strong>1.</strong> プロジェクトの2つの特徴（有期性と独自性）を説明してください</p>
         </div>
-        <div class="quiz-item">
-          <p><strong>2.</strong> WBSを作成する目的は何ですか？</p>
+        <div class="quiz-item fragment">
+          <p><strong>2.</strong> 3つの制約とは何ですか？</p>
         </div>
-        <div class="quiz-item">
-          <p><strong>3.</strong> クリティカルパスとは何ですか？</p>
+        <div class="quiz-item fragment">
+          <p><strong>3.</strong> WBSとは何ですか？</p>
         </div>
-        <div class="quiz-item">
-          <p><strong>4.</strong> 進捗が遅れた時の対策を2つ挙げてください</p>
+        <div class="quiz-item fragment">
+          <p><strong>4.</strong> クリティカルパスとは何ですか？</p>
+        </div>
+        <div class="quiz-item fragment">
+          <p><strong>5.</strong> リスク対応の4つを挙げてください</p>
+        </div>
+        <div class="quiz-item fragment">
+          <p><strong>6.</strong> MoSCoW法の4段階を答えてください</p>
+        </div>
+        <div class="quiz-item fragment">
+          <p><strong>7.</strong> MVPとは何の略ですか？</p>
         </div>
       </section>
 
@@ -362,11 +1275,20 @@
         <h2>次回予告</h2>
         <div class="next-preview">
           <h4>セッション19-20h: ITサービスマネジメント</h4>
-          <ul>
-            <li>ITILの基本</li>
-            <li>インシデント管理</li>
-            <li>SLA（サービスレベル合意）</li>
-          </ul>
+          <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); margin-top:1em;">
+            <div class="card">
+              <h4>ITILの基本</h4>
+              <p>サービスマネジメントの枠組み</p>
+            </div>
+            <div class="card">
+              <h4>インシデント管理</h4>
+              <p>障害対応のプロセス</p>
+            </div>
+            <div class="card">
+              <h4>SLA</h4>
+              <p>サービスレベル合意</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
