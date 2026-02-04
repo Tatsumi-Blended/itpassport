@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>09 プロジェクトマネジメント - 製造DX基礎コース</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="assets/custom.css">
+  <script src="assets/auth.js"></script>
+  <script>Auth.requireAuth();</script>
+</head>
+<body>
+  <div class="nav-bar">
+    <a href="index.html">目次</a>
+    <span class="current">09 プロジェクトマネジメント</span>
+    <div class="nav-links">
+      <a href="08_システム開発の流れ.html" class="nav-prev">&larr; 前へ</a>
+      <a href="10_ITサービスマネジメント.html" class="nav-next">次へ &rarr;</a>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- タイトル -->
+      <section class="title-slide step3">
+        <p><span class="step-badge">STEP3</span> ITの仕組みを理解する</p>
+        <h1>プロジェクトマネジメント</h1>
+        <p class="subtitle">セッション 17-18h</p>
+        <p class="level-stars">学習レベル: ★★★☆☆（標準レベル）</p>
+      </section>
+
+      <!-- アジェンダ -->
+      <section>
+        <h2>本日のゴール</h2>
+        <ul>
+          <li>プロジェクトの定義と特徴を理解する</li>
+          <li>WBSとガントチャートを作成できる</li>
+          <li>進捗管理の基本を身につける</li>
+        </ul>
+        <p style="margin-top:1em;"><strong>対応テキスト:</strong> 第7章 プロジェクトマネジメント（7-01 PMBOK、7-03 スケジュール）</p>
+      </section>
+
+      <!-- 1. プロジェクトとは -->
+      <section>
+        <h2>1. プロジェクトとは</h2>
+      </section>
+
+      <section>
+        <h3>プロジェクトの定義</h3>
+        <p><strong>独自の成果物を生み出す有期的な活動</strong></p>
+        <pre class="ascii">
+プロジェクトの特徴:
+・開始と終了がある（有期性）
+・独自の成果物を作る（独自性）
+・定常業務とは異なる
+        </pre>
+      </section>
+
+      <section>
+        <h3>プロジェクトと定常業務の違い</h3>
+        <table>
+          <tr><th>項目</th><th>プロジェクト</th><th>定常業務</th></tr>
+          <tr><td>期間</td><td>有限（終わりがある）</td><td>継続的</td></tr>
+          <tr><td>内容</td><td>一度きりの独自作業</td><td>反復・ルーチン</td></tr>
+          <tr><td>目標</td><td>成果物の完成</td><td>業務の継続</td></tr>
+          <tr><td>組織</td><td>一時的なチーム</td><td>恒久的な部署</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>製造現場のプロジェクト例</h3>
+        <ul>
+          <li>新規設備導入</li>
+          <li>新製品の量産立ち上げ</li>
+          <li>工場移転</li>
+          <li>システム導入</li>
+          <li>ISO認証取得</li>
+          <li>自動化ライン構築</li>
+        </ul>
+      </section>
+
+      <!-- 2. WBS（作業分解構成図） -->
+      <section>
+        <h2>2. WBS（作業分解構成図）</h2>
+      </section>
+
+      <section>
+        <h3>WBSとは</h3>
+        <p><strong>Work Breakdown Structure</strong></p>
+        <ul>
+          <li>プロジェクトの作業を階層的に分解</li>
+          <li>「何をするか」を漏れなく洗い出す</li>
+        </ul>
+        <pre class="ascii">
+プロジェクト
+├── 大項目1
+│   ├── 中項目1.1
+│   │   ├── 作業1.1.1
+│   │   └── 作業1.1.2
+│   └── 中項目1.2
+└── 大項目2
+    └── ...
+        </pre>
+      </section>
+
+      <section>
+        <h3>WBS作成のルール</h3>
+        <p><strong>100%ルール:</strong></p>
+        <p>下位の作業を合計すると上位の100%になる</p>
+        <p><strong>8/80ルール:</strong></p>
+        <p>最小作業単位は8時間〜80時間（1日〜2週間）</p>
+      </section>
+
+      <section>
+        <h3>WBS作成の手順</h3>
+        <pre class="ascii">
+1. ゴールを明確にする
+   「何ができたら完了か？」
+
+2. 大項目に分解する
+   「主要な成果物・フェーズは？」
+
+3. 中項目に分解する
+   「それぞれ何が必要か？」
+
+4. 作業に分解する
+   「具体的に何をするか？」
+        </pre>
+      </section>
+
+      <section>
+        <h3>演習: 設備導入プロジェクトのWBS（1/2）</h3>
+        <pre class="ascii">
+加工機導入プロジェクト
+│
+├── 1. 企画・計画
+│   ├── 1.1 要件整理
+│   ├── 1.2 仕様検討
+│   ├── 1.3 ベンダー選定
+│   └── 1.4 稟議・承認
+│
+├── 2. 調達
+│   ├── 2.1 発注手続き
+│   ├── 2.2 納期調整
+│   └── 2.3 検収準備
+        </pre>
+      </section>
+
+      <section>
+        <h3>演習: 設備導入プロジェクトのWBS（2/2）</h3>
+        <pre class="ascii">
+├── 3. 設置準備
+│   ├── 3.1 レイアウト設計
+│   ├── 3.2 電気工事
+│   ├── 3.3 配管工事
+│   └── 3.4 搬入経路確保
+│
+├── 4. 設置・据付
+│   ├── 4.1 搬入
+│   ├── 4.2 据付・調整
+│   └── 4.3 配線・配管接続
+│
+├── 5. 試運転
+│   ├── 5.1 空運転確認
+│   ├── 5.2 テスト加工
+│   └── 5.3 条件出し
+│
+└── 6. 本稼働移行
+    ├── 6.1 作業者教育
+    ├── 6.2 マニュアル整備
+    └── 6.3 引き継ぎ
+        </pre>
+      </section>
+
+      <!-- 3. ガントチャート -->
+      <section>
+        <h2>3. ガントチャート</h2>
+      </section>
+
+      <section>
+        <h3>ガントチャートとは</h3>
+        <p><strong>作業スケジュールを視覚化した図</strong></p>
+        <pre class="ascii">
+作業           |週1|週2|週3|週4|週5|週6|週7|週8|
+───────────────────────────────────────────────
+1.1 要件整理   |███|   |   |   |   |   |   |   |
+1.2 仕様検討   |███|███|   |   |   |   |   |   |
+1.3 ベンダー選定|   |███|███|   |   |   |   |   |
+2.1 発注       |   |   |███|   |   |   |   |   |
+3.1 レイアウト |   |   |███|███|   |   |   |   |
+3.2 電気工事   |   |   |   |███|███|   |   |   |
+4.1 搬入       |   |   |   |   |███|   |   |   |
+4.2 据付       |   |   |   |   |███|███|   |   |
+5.1 試運転     |   |   |   |   |   |███|███|   |
+6.1 教育       |   |   |   |   |   |   |███|███|
+        </pre>
+      </section>
+
+      <section>
+        <h3>ガントチャートの要素</h3>
+        <table>
+          <tr><th>要素</th><th>説明</th></tr>
+          <tr><td>タスク</td><td>作業項目（縦軸）</td></tr>
+          <tr><td>期間</td><td>バーの長さ（横軸）</td></tr>
+          <tr><td>開始日/終了日</td><td>バーの位置</td></tr>
+          <tr><td>マイルストーン</td><td>重要な節目（&#9670;で表示）</td></tr>
+          <tr><td>依存関係</td><td>前後関係を矢印で表示</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>クリティカルパス</h3>
+        <p><strong>プロジェクト全体の期間を決める最長経路</strong></p>
+        <pre class="ascii">
+      ┌─A(3日)─┐
+開始─┤        ├─D(2日)─終了
+      └─B(5日)─┘
+          │
+          └─C(4日)─┘
+
+経路1: A→D = 3+2 = 5日
+経路2: B→D = 5+2 = 7日
+経路3: B→C = 5+4 = 9日 ← クリティカルパス
+
+プロジェクト全体: 9日
+        </pre>
+      </section>
+
+      <section>
+        <h3>クリティカルパスの重要性</h3>
+        <ul>
+          <li>クリティカルパス上の遅延 = 全体の遅延</li>
+          <li>重点的に管理すべき作業がわかる</li>
+        </ul>
+        <blockquote>クリティカルパス上の作業は「余裕がゼロ」</blockquote>
+      </section>
+
+      <!-- 4. 進捗管理 -->
+      <section>
+        <h2>4. 進捗管理</h2>
+      </section>
+
+      <section>
+        <h3>進捗の測定</h3>
+        <p><strong>計画と実績の比較:</strong></p>
+        <pre class="ascii">
+作業A:
+予定: ████████████░░░░ 75%
+実績: ████████░░░░░░░░ 50%（25%遅れ）
+        </pre>
+      </section>
+
+      <section>
+        <h3>遅延への対策</h3>
+        <table class="small">
+          <tr><th>対策</th><th>内容</th><th>トレードオフ</th></tr>
+          <tr><td>クラッシング</td><td>要員追加で短縮</td><td>コスト増加</td></tr>
+          <tr><td>ファストトラッキング</td><td>作業の並行実施</td><td>リスク増加</td></tr>
+          <tr><td>スコープ変更</td><td>範囲を縮小</td><td>成果物縮小</td></tr>
+          <tr><td>期限延長</td><td>スケジュール変更</td><td>影響大</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>進捗会議のポイント</h3>
+        <p><strong>報告すべきこと:</strong></p>
+        <ol>
+          <li>予定と実績の差</li>
+          <li>課題と対策</li>
+          <li>今後の見通し</li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>良い報告と悪い報告</h3>
+        <p><strong>悪い報告:</strong></p>
+        <blockquote>「だいたい順調です」</blockquote>
+        <p><strong>良い報告:</strong></p>
+        <blockquote>「作業Aは予定の80%完了。電気工事が1日遅れているが、据付との並行作業で吸収予定。全体期限への影響なし」</blockquote>
+      </section>
+
+      <!-- 5. リスク管理 -->
+      <section>
+        <h2>5. リスク管理</h2>
+      </section>
+
+      <section>
+        <h3>リスクとは</h3>
+        <p><strong>将来起こりうる問題</strong></p>
+        <table class="small">
+          <tr><th>リスク</th><th>発生確率</th><th>影響度</th><th>対策</th></tr>
+          <tr><td>設備納期遅延</td><td>中</td><td>高</td><td>代替ベンダー確保</td></tr>
+          <tr><td>作業者の病欠</td><td>中</td><td>中</td><td>複数人で担当</td></tr>
+          <tr><td>仕様変更</td><td>高</td><td>高</td><td>変更管理プロセス</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>リスク対応の種類</h3>
+        <table>
+          <tr><th>対応</th><th>説明</th></tr>
+          <tr><td>回避</td><td>リスクを発生させない</td></tr>
+          <tr><td>軽減</td><td>影響を小さくする</td></tr>
+          <tr><td>転嫁</td><td>保険や契約で移転</td></tr>
+          <tr><td>受容</td><td>そのまま受け入れる</td></tr>
+        </table>
+      </section>
+
+      <!-- 6. 演習とまとめ -->
+      <section class="exercise-slide">
+        <h2>6. 演習とまとめ</h2>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習: WBSとガントチャート</h3>
+        <p>以下のプロジェクトのWBSを作成してください:</p>
+        <p><strong>「職場の5S活動プロジェクト（1ヶ月）」</strong></p>
+        <pre class="ascii">
+5Sプロジェクト
+├── 1. _______________
+│   ├── 1.1 _______________
+│   └── 1.2 _______________
+├── 2. _______________
+│   └── ...
+└── 3. _______________
+        </pre>
+      </section>
+
+      <!-- キーワード -->
+      <section>
+        <h2>キーワード</h2>
+        <div class="keywords">
+          <span class="keyword-tag">プロジェクト</span>
+          <span class="keyword-tag">WBS</span>
+          <span class="keyword-tag">ガントチャート</span>
+          <span class="keyword-tag">クリティカルパス</span>
+          <span class="keyword-tag">進捗管理</span>
+          <span class="keyword-tag">リスク管理</span>
+          <span class="keyword-tag">マイルストーン</span>
+        </div>
+      </section>
+
+      <!-- 確認問題 -->
+      <section class="quiz-slide">
+        <h2>確認問題</h2>
+        <div class="quiz-item">
+          <p><strong>1.</strong> プロジェクトと定常業務の違いは何ですか？</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>2.</strong> WBSを作成する目的は何ですか？</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>3.</strong> クリティカルパスとは何ですか？</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>4.</strong> 進捗が遅れた時の対策を2つ挙げてください</p>
+        </div>
+      </section>
+
+      <!-- 次回予告 -->
+      <section>
+        <h2>次回予告</h2>
+        <div class="next-preview">
+          <h4>セッション19-20h: ITサービスマネジメント</h4>
+          <ul>
+            <li>ITILの基本</li>
+            <li>インシデント管理</li>
+            <li>SLA（サービスレベル合意）</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="assets/init.js"></script>
+</body>
+</html>

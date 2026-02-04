@@ -1,0 +1,21 @@
+# Netlify設定ファイル
+
+[build]
+  # ビルドコマンド（静的サイトなので不要）
+  command = ""
+  # 公開ディレクトリ
+  publish = "."
+
+# ヘッダー設定
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# 日本語ファイル名のリダイレクト（エンコード対応）
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14 製造業のIoT・AI活用 - 製造DX基礎コース</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="assets/custom.css">
+  <script src="assets/auth.js"></script>
+  <script>Auth.requireAuth();</script>
+</head>
+<body>
+  <div class="nav-bar">
+    <a href="index.html">目次</a>
+    <span class="current">14 製造業のIoT・AI活用</span>
+    <div class="nav-links">
+      <a href="13_システム戦略と業務改善.html" class="nav-prev">← 前へ</a>
+      <a href="15_総合演習と試験対策.html" class="nav-next">次へ →</a>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- STEP5開始スライド -->
+      <section data-background-color="#dc3545">
+        <h1 style="color: white;">STEP5 開始！</h1>
+        <p style="color: white; font-size: 1.5em;">最終STEP</p>
+        <p style="color: white;">総合・応用</p>
+        <p style="color: rgba(255,255,255,0.8); margin-top: 2em;">
+          いよいよ最終STEPです。<br>
+          これまで学んだIT知識を製造現場に応用します。
+        </p>
+      </section>
+
+      <!-- タイトル -->
+      <section class="title-slide step5">
+        <p><span class="step-badge">STEP5</span> 総合・応用</p>
+        <h1>製造業のIoT・AI活用</h1>
+        <p class="subtitle">セッション 27-28h</p>
+        <p class="level-stars">学習レベル: ★★★★★（総合・応用）</p>
+      </section>
+
+      <!-- アジェンダ -->
+      <section>
+        <h2>本日のゴール</h2>
+        <ul>
+          <li>IoTの構成要素を理解し、製造現場への適用を考えられる</li>
+          <li>AIの活用方法（外観検査、予知保全）を説明できる</li>
+          <li>学んだIT知識を総合的に製造DXに応用できる</li>
+        </ul>
+        <p style="margin-top:1em;"><strong>対応テキスト:</strong> 第4章 技術戦略 4-06 IoT・組込み、AI、ビッグデータ関連</p>
+      </section>
+
+      <!-- 1. 製造業IoTの全体像 -->
+      <section>
+        <h2>1. 製造業IoTの全体像</h2>
+      </section>
+
+      <section>
+        <h3>IoTとは</h3>
+        <p><strong>Internet of Things（モノのインターネット）</strong></p>
+        <ul>
+          <li>あらゆる「モノ」がネットワークにつながる</li>
+          <li>データを収集・活用する仕組み</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>製造業IoTの3層構造</h3>
+        <pre class="ascii">
+┌─────────────────────────────────────────┐
+│           クラウド層                     │
+│  ・大量データ蓄積                        │
+│  ・分析・機械学習                        │
+│  ・ダッシュボード                        │
+│  【関連知識】データベース、セキュリティ  │
+└───────────────────┬─────────────────────┘
+                    │
+┌───────────────────┴─────────────────────┐
+│           エッジ層                       │
+│  ・リアルタイム処理                      │
+│  ・異常検知                              │
+│  ・データ前処理                          │
+│  【関連知識】コンピュータ、OS、ネットワーク│
+└───────────────────┬─────────────────────┘
+                    │
+┌───────────────────┴─────────────────────┐
+│           センシング層                   │
+│  ・各種センサー                          │
+│  ・PLC・制御機器                         │
+│  【関連知識】ハードウェア、2進数         │
+└─────────────────────────────────────────┘
+        </pre>
+      </section>
+
+      <section>
+        <h3>センサーの種類（復習と応用）</h3>
+        <table class="small">
+          <tr><th>センサー</th><th>検出対象</th><th>製造での活用</th></tr>
+          <tr><td>振動センサー</td><td>振動</td><td>ベアリング劣化検知</td></tr>
+          <tr><td>温度センサー</td><td>温度</td><td>モーター過熱監視</td></tr>
+          <tr><td>電流センサー</td><td>電流</td><td>負荷異常検出</td></tr>
+          <tr><td>画像センサー</td><td>映像</td><td>外観検査</td></tr>
+          <tr><td>超音波センサー</td><td>距離</td><td>在庫量検出</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>IT知識との関連</h3>
+        <table class="small">
+          <tr><th>IoT要素</th><th>関連するIT知識</th></tr>
+          <tr><td>センサーデータ</td><td>2進数、データ量（ビット/バイト）</td></tr>
+          <tr><td>データ転送</td><td>ネットワーク、プロトコル</td></tr>
+          <tr><td>データ保存</td><td>データベース、正規化</td></tr>
+          <tr><td>データ保護</td><td>セキュリティ、暗号化</td></tr>
+          <tr><td>分析基盤</td><td>クラウド、サーバー</td></tr>
+        </table>
+      </section>
+
+      <!-- 2. 設備の信頼性とIoT -->
+      <section>
+        <h2>2. 設備の信頼性とIoT</h2>
+      </section>
+
+      <section>
+        <h3>MTBF/MTTRとIoT活用</h3>
+        <p><strong>従来:</strong></p>
+        <pre class="ascii">
+故障 → 修理 → 稼働 → 故障 → 修理...
+        ↑
+    故障してから対応（事後保全）
+        </pre>
+        <p><strong>IoT活用後:</strong></p>
+        <pre class="ascii">
+[センサー監視] → [異常予兆検知] → [計画保全]
+                      ↑
+              故障する前に対応（予知保全）
+        </pre>
+      </section>
+
+      <section>
+        <h3>IoT導入の効果</h3>
+        <ul>
+          <li><strong>MTBF</strong>（故障間隔）の向上</li>
+          <li><strong>MTTR</strong>（復旧時間）の短縮</li>
+          <li>稼働率の向上</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>稼働率計算への応用（復習）</h3>
+        <p><strong>問題:</strong></p>
+        <p>IoT導入前: MTBF=200h, MTTR=8h<br>
+        IoT導入後: MTBF=300h, MTTR=4h</p>
+        <p>稼働率はどう変化する？</p>
+        <pre class="ascii">
+導入前: 200/(200+8) = 96.2%
+導入後: 300/(300+4) = 98.7%
+→ 2.5ポイント向上
+        </pre>
+      </section>
+
+      <!-- 3. AI活用 -->
+      <section>
+        <h2>3. AI活用</h2>
+      </section>
+
+      <section>
+        <h3>機械学習の基本</h3>
+        <p><strong>機械学習:</strong> データからパターンを学習し、予測・判断</p>
+        <table class="small">
+          <tr><th>種類</th><th>説明</th><th>製造での活用</th></tr>
+          <tr><td>教師あり学習</td><td>正解データで学習</td><td>外観検査（良/不良）</td></tr>
+          <tr><td>教師なし学習</td><td>パターンを自動発見</td><td>異常検知</td></tr>
+          <tr><td>強化学習</td><td>試行錯誤で最適化</td><td>ロボット制御</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>従来の画像検査</h3>
+        <pre class="ascii">
+[カメラ] → [画像処理] → [ルール判定] → OK/NG
+                            ↓
+               「3mm以上の傷はNG」
+               （人がルールを設定）
+        </pre>
+      </section>
+
+      <section>
+        <h3>AI画像検査</h3>
+        <pre class="ascii">
+[カメラ] → [AIモデル] → 判定 → OK/NG
+               ↓
+      大量の良品/不良品画像で学習
+      （AIがパターンを習得）
+        </pre>
+        <p><strong>メリット:</strong></p>
+        <ul>
+          <li>微細な欠陥の検出</li>
+          <li>ルール化しにくい不良の検出</li>
+          <li>検査員の技能差解消</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>AI外観検査の要件定義での注意</h3>
+        <ul>
+          <li>学習データの量と質を確保</li>
+          <li>判定基準の明確化</li>
+          <li>誤判定時の対応フロー</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>従来の保全</h3>
+        <pre class="ascii">
+[定期保全] 決まった周期で交換
+  → 早すぎると無駄、遅すぎると故障
+        </pre>
+      </section>
+
+      <section>
+        <h3>AI予知保全</h3>
+        <pre class="ascii">
+[センサーデータ]
+     ↓
+[時系列分析]
+     ↓
+[劣化傾向予測]
+     ↓
+[最適タイミングで保全]
+        </pre>
+        <p><strong>必要なデータ:</strong></p>
+        <ul>
+          <li>振動、温度、電流の時系列データ</li>
+          <li>故障履歴（いつ、何が壊れたか）</li>
+          <li>保全履歴（いつ、何を交換したか）</li>
+        </ul>
+        <blockquote>トレーサビリティとデータベースの知識が活きる！</blockquote>
+      </section>
+
+      <!-- 4. 総合事例：スマートファクトリー -->
+      <section>
+        <h2>4. 総合事例：スマートファクトリー</h2>
+      </section>
+
+      <section>
+        <h3>スマートファクトリーの構成</h3>
+        <pre class="ascii">
+┌───────────────────────────────────────────────────┐
+│              経営ダッシュボード                    │
+│    【関連】BI、データ分析、KPI                    │
+└─────────────────────┬─────────────────────────────┘
+                      │
+┌─────────────────────┴─────────────────────────────┐
+│              生産管理システム（MES）               │
+│    【関連】ERP、データベース、要件定義           │
+└───────┬─────────────────────────────┬─────────────┘
+        │                             │
+┌───────┴───────┐             ┌───────┴───────┐
+│  外観検査AI   │             │  予知保全     │
+│  【関連】     │             │  【関連】     │
+│  画像認識     │             │  MTBF/MTTR   │
+│  機械学習     │             │  時系列分析   │
+└───────┬───────┘             └───────┬───────┘
+        │                             │
+┌───────┴─────────────────────────────┴───────┐
+│              エッジコンピューティング          │
+│    【関連】組込みシステム、リアルタイムOS     │
+└───────┬─────────────────────────────┬───────┘
+        │                             │
+┌───────┴───────┐             ┌───────┴───────┐
+│   画像センサー │             │ 振動・温度    │
+│               │             │ センサー      │
+└───────────────┘             └───────────────┘
+        </pre>
+      </section>
+
+      <section>
+        <h3>導入に必要な知識の活用</h3>
+        <table class="small">
+          <tr><th>導入フェーズ</th><th>活用する知識</th></tr>
+          <tr><td>企画</td><td>経営戦略、ROI、DX</td></tr>
+          <tr><td>要件定義</td><td>機能/非機能要件、SLA</td></tr>
+          <tr><td>ベンダー選定</td><td>知的財産、契約</td></tr>
+          <tr><td>開発</td><td>プロジェクト管理、WBS</td></tr>
+          <tr><td>運用</td><td>ITIL、インシデント管理</td></tr>
+          <tr><td>セキュリティ</td><td>OTセキュリティ、CIA</td></tr>
+        </table>
+      </section>
+
+      <!-- 5. 演習とまとめ -->
+      <section class="exercise-slide">
+        <h2>5. 演習とまとめ</h2>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習: IoT/AI導入企画</h3>
+        <p>自部門でIoT/AIを活用するとしたら？</p>
+        <div class="exercise-box">
+          <p><strong>Step1: 課題の整理</strong></p>
+          <p>現状の課題: _______________________</p>
+          <p>課題の定量化: _______________________</p>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習: IoT/AI導入企画（続き）</h3>
+        <div class="exercise-box">
+          <p><strong>Step2: 解決策の検討</strong></p>
+          <p>活用する技術: □IoT監視 □AI外観検査 □予知保全 □RPA □その他</p>
+          <p>必要なデータ: _______________________</p>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習: IoT/AI導入企画（続き）</h3>
+        <div class="exercise-box">
+          <p><strong>Step3: 効果の見積り</strong></p>
+          <p>期待効果: _______________________</p>
+          <p>概算コスト: _______________________</p>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習: IoT/AI導入企画（続き）</h3>
+        <div class="exercise-box">
+          <p><strong>Step4: 関連するIT知識</strong></p>
+          <p>必要な知識をチェック:</p>
+          <p>□ ネットワーク  □ データベース  □ セキュリティ</p>
+          <p>□ プロジェクト管理  □ 要件定義  □ ITIL</p>
+        </div>
+      </section>
+
+      <!-- キーワード -->
+      <section>
+        <h2>キーワード</h2>
+        <div class="keywords">
+          <span class="keyword-tag">IoT</span>
+          <span class="keyword-tag">エッジコンピューティング</span>
+          <span class="keyword-tag">クラウド</span>
+          <span class="keyword-tag">センサー</span>
+          <span class="keyword-tag">AI</span>
+          <span class="keyword-tag">機械学習</span>
+          <span class="keyword-tag">外観検査</span>
+          <span class="keyword-tag">予知保全</span>
+          <span class="keyword-tag">スマートファクトリー</span>
+          <span class="keyword-tag">製造DX</span>
+        </div>
+      </section>
+
+      <!-- 確認問題 -->
+      <section class="quiz-slide">
+        <h2>確認問題</h2>
+        <div class="quiz-item">
+          <p><strong>1.</strong> IoTの3層構造を説明してください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>2.</strong> 予知保全のメリットをMTBF/MTTRを使って説明してください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>3.</strong> AI外観検査と従来の画像検査の違いは？</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>4.</strong> スマートファクトリー導入に必要なIT知識を3つ挙げてください</p>
+        </div>
+      </section>
+
+      <!-- 次回予告 -->
+      <section>
+        <h2>次回予告</h2>
+        <div class="next-preview">
+          <h4>セッション29-30h: 総合演習と試験対策（最終回）</h4>
+          <ul>
+            <li>これまでの知識の総復習</li>
+            <li>DX改善企画の発表</li>
+            <li>ITパスポート模擬試験</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="assets/init.js"></script>
+</body>
+</html>

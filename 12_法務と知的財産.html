@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12 法務と知的財産 - 製造DX基礎コース</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="assets/custom.css">
+  <script src="assets/auth.js"></script>
+  <script>Auth.requireAuth();</script>
+</head>
+<body>
+  <div class="nav-bar">
+    <a href="index.html">目次</a>
+    <span class="current">12 法務と知的財産</span>
+    <div class="nav-links">
+      <a href="11_企業活動と経営戦略.html" class="nav-prev">← 前へ</a>
+      <a href="13_システム戦略と業務改善.html" class="nav-next">次へ →</a>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- タイトル -->
+      <section class="title-slide step4">
+        <p><span class="step-badge">STEP4</span> ビジネスと法務を理解する</p>
+        <h1>法務と知的財産</h1>
+        <p class="subtitle">セッション 23-24h</p>
+        <p class="level-stars">学習レベル: ★★★★☆（応用レベル）</p>
+      </section>
+
+      <!-- アジェンダ -->
+      <section>
+        <h2>本日のゴール</h2>
+        <ul>
+          <li>知的財産権の種類と保護方法を理解する</li>
+          <li>労働関連法規（派遣・請負）のリスクを認識する</li>
+          <li>コンプライアンスの重要性を理解する</li>
+        </ul>
+        <p style="margin-top:1em;"><strong>対応テキスト:</strong> 第2章 法務（2-01 知的財産権、2-04 労働関連法規）</p>
+      </section>
+
+      <!-- 1. 知的財産権の概要 -->
+      <section>
+        <h2>1. 知的財産権の概要</h2>
+      </section>
+
+      <section>
+        <h3>知的財産権とは</h3>
+        <p><strong>人間の知的創造活動から生まれた財産の権利</strong></p>
+        <pre class="ascii">
+知的財産権
+├── 産業財産権（特許庁管轄）
+│   ├── 特許権
+│   ├── 実用新案権
+│   ├── 意匠権
+│   └── 商標権
+│
+├── 著作権（無方式主義）
+│
+└── その他
+    ├── 営業秘密
+    └── 不正競争防止法
+        </pre>
+      </section>
+
+      <section>
+        <h3>産業財産権の比較</h3>
+        <table>
+          <tr><th>権利</th><th>保護対象</th><th>保護期間</th></tr>
+          <tr><td>特許権</td><td>発明（高度な技術）</td><td>出願から20年</td></tr>
+          <tr><td>実用新案権</td><td>考案（小発明）</td><td>出願から10年</td></tr>
+          <tr><td>意匠権</td><td>デザイン</td><td>出願から25年</td></tr>
+          <tr><td>商標権</td><td>ブランド名・ロゴ</td><td>登録から10年（更新可）</td></tr>
+        </table>
+      </section>
+
+      <!-- 2. 特許と営業秘密 -->
+      <section>
+        <h2>2. 特許と営業秘密</h2>
+      </section>
+
+      <section>
+        <h3>特許権</h3>
+        <p><strong>発明を保護する権利</strong></p>
+        <p><strong>特許の要件:</strong></p>
+        <ul>
+          <li><strong>新規性</strong> - 世の中にない新しいもの</li>
+          <li><strong>進歩性</strong> - 容易に思いつかない</li>
+          <li><strong>産業上の利用可能性</strong> - 実際に使える</li>
+        </ul>
+        <p><strong>製造現場での特許例:</strong></p>
+        <ul>
+          <li>新しい加工方法</li>
+          <li>独自の検査装置</li>
+          <li>効率的な製造システム</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>特許の注意点</h3>
+        <blockquote>
+          <p>公開前に出願が必要</p>
+          <p>展示会・学会発表で新規性を失う</p>
+        </blockquote>
+      </section>
+
+      <section>
+        <h3>営業秘密</h3>
+        <p><strong>企業が秘密として管理するノウハウ</strong></p>
+        <p><strong>営業秘密の3要件:</strong></p>
+        <table>
+          <tr><th>要件</th><th>内容</th><th>対策例</th></tr>
+          <tr><td>秘密管理性</td><td>秘密として管理</td><td>「秘」マーク、アクセス制限</td></tr>
+          <tr><td>有用性</td><td>事業に有用</td><td>技術的・営業的価値</td></tr>
+          <tr><td>非公知性</td><td>公に知られていない</td><td>社外非公開</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>特許 vs 営業秘密</h3>
+        <table>
+          <tr><th>項目</th><th>特許</th><th>営業秘密</th></tr>
+          <tr><td>公開</td><td>公開される</td><td>非公開</td></tr>
+          <tr><td>保護期間</td><td>20年（有限）</td><td>管理続ける限り</td></tr>
+          <tr><td>権利主張</td><td>他社の侵害を止められる</td><td>止められない</td></tr>
+          <tr><td>リスク</td><td>公開後は真似される</td><td>漏洩リスク</td></tr>
+        </table>
+        <p><strong>判断基準:</strong></p>
+        <ul>
+          <li>リバースエンジニアリングで判明する → 特許向き</li>
+          <li>製品を見てもわからない → 営業秘密向き</li>
+        </ul>
+      </section>
+
+      <!-- 3. 著作権 -->
+      <section>
+        <h2>3. 著作権</h2>
+      </section>
+
+      <section>
+        <h3>著作権とは</h3>
+        <p><strong>創作物を保護する権利（登録不要）</strong></p>
+        <pre class="ascii">
+著作権の発生: 創作と同時に自動的に発生
+保護期間: 著作者の死後70年
+        </pre>
+      </section>
+
+      <section>
+        <h3>製造現場での著作物</h3>
+        <table>
+          <tr><th>著作物</th><th>例</th></tr>
+          <tr><td>文書</td><td>マニュアル、手順書</td></tr>
+          <tr><td>図面</td><td>CADデータ、設計図</td></tr>
+          <tr><td>プログラム</td><td>PLCラダー、制御ソフト</td></tr>
+          <tr><td>写真・動画</td><td>作業手順動画</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>著作権の注意点</h3>
+        <ul>
+          <li>外注先が作成した図面の権利は契約で確認</li>
+          <li>他社マニュアルの無断コピーはNG</li>
+          <li>フリー素材でも利用条件を確認</li>
+        </ul>
+      </section>
+
+      <!-- 4. 労働関連法規 -->
+      <section>
+        <h2>4. 労働関連法規</h2>
+      </section>
+
+      <section>
+        <h3>派遣と請負の違い</h3>
+        <pre class="ascii">
+【請負契約】
+発注者 ────契約──── 請負業者
+                         │
+                    指揮命令
+                         ↓
+                    請負労働者
+
+【派遣契約】
+派遣先 ────契約──── 派遣元
+  │
+  指揮命令
+  ↓
+派遣労働者
+        </pre>
+      </section>
+
+      <section>
+        <h3>派遣と請負の比較</h3>
+        <table>
+          <tr><th>項目</th><th>請負</th><th>派遣</th></tr>
+          <tr><td>指揮命令</td><td>請負業者が行う</td><td>派遣先が行う</td></tr>
+          <tr><td>完成責任</td><td>請負業者にあり</td><td>なし</td></tr>
+          <tr><td>労務管理</td><td>請負業者が行う</td><td>派遣元が行う</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>偽装請負</h3>
+        <p><strong>請負契約なのに、発注者が直接指揮命令すること</strong></p>
+        <p><strong>偽装請負の例:</strong></p>
+        <ul>
+          <li>発注者が直接作業指示を出す</li>
+          <li>発注者が勤怠管理を行う</li>
+          <li>発注者の朝礼に参加させる</li>
+          <li>残業を直接指示する</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>偽装請負のリスク</h3>
+        <ul>
+          <li>労働者派遣法違反</li>
+          <li>行政処分</li>
+          <li>企業イメージ低下</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>正しい対応</h3>
+        <p><strong>OK:</strong></p>
+        <ul>
+          <li>請負業者のリーダーを通じて依頼</li>
+          <li>作業仕様書で範囲を明確化</li>
+          <li>請負業者が自社で勤怠管理</li>
+        </ul>
+        <p><strong>NG:</strong></p>
+        <ul>
+          <li>「○○さん、これやって」と直接指示</li>
+          <li>勤務時間を発注者が決める</li>
+          <li>発注者の制服を着用させる</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>36協定</h3>
+        <p><strong>時間外労働・休日労働に関する労使協定</strong></p>
+        <table>
+          <tr><th>項目</th><th>上限</th></tr>
+          <tr><td>原則</td><td>月45時間、年360時間</td></tr>
+          <tr><td>特別条項</td><td>年720時間、月100時間未満</td></tr>
+        </table>
+      </section>
+
+      <!-- 5. コンプライアンス -->
+      <section>
+        <h2>5. コンプライアンス</h2>
+      </section>
+
+      <section>
+        <h3>コンプライアンスとは</h3>
+        <p><strong>法令遵守 + 倫理・社会規範の遵守</strong></p>
+        <pre class="ascii">
+コンプライアンス
+├── 法令遵守（法律を守る）
+├── 社内規則遵守
+└── 社会的責任（CSR）
+        </pre>
+      </section>
+
+      <section>
+        <h3>製造業で注意すべき法令</h3>
+        <table>
+          <tr><th>法令</th><th>内容</th></tr>
+          <tr><td>製造物責任法（PL法）</td><td>製品の欠陥による賠償責任</td></tr>
+          <tr><td>下請法</td><td>下請取引の適正化</td></tr>
+          <tr><td>景品表示法</td><td>不当表示の禁止</td></tr>
+          <tr><td>個人情報保護法</td><td>個人情報の適切な取り扱い</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>製造物責任法（PL法）</h3>
+        <p><strong>製品の欠陥で損害が生じた場合の賠償責任</strong></p>
+        <p><strong>対策:</strong></p>
+        <ul>
+          <li>トレーサビリティの確保</li>
+          <li>品質記録の保管</li>
+          <li>設計・製造の注意義務</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>下請法</h3>
+        <p><strong>親事業者の禁止行為:</strong></p>
+        <ul>
+          <li>支払遅延</li>
+          <li>代金減額</li>
+          <li>返品</li>
+          <li>買いたたき</li>
+        </ul>
+      </section>
+
+      <!-- 6. 演習 -->
+      <section class="exercise-slide">
+        <h2>6. 演習とまとめ</h2>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習1: 権利の分類</h3>
+        <p>以下を適切な権利に分類してください:</p>
+        <table class="small">
+          <tr><th>保護対象</th><th>権利</th></tr>
+          <tr><td>新しい加工方法</td><td></td></tr>
+          <tr><td>会社のロゴ</td><td></td></tr>
+          <tr><td>製品のデザイン</td><td></td></tr>
+          <tr><td>作業マニュアル</td><td></td></tr>
+          <tr><td>製造ノウハウ</td><td></td></tr>
+        </table>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習2: 偽装請負チェック</h3>
+        <p>以下の行為は偽装請負になるか？</p>
+        <table class="small">
+          <tr><th>行為</th><th>OK/NG</th></tr>
+          <tr><td>請負作業員に直接残業を依頼</td><td></td></tr>
+          <tr><td>請負業者のリーダーに作業変更を依頼</td><td></td></tr>
+          <tr><td>請負作業員を自社の朝礼に参加させる</td><td></td></tr>
+        </table>
+      </section>
+
+      <!-- まとめ -->
+      <section>
+        <h2>キーワード</h2>
+        <div class="keywords">
+          <span class="keyword-tag">知的財産権</span>
+          <span class="keyword-tag">特許権</span>
+          <span class="keyword-tag">営業秘密</span>
+          <span class="keyword-tag">著作権</span>
+          <span class="keyword-tag">派遣</span>
+          <span class="keyword-tag">請負</span>
+          <span class="keyword-tag">偽装請負</span>
+          <span class="keyword-tag">36協定</span>
+          <span class="keyword-tag">コンプライアンス</span>
+          <span class="keyword-tag">PL法</span>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2>確認問題</h2>
+        <div class="quiz-item">
+          <p><strong>1.</strong> 特許と営業秘密の違いを説明してください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>2.</strong> 営業秘密の3要件は何ですか？</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>3.</strong> 派遣と請負の違いは何ですか？</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>4.</strong> 偽装請負とは何ですか？</p>
+        </div>
+      </section>
+
+      <!-- 次回予告 -->
+      <section>
+        <h2>次回予告</h2>
+        <div class="next-preview">
+          <h4>セッション25-26h: システム戦略と業務改善</h4>
+          <ul>
+            <li>業務プロセス改善</li>
+            <li>IT投資の考え方</li>
+            <li>DXの基本</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="assets/init.js"></script>
+</body>
+</html>

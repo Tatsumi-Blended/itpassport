@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05 データベースの基礎 - 製造DX基礎コース</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="assets/custom.css">
+  <script src="assets/auth.js"></script>
+  <script>Auth.requireAuth();</script>
+</head>
+<body>
+  <div class="nav-bar">
+    <a href="index.html">目次</a>
+    <span class="current">05 データベースの基礎</span>
+    <div class="nav-links">
+      <a href="04_ネットワークの基礎.html" class="nav-prev">← 前へ</a>
+      <a href="06_情報セキュリティ.html" class="nav-next">次へ →</a>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- タイトル -->
+      <section class="title-slide step2">
+        <p><span class="step-badge">STEP2</span> データを扱う力をつける</p>
+        <h1>データベースの基礎</h1>
+        <p class="subtitle">セッション 9-10h</p>
+        <p class="level-stars">学習レベル: ★★☆☆☆（基礎知識）</p>
+      </section>
+
+      <!-- アジェンダ -->
+      <section>
+        <h2>本日のゴール</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h4>理解</h4>
+            <p>データベースの必要性と、ExcelやCSVとの違いを理解する</p>
+          </div>
+          <div class="card">
+            <h4>習得</h4>
+            <p>テーブル設計の基本概念（正規化、キー、リレーション）を習得する</p>
+          </div>
+          <div class="card">
+            <h4>実践</h4>
+            <p>基本的なSQL文を読み解き、製造現場での活用イメージを持つ</p>
+          </div>
+        </div>
+        <p class="text-center" style="margin-top:1em;"><strong>対応テキスト:</strong> 第13章 データベース</p>
+      </section>
+
+      <!-- STEP2開始 -->
+      <section>
+        <h2>STEP2 開始</h2>
+        <div class="highlight-box">
+          <p>STEP1でITの土台（ハードウェア、ソフトウェア、ネットワーク）を学びました。</p>
+          <p>STEP2では、製造DXの核心である<strong>「データを扱う力」</strong>を身につけます。</p>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1.5em;">
+          <div class="card">
+            <h4>このセッション</h4>
+            <p><strong>データベースの基礎</strong><br>データの構造化と管理</p>
+          </div>
+          <div class="card">
+            <h4>次のセッション</h4>
+            <p><strong>情報セキュリティ</strong><br>データの保護と安全管理</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. なぜデータベースが必要か -->
+      <section>
+        <h2>1. なぜデータベースが必要か</h2>
+        <p class="text-secondary">製造現場のデータ管理における課題</p>
+      </section>
+
+      <section>
+        <h3>製造現場でよくある「データの困りごと」</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>在庫管理の混乱</h4>
+            <ul>
+              <li>部品表がExcelで管理されている</li>
+              <li>Aさんが編集中でBさんが開けない</li>
+              <li>「在庫管理_最新版_田中修正.xlsx」が乱立</li>
+              <li>どれが正しいデータかわからない</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>品質データの分散</h4>
+            <ul>
+              <li>検査データが各工程でバラバラに保存</li>
+              <li>ロット単位での追跡が困難</li>
+              <li>不良発生時の原因究明に時間がかかる</li>
+              <li>データ間の整合性が取れない</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Excel管理の限界を具体的に見る</h3>
+        <div class="highlight-box" style="background: var(--surface-card);">
+          <p><strong>シナリオ：部品在庫をExcelで管理している製造現場</strong></p>
+        </div>
+        <div class="flow-chart">
+          <div class="flow-box">Aさん<br><span class="text-secondary small">在庫登録中</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">ファイル<br><span class="text-secondary small">ロック状態</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">Bさん<br><span class="text-secondary small">「読取専用で開く」</span></div>
+        </div>
+        <div class="card-grid cols-3" style="margin-top: 1em;">
+          <div class="card">
+            <h4>同時編集</h4>
+            <p class="text-secondary">基本的に不可能。ファイルロックが発生</p>
+          </div>
+          <div class="card">
+            <h4>データ量</h4>
+            <p class="text-secondary">数万行を超えると動作が重くなる</p>
+          </div>
+          <div class="card">
+            <h4>入力ミス</h4>
+            <p class="text-secondary">「部品番号」に文字列も数値も入力可能</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>データベースが解決すること</h3>
+        <div class="compare-cards">
+          <div class="compare-card">
+            <h4>Excel・CSVファイル</h4>
+            <ul>
+              <li>1人ずつしか編集できない</li>
+              <li>データ量に限界がある（数万行程度）</li>
+              <li>入力値の制約が弱い</li>
+              <li>ファイル間の整合性は手動で維持</li>
+              <li>検索は遅い（全件走査）</li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <h4>データベース</h4>
+            <ul>
+              <li>数百人が同時にアクセス可能</li>
+              <li>数億件のデータも高速処理</li>
+              <li>データ型・制約で入力を厳格に管理</li>
+              <li>リレーションで自動的に整合性を保証</li>
+              <li>インデックスによる高速検索</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>製造業でのデータベース活用例</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>生産管理システム</h4>
+            <ul>
+              <li>製造指示・実績データの一元管理</li>
+              <li>工程間でのリアルタイム情報共有</li>
+              <li>生産計画と実績の比較分析</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>品質管理システム</h4>
+            <ul>
+              <li>検査データの蓄積と統計分析</li>
+              <li>ロットトレーサビリティ</li>
+              <li>不良原因の傾向分析</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>在庫管理システム</h4>
+            <ul>
+              <li>部品・製品の入出庫管理</li>
+              <li>安全在庫の自動アラート</li>
+              <li>棚卸差異の把握</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>設備管理システム</h4>
+            <ul>
+              <li>設備稼働データの収集</li>
+              <li>予防保全スケジュール管理</li>
+              <li>故障履歴と傾向分析</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. データベースの基本構造 -->
+      <section>
+        <h2>2. データベースの基本構造</h2>
+        <p class="text-secondary">RDBMS（関係データベース）の仕組み</p>
+      </section>
+
+      <section>
+        <h3>RDBMS（関係データベース管理システム）</h3>
+        <div class="highlight-box">
+          <p><strong>RDBMS</strong> = Relational Database Management System</p>
+          <p>データを「表（テーブル）」形式で管理し、表同士を「関係（リレーション）」で結びつけるシステム</p>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>商用製品</h4>
+            <ul>
+              <li><strong>Oracle Database</strong><br>大企業の基幹システム向け</li>
+              <li><strong>SQL Server</strong><br>Microsoft製、Windows環境に強い</li>
+              <li><strong>DB2</strong><br>IBM製、メインフレーム系</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>オープンソース</h4>
+            <ul>
+              <li><strong>MySQL / MariaDB</strong><br>Webシステムで広く利用</li>
+              <li><strong>PostgreSQL</strong><br>高機能、地理情報対応</li>
+              <li><strong>SQLite</strong><br>組み込み向け、ファイル単体で動作</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>テーブルの基本構造</h3>
+        <p><strong>部品マスタの例</strong></p>
+        <table>
+          <thead>
+            <tr>
+              <th>部品コード</th>
+              <th>部品名</th>
+              <th>単価（円）</th>
+              <th>在庫数</th>
+              <th>発注点</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>P001</strong></td><td>ボルトM8×25</td><td>15</td><td>500</td><td>100</td></tr>
+            <tr><td><strong>P002</strong></td><td>ナットM8</td><td>8</td><td>800</td><td>200</td></tr>
+            <tr><td><strong>P003</strong></td><td>平ワッシャーM8</td><td>3</td><td>1,200</td><td>300</td></tr>
+            <tr><td><strong>P004</strong></td><td>ベアリング6203</td><td>450</td><td>50</td><td>20</td></tr>
+          </tbody>
+        </table>
+        <div class="card-grid cols-3" style="margin-top: 1em;">
+          <div class="card">
+            <h4>テーブル（表）</h4>
+            <p>データを格納する「器」</p>
+          </div>
+          <div class="card">
+            <h4>レコード（行）</h4>
+            <p>1件のデータ<br>例: P001の部品情報</p>
+          </div>
+          <div class="card">
+            <h4>フィールド（列）</h4>
+            <p>データ項目<br>例: 部品名、単価</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>主キー（Primary Key）</h3>
+        <div class="highlight-box">
+          <p><strong>主キー</strong>：各レコードを一意に識別するためのフィールド</p>
+        </div>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>主キーの条件</h4>
+            <ul>
+              <li><strong>一意性</strong>：重複した値は不可</li>
+              <li><strong>NOT NULL</strong>：空値は不可</li>
+              <li><strong>不変性</strong>：原則として変更しない</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>主キーの例</h4>
+            <ul>
+              <li>部品コード（P001, P002...）</li>
+              <li>社員番号（EMP001, EMP002...）</li>
+              <li>受注番号（ORD-2024-00001...）</li>
+              <li>自動採番ID（1, 2, 3...）</li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-secondary" style="margin-top: 1em;">
+          製造現場では「品番」「ロット番号」「設備コード」などが主キーになることが多い
+        </p>
+      </section>
+
+      <section>
+        <h3>外部キー（Foreign Key）とリレーション</h3>
+        <p><strong>テーブル間を関連付ける仕組み</strong></p>
+        <div class="flow-chart" style="flex-wrap: wrap;">
+          <div class="flow-box" style="min-width: 150px;">
+            <strong>部品マスタ</strong><br>
+            <span class="text-secondary small">部品コード (PK)<br>部品名<br>単価</span>
+          </div>
+          <div class="flow-arrow">←</div>
+          <div class="flow-box" style="min-width: 200px;">
+            <strong>在庫テーブル</strong><br>
+            <span class="text-secondary small">部品コード (FK)<br>倉庫コード<br>数量</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box" style="min-width: 150px;">
+            <strong>倉庫マスタ</strong><br>
+            <span class="text-secondary small">倉庫コード (PK)<br>倉庫名<br>所在地</span>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top: 1em;">
+          <p><strong>参照整合性</strong>：存在しない部品コードや倉庫コードは登録できない</p>
+          <p class="text-secondary">→ データの矛盾を防ぎ、一貫性を保証する</p>
+        </div>
+      </section>
+
+      <section>
+        <h3>データ型と制約</h3>
+        <p><strong>データベースが「入力ミス」を防ぐ仕組み</strong></p>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>主なデータ型</h4>
+            <table class="small">
+              <tr><th>データ型</th><th>用途</th></tr>
+              <tr><td>INTEGER</td><td>整数（数量、個数）</td></tr>
+              <tr><td>DECIMAL</td><td>小数（金額、寸法）</td></tr>
+              <tr><td>VARCHAR</td><td>可変長文字列（名称）</td></tr>
+              <tr><td>DATE</td><td>日付（製造日、納期）</td></tr>
+              <tr><td>TIMESTAMP</td><td>日時（登録日時）</td></tr>
+            </table>
+          </div>
+          <div class="card">
+            <h4>主な制約</h4>
+            <table class="small">
+              <tr><th>制約</th><th>意味</th></tr>
+              <tr><td>NOT NULL</td><td>空値を禁止</td></tr>
+              <tr><td>UNIQUE</td><td>重複値を禁止</td></tr>
+              <tr><td>CHECK</td><td>値の範囲を制限</td></tr>
+              <tr><td>DEFAULT</td><td>既定値を設定</td></tr>
+              <tr><td>FOREIGN KEY</td><td>参照整合性</td></tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. データの正規化 -->
+      <section>
+        <h2>3. データの正規化</h2>
+        <p class="text-secondary">効率的で矛盾のないデータ設計</p>
+      </section>
+
+      <section>
+        <h3>正規化とは</h3>
+        <div class="highlight-box">
+          <p><strong>正規化</strong>：データの重複を排除し、更新時の異常（不整合）を防ぐためのテーブル設計手法</p>
+        </div>
+        <div class="card-grid cols-3">
+          <div class="card">
+            <h4>重複の排除</h4>
+            <p>同じ情報を複数箇所に持たない</p>
+          </div>
+          <div class="card">
+            <h4>更新異常の防止</h4>
+            <p>1箇所を変更すれば全体に反映</p>
+          </div>
+          <div class="card">
+            <h4>データ整合性</h4>
+            <p>矛盾したデータが入らない</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>正規化前の問題：受注データの例</h3>
+        <p><strong>問題のあるテーブル設計</strong></p>
+        <table class="small">
+          <thead>
+            <tr><th>受注No</th><th>受注日</th><th>顧客名</th><th>顧客住所</th><th>商品1</th><th>数量1</th><th>商品2</th><th>数量2</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>001</td><td>2024/01/15</td><td>A製作所</td><td>東京都大田区</td><td>ボルトM8</td><td>100</td><td>ナットM8</td><td>100</td></tr>
+            <tr><td>002</td><td>2024/01/16</td><td>A製作所</td><td>東京都大田区</td><td>ワッシャーM8</td><td>200</td><td></td><td></td></tr>
+            <tr><td>003</td><td>2024/01/17</td><td>B工業</td><td>神奈川県横浜市</td><td>ボルトM8</td><td>50</td><td>ナットM8</td><td>50</td></tr>
+          </tbody>
+        </table>
+        <div class="card-grid cols-3" style="margin-top: 1em;">
+          <div class="card">
+            <h4>冗長性</h4>
+            <p>「A製作所」「東京都大田区」が重複して格納されている</p>
+          </div>
+          <div class="card">
+            <h4>更新異常</h4>
+            <p>住所変更時、複数行を漏れなく修正する必要がある</p>
+          </div>
+          <div class="card">
+            <h4>構造の問題</h4>
+            <p>商品3、商品4...と列が際限なく増える</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>正規化後の設計</h3>
+        <div class="flow-chart" style="flex-wrap: wrap;">
+          <div class="flow-box" style="min-width: 130px;">
+            <strong>顧客マスタ</strong><br>
+            <span class="text-secondary small">顧客CD (PK)<br>顧客名<br>住所</span>
+          </div>
+          <div class="flow-arrow">←</div>
+          <div class="flow-box" style="min-width: 130px;">
+            <strong>受注ヘッダ</strong><br>
+            <span class="text-secondary small">受注No (PK)<br>受注日<br>顧客CD (FK)</span>
+          </div>
+          <div class="flow-arrow">←</div>
+          <div class="flow-box" style="min-width: 130px;">
+            <strong>受注明細</strong><br>
+            <span class="text-secondary small">受注No (FK)<br>明細No<br>商品CD (FK)<br>数量</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box" style="min-width: 130px;">
+            <strong>商品マスタ</strong><br>
+            <span class="text-secondary small">商品CD (PK)<br>商品名<br>単価</span>
+          </div>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>正規化のメリット</h4>
+            <ul>
+              <li>顧客情報は1箇所だけ（修正も1箇所）</li>
+              <li>商品が増えても明細行が増えるだけ</li>
+              <li>存在しない顧客や商品を参照できない</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>注意点</h4>
+            <ul>
+              <li>テーブルが分かれるので結合（JOIN）が必要</li>
+              <li>過度な正規化はパフォーマンス低下の原因に</li>
+              <li>実務では適度な非正規化も検討</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>正規化のレベル（参考）</h3>
+        <div class="card-grid">
+          <div class="card">
+            <h4>第1正規形</h4>
+            <p>繰り返し項目を排除<br><span class="text-secondary">商品1, 商品2... → 明細テーブルへ</span></p>
+          </div>
+          <div class="card">
+            <h4>第2正規形</h4>
+            <p>部分関数従属を排除<br><span class="text-secondary">主キーの一部にだけ依存する項目を分離</span></p>
+          </div>
+          <div class="card">
+            <h4>第3正規形</h4>
+            <p>推移的関数従属を排除<br><span class="text-secondary">非キー項目間の依存関係を分離</span></p>
+          </div>
+        </div>
+        <p class="text-secondary text-center" style="margin-top: 1em;">
+          ITパスポート試験では「正規化の目的」と「基本的な考え方」が問われる
+        </p>
+      </section>
+
+      <!-- 4. SQL入門 -->
+      <section>
+        <h2>4. SQL入門</h2>
+        <p class="text-secondary">データベースを操作する言語</p>
+      </section>
+
+      <section>
+        <h3>SQLとは</h3>
+        <div class="highlight-box">
+          <p><strong>SQL</strong>（Structured Query Language）</p>
+          <p>データベースに対して問い合わせ（Query）や操作を行うための標準言語</p>
+          <p class="text-secondary">読み方：エス・キュー・エル / シークェル</p>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>データ操作言語（DML）</h4>
+            <table class="small">
+              <tr><th>操作</th><th>SQL文</th><th>意味</th></tr>
+              <tr><td>Create</td><td>INSERT</td><td>データ追加</td></tr>
+              <tr><td>Read</td><td>SELECT</td><td>データ取得</td></tr>
+              <tr><td>Update</td><td>UPDATE</td><td>データ更新</td></tr>
+              <tr><td>Delete</td><td>DELETE</td><td>データ削除</td></tr>
+            </table>
+          </div>
+          <div class="card">
+            <h4>その他のSQL分類</h4>
+            <ul>
+              <li><strong>DDL</strong>：テーブル作成・変更<br>(CREATE, ALTER, DROP)</li>
+              <li><strong>DCL</strong>：権限管理<br>(GRANT, REVOKE)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>SELECT文の基本構文</h3>
+        <div class="highlight-box" style="text-align: left;">
+          <pre><code class="sql">SELECT 列名1, 列名2, ...
+FROM テーブル名
+WHERE 条件
+ORDER BY 列名;</code></pre>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>全件取得</h4>
+            <pre><code class="sql">SELECT * FROM 部品マスタ;</code></pre>
+            <p class="text-secondary">部品マスタの全レコード・全列を取得</p>
+          </div>
+          <div class="card">
+            <h4>特定の列を取得</h4>
+            <pre><code class="sql">SELECT 部品コード, 部品名
+FROM 部品マスタ;</code></pre>
+            <p class="text-secondary">必要な列だけを指定して取得</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>WHERE句：条件による絞り込み</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>単一条件</h4>
+            <pre><code class="sql">SELECT * FROM 部品マスタ
+WHERE 在庫数 < 100;</code></pre>
+            <p class="text-secondary">在庫数が100未満の部品を取得</p>
+          </div>
+          <div class="card">
+            <h4>複数条件（AND）</h4>
+            <pre><code class="sql">SELECT * FROM 部品マスタ
+WHERE 在庫数 < 100
+  AND 単価 > 100;</code></pre>
+            <p class="text-secondary">在庫少&高単価の部品（要発注）</p>
+          </div>
+        </div>
+        <table class="small" style="margin-top: 1em;">
+          <tr><th>演算子</th><th>意味</th><th>例</th></tr>
+          <tr><td>= / &lt;&gt;</td><td>等しい / 等しくない</td><td>WHERE 状態 = '有効'</td></tr>
+          <tr><td>&gt; / &lt; / &gt;= / &lt;=</td><td>比較</td><td>WHERE 単価 &gt;= 100</td></tr>
+          <tr><td>BETWEEN</td><td>範囲</td><td>WHERE 在庫数 BETWEEN 10 AND 50</td></tr>
+          <tr><td>LIKE</td><td>部分一致</td><td>WHERE 部品名 LIKE '%ボルト%'</td></tr>
+          <tr><td>IN</td><td>複数値のいずれか</td><td>WHERE 倉庫CD IN ('W01', 'W02')</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>ORDER BY句：並び替え</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>昇順（ASC：小→大）</h4>
+            <pre><code class="sql">SELECT * FROM 部品マスタ
+ORDER BY 在庫数 ASC;</code></pre>
+            <p class="text-secondary">在庫数の少ない順に表示<br>（ASCは省略可能）</p>
+          </div>
+          <div class="card">
+            <h4>降順（DESC：大→小）</h4>
+            <pre><code class="sql">SELECT * FROM 部品マスタ
+ORDER BY 単価 DESC;</code></pre>
+            <p class="text-secondary">単価の高い順に表示</p>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top: 1em;">
+          <h4>複合ソートの例</h4>
+          <pre><code class="sql">SELECT * FROM 部品マスタ
+ORDER BY カテゴリ ASC, 在庫数 DESC;</code></pre>
+          <p class="text-secondary">カテゴリ順に並べ、同じカテゴリ内では在庫数の多い順</p>
+        </div>
+      </section>
+
+      <section>
+        <h3>製造現場でよく使うSQLパターン</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>在庫不足部品の抽出</h4>
+            <pre><code class="sql">SELECT 部品コード, 部品名,
+       在庫数, 発注点
+FROM 部品マスタ
+WHERE 在庫数 < 発注点
+ORDER BY (発注点 - 在庫数) DESC;</code></pre>
+          </div>
+          <div class="card">
+            <h4>特定期間の受注集計</h4>
+            <pre><code class="sql">SELECT 商品CD, SUM(数量) AS 合計数量
+FROM 受注明細
+WHERE 受注日 BETWEEN '2024-01-01'
+                 AND '2024-01-31'
+GROUP BY 商品CD;</code></pre>
+          </div>
+        </div>
+        <p class="text-secondary text-center" style="margin-top: 1em;">
+          実務ではBI（Business Intelligence）ツールがSQLを自動生成することも多い
+        </p>
+      </section>
+
+      <section>
+        <h3>テーブルの結合（JOIN）</h3>
+        <p><strong>複数テーブルを組み合わせてデータを取得</strong></p>
+        <div class="highlight-box" style="text-align: left;">
+          <pre><code class="sql">SELECT 部品マスタ.部品名,
+       在庫テーブル.数量,
+       倉庫マスタ.倉庫名
+FROM 在庫テーブル
+  JOIN 部品マスタ ON 在庫テーブル.部品コード = 部品マスタ.部品コード
+  JOIN 倉庫マスタ ON 在庫テーブル.倉庫CD = 倉庫マスタ.倉庫CD
+WHERE 在庫テーブル.数量 < 50;</code></pre>
+        </div>
+        <p class="text-secondary" style="margin-top: 1em;">
+          正規化で分割したテーブルをJOINで結合し、必要な情報を横断的に取得
+        </p>
+      </section>
+
+      <!-- 5. トランザクションとACID -->
+      <section>
+        <h2>5. トランザクションとACID</h2>
+        <p class="text-secondary">データの信頼性を保証する仕組み</p>
+      </section>
+
+      <section>
+        <h3>トランザクションとは</h3>
+        <div class="highlight-box">
+          <p><strong>トランザクション</strong>：データベースに対する一連の処理をまとめた単位</p>
+          <p class="text-secondary">「全て成功」か「全て取り消し」のどちらか</p>
+        </div>
+        <div class="flow-chart">
+          <div class="flow-box">BEGIN<br><span class="text-secondary small">開始</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">処理1<br>処理2<br>処理3</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">COMMIT<br><span class="text-secondary small">確定</span></div>
+        </div>
+        <p class="text-center text-secondary" style="margin-top: 0.5em;">
+          途中でエラー発生 → <strong>ROLLBACK</strong>（処理1から全て取り消し）
+        </p>
+      </section>
+
+      <section>
+        <h3>製造現場での例：出庫処理</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>トランザクション内の処理</h4>
+            <ol>
+              <li>在庫テーブルの数量を減らす</li>
+              <li>出庫履歴テーブルに記録を追加</li>
+              <li>ロット追跡テーブルを更新</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h4>トランザクションの意義</h4>
+            <p>処理2でエラーが発生した場合、処理1も取り消される</p>
+            <p class="text-secondary">→「在庫は減ったが履歴がない」という不整合を防止</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>ACID特性</h3>
+        <p><strong>信頼性の高いトランザクション処理に必要な4つの特性</strong></p>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>A：原子性（Atomicity）</h4>
+            <p>トランザクション内の処理は「全て実行」か「全て取り消し」のどちらか</p>
+          </div>
+          <div class="card">
+            <h4>C：一貫性（Consistency）</h4>
+            <p>トランザクション前後でデータの整合性が保たれる</p>
+          </div>
+          <div class="card">
+            <h4>I：独立性（Isolation）</h4>
+            <p>複数のトランザクションが互いに干渉しない</p>
+          </div>
+          <div class="card">
+            <h4>D：永続性（Durability）</h4>
+            <p>確定（COMMIT）したデータは障害後も失われない</p>
+          </div>
+        </div>
+        <p class="text-secondary text-center" style="margin-top: 1em;">
+          ITパスポート試験では「ACID特性」の名称と概要が問われる
+        </p>
+      </section>
+
+      <!-- 6. 演習 -->
+      <section class="exercise-slide">
+        <h2>6. 演習</h2>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習1: テーブル設計</h3>
+        <p>以下の情報を管理するテーブルを設計してください：</p>
+        <div class="highlight-box">
+          <p><strong>製造実績の管理</strong></p>
+          <ul>
+            <li>製品情報（製品コード、製品名、標準工数）</li>
+            <li>製造ライン情報（ラインコード、ライン名、担当者）</li>
+            <li>製造実績（どのラインで、何を、いつ、何個作ったか）</li>
+          </ul>
+        </div>
+        <div class="exercise-box">
+          <p>【製品マスタ】<br>フィールド: ______________ 主キー: ___</p>
+          <p>【ラインマスタ】<br>フィールド: ______________ 主キー: ___</p>
+          <p>【製造実績】<br>フィールド: ______________ 主キー: ___ 外部キー: ___</p>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習2: SQLの読解</h3>
+        <p>以下のSQLが何をするか説明してください：</p>
+        <pre><code class="sql">SELECT P.部品名, S.倉庫名, I.数量
+FROM 在庫テーブル I
+  JOIN 部品マスタ P ON I.部品コード = P.部品コード
+  JOIN 倉庫マスタ S ON I.倉庫CD = S.倉庫CD
+WHERE I.数量 < P.発注点
+ORDER BY I.数量 ASC;</code></pre>
+        <div class="exercise-box">
+          <p>このSQLが取得するデータ: _______________________</p>
+          <p>並び順: _______________________</p>
+          <p>業務上の用途: _______________________</p>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習3: 正規化の検討</h3>
+        <p>以下のテーブル設計の問題点を指摘してください：</p>
+        <table class="small">
+          <tr>
+            <th>発注No</th><th>発注日</th><th>仕入先名</th><th>仕入先TEL</th>
+            <th>品目1</th><th>数量1</th><th>品目2</th><th>数量2</th>
+          </tr>
+        </table>
+        <div class="exercise-box">
+          <p>問題点1: _______________________</p>
+          <p>問題点2: _______________________</p>
+          <p>改善案: _______________________</p>
+        </div>
+      </section>
+
+      <!-- まとめ -->
+      <section>
+        <h2>キーワード</h2>
+        <div class="keywords">
+          <span class="keyword-tag">データベース</span>
+          <span class="keyword-tag">RDBMS</span>
+          <span class="keyword-tag">テーブル</span>
+          <span class="keyword-tag">レコード</span>
+          <span class="keyword-tag">フィールド</span>
+          <span class="keyword-tag">主キー</span>
+          <span class="keyword-tag">外部キー</span>
+          <span class="keyword-tag">正規化</span>
+          <span class="keyword-tag">SQL</span>
+          <span class="keyword-tag">SELECT</span>
+          <span class="keyword-tag">WHERE</span>
+          <span class="keyword-tag">JOIN</span>
+          <span class="keyword-tag">トランザクション</span>
+          <span class="keyword-tag">ACID特性</span>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2>確認問題</h2>
+        <div class="quiz-item">
+          <p><strong>1.</strong> データベースがExcelより優れている点を3つ挙げてください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>2.</strong> 主キーと外部キーの役割をそれぞれ説明してください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>3.</strong> 正規化とは何ですか？なぜ必要ですか？</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>4.</strong> ACID特性の「A」と「D」は何を意味しますか？</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>5.</strong> SELECT文で条件を指定するにはどの句を使いますか？</p>
+        </div>
+      </section>
+
+      <!-- 次回予告 -->
+      <section>
+        <h2>次回予告</h2>
+        <div class="next-preview">
+          <h4>セッション11-12h: 情報セキュリティ</h4>
+          <div class="card-grid cols-3">
+            <div class="card">
+              <h4>基本概念</h4>
+              <p>CIA三要素<br>脅威と対策</p>
+            </div>
+            <div class="card">
+              <h4>暗号化</h4>
+              <p>共通鍵・公開鍵<br>デジタル署名</p>
+            </div>
+            <div class="card">
+              <h4>実践</h4>
+              <p>パスワード管理<br>多要素認証</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="assets/init.js"></script>
+</body>
+</html>

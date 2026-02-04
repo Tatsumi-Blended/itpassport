@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04 ネットワークの基礎 - 製造DX基礎コース</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="assets/custom.css">
+  <script src="assets/auth.js"></script>
+  <script>Auth.requireAuth();</script>
+</head>
+<body>
+  <div class="nav-bar">
+    <a href="index.html">目次</a>
+    <span class="current">04 ネットワークの基礎</span>
+    <div class="nav-links">
+      <a href="03_ソフトウェアとOS.html" class="nav-prev">← 前へ</a>
+      <a href="05_データベースの基礎.html" class="nav-next">次へ →</a>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- タイトル -->
+      <section class="title-slide">
+        <span class="step-badge">STEP1</span>
+        <h1>ネットワークの基礎</h1>
+        <p class="subtitle">セッション 7-8h</p>
+        <p class="level-stars">学習レベル: ★★☆☆☆（基礎知識）</p>
+      </section>
+
+      <!-- アジェンダ -->
+      <section>
+        <h2>本日のゴール</h2>
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card">
+            <h4>目標1</h4>
+            <p>LANとWANの違いを説明できる</p>
+          </div>
+          <div class="card">
+            <h4>目標2</h4>
+            <p>IPアドレスの役割を理解する</p>
+          </div>
+          <div class="card">
+            <h4>目標3</h4>
+            <p>インターネットの基本的な仕組みを説明できる</p>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top:1.5em;">
+          <strong>対応テキスト:</strong> 第14章 ネットワーク
+        </div>
+      </section>
+
+      <!-- 前回の振り返り -->
+      <section>
+        <h2>前回の振り返り</h2>
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card">
+            <h4>💻 OSの役割</h4>
+            <p>ハードとアプリの仲介役</p>
+          </div>
+          <div class="card">
+            <h4>📁 ファイル管理</h4>
+            <p>パス、拡張子、権限</p>
+          </div>
+          <div class="card">
+            <h4>📜 ライセンス</h4>
+            <p>ソフトウェアの利用条件</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. ネットワークとは -->
+      <section>
+        <h2>1. ネットワークとは</h2>
+        <p style="color: var(--text-secondary);">コンピュータ同士をつなぐ仕組み</p>
+      </section>
+
+      <section>
+        <h3>ネットワークの定義</h3>
+        <p><strong>コンピュータ同士をつないで情報をやり取りする仕組み</strong></p>
+        <div class="flow-chart" style="margin-top:1.5em;">
+          <div class="flow-box tertiary">
+            <span class="icon">💻</span>
+            PC
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line" style="font-size:2em;">⟷</span>
+            <span class="arrow-label">通信</span>
+          </div>
+          <div class="flow-box">
+            <span class="icon">🖧</span>
+            サーバー
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line" style="font-size:2em;">⟷</span>
+            <span class="arrow-label">通信</span>
+          </div>
+          <div class="flow-box tertiary">
+            <span class="icon">💻</span>
+            PC
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>ネットワークのメリット</h3>
+        <div class="card-grid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="card fragment">
+            <h4>📂 情報共有</h4>
+            <p>ファイルサーバー、データベース</p>
+          </div>
+          <div class="card fragment">
+            <h4>🖨️ 資源共有</h4>
+            <p>プリンター、ストレージ</p>
+          </div>
+          <div class="card fragment">
+            <h4>💬 通信</h4>
+            <p>メール、チャット</p>
+          </div>
+          <div class="card fragment">
+            <h4>🖥️ 遠隔操作</h4>
+            <p>リモートデスクトップ</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>製造現場のネットワーク</h3>
+        <div class="two-column">
+          <div class="card" style="padding:1em;">
+            <h4 style="text-align:center;">🏢 事務所エリア</h4>
+            <div class="manufacturing-icons" style="margin:0.5em 0;">
+              <div class="mfg-icon" style="min-width:60px; padding:0.5em;">
+                <span class="emoji" style="font-size:1.5em;">💻</span>
+                <span class="name" style="font-size:0.6em;">PC</span>
+              </div>
+              <div class="mfg-icon" style="min-width:60px; padding:0.5em;">
+                <span class="emoji" style="font-size:1.5em;">💻</span>
+                <span class="name" style="font-size:0.6em;">PC</span>
+              </div>
+              <div class="mfg-icon" style="min-width:60px; padding:0.5em;">
+                <span class="emoji" style="font-size:1.5em;">💻</span>
+                <span class="name" style="font-size:0.6em;">PC</span>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="padding:1em;">
+            <h4 style="text-align:center;">🏭 製造エリア</h4>
+            <div class="manufacturing-icons" style="margin:0.5em 0;">
+              <div class="mfg-icon" style="min-width:60px; padding:0.5em;">
+                <span class="emoji" style="font-size:1.5em;">🎛️</span>
+                <span class="name" style="font-size:0.6em;">PLC</span>
+              </div>
+              <div class="mfg-icon" style="min-width:60px; padding:0.5em;">
+                <span class="emoji" style="font-size:1.5em;">🔍</span>
+                <span class="name" style="font-size:0.6em;">検査機</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flow-chart" style="margin-top:1em;">
+          <div class="flow-box">
+            <span class="icon">🖧</span>
+            生産管理サーバー
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:1em;">
+          <strong>ポイント:</strong> 事務所と製造現場がネットワークでつながっている
+        </div>
+      </section>
+
+      <!-- 2. LANとWAN -->
+      <section>
+        <h2>2. LANとWAN</h2>
+        <p style="color: var(--text-secondary);">ネットワークの範囲による分類</p>
+      </section>
+
+      <section>
+        <h3>LAN（Local Area Network）</h3>
+        <p><strong>限られた範囲のネットワーク</strong>（建物内、工場内）</p>
+        <div class="card" style="max-width:600px; margin:1em auto; padding:1.5em;">
+          <div style="text-align:center; font-weight:700; color:var(--ink-navy-900); margin-bottom:1em;">🏭 工場内LAN</div>
+          <div class="flow-chart" style="flex-wrap:wrap; gap:0.5em;">
+            <div class="flow-box tertiary" style="min-width:80px;">
+              <span class="icon">💻</span>
+              PC
+            </div>
+            <div class="labeled-arrow">
+              <span class="arrow-line">→</span>
+            </div>
+            <div class="flow-box" style="min-width:100px;">
+              <span class="icon">🔀</span>
+              スイッチ
+            </div>
+            <div class="labeled-arrow">
+              <span class="arrow-line">→</span>
+            </div>
+            <div class="flow-box tertiary" style="min-width:80px;">
+              <span class="icon">🖧</span>
+              サーバー
+            </div>
+          </div>
+          <div class="flow-chart" style="margin-top:0.5em;">
+            <div class="flow-box tertiary" style="min-width:80px;">
+              <span class="icon">💻</span>
+              PC
+            </div>
+            <div class="labeled-arrow">
+              <span class="arrow-line">↗</span>
+            </div>
+            <div style="width:100px;"></div>
+            <div class="labeled-arrow">
+              <span class="arrow-line">↖</span>
+            </div>
+            <div class="flow-box tertiary" style="min-width:80px;">
+              <span class="icon">🎛️</span>
+              PLC
+            </div>
+          </div>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>特徴:</strong> 自社で構築・管理、高速通信が可能
+        </div>
+      </section>
+
+      <section>
+        <h3>LAN機器</h3>
+        <div class="card-grid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="card fragment">
+            <h4>🔌 ハブ</h4>
+            <p>単純にケーブルを分岐</p>
+          </div>
+          <div class="card fragment">
+            <h4>🔀 スイッチ</h4>
+            <p>宛先を見て転送（賢いハブ）</p>
+          </div>
+          <div class="card fragment">
+            <h4>🌐 ルーター</h4>
+            <p>異なるネットワークを接続</p>
+          </div>
+          <div class="card fragment">
+            <h4>📶 無線AP</h4>
+            <p>無線LANの親機</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>WAN（Wide Area Network）</h3>
+        <p><strong>離れた拠点間のネットワーク</strong>（通信事業者の回線を使用）</p>
+        <div class="flow-chart" style="margin:1.5em 0;">
+          <div class="flow-box tertiary">
+            <span class="icon">🏢</span>
+            本社
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line" style="font-size:2em;">⟷</span>
+            <span class="arrow-label">インターネット/VPN</span>
+          </div>
+          <div class="flow-box tertiary">
+            <span class="icon">🏭</span>
+            工場A
+          </div>
+        </div>
+        <div class="flow-chart">
+          <div style="width:180px;"></div>
+          <div class="labeled-arrow">
+            <span class="arrow-line" style="font-size:1.5em;">↕</span>
+          </div>
+          <div style="width:100px;"></div>
+        </div>
+        <div class="flow-chart">
+          <div style="width:180px;"></div>
+          <div class="flow-box tertiary">
+            <span class="icon">🏭</span>
+            工場B
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:1em;">
+          <strong>ポイント:</strong> インターネットもWANの一種
+        </div>
+      </section>
+
+      <section>
+        <h3>LANとWANの比較</h3>
+        <div class="compare-cards">
+          <div class="compare-card">
+            <div class="card-header">🏠 LAN</div>
+            <ul style="text-align:left;">
+              <li>範囲: <strong>建物内</strong></li>
+              <li>速度: <strong>高速（1Gbps〜）</strong></li>
+              <li>構築: <strong>自社で可能</strong></li>
+              <li>コスト: <strong>初期費用のみ</strong></li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <div class="card-header">🌍 WAN</div>
+            <ul style="text-align:left;">
+              <li>範囲: <strong>広域（都市間、国際）</strong></li>
+              <li>速度: <strong>比較的低速</strong></li>
+              <li>構築: <strong>通信事業者が必要</strong></li>
+              <li>コスト: <strong>月額費用</strong></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. IPアドレス -->
+      <section>
+        <h2>3. IPアドレス</h2>
+        <p style="color: var(--text-secondary);">ネットワーク上の「住所」</p>
+      </section>
+
+      <section>
+        <h3>IPアドレスとは</h3>
+        <p><strong>ネットワーク上の機器を識別する番号</strong></p>
+        <div class="card" style="max-width:500px; margin:1em auto; padding:1.5em; text-align:center;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:1.8em; font-weight:700; color:var(--ink-navy-900);">
+            192.168.1.100
+          </div>
+          <div style="display:flex; justify-content:center; gap:0.5em; margin-top:1em; font-size:0.75em;">
+            <div style="text-align:center;">
+              <div style="background:var(--ink-navy-800); color:white; padding:0.3em 0.8em; border-radius:4px;">192</div>
+              <div style="margin-top:0.3em; color:var(--text-muted);">.</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="background:var(--ink-navy-800); color:white; padding:0.3em 0.8em; border-radius:4px;">168</div>
+              <div style="margin-top:0.3em; color:var(--text-muted);">.</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="background:var(--ink-navy-800); color:white; padding:0.3em 0.8em; border-radius:4px;">1</div>
+              <div style="margin-top:0.3em; color:var(--text-muted);">.</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="background:var(--ink-navy-800); color:white; padding:0.3em 0.8em; border-radius:4px;">100</div>
+            </div>
+          </div>
+          <p style="margin-top:1em; color:var(--text-secondary); font-size:0.8em;">4つの数字（0〜255）をドットで区切る</p>
+        </div>
+      </section>
+
+      <section>
+        <h3>現実世界との比較</h3>
+        <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="card fragment">
+            <h4>🏠 IPアドレス</h4>
+            <p><strong>住所</strong>（どこにあるか）</p>
+          </div>
+          <div class="card fragment">
+            <h4>👆 MACアドレス</h4>
+            <p><strong>指紋</strong>（機器固有の識別子）</p>
+          </div>
+          <div class="card fragment">
+            <h4>🚪 ポート番号</h4>
+            <p><strong>部屋番号</strong>（サービスの識別）</p>
+          </div>
+          <div class="card fragment">
+            <h4>🏷️ ドメイン名</h4>
+            <p><strong>会社名</strong>（覚えやすい名前）</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>IPアドレスの種類</h3>
+        <div class="compare-cards">
+          <div class="compare-card fragment">
+            <div class="card-header">🌐 グローバルIPアドレス</div>
+            <ul style="text-align:left;">
+              <li>インターネット上で一意</li>
+              <li>世界中で重複なし</li>
+              <li>外部からアクセス可能</li>
+            </ul>
+          </div>
+          <div class="compare-card fragment">
+            <div class="card-header">🏠 プライベートIPアドレス</div>
+            <ul style="text-align:left;">
+              <li>社内ネットワークで使用</li>
+              <li>外部からは見えない</li>
+              <li>自由に割り当て可能</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card" style="margin-top:1em; padding:1em;">
+          <h4 style="margin-bottom:0.5em;">プライベートIPアドレスの範囲</h4>
+          <table style="width:100%; font-size:0.7em;">
+            <tr><th>クラス</th><th>範囲</th><th>用途</th></tr>
+            <tr><td>A</td><td><code>10.0.0.0 〜 10.255.255.255</code></td><td>大規模組織</td></tr>
+            <tr><td>B</td><td><code>172.16.0.0 〜 172.31.255.255</code></td><td>中規模組織</td></tr>
+            <tr><td>C</td><td><code>192.168.0.0 〜 192.168.255.255</code></td><td>小規模組織</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h3>サブネットマスク</h3>
+        <p><strong>ネットワークの範囲を定義する値</strong></p>
+        <div class="card" style="max-width:600px; margin:1em auto; padding:1.5em;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:0.85em;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:0.5em;">
+              <span style="color:var(--text-secondary);">IPアドレス:</span>
+              <span><strong>192.168.1</strong>.100</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:0.5em;">
+              <span style="color:var(--text-secondary);">サブネットマスク:</span>
+              <span>255.255.255.0</span>
+            </div>
+            <div style="border-top:1px solid var(--border-default); padding-top:0.5em; margin-top:0.5em;">
+              <div style="display:flex; justify-content:space-between;">
+                <span style="color:var(--text-secondary);">ネットワーク部:</span>
+                <span style="background:var(--ink-navy-800); color:white; padding:0.2em 0.5em; border-radius:4px;">192.168.1</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; margin-top:0.3em;">
+                <span style="color:var(--text-secondary);">ホスト部:</span>
+                <span style="background:var(--border-subtle); padding:0.2em 0.5em; border-radius:4px;">100</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>ポイント:</strong> ネットワーク部が同じなら同一ネットワーク内
+        </div>
+      </section>
+
+      <section>
+        <h3>DHCP</h3>
+        <p><strong>IPアドレスを自動で割り当てる仕組み</strong></p>
+        <div class="flow-chart" style="margin:1.5em 0;">
+          <div class="flow-box tertiary">
+            <span class="icon">💻</span>
+            PC
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line">→</span>
+            <span class="arrow-label">IPください</span>
+          </div>
+          <div class="flow-box">
+            <span class="icon">🖧</span>
+            DHCPサーバー
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line">→</span>
+            <span class="arrow-label">192.168.1.100を使って</span>
+          </div>
+          <div class="flow-box tertiary">
+            <span class="icon">💻</span>
+            PC
+          </div>
+        </div>
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card fragment">
+            <h4>✅ メリット1</h4>
+            <p>手動設定が不要</p>
+          </div>
+          <div class="card fragment">
+            <h4>✅ メリット2</h4>
+            <p>重複の心配なし</p>
+          </div>
+          <div class="card fragment">
+            <h4>✅ メリット3</h4>
+            <p>管理が楽</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. インターネットの仕組み -->
+      <section>
+        <h2>4. インターネットの仕組み</h2>
+        <p style="color: var(--text-secondary);">世界中をつなぐネットワーク</p>
+      </section>
+
+      <section>
+        <h3>インターネットとは</h3>
+        <p><strong>世界中のネットワークをつないだネットワーク</strong></p>
+        <div class="flow-chart" style="margin:1.5em 0;">
+          <div class="flow-box tertiary">
+            <span class="icon">🏠</span>
+            LAN A
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line">→</span>
+          </div>
+          <div class="flow-box secondary">
+            <span class="icon">🌐</span>
+            ルーター
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line" style="font-size:2em;">⟷</span>
+            <span class="arrow-label">インターネット</span>
+          </div>
+          <div class="flow-box secondary">
+            <span class="icon">🌐</span>
+            ルーター
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line">→</span>
+          </div>
+          <div class="flow-box tertiary">
+            <span class="icon">🏢</span>
+            LAN B
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>DNS（Domain Name System）</h3>
+        <p><strong>ドメイン名をIPアドレスに変換</strong></p>
+        <div class="card" style="max-width:600px; margin:1em auto; padding:1.5em;">
+          <div style="text-align:center; font-family:'JetBrains Mono', monospace; margin-bottom:1em;">
+            www.example.com → 93.184.216.34
+          </div>
+          <div class="flow-chart" style="flex-direction:column; gap:0.5em;">
+            <div style="display:flex; align-items:center; gap:0.5em;">
+              <div class="flow-box tertiary" style="min-width:100px;">
+                <span class="icon">🌐</span>
+                ブラウザ
+              </div>
+              <div class="labeled-arrow">
+                <span class="arrow-line">→</span>
+                <span class="arrow-label">①IPを問い合わせ</span>
+              </div>
+              <div class="flow-box" style="min-width:100px;">
+                <span class="icon">📖</span>
+                DNSサーバー
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:0.5em;">
+              <div class="flow-box tertiary" style="min-width:100px;">
+                <span class="icon">🌐</span>
+                ブラウザ
+              </div>
+              <div class="labeled-arrow">
+                <span class="arrow-line">←</span>
+                <span class="arrow-label">②IPを回答</span>
+              </div>
+              <div class="flow-box" style="min-width:100px;">
+                <span class="icon">📖</span>
+                DNSサーバー
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:0.5em;">
+              <div class="flow-box tertiary" style="min-width:100px;">
+                <span class="icon">🌐</span>
+                ブラウザ
+              </div>
+              <div class="labeled-arrow">
+                <span class="arrow-line">→</span>
+                <span class="arrow-label">③IPで接続</span>
+              </div>
+              <div class="flow-box" style="min-width:100px;">
+                <span class="icon">🖧</span>
+                Webサーバー
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>プロトコル</h3>
+        <p><strong>通信の約束事（ルール）</strong></p>
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card fragment">
+            <h4>🌐 HTTP/HTTPS</h4>
+            <p>Webページ閲覧</p>
+          </div>
+          <div class="card fragment">
+            <h4>📁 FTP</h4>
+            <p>ファイル転送</p>
+          </div>
+          <div class="card fragment">
+            <h4>📧 SMTP</h4>
+            <p>メール送信</p>
+          </div>
+          <div class="card fragment">
+            <h4>📬 POP3/IMAP</h4>
+            <p>メール受信</p>
+          </div>
+          <div class="card fragment">
+            <h4>🔒 SSH</h4>
+            <p>安全な遠隔操作</p>
+          </div>
+          <div class="card fragment">
+            <h4>🌍 TCP/IP</h4>
+            <p>インターネットの基本</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>ポート番号</h3>
+        <p><strong>サービスを識別する番号</strong></p>
+        <div class="two-column">
+          <div class="card" style="padding:1em;">
+            <h4 style="margin-bottom:0.5em;">主なポート番号</h4>
+            <table style="width:100%; font-size:0.7em;">
+              <tr><th>番号</th><th>サービス</th></tr>
+              <tr><td><code>80</code></td><td>HTTP（Web）</td></tr>
+              <tr><td><code>443</code></td><td>HTTPS（暗号化Web）</td></tr>
+              <tr><td><code>21</code></td><td>FTP</td></tr>
+              <tr><td><code>25</code></td><td>SMTP</td></tr>
+              <tr><td><code>22</code></td><td>SSH</td></tr>
+            </table>
+          </div>
+          <div>
+            <div class="highlight-box">
+              <strong>例え:</strong><br>
+              IPアドレス = 住所<br>
+              ポート番号 = 部屋番号
+            </div>
+            <div class="card" style="padding:1em; margin-top:0.5em; font-family:'JetBrains Mono', monospace; font-size:0.8em;">
+              192.168.1.10<strong>:80</strong><br>
+              <span style="color:var(--text-secondary);">↑ Webサーバーの80番ポート</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. 演習 -->
+      <section class="exercise-slide">
+        <h2>5. 演習とまとめ</h2>
+        <p>学んだ知識を確認しよう</p>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習1: 自分のIPアドレス確認</h3>
+        <p>コマンドプロンプトで以下を実行:</p>
+        <pre><code>ipconfig</code></pre>
+        <div class="card" style="margin-top:1em; padding:1em;">
+          <h4>確認項目</h4>
+          <div class="exercise-box">
+            <p>IPv4アドレス: _______________</p>
+            <p>サブネットマスク: _______________</p>
+            <p>デフォルトゲートウェイ: _______________</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習2: DNSの確認</h3>
+        <p>コマンドプロンプトで以下を実行:</p>
+        <pre><code>nslookup www.google.com</code></pre>
+        <div class="card" style="margin-top:1em; padding:1em;">
+          <h4>結果を確認</h4>
+          <div class="exercise-box">
+            <p>ドメイン名: _______________</p>
+            <p>IPアドレス: _______________</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP1完了 -->
+      <section>
+        <h2>STEP1 完了！</h2>
+        <div class="card featured" style="max-width:600px; margin:1em auto; padding:1.5em;">
+          <h4 style="text-align:center; margin-bottom:1em;">🎉 おめでとうございます！</h4>
+          <p style="text-align:center;">STEP1「ITの土台を作る」が完了しました。</p>
+          <div class="card-grid" style="grid-template-columns: repeat(2, 1fr); margin-top:1em;">
+            <div class="card" style="padding:0.8em;">
+              <h4>🖥️ セッション1-2</h4>
+              <p>コンピュータの仕組み</p>
+            </div>
+            <div class="card" style="padding:0.8em;">
+              <h4>🔢 セッション3-4</h4>
+              <p>数値とデータの表現</p>
+            </div>
+            <div class="card" style="padding:0.8em;">
+              <h4>💻 セッション5-6</h4>
+              <p>ソフトウェアとOS</p>
+            </div>
+            <div class="card" style="padding:0.8em;">
+              <h4>🌐 セッション7-8</h4>
+              <p>ネットワークの基礎</p>
+            </div>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top:1em;">
+          <strong>次のSTEP2では:</strong> データベース、セキュリティ、アルゴリズムを学びます
+        </div>
+      </section>
+
+      <!-- まとめ -->
+      <section>
+        <h2>キーワード</h2>
+        <div class="keywords">
+          <span class="keyword-tag">LAN</span>
+          <span class="keyword-tag">WAN</span>
+          <span class="keyword-tag">IPアドレス</span>
+          <span class="keyword-tag">サブネットマスク</span>
+          <span class="keyword-tag">DHCP</span>
+          <span class="keyword-tag">DNS</span>
+          <span class="keyword-tag">プロトコル</span>
+          <span class="keyword-tag">ポート番号</span>
+          <span class="keyword-tag">ルーター</span>
+          <span class="keyword-tag">スイッチ</span>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2>確認問題</h2>
+        <div class="quiz-item fragment">
+          <p><strong>1.</strong> LANとWANの違いを説明してください</p>
+        </div>
+        <div class="quiz-item fragment">
+          <p><strong>2.</strong> IPアドレスの役割は何ですか？</p>
+        </div>
+        <div class="quiz-item fragment">
+          <p><strong>3.</strong> DNSの役割を説明してください</p>
+        </div>
+        <div class="quiz-item fragment">
+          <p><strong>4.</strong> プライベートIPアドレスとグローバルIPアドレスの違いは？</p>
+        </div>
+      </section>
+
+      <!-- 次回予告 -->
+      <section>
+        <h2>次回予告</h2>
+        <div class="next-preview">
+          <div style="margin-bottom:1em;">
+            <span class="step-badge" style="background-color:#007bff;">STEP2</span>
+            <span style="color:var(--text-secondary); margin-left:0.5em;">データを扱う力をつける</span>
+          </div>
+          <h4>セッション9-10h: データベースの基礎</h4>
+          <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); margin-top:1em;">
+            <div class="card">
+              <h4>📊 データベースとは</h4>
+              <p>データの効率的な管理</p>
+            </div>
+            <div class="card">
+              <h4>📋 テーブル構造</h4>
+              <p>レコード、フィールド</p>
+            </div>
+            <div class="card">
+              <h4>💬 SQL入門</h4>
+              <p>データ操作の基本</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="assets/init.js"></script>
+</body>
+</html>

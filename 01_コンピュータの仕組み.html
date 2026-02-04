@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01 コンピュータの仕組み - 製造DX基礎コース</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="assets/custom.css">
+  <script src="assets/auth.js"></script>
+  <script>Auth.requireAuth();</script>
+</head>
+<body>
+  <div class="nav-bar">
+    <a href="index.html">目次</a>
+    <span class="current">01 コンピュータの仕組み</span>
+    <div class="nav-links">
+      <a href="00_研修概要.html" class="nav-prev">← 前へ</a>
+      <a href="02_数値とデータの表現.html" class="nav-next">次へ →</a>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- タイトル -->
+      <section class="title-slide">
+        <span class="step-badge">STEP1</span>
+        <h1>コンピュータの仕組み</h1>
+        <p class="subtitle">セッション 1-2h</p>
+        <p class="level-stars">学習レベル: ★☆☆☆☆（IT初心者向け）</p>
+      </section>
+
+      <!-- アジェンダ -->
+      <section>
+        <h2>本日のゴール</h2>
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card">
+            <h4>目標1</h4>
+            <p>コンピュータの5大装置を説明できる</p>
+          </div>
+          <div class="card">
+            <h4>目標2</h4>
+            <p>製造現場で使われるコンピュータの種類を理解する</p>
+          </div>
+          <div class="card">
+            <h4>目標3</h4>
+            <p>CPUとメモリの役割を説明できる</p>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top:1.5em;">
+          <strong>対応テキスト:</strong> 第11章 ハードウェア、第10章 コンピュータシステム
+        </div>
+      </section>
+
+      <!-- 1. コンピュータとは何か -->
+      <section>
+        <h2>1. コンピュータとは何か</h2>
+        <p style="color: var(--text-secondary);">私たちの身の回りにあるコンピュータを知ろう</p>
+      </section>
+
+      <section>
+        <h3>身の回りのコンピュータ</h3>
+        <p>「コンピュータ」と聞いて思い浮かぶもの...</p>
+        <div class="manufacturing-icons">
+          <div class="mfg-icon fragment">
+            <span class="emoji">💻</span>
+            <span class="name">パソコン</span>
+          </div>
+          <div class="mfg-icon fragment">
+            <span class="emoji">📱</span>
+            <span class="name">スマートフォン</span>
+          </div>
+          <div class="mfg-icon fragment">
+            <span class="emoji">🎮</span>
+            <span class="name">ゲーム機</span>
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:1em;">
+          <strong>でも実は...</strong> 製造現場にはもっと多くのコンピュータがあります
+        </div>
+      </section>
+
+      <section>
+        <h3>製造現場のコンピュータ</h3>
+        <div class="manufacturing-icons">
+          <div class="mfg-icon fragment">
+            <span class="emoji">🎛️</span>
+            <span class="name">PLC</span>
+          </div>
+          <div class="mfg-icon fragment">
+            <span class="emoji">📺</span>
+            <span class="name">タッチパネル(HMI)</span>
+          </div>
+          <div class="mfg-icon fragment">
+            <span class="emoji">🔍</span>
+            <span class="name">検査装置</span>
+          </div>
+          <div class="mfg-icon fragment">
+            <span class="emoji">🤖</span>
+            <span class="name">産業用ロボット</span>
+          </div>
+          <div class="mfg-icon fragment">
+            <span class="emoji">📊</span>
+            <span class="name">バーコードリーダー</span>
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:1em;">
+          <strong>現代の製造現場はコンピュータだらけ</strong>
+        </div>
+      </section>
+
+      <section>
+        <h3>コンピュータの定義</h3>
+        <p><strong>コンピュータとは:</strong></p>
+        <div class="flow-chart">
+          <div class="flow-box fragment">
+            <span class="icon">📥</span>
+            入力
+          </div>
+          <span class="flow-arrow fragment">→</span>
+          <div class="flow-box fragment">
+            <span class="icon">⚙️</span>
+            処理
+          </div>
+          <span class="flow-arrow fragment">→</span>
+          <div class="flow-box fragment">
+            <span class="icon">📤</span>
+            出力
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:1.5em;">
+          <strong>ポイント:</strong> データを入力し、処理（計算）を行い、結果を出力する機械
+        </div>
+      </section>
+
+      <!-- 2. 5大装置 -->
+      <section>
+        <h2>2. コンピュータの5大装置</h2>
+        <p style="color: var(--text-secondary);">コンピュータを構成する5つの主要部品</p>
+      </section>
+
+      <section>
+        <h3>5大装置の全体像</h3>
+        <div class="computer-diagram">
+          <div class="diagram-title">コンピュータの構造</div>
+          <div class="diagram-row">
+            <div class="device-box fragment">
+              <div class="device-icon">⌨️</div>
+              <div class="device-name">入力装置</div>
+            </div>
+            <span class="diagram-arrow fragment">→</span>
+            <div class="device-box primary fragment">
+              <div class="device-icon">🧠</div>
+              <div class="device-name">制御装置 + 演算装置</div>
+            </div>
+            <span class="diagram-arrow fragment">→</span>
+            <div class="device-box fragment">
+              <div class="device-icon">🖥️</div>
+              <div class="device-name">出力装置</div>
+            </div>
+          </div>
+          <div class="diagram-row">
+            <span class="diagram-arrow fragment">↓</span>
+          </div>
+          <div class="diagram-row">
+            <div class="device-box fragment">
+              <div class="device-icon">💾</div>
+              <div class="device-name">記憶装置</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>5大装置 一覧</h3>
+        <div class="card-grid" style="grid-template-columns: repeat(5, 1fr);">
+          <div class="card fragment">
+            <h4>⌨️ 入力</h4>
+            <p>データを取り込む</p>
+            <p><strong>例:</strong> キーボード、センサー</p>
+          </div>
+          <div class="card fragment">
+            <h4>🖥️ 出力</h4>
+            <p>結果を出す</p>
+            <p><strong>例:</strong> ディスプレイ、信号灯</p>
+          </div>
+          <div class="card fragment">
+            <h4>🎛️ 制御</h4>
+            <p>全体を指揮</p>
+            <p><strong>例:</strong> CPUの一部</p>
+          </div>
+          <div class="card fragment">
+            <h4>🔢 演算</h4>
+            <p>計算を行う</p>
+            <p><strong>例:</strong> CPUの一部</p>
+          </div>
+          <div class="card fragment">
+            <h4>💾 記憶</h4>
+            <p>データを保存</p>
+            <p><strong>例:</strong> メモリ、SSD</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>製造現場での具体例①</h3>
+        <p><strong>検査装置の場合:</strong></p>
+        <div class="flow-chart">
+          <div class="flow-box">
+            <span class="icon">📷</span>
+            カメラ
+            <small>入力装置</small>
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line">→</span>
+            <span class="arrow-label">画像データ</span>
+          </div>
+          <div class="flow-box">
+            <span class="icon">🖥️</span>
+            検査用PC
+            <small>処理装置</small>
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line">→</span>
+            <span class="arrow-label">判定結果</span>
+          </div>
+          <div class="flow-box">
+            <span class="icon">✅</span>
+            判定表示
+            <small>出力装置</small>
+          </div>
+        </div>
+        <div class="flow-chart" style="margin-top:0.5em;">
+          <div class="flow-box secondary" style="width:200px;">
+            <span class="icon">💾</span>
+            検査データ保存
+            <small>記憶装置</small>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>製造現場での具体例②</h3>
+        <p><strong>PLCの場合:</strong></p>
+        <div class="flow-chart">
+          <div class="flow-box">
+            <span class="icon">📡</span>
+            センサー
+            <small>入力装置</small>
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line">→</span>
+            <span class="arrow-label">信号</span>
+          </div>
+          <div class="flow-box">
+            <span class="icon">🎛️</span>
+            PLC本体
+            <small>処理装置</small>
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line">→</span>
+            <span class="arrow-label">指令</span>
+          </div>
+          <div class="flow-box">
+            <span class="icon">⚡</span>
+            アクチュエータ
+            <small>出力装置</small>
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:1em;">
+          <strong>ポイント:</strong> PLCはプログラマブルロジックコントローラの略。工場の自動制御に必須
+        </div>
+      </section>
+
+      <!-- 3. CPUとメモリ -->
+      <section>
+        <h2>3. CPUとメモリ</h2>
+        <p style="color: var(--text-secondary);">コンピュータの「頭脳」と「作業台」</p>
+      </section>
+
+      <section>
+        <h3>CPU（Central Processing Unit）</h3>
+        <div class="two-column">
+          <div>
+            <div class="cpu-visual" style="flex-direction: column;">
+              <div class="cpu-chip">
+                <div class="cpu-pins top">
+                  <span class="pin"></span><span class="pin"></span><span class="pin"></span><span class="pin"></span><span class="pin"></span>
+                </div>
+                <div class="cpu-pins bottom">
+                  <span class="pin"></span><span class="pin"></span><span class="pin"></span><span class="pin"></span><span class="pin"></span>
+                </div>
+                <div class="cpu-pins left">
+                  <span class="pin"></span><span class="pin"></span><span class="pin"></span>
+                </div>
+                <div class="cpu-pins right">
+                  <span class="pin"></span><span class="pin"></span><span class="pin"></span>
+                </div>
+                CPU
+              </div>
+            </div>
+          </div>
+          <div style="text-align:left;">
+            <p><strong>役割:</strong> コンピュータの「頭脳」</p>
+            <div class="highlight-box">
+              CPU = 制御装置 + 演算装置
+            </div>
+            <ul style="margin-top:0.8em;">
+              <li class="fragment">プログラムの命令を解釈</li>
+              <li class="fragment">計算を実行</li>
+              <li class="fragment">各装置に指示を出す</li>
+            </ul>
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:0.8em;">
+          <strong>例え:</strong> CPUは「工場長」のようなもの。指示を出し、計算し、全体を管理する
+        </div>
+      </section>
+
+      <section>
+        <h3>CPUの性能指標</h3>
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card fragment">
+            <h4>⏱️ クロック周波数</h4>
+            <p>処理速度（1秒間の処理回数）</p>
+            <div class="stat-highlight" style="margin-top:0.5em;">
+              <span class="stat-value">3.5GHz</span>
+              <span class="stat-label">= 35億回/秒</span>
+            </div>
+          </div>
+          <div class="card fragment">
+            <h4>🔲 コア数</h4>
+            <p>処理ユニットの数</p>
+            <div class="stat-highlight" style="margin-top:0.5em;">
+              <span class="stat-value">4〜8</span>
+              <span class="stat-label">コア</span>
+            </div>
+          </div>
+          <div class="card fragment">
+            <h4>🧵 スレッド数</h4>
+            <p>同時処理できる数</p>
+            <div class="stat-highlight" style="margin-top:0.5em;">
+              <span class="stat-value">8〜16</span>
+              <span class="stat-label">スレッド</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>メモリ（主記憶装置）</h3>
+        <div class="two-column">
+          <div>
+            <div class="cpu-visual" style="flex-direction: column;">
+              <div class="memory-stick">
+                <div class="memory-chips">
+                  <span class="mem-chip"></span>
+                  <span class="mem-chip"></span>
+                  <span class="mem-chip"></span>
+                  <span class="mem-chip"></span>
+                  <span class="mem-chip"></span>
+                  <span class="mem-chip"></span>
+                </div>
+                RAM
+              </div>
+            </div>
+          </div>
+          <div style="text-align:left;">
+            <p><strong>役割:</strong> 作業中のデータを一時保存</p>
+            <div class="card" style="margin-top:0.8em;">
+              <h4>特徴</h4>
+              <ul style="margin:0;">
+                <li>高速アクセス</li>
+                <li>電源を切ると消える（揮発性）</li>
+                <li>容量は比較的小さい</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:0.8em;">
+          <strong>例え:</strong> メモリは「作業台」のようなもの。今使うものを広げておく場所
+        </div>
+      </section>
+
+      <section>
+        <h3>補助記憶装置</h3>
+        <p><strong>役割:</strong> データを長期保存</p>
+        <div class="compare-cards">
+          <div class="compare-card fragment">
+            <div class="card-header">💿 HDD</div>
+            <ul>
+              <li>大容量</li>
+              <li>安価</li>
+              <li>速度は遅め</li>
+              <li><strong>用途:</strong> データ保存</li>
+            </ul>
+          </div>
+          <div class="compare-card fragment">
+            <div class="card-header">⚡ SSD</div>
+            <ul>
+              <li>高速</li>
+              <li>衝撃に強い</li>
+              <li>静音</li>
+              <li><strong>用途:</strong> OS、アプリ</li>
+            </ul>
+          </div>
+          <div class="compare-card fragment">
+            <div class="card-header">🔌 USBメモリ</div>
+            <ul>
+              <li>持ち運び可能</li>
+              <li>手軽</li>
+              <li>小容量</li>
+              <li><strong>用途:</strong> データ移動</li>
+            </ul>
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:0.5em;">
+          <strong>例え:</strong> 補助記憶装置は「倉庫」のようなもの。使わないものを保管しておく
+        </div>
+      </section>
+
+      <section>
+        <h3>メモリと補助記憶の関係</h3>
+        <div class="flow-chart" style="flex-wrap: wrap; justify-content: center;">
+          <div class="flow-box secondary">
+            <span class="icon">📦</span>
+            補助記憶
+            <small>HDD/SSD = 倉庫</small>
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line" style="font-size:2em;">⟷</span>
+            <span class="arrow-label">読み込み/保存</span>
+          </div>
+          <div class="flow-box">
+            <span class="icon">📋</span>
+            メモリ
+            <small>作業台</small>
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line" style="font-size:2em;">⟷</span>
+            <span class="arrow-label">高速通信</span>
+          </div>
+          <div class="flow-box">
+            <span class="icon">🧠</span>
+            CPU
+            <small>工場長</small>
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:1em;">
+          <strong>覚え方:</strong> 倉庫から作業台に持ってきて、工場長が処理する
+        </div>
+      </section>
+
+      <!-- 4. 様々なコンピュータ -->
+      <section>
+        <h2>4. 様々なコンピュータ</h2>
+        <p style="color: var(--text-secondary);">用途に応じた様々なコンピュータの種類</p>
+      </section>
+
+      <section>
+        <h3>コンピュータの分類</h3>
+        <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="card fragment">
+            <h4>💻 汎用コンピュータ</h4>
+            <p>様々な用途に使える</p>
+            <p><strong>例:</strong> 事務用PC</p>
+          </div>
+          <div class="card fragment">
+            <h4>🏭 産業用PC</h4>
+            <p>耐環境性、長期安定</p>
+            <p><strong>例:</strong> 生産管理端末</p>
+          </div>
+          <div class="card fragment">
+            <h4>🔧 組込みシステム</h4>
+            <p>特定機能に特化</p>
+            <p><strong>例:</strong> PLC、検査装置</p>
+          </div>
+          <div class="card fragment">
+            <h4>🖧 サーバー</h4>
+            <p>複数PCにサービス提供</p>
+            <p><strong>例:</strong> 生産管理サーバー</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>産業用PC vs 汎用PC</h3>
+        <div class="compare-cards">
+          <div class="compare-card">
+            <div class="card-header">🏭 産業用PC</div>
+            <ul style="text-align:left;">
+              <li>動作温度: <strong>-20〜60℃</strong></li>
+              <li>寿命: <strong>10年以上</strong></li>
+              <li>振動耐性: <strong>高い</strong></li>
+              <li>ファンレス: <strong>対応可</strong></li>
+              <li>価格: <strong>高い</strong></li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <div class="card-header">💻 汎用PC</div>
+            <ul style="text-align:left;">
+              <li>動作温度: <strong>10〜35℃</strong></li>
+              <li>寿命: <strong>3〜5年</strong></li>
+              <li>振動耐性: <strong>低い</strong></li>
+              <li>ファンレス: <strong>基本あり</strong></li>
+              <li>価格: <strong>安い</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div class="highlight-box warning fragment" style="margin-top:0.8em;">
+          <strong>なぜ高い？</strong> 過酷な環境（高温、振動、粉塵）でも安定動作するため
+        </div>
+      </section>
+
+      <section>
+        <h3>組込みシステム</h3>
+        <p><strong>定義:</strong> 特定の機能を実現するために機器に組み込まれたコンピュータ</p>
+        <div class="manufacturing-icons" style="margin-top:1em;">
+          <div class="mfg-icon fragment">
+            <span class="emoji">🎛️</span>
+            <span class="name">PLC</span>
+          </div>
+          <div class="mfg-icon fragment">
+            <span class="emoji">🤖</span>
+            <span class="name">産業用ロボット</span>
+          </div>
+          <div class="mfg-icon fragment">
+            <span class="emoji">📏</span>
+            <span class="name">計測機器</span>
+          </div>
+          <div class="mfg-icon fragment">
+            <span class="emoji">🚗</span>
+            <span class="name">AGV（無人搬送車）</span>
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:1em;">
+          <strong>ポイント:</strong> 組込みシステムは「見えないコンピュータ」。専用機能に最適化されている
+        </div>
+      </section>
+
+      <!-- 5. 演習 -->
+      <section class="exercise-slide">
+        <h2>5. 演習とまとめ</h2>
+        <p>学んだ知識を確認しよう</p>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習1: 5大装置の分類</h3>
+        <p>以下の機器を5大装置に分類してください:</p>
+        <div class="card-grid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="card">⌨️ マウス → <strong>?</strong></div>
+          <div class="card">🖥️ モニター → <strong>?</strong></div>
+          <div class="card">🧠 CPU → <strong>?</strong></div>
+          <div class="card">📋 メモリ → <strong>?</strong></div>
+          <div class="card">💿 HDD → <strong>?</strong></div>
+          <div class="card">⌨️ キーボード → <strong>?</strong></div>
+          <div class="card">🖨️ プリンター → <strong>?</strong></div>
+          <div class="card">⚡ SSD → <strong>?</strong></div>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習2: 現場のコンピュータ探し</h3>
+        <p>自分の職場にあるコンピュータ（組込み含む）を3つ挙げてください:</p>
+        <div class="exercise-box">
+          <p>1. _______________</p>
+          <p>2. _______________</p>
+          <p>3. _______________</p>
+        </div>
+        <div class="highlight-box" style="margin-top:1em;">
+          <strong>ヒント:</strong> PLCやタッチパネル、センサー、検査装置なども含みます
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>確認クイズ</h3>
+        <div class="card-grid" style="grid-template-columns: 1fr;">
+          <div class="card fragment">
+            <h4>Q1</h4>
+            <p>CPUの役割を一言で表すと？</p>
+          </div>
+          <div class="card fragment">
+            <h4>Q2</h4>
+            <p>メモリと補助記憶装置の違いは？</p>
+          </div>
+          <div class="card fragment">
+            <h4>Q3</h4>
+            <p>産業用PCが汎用PCより高価な理由は？</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- まとめ -->
+      <section>
+        <h2>キーワード</h2>
+        <div class="keywords">
+          <span class="keyword-tag">5大装置</span>
+          <span class="keyword-tag">CPU</span>
+          <span class="keyword-tag">メモリ</span>
+          <span class="keyword-tag">補助記憶装置</span>
+          <span class="keyword-tag">入力装置</span>
+          <span class="keyword-tag">出力装置</span>
+          <span class="keyword-tag">産業用PC</span>
+          <span class="keyword-tag">組込みシステム</span>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2>確認問題</h2>
+        <div class="quiz-item fragment">
+          <p><strong>1.</strong> コンピュータの5大装置をすべて挙げてください</p>
+        </div>
+        <div class="quiz-item fragment">
+          <p><strong>2.</strong> CPUの役割を説明してください</p>
+        </div>
+        <div class="quiz-item fragment">
+          <p><strong>3.</strong> メモリと補助記憶装置の違いを説明してください</p>
+        </div>
+        <div class="quiz-item fragment">
+          <p><strong>4.</strong> 製造現場で使われる組込みシステムの例を3つ挙げてください</p>
+        </div>
+      </section>
+
+      <!-- 次回予告 -->
+      <section>
+        <h2>次回予告</h2>
+        <div class="next-preview">
+          <h4>セッション3-4h: 数値とデータの表現</h4>
+          <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); margin-top:1em;">
+            <div class="card">
+              <h4>🔢 2進数</h4>
+              <p>コンピュータが数値をどう扱うか</p>
+            </div>
+            <div class="card">
+              <h4>📊 データ単位</h4>
+              <p>ビット、バイトの概念</p>
+            </div>
+            <div class="card">
+              <h4>🖼️ データ表現</h4>
+              <p>文字や画像の表現方法</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="assets/init.js"></script>
+</body>
+</html>

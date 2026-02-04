@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10 ITサービスマネジメント - 製造DX基礎コース</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="assets/custom.css">
+  <script src="assets/auth.js"></script>
+  <script>Auth.requireAuth();</script>
+</head>
+<body>
+  <div class="nav-bar">
+    <a href="index.html">目次</a>
+    <span class="current">10 ITサービスマネジメント</span>
+    <div class="nav-links">
+      <a href="09_プロジェクトマネジメント.html" class="nav-prev">← 前へ</a>
+      <a href="11_企業活動と経営戦略.html" class="nav-next">次へ →</a>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- タイトル -->
+      <section class="title-slide step3">
+        <p><span class="step-badge">STEP3</span> システム構築の知識</p>
+        <h1>ITサービスマネジメント</h1>
+        <p class="subtitle">セッション 19-20h</p>
+        <p class="level-stars">学習レベル: ★★★★☆（応用レベル）</p>
+      </section>
+
+      <!-- アジェンダ -->
+      <section>
+        <h2>本日のゴール</h2>
+        <ul>
+          <li>ITILの基本概念を理解する</li>
+          <li>インシデント管理と問題管理を区別できる</li>
+          <li>SLAの役割を理解し、要望を伝えられる</li>
+        </ul>
+        <p style="margin-top:1em;"><strong>対応テキスト:</strong> 第8章 サービスマネジメント（8-01〜8-03）</p>
+      </section>
+
+      <!-- STEP3 完了のお知らせ -->
+      <section class="step3">
+        <h2>STEP3 完了セッション！</h2>
+        <p style="font-size: 1.2em;">このセッションで<strong>STEP3「システム構築の知識」</strong>が完了します。</p>
+        <div style="margin-top: 1em; padding: 1em; background-color: #f3e8ff; border-radius: 8px; border-left: 4px solid #6f42c1;">
+          <p style="margin: 0;">STEP3で学んだこと:</p>
+          <ul style="margin-top: 0.5em;">
+            <li>システム開発の流れ（要件定義、開発モデル）</li>
+            <li>プロジェクトマネジメント（WBS、ガントチャート）</li>
+            <li>ITサービスマネジメント（ITIL、SLA）</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 1. ITサービスマネジメントとは -->
+      <section>
+        <h2>1. ITサービスマネジメントとは</h2>
+      </section>
+
+      <section>
+        <h3>考え方の転換</h3>
+        <p><strong>従来:</strong></p>
+        <blockquote>「システムを作って納品したら終わり」</blockquote>
+        <p style="margin-top: 1em;"><strong>サービスマネジメント:</strong></p>
+        <blockquote>「価値を継続的に提供し続ける」</blockquote>
+      </section>
+
+      <section>
+        <h3>ITILとは</h3>
+        <p><strong>Information Technology Infrastructure Library</strong></p>
+        <ul>
+          <li>ITサービス管理のベストプラクティス集</li>
+          <li>英国発祥、世界標準のフレームワーク</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>サービスとして考える</h3>
+        <pre class="ascii">
+[情報システム部門]
+      │
+      ↓ サービスを提供
+[製造現場]（利用者）
+
+提供するサービス例:
+・生産管理システム
+・メールシステム
+・ヘルプデスク対応
+        </pre>
+      </section>
+
+      <!-- 2. サービスデスク -->
+      <section>
+        <h2>2. サービスデスク</h2>
+      </section>
+
+      <section>
+        <h3>サービスデスクの役割</h3>
+        <p><strong>ユーザーからの問い合わせ窓口（SPOC）</strong></p>
+        <pre class="ascii">
+SPOC = Single Point of Contact（単一窓口）
+
+[現場A] ──┐
+[現場B] ──┼──→ [サービスデスク] ──→ [IT部門]
+[現場C] ──┘           │
+                      ↓
+                記録・追跡
+        </pre>
+      </section>
+
+      <section>
+        <h3>サービスデスクの機能</h3>
+        <table>
+          <tr><th>機能</th><th>内容</th></tr>
+          <tr><td>受付</td><td>問い合わせの一次対応</td></tr>
+          <tr><td>記録</td><td>すべての問い合わせを記録</td></tr>
+          <tr><td>分類</td><td>優先度・カテゴリを判断</td></tr>
+          <tr><td>解決</td><td>可能なものは自己解決</td></tr>
+          <tr><td>エスカレーション</td><td>専門チームへ引継ぎ</td></tr>
+          <tr><td>報告</td><td>状況の報告・連絡</td></tr>
+        </table>
+      </section>
+
+      <!-- 3. インシデント管理と問題管理 -->
+      <section>
+        <h2>3. インシデント管理と問題管理</h2>
+      </section>
+
+      <section>
+        <h3>インシデントと問題の違い</h3>
+        <table>
+          <tr><th>用語</th><th>定義</th><th>目的</th></tr>
+          <tr><td>インシデント</td><td>サービスの中断・品質低下</td><td><strong>早く復旧する</strong></td></tr>
+          <tr><td>問題</td><td>インシデントの根本原因</td><td><strong>再発を防止する</strong></td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>具体例：インシデントと問題</h3>
+        <pre class="ascii">
+【インシデント】
+「生産管理システムにログインできない」
+      ↓ 応急対応
+「サーバーを再起動したら直った」
+      ↓
+インシデントは解決（復旧）
+
+【問題】
+「なぜログインできなくなったのか？」
+      ↓ 原因調査
+「メモリリークでサーバーがダウンしていた」
+      ↓ 恒久対策
+「プログラムを修正してメモリリークを解消」
+      ↓
+問題を解決（再発防止）
+        </pre>
+      </section>
+
+      <section>
+        <h3>インシデント管理のフロー</h3>
+        <pre class="ascii">
+[検知・受付]
+     ↓
+[記録・分類]
+     ↓
+[優先度判定]
+     ↓
+[調査・診断]
+     ↓
+[解決・復旧]
+     ↓
+[クローズ]
+        </pre>
+      </section>
+
+      <section>
+        <h3>優先度の決め方</h3>
+        <p><strong>優先度 = 影響度 × 緊急度</strong></p>
+        <table class="small">
+          <tr><th>影響度＼緊急度</th><th>高</th><th>中</th><th>低</th></tr>
+          <tr><td>高</td><td>最優先</td><td>高</td><td>中</td></tr>
+          <tr><td>中</td><td>高</td><td>中</td><td>低</td></tr>
+          <tr><td>低</td><td>中</td><td>低</td><td>低</td></tr>
+        </table>
+        <p style="margin-top: 0.5em; font-size: 0.8em;"><strong>製造現場での影響度:</strong></p>
+        <ul style="font-size: 0.7em;">
+          <li>高: 生産ライン停止、出荷不可</li>
+          <li>中: 一部機能停止、代替手段あり</li>
+          <li>低: 軽微な不具合、業務継続可</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>エスカレーション</h3>
+        <p><strong>対応困難な場合に引き継ぐこと</strong></p>
+        <table class="small">
+          <tr><th>種類</th><th>説明</th></tr>
+          <tr><td>機能的エスカレーション</td><td>専門チームへ技術的に引継ぎ</td></tr>
+          <tr><td>階層的エスカレーション</td><td>上位管理者へ報告・判断依頼</td></tr>
+        </table>
+        <pre class="ascii">
+[サービスデスク]
+     ↓ 解決できない
+[専門チーム]（機能的）
+     ↓ 重大な影響
+[管理者]（階層的）
+        </pre>
+      </section>
+
+      <!-- 4. 変更管理 -->
+      <section>
+        <h2>4. 変更管理</h2>
+      </section>
+
+      <section>
+        <h3>変更管理とは</h3>
+        <p><strong>システムへの変更を安全に実施する仕組み</strong></p>
+        <div style="display: flex; justify-content: space-around; margin-top: 1em;">
+          <div style="background: #ffe6e6; padding: 0.8em; border-radius: 8px; width: 40%;">
+            <p style="margin: 0; font-weight: bold;">変更しないと起こる問題</p>
+            <ul style="font-size: 0.7em; margin-top: 0.5em;">
+              <li>バグが放置される</li>
+              <li>セキュリティ脆弱性が残る</li>
+              <li>業務改善ができない</li>
+            </ul>
+          </div>
+          <div style="background: #fff3e6; padding: 0.8em; border-radius: 8px; width: 40%;">
+            <p style="margin: 0; font-weight: bold;">変更すると起こりうる問題</p>
+            <ul style="font-size: 0.7em; margin-top: 0.5em;">
+              <li>新たなバグが発生</li>
+              <li>他の機能に影響</li>
+              <li>サービス停止</li>
+            </ul>
+          </div>
+        </div>
+        <blockquote style="margin-top: 1em;">だから「管理」が必要</blockquote>
+      </section>
+
+      <section>
+        <h3>変更管理のフロー</h3>
+        <pre class="ascii">
+[変更要求]
+     ↓
+[影響評価]
+     ↓
+[承認] ← CAB（変更諮問委員会）
+     ↓
+[実施]
+     ↓
+[レビュー]
+        </pre>
+      </section>
+
+      <!-- 5. SLA -->
+      <section>
+        <h2>5. SLA（サービスレベル合意）</h2>
+      </section>
+
+      <section>
+        <h3>SLAとは</h3>
+        <p><strong>Service Level Agreement</strong></p>
+        <ul>
+          <li>サービスの品質目標を合意した文書</li>
+          <li>提供者と利用者の約束</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>SLAの項目例</h3>
+        <table class="small">
+          <tr><th>項目</th><th>内容</th><th>目標値例</th></tr>
+          <tr><td>可用性</td><td>システム稼働率</td><td>99.5%以上</td></tr>
+          <tr><td>応答時間</td><td>画面応答速度</td><td>3秒以内</td></tr>
+          <tr><td>対応時間</td><td>問合せへの初動</td><td>30分以内</td></tr>
+          <tr><td>復旧時間</td><td>障害からの復旧</td><td>4時間以内</td></tr>
+          <tr><td>サポート時間</td><td>対応可能時間</td><td>平日8:00-20:00</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>稼働率の計算</h3>
+        <pre class="ascii">
+稼働率 = (サービス時間 - 停止時間) / サービス時間 × 100%
+        </pre>
+        <p><strong>例:</strong></p>
+        <ul>
+          <li>サービス時間: 月720時間</li>
+          <li>停止時間: 3.6時間</li>
+        </ul>
+        <pre class="ascii">
+稼働率 = (720 - 3.6) / 720 × 100% = 99.5%
+        </pre>
+      </section>
+
+      <section>
+        <h3>稼働率と停止許容時間</h3>
+        <table>
+          <tr><th>稼働率</th><th>年間停止許容</th><th>月間停止許容</th></tr>
+          <tr><td>99%</td><td>87.6時間</td><td>7.3時間</td></tr>
+          <tr><td>99.5%</td><td>43.8時間</td><td>3.6時間</td></tr>
+          <tr><td>99.9%</td><td>8.76時間</td><td>44分</td></tr>
+          <tr><td>99.99%</td><td>52.6分</td><td>4.4分</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>要望の伝え方</h3>
+        <p><strong>悪い例:</strong></p>
+        <blockquote style="background-color: #ffe6e6; border-left-color: #dc3545;">「システムを止めないでほしい」</blockquote>
+        <p style="margin-top: 1em;"><strong>良い例:</strong></p>
+        <blockquote style="background-color: #e6ffe6; border-left-color: #28a745;">「生産時間帯（8:00-20:00）は稼働率99.5%以上を希望。<br>
+定期メンテナンスは土曜夜間に実施してほしい。<br>
+障害時は2時間以内に復旧してほしい。」</blockquote>
+      </section>
+
+      <!-- 6. STEP3 完了！ -->
+      <section class="step3">
+        <h2>6. STEP3 完了！</h2>
+        <p style="font-size: 1.3em; color: #6f42c1; font-weight: bold;">おめでとうございます！</p>
+        <p>STEP3「システム構築の知識」が完了しました。</p>
+      </section>
+
+      <section>
+        <h3>STEP3で学んだこと</h3>
+        <ul>
+          <li><strong>システム開発の流れ</strong>（要件定義、開発モデル）</li>
+          <li><strong>プロジェクトマネジメント</strong>（WBS、ガントチャート）</li>
+          <li><strong>ITサービスマネジメント</strong>（ITIL、SLA）</li>
+        </ul>
+        <div class="next-preview" style="margin-top: 1em;">
+          <h4>次のSTEP4では:</h4>
+          <p>経営とITの関係（企業活動、法務、システム戦略）を学びます。</p>
+        </div>
+      </section>
+
+      <!-- 演習 -->
+      <section class="exercise-slide">
+        <h2>演習</h2>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習1: インシデント vs 問題</h3>
+        <p>以下を分類してください:</p>
+        <table class="small">
+          <tr><th>事象</th><th>インシデント/問題</th></tr>
+          <tr><td>PCが起動しない</td><td></td></tr>
+          <tr><td>原因はHDDの故障だった</td><td></td></tr>
+          <tr><td>プリンターから印刷できない</td><td></td></tr>
+          <tr><td>ドライバーの不具合が原因</td><td></td></tr>
+        </table>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習2: SLA作成</h3>
+        <p>生産管理システムのSLAを考えてください:</p>
+        <div class="exercise-box">
+          <p>稼働率目標: ______%</p>
+          <p>メンテナンス時間帯: ______</p>
+          <p>障害復旧目標: ______時間</p>
+          <p>サポート時間: ______</p>
+        </div>
+      </section>
+
+      <!-- キーワード -->
+      <section>
+        <h2>キーワード</h2>
+        <div class="keywords">
+          <span class="keyword-tag">ITIL</span>
+          <span class="keyword-tag">サービスデスク</span>
+          <span class="keyword-tag">インシデント管理</span>
+          <span class="keyword-tag">問題管理</span>
+          <span class="keyword-tag">エスカレーション</span>
+          <span class="keyword-tag">変更管理</span>
+          <span class="keyword-tag">SLA</span>
+          <span class="keyword-tag">可用性</span>
+        </div>
+      </section>
+
+      <!-- 確認問題 -->
+      <section class="quiz-slide">
+        <h2>確認問題</h2>
+        <div class="quiz-item">
+          <p><strong>1.</strong> インシデントと問題の違いを説明してください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>2.</strong> エスカレーションとは何ですか？</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>3.</strong> SLAに含める項目を3つ挙げてください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>4.</strong> 稼働率99.5%の場合、月間の停止許容時間は？</p>
+        </div>
+      </section>
+
+      <!-- 次回予告 -->
+      <section>
+        <h2>次回予告</h2>
+        <div class="next-preview">
+          <h4>セッション21-22h: 企業活動と経営戦略</h4>
+          <p><span class="step-badge" style="background-color: #fd7e14;">STEP4</span> 経営とITを結びつける</p>
+          <ul>
+            <li>企業活動の基礎</li>
+            <li>経営戦略</li>
+            <li>会計の基礎知識</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="assets/init.js"></script>
+</body>
+</html>

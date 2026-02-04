@@ -1,0 +1,300 @@
+/* 共通スタイル */
+:root {
+  --primary-color: #2c3e50;
+  --accent-color: #3498db;
+  --success-color: #28a745;
+  --bg-color: #f8f9fa;
+  --text-color: #333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* ナビゲーションバー */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-bar a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.nav-bar a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.nav-bar .current {
+  font-weight: bold;
+}
+
+.nav-bar .nav-links {
+  display: flex;
+  gap: 10px;
+}
+
+/* Reveal.js 調整 */
+.reveal {
+  padding-top: 60px;
+}
+
+.reveal h1 {
+  color: var(--primary-color);
+  font-size: 2.2em;
+}
+
+.reveal h2 {
+  color: var(--primary-color);
+  font-size: 1.6em;
+  border-bottom: 3px solid var(--accent-color);
+  padding-bottom: 10px;
+}
+
+.reveal h3 {
+  color: var(--accent-color);
+  font-size: 1.3em;
+}
+
+.reveal table {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  font-size: 0.85em;
+}
+
+.reveal table th,
+.reveal table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.reveal table th {
+  background: var(--primary-color);
+  color: white;
+}
+
+.reveal table tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+.reveal table.small {
+  font-size: 0.75em;
+}
+
+.reveal pre.ascii {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 0.7em;
+  text-align: left;
+  white-space: pre;
+}
+
+.reveal blockquote {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  font-style: italic;
+  margin: 20px auto;
+  max-width: 80%;
+}
+
+.reveal .title-slide h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.reveal .title-slide .subtitle {
+  font-size: 1.4em;
+  color: var(--accent-color);
+}
+
+.reveal .title-slide .session-info {
+  font-size: 1em;
+  color: #666;
+  margin-top: 30px;
+}
+
+.step-badge {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.8em;
+  margin-right: 10px;
+}
+
+/* 目次ページ */
+.index-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.index-container header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 40px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  color: white;
+  border-radius: 15px;
+}
+
+.index-container header h1 {
+  margin: 0 0 10px 0;
+  font-size: 2.5em;
+}
+
+.index-container header .subtitle {
+  font-size: 1.3em;
+  margin: 10px 0;
+  opacity: 0.9;
+}
+
+.index-container header .info {
+  font-size: 1em;
+  opacity: 0.8;
+}
+
+.index-container .step {
+  background: white;
+  margin: 20px 0;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.index-container .step h2 {
+  color: var(--primary-color);
+  font-size: 1.3em;
+  margin: 0 0 15px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.index-container .step ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.index-container .step li {
+  margin: 10px 0;
+}
+
+.index-container .step a {
+  display: block;
+  padding: 15px 20px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s;
+  border-left: 4px solid transparent;
+}
+
+.index-container .step a:hover {
+  background: #e8f4fc;
+  border-left-color: var(--accent-color);
+  transform: translateX(5px);
+}
+
+.index-container footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  color: #666;
+  font-size: 0.9em;
+}
+
+/* 認証ダイアログ */
+.auth-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.auth-dialog {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.auth-dialog h2 {
+  margin: 0 0 20px 0;
+  color: var(--primary-color);
+}
+
+.auth-dialog input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1em;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.auth-dialog input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.auth-dialog button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1em;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+.auth-dialog button:hover {
+  background: #2980b9;
+}
+
+.auth-dialog .error {
+  color: #e74c3c;
+  font-size: 0.9em;
+  margin-top: 10px;
+}

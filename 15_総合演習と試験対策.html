@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15 総合演習と試験対策 - 製造DX基礎コース</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="assets/custom.css">
+  <script src="assets/auth.js"></script>
+  <script>Auth.requireAuth();</script>
+</head>
+<body>
+  <div class="nav-bar">
+    <a href="index.html">目次</a>
+    <span class="current">15 総合演習と試験対策</span>
+    <div class="nav-links">
+      <a href="14_製造業のIoT・AI活用.html" class="nav-prev">← 前へ</a>
+      <span class="nav-disabled">最終回</span>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- タイトル -->
+      <section class="title-slide step5">
+        <p><span class="step-badge" style="background:#dc3545;">STEP5</span> 製造DXへの応用</p>
+        <h1>総合演習と試験対策</h1>
+        <p class="subtitle">セッション 29-30h（最終回）</p>
+        <p class="level-stars">学習レベル: ★★★★★（総合・応用）</p>
+      </section>
+
+      <!-- アジェンダ -->
+      <section>
+        <h2>本日のゴール</h2>
+        <ul>
+          <li>学んだ知識を総動員してDX企画を作成できる</li>
+          <li>ITパスポート試験の出題傾向を理解する</li>
+          <li>自信を持って試験に臨める状態になる</li>
+        </ul>
+        <p style="margin-top:1em;color:#dc3545;font-weight:bold;">30時間の学習、お疲れ様でした。<br>最後に知識を実践に活かす演習と、試験対策を行います。</p>
+      </section>
+
+      <!-- 1. 知識の総整理 -->
+      <section>
+        <h2>1. 知識の総整理</h2>
+      </section>
+
+      <section>
+        <h3>STEP別の学習内容振り返り</h3>
+        <pre class="ascii">
+STEP1: ITの土台を作る（8時間）
+├── コンピュータの仕組み
+├── 数値とデータの表現
+├── ソフトウェアとOS
+└── ネットワークの基礎
+
+STEP2: データを扱う力をつける（6時間）
+├── データベースの基礎
+├── 情報セキュリティ
+└── アルゴリズムと論理的思考
+
+STEP3: システム構築の知識を得る（6時間）
+├── システム開発の流れ
+├── プロジェクトマネジメント
+└── ITサービスマネジメント
+
+STEP4: 経営とITの関係を理解する（6時間）
+├── 企業活動と経営戦略
+├── 法務と知的財産
+└── システム戦略と業務改善
+
+STEP5: 製造DXへの応用（4時間）
+├── 製造業のIoT・AI活用
+└── 総合演習と試験対策 ← 今ここ
+        </pre>
+      </section>
+
+      <section>
+        <h3>ITパスポート試験の分野対応</h3>
+        <table>
+          <tr><th>分野</th><th>主なSTEP</th><th>出題割合</th></tr>
+          <tr><td>ストラテジ系</td><td>STEP4</td><td>約35%</td></tr>
+          <tr><td>マネジメント系</td><td>STEP3</td><td>約20%</td></tr>
+          <tr><td>テクノロジ系</td><td>STEP1, STEP2</td><td>約45%</td></tr>
+        </table>
+      </section>
+
+      <!-- 2. 総合演習 -->
+      <section>
+        <h2>2. 総合演習：DX改善企画</h2>
+      </section>
+
+      <section>
+        <h3>企画書フォーマット（1/2）</h3>
+        <pre class="ascii" style="font-size:0.45em;">
+┌─────────────────────────────────────────────┐
+│      製造DX改善企画書                        │
+├─────────────────────────────────────────────┤
+│【プロジェクト名】                            │
+│                                             │
+├─────────────────────────────────────────────┤
+│【現状の課題】                                │
+│ ・課題の内容:                                │
+│ ・定量的な影響（損失時間、コストなど）:      │
+│ ・IT用語での再定義:                          │
+├─────────────────────────────────────────────┤
+│【目指す姿（To-Be）】                         │
+│ ・あるべき状態:                              │
+│ ・期待効果（定量）:                          │
+└─────────────────────────────────────────────┘
+        </pre>
+      </section>
+
+      <section>
+        <h3>企画書フォーマット（2/2）</h3>
+        <pre class="ascii" style="font-size:0.45em;">
+┌─────────────────────────────────────────────┐
+│【解決策】                                    │
+│ ・導入する技術/システム:                     │
+│ ・活用するIT知識:                            │
+│  □ネットワーク □データベース □セキュリティ │
+│  □開発/PM □ITIL □経営/戦略 □IoT/AI       │
+├─────────────────────────────────────────────┤
+│【実施計画（WBS概要）】                       │
+│ フェーズ1:                                   │
+│ フェーズ2:                                   │
+│ フェーズ3:                                   │
+├─────────────────────────────────────────────┤
+│【概算と効果】                                │
+│ ・初期費用:                                  │
+│ ・運用費用:                                  │
+│ ・ROI:                                       │
+├─────────────────────────────────────────────┤
+│【リスクと対策】                              │
+│ ・想定リスク:                                │
+│ ・対策:                                      │
+└─────────────────────────────────────────────┘
+        </pre>
+      </section>
+
+      <section>
+        <h3>グループワーク（45分）</h3>
+        <p><strong>進め方:</strong></p>
+        <ol>
+          <li>課題選定（10分）</li>
+          <li>As-Is / To-Be整理（10分）</li>
+          <li>解決策検討（10分）</li>
+          <li>企画書作成（15分）</li>
+        </ol>
+        <p style="margin-top:1em;"><strong>発表・フィードバック（15分）:</strong></p>
+        <ul>
+          <li>1グループ3分で発表</li>
+          <li>相互フィードバック</li>
+        </ul>
+      </section>
+
+      <!-- 3. ITパスポート試験対策 -->
+      <section>
+        <h2>3. ITパスポート試験対策</h2>
+      </section>
+
+      <section>
+        <h3>試験概要</h3>
+        <table>
+          <tr><th>項目</th><th>内容</th></tr>
+          <tr><td>試験方式</td><td>CBT（コンピュータ試験）</td></tr>
+          <tr><td>問題数</td><td>100問</td></tr>
+          <tr><td>試験時間</td><td>120分</td></tr>
+          <tr><td>合格基準</td><td>総合60%以上 + 各分野30%以上</td></tr>
+          <tr><td>受験料</td><td>7,500円（税込）</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>出題分野と問題数</h3>
+        <table>
+          <tr><th>分野</th><th>問題数</th><th>割合</th></tr>
+          <tr><td>ストラテジ系</td><td>約35問</td><td>35%</td></tr>
+          <tr><td>マネジメント系</td><td>約20問</td><td>20%</td></tr>
+          <tr><td>テクノロジ系</td><td>約45問</td><td>45%</td></tr>
+        </table>
+        <p style="margin-top:1em;color:#dc3545;"><strong>全分野で30%以上必要なので、苦手分野を作らないことが大切！</strong></p>
+      </section>
+
+      <section>
+        <h3>分野別重要キーワード（ストラテジ系）</h3>
+        <p><strong>STEP4対応</strong></p>
+        <pre class="ascii">
+経営戦略: SWOT、PPM、損益分岐点、財務諸表
+法務: 知的財産権、著作権、派遣・請負
+システム戦略: BPR、RPA、ERP、SCM、DX
+        </pre>
+      </section>
+
+      <section>
+        <h3>分野別重要キーワード（マネジメント系）</h3>
+        <p><strong>STEP3対応</strong></p>
+        <pre class="ascii">
+開発技術: 要件定義、ウォーターフォール、アジャイル、テスト
+PM: WBS、ガントチャート、クリティカルパス
+サービス管理: ITIL、インシデント管理、SLA
+        </pre>
+      </section>
+
+      <section>
+        <h3>分野別重要キーワード（テクノロジ系）</h3>
+        <p><strong>STEP1, 2対応</strong></p>
+        <pre class="ascii">
+基礎理論: 2進数、論理演算、アルゴリズム
+コンピュータ: 5大装置、CPU、メモリ、MTBF/MTTR
+ネットワーク: LAN/WAN、IPアドレス、プロトコル
+データベース: 主キー、正規化、SQL
+セキュリティ: CIA、マルウェア、暗号化、認証
+        </pre>
+      </section>
+
+      <section>
+        <h3>頻出問題パターン</h3>
+        <p><strong>計算問題:</strong></p>
+        <ul>
+          <li>損益分岐点の計算</li>
+          <li>稼働率の計算（直列/並列）</li>
+          <li>2進数変換</li>
+        </ul>
+        <p><strong>用語の意味:</strong></p>
+        <ul>
+          <li>〇〇とは何か？</li>
+          <li>△△の説明として適切なものは？</li>
+        </ul>
+        <p><strong>事例問題:</strong></p>
+        <ul>
+          <li>〜の場合、どの対策が適切か？</li>
+          <li>〜の状況に当てはまる用語は？</li>
+        </ul>
+      </section>
+
+      <!-- 4. 模擬試験 -->
+      <section>
+        <h2>4. 模擬試験</h2>
+      </section>
+
+      <section>
+        <h3>模擬テスト</h3>
+        <table>
+          <tr><th>項目</th><th>内容</th></tr>
+          <tr><td>問題数</td><td>30問</td></tr>
+          <tr><td>時間</td><td>35分</td></tr>
+          <tr><td>配点</td><td>各問1点</td></tr>
+        </table>
+        <p style="margin-top:1em;"><strong>出題内訳:</strong></p>
+        <ul>
+          <li>ストラテジ系: 10問</li>
+          <li>マネジメント系: 7問</li>
+          <li>テクノロジ系: 13問</li>
+        </ul>
+      </section>
+
+      <!-- 5. まとめと今後 -->
+      <section>
+        <h2>5. まとめと今後</h2>
+      </section>
+
+      <section>
+        <h3>研修で身につけたこと</h3>
+        <pre class="ascii">
+✓ IT基礎知識（コンピュータ、ネットワーク、DB）
+✓ セキュリティの考え方
+✓ システム開発・運用の流れ
+✓ 経営とITの関係
+✓ 製造DXへの応用力
+        </pre>
+      </section>
+
+      <section>
+        <h3>ITパスポート試験に向けて</h3>
+        <p><strong>試験申込み:</strong></p>
+        <ul>
+          <li>IPA（情報処理推進機構）公式サイト</li>
+          <li><a href="https://www3.jitec.ipa.go.jp/" target="_blank">https://www3.jitec.ipa.go.jp/</a></li>
+        </ul>
+        <p><strong>学習リソース:</strong></p>
+        <ul>
+          <li>過去問道場（無料Webサイト）</li>
+          <li>IPA公式過去問題</li>
+          <li>市販の問題集</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>学習のコツ</h3>
+        <ol>
+          <li>過去問を繰り返し解く</li>
+          <li>間違えた問題を重点復習</li>
+          <li>計算問題は公式を暗記</li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>継続学習のすすめ</h3>
+        <table>
+          <tr><th>次のステップ</th><th>内容</th></tr>
+          <tr><td>基本情報技術者</td><td>IT技術者の登竜門</td></tr>
+          <tr><td>情報セキュリティマネジメント</td><td>セキュリティ専門</td></tr>
+          <tr><td>社内DX推進活動</td><td>学んだ知識を実践</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>今日から実践できること</h3>
+        <ul>
+          <li>IT用語を使って課題を説明する</li>
+          <li>改善効果を定量的に示す</li>
+          <li>システム導入時に要件を明確に伝える</li>
+          <li>セキュリティを意識した行動をとる</li>
+        </ul>
+      </section>
+
+      <!-- 付録: 重要用語一覧 -->
+      <section>
+        <h2>付録: 重要用語一覧</h2>
+      </section>
+
+      <section>
+        <h3>ストラテジ系</h3>
+        <table class="small">
+          <tr><th>用語</th><th>説明</th></tr>
+          <tr><td>損益分岐点</td><td>売上と費用が等しくなる点</td></tr>
+          <tr><td>SWOT分析</td><td>強み・弱み・機会・脅威の分析</td></tr>
+          <tr><td>PPM</td><td>製品ポートフォリオ管理</td></tr>
+          <tr><td>BPR</td><td>業務プロセスの抜本的再設計</td></tr>
+          <tr><td>RPA</td><td>定型業務の自動化</td></tr>
+          <tr><td>ERP</td><td>統合基幹業務システム</td></tr>
+          <tr><td>DX</td><td>デジタル技術による変革</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>マネジメント系</h3>
+        <table class="small">
+          <tr><th>用語</th><th>説明</th></tr>
+          <tr><td>要件定義</td><td>システムが何をすべきか明確化</td></tr>
+          <tr><td>WBS</td><td>作業を階層的に分解</td></tr>
+          <tr><td>クリティカルパス</td><td>最長経路（遅延不可）</td></tr>
+          <tr><td>ITIL</td><td>ITサービス管理のベストプラクティス</td></tr>
+          <tr><td>SLA</td><td>サービスレベル合意</td></tr>
+          <tr><td>インシデント</td><td>サービスの中断・品質低下</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>テクノロジ系</h3>
+        <table class="small">
+          <tr><th>用語</th><th>説明</th></tr>
+          <tr><td>CPU</td><td>コンピュータの頭脳</td></tr>
+          <tr><td>MTBF</td><td>平均故障間隔</td></tr>
+          <tr><td>MTTR</td><td>平均復旧時間</td></tr>
+          <tr><td>IPアドレス</td><td>ネットワーク上の住所</td></tr>
+          <tr><td>主キー</td><td>レコードを一意に識別</td></tr>
+          <tr><td>正規化</td><td>データ重複の排除</td></tr>
+          <tr><td>CIA</td><td>機密性・完全性・可用性</td></tr>
+        </table>
+      </section>
+
+      <!-- 確認問題 -->
+      <section class="quiz-slide">
+        <h2>確認問題</h2>
+        <div class="quiz-item">
+          <p><strong>1.</strong> ITパスポート試験の3つの分野と、それぞれの出題割合は？</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>2.</strong> 合格に必要な条件を2つ挙げてください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>3.</strong> DX企画書で「As-Is / To-Be」を整理する目的は？</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>4.</strong> 試験対策で最も効果的な学習方法は？</p>
+        </div>
+      </section>
+
+      <!-- 修了証 -->
+      <section style="background: linear-gradient(135deg, #dc3545 0%, #c82333 100%); color: white;">
+        <h2 style="color: white;">研修修了おめでとうございます！</h2>
+        <pre class="ascii" style="background: white; color: #333; padding: 1.5em; border-radius: 10px; font-size: 0.55em;">
+ ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+｜                              ｜
+｜   製造DX基礎コース           ｜
+｜   カリキュラムB 修了         ｜
+｜                              ｜
+｜   30時間の学習を完了し、     ｜
+｜   ITパスポート試験への       ｜
+｜   準備が整いました。         ｜
+｜                              ｜
+｜   試験での健闘を祈ります！   ｜
+｜＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿｜
+        </pre>
+        <p style="font-size: 1.2em; margin-top: 1em;">30時間の研修、お疲れ様でした！</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="assets/init.js"></script>
+</body>
+</html>

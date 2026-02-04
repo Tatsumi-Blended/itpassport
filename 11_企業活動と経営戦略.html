@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11 企業活動と経営戦略 - 製造DX基礎コース</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="assets/custom.css">
+  <script src="assets/auth.js"></script>
+  <script>Auth.requireAuth();</script>
+</head>
+<body>
+  <div class="nav-bar">
+    <a href="index.html">目次</a>
+    <span class="current">11 企業活動と経営戦略</span>
+    <div class="nav-links">
+      <a href="10_ITサービスマネジメント.html" class="nav-prev">&larr; 前へ</a>
+      <a href="12_法務と知的財産.html" class="nav-next">次へ &rarr;</a>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- STEP4 開始スライド -->
+      <section data-background-color="#fd7e14">
+        <h1 style="color: white;">STEP4 開始!</h1>
+        <p style="color: white; font-size: 1.3em;">経営とITの関係を学ぶ</p>
+        <p style="color: rgba(255,255,255,0.9);">なぜDXが必要か、経営視点から理解します</p>
+      </section>
+
+      <!-- タイトル -->
+      <section class="title-slide step4">
+        <p><span class="step-badge">STEP4</span> 経営とITの関係</p>
+        <h1>企業活動と経営戦略</h1>
+        <p class="subtitle">セッション 21-22h</p>
+        <p class="level-stars">学習レベル: ★★★★☆（応用レベル）</p>
+      </section>
+
+      <!-- アジェンダ -->
+      <section>
+        <h2>本日のゴール</h2>
+        <ul>
+          <li>損益分岐点の概念を理解し計算できる</li>
+          <li>財務諸表の基本を読み解ける</li>
+          <li>SWOT分析を自社に適用できる</li>
+        </ul>
+        <p style="margin-top:1em;"><strong>対応テキスト:</strong> 第1章 企業活動、第3章 経営戦略</p>
+      </section>
+
+      <!-- 1. 企業活動の基本 -->
+      <section>
+        <h2>1. 企業活動の基本</h2>
+      </section>
+
+      <section>
+        <h3>会社の目的</h3>
+        <p><strong>利益を出して継続すること</strong></p>
+        <pre class="ascii">
+売上 - コスト = 利益
+
+売上: お客様から得るお金
+コスト: 材料費、人件費、設備費など
+利益: 残ったお金（これが会社の成長の源泉）
+        </pre>
+      </section>
+
+      <section>
+        <h3>製造業の利益構造</h3>
+        <pre class="ascii">
+売上高           1,000万円
+─ 売上原価        600万円（材料費、労務費、経費）
+━━━━━━━━━━━━━━━━━━━
+= 売上総利益      400万円（粗利）
+─ 販管費          250万円（営業、管理部門のコスト）
+━━━━━━━━━━━━━━━━━━━
+= 営業利益        150万円
+        </pre>
+      </section>
+
+      <section>
+        <h3>なぜ現場に経営知識が必要か</h3>
+        <ul>
+          <li>改善活動の効果を金額で示せる</li>
+          <li>投資判断の議論に参加できる</li>
+          <li>DXの目的を理解できる</li>
+        </ul>
+        <blockquote>「歩留まり1%改善」の価値を説明できますか?</blockquote>
+      </section>
+
+      <!-- 2. 損益分岐点 -->
+      <section>
+        <h2>2. 損益分岐点</h2>
+      </section>
+
+      <section>
+        <h3>損益分岐点とは</h3>
+        <p><strong>売上と費用がちょうど等しくなる点（利益ゼロ）</strong></p>
+        <pre class="ascii">
+        ↑金額
+        │         売上
+        │        ／
+        │      ／
+  損益分岐点→ ●
+        │    ／│   総費用
+        │  ／  │  ／
+        │／    │／
+     固定費────┼─────→ 販売量
+               │
+   この点より右 = 黒字
+   この点より左 = 赤字
+        </pre>
+      </section>
+
+      <section>
+        <h3>変動費と固定費</h3>
+        <table>
+          <tr><th>区分</th><th>定義</th><th>例</th></tr>
+          <tr><td>変動費</td><td>生産量に比例して変動</td><td>材料費、外注加工費</td></tr>
+          <tr><td>固定費</td><td>生産量に関わらず一定</td><td>減価償却費、固定給</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>損益分岐点の計算</h3>
+        <p><strong>公式:</strong></p>
+        <pre class="ascii">
+損益分岐点売上高 = 固定費 ÷ (1 - 変動費率)
+損益分岐点数量 = 固定費 ÷ (単価 - 変動費単価)
+        </pre>
+        <p><strong>限界利益:</strong></p>
+        <pre class="ascii">
+限界利益 = 売上 - 変動費
+        = 固定費を回収できる金額
+        </pre>
+      </section>
+
+      <section>
+        <h3>演習問題</h3>
+        <p><strong>問題:</strong></p>
+        <ul>
+          <li>製品単価: 150円</li>
+          <li>材料費（変動費）: 80円</li>
+          <li>加工費（変動費）: 20円</li>
+          <li>固定費: 月200万円</li>
+        </ul>
+        <p>月何個売れば黒字か?</p>
+      </section>
+
+      <section>
+        <h3>演習問題（解答）</h3>
+        <pre class="ascii">
+限界利益/個 = 150 - 80 - 20 = 50円
+損益分岐点数量 = 2,000,000 ÷ 50 = 40,000個
+        </pre>
+        <p><strong>答え: 40,000個以上売れば黒字</strong></p>
+      </section>
+
+      <section>
+        <h3>改善効果の計算</h3>
+        <p><strong>歩留まり改善の効果:</strong></p>
+        <pre class="ascii">
+現状: 歩留まり95%、月産100,000個投入
+改善後: 歩留まり96%
+
+良品増加: 100,000 × (0.96 - 0.95) = 1,000個
+利益増加: 1,000 × 50円（限界利益）= 50,000円/月
+        </pre>
+        <p>改善活動の効果を金額で示せる!</p>
+      </section>
+
+      <!-- 3. 財務諸表の基本 -->
+      <section>
+        <h2>3. 財務諸表の基本</h2>
+      </section>
+
+      <section>
+        <h3>財務三表</h3>
+        <table class="small">
+          <tr><th>書類</th><th>内容</th><th>わかること</th></tr>
+          <tr><td>貸借対照表（B/S）</td><td>資産・負債・純資産</td><td>会社の財産状況</td></tr>
+          <tr><td>損益計算書（P/L）</td><td>収益・費用・利益</td><td>1年間の儲け</td></tr>
+          <tr><td>キャッシュフロー計算書</td><td>現金の増減</td><td>お金の流れ</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>貸借対照表（B/S）の構造</h3>
+        <pre class="ascii">
+┌─────────────────┬─────────────────┐
+│     資産        │     負債        │
+│  （持っている） │  （借りている） │
+├─────────────────┤                 │
+│ 流動資産        │ 流動負債        │
+│ ・現金          │ ・買掛金        │
+│ ・売掛金        │ ・短期借入金    │
+│ ・在庫          │                 │
+├─────────────────┼─────────────────┤
+│ 固定資産        │ 固定負債        │
+│ ・設備          │ ・長期借入金    │
+│ ・建物          │                 │
+│ ・土地          ├─────────────────┤
+│                 │     純資産      │
+│                 │  （自分のお金） │
+│                 │ ・資本金        │
+│                 │ ・利益剰余金    │
+└─────────────────┴─────────────────┘
+  資産 = 負債 + 純資産（必ず一致）
+        </pre>
+      </section>
+
+      <section>
+        <h3>製造現場との関連</h3>
+        <p><strong>B/Sと現場のつながり:</strong></p>
+        <ul>
+          <li><strong>在庫</strong> = 原材料、仕掛品、製品の金額</li>
+          <li><strong>設備</strong> = 製造ラインの価値</li>
+        </ul>
+        <p>現場の改善活動が財務数値に直結!</p>
+      </section>
+
+      <section>
+        <h3>損益計算書（P/L）の構造</h3>
+        <pre class="ascii">
+売上高                    1,000
+─ 売上原価                  600
+━━━━━━━━━━━━━━━━━━━━━━━━
+売上総利益（粗利）          400
+─ 販管費                    250
+━━━━━━━━━━━━━━━━━━━━━━━━
+営業利益                    150
++ 営業外収益                  10
+─ 営業外費用                  20
+━━━━━━━━━━━━━━━━━━━━━━━━
+経常利益                    140
+        </pre>
+      </section>
+
+      <!-- 4. 経営戦略 -->
+      <section>
+        <h2>4. 経営戦略</h2>
+      </section>
+
+      <section>
+        <h3>SWOT分析とは</h3>
+        <p><strong>自社の現状を4つの視点で分析</strong></p>
+        <pre class="ascii">
+        内部環境        外部環境
+      ┌───────────┬───────────┐
+プラス│  強み(S)  │  機会(O)  │
+      │ Strengths │Opportunities│
+      ├───────────┼───────────┤
+マイナス│  弱み(W)  │  脅威(T)  │
+      │ Weaknesses│  Threats  │
+      └───────────┴───────────┘
+        </pre>
+      </section>
+
+      <section>
+        <h3>製造業のSWOT例</h3>
+        <table>
+          <tr><th>分類</th><th>例</th></tr>
+          <tr><td>強み（S）</td><td>熟練技術者、独自技術、品質</td></tr>
+          <tr><td>弱み（W）</td><td>老朽設備、デジタル人材不足</td></tr>
+          <tr><td>機会（O）</td><td>DX補助金、海外需要増</td></tr>
+          <tr><td>脅威（T）</td><td>人手不足、原材料高騰</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>クロスSWOT分析</h3>
+        <table>
+          <tr><th></th><th>機会(O)</th><th>脅威(T)</th></tr>
+          <tr><td><strong>強み(S)</strong></td><td>積極戦略</td><td>差別化戦略</td></tr>
+          <tr><td><strong>弱み(W)</strong></td><td>改善戦略</td><td>防衛戦略</td></tr>
+        </table>
+        <p style="margin-top:0.5em; font-size:0.8em;"><strong>例:</strong></p>
+        <ul style="font-size:0.7em;">
+          <li>S×O: 独自技術で海外展開</li>
+          <li>W×O: 補助金でデジタル人材育成</li>
+          <li>S×T: 品質で競合と差別化</li>
+          <li>W×T: 老朽設備の更新でコスト削減</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>PPM（プロダクト・ポートフォリオ・マネジメント）</h3>
+        <pre class="ascii">
+          市場成長率
+              高
+    問題児    │    花形
+   Question   │    Star
+    Mark      │
+──────────────┼──────────────
+              │
+    負け犬    │  金のなる木
+     Dog      │   Cash Cow
+              低
+        低 ←──────→ 高
+           市場シェア
+        </pre>
+      </section>
+
+      <section>
+        <h3>PPMの戦略</h3>
+        <table>
+          <tr><th>分類</th><th>特徴</th><th>戦略</th></tr>
+          <tr><td>花形（Star）</td><td>高成長・高シェア</td><td>積極投資</td></tr>
+          <tr><td>金のなる木（Cash Cow）</td><td>低成長・高シェア</td><td>維持・利益回収</td></tr>
+          <tr><td>問題児（Question Mark）</td><td>高成長・低シェア</td><td>選択と集中</td></tr>
+          <tr><td>負け犬（Dog）</td><td>低成長・低シェア</td><td>撤退検討</td></tr>
+        </table>
+      </section>
+
+      <!-- 5. 演習とまとめ -->
+      <section class="exercise-slide">
+        <h2>5. 演習とまとめ</h2>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習1: 損益分岐点</h3>
+        <div class="exercise-box">
+          <p><strong>問題:</strong></p>
+          <ul>
+            <li>製品単価: 200円</li>
+            <li>変動費: 120円</li>
+            <li>固定費: 月160万円</li>
+          </ul>
+          <p>損益分岐点数量は?</p>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習1: 解答</h3>
+        <div class="exercise-box">
+          <pre class="ascii" style="background-color: white;">
+限界利益/個 = 200 - 120 = 80円
+損益分岐点数量 = 1,600,000 ÷ 80 = 20,000個
+          </pre>
+          <p><strong>答え: 20,000個</strong></p>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習2: SWOT分析</h3>
+        <p>自部門のSWOTを考えてください:</p>
+        <table class="small">
+          <tr><th>強み（S）</th><th>弱み（W）</th></tr>
+          <tr><td style="height:80px;"></td><td></td></tr>
+          <tr><th>機会（O）</th><th>脅威（T）</th></tr>
+          <tr><td style="height:80px;"></td><td></td></tr>
+        </table>
+      </section>
+
+      <!-- キーワード -->
+      <section>
+        <h2>キーワード</h2>
+        <div class="keywords">
+          <span class="keyword-tag">損益分岐点</span>
+          <span class="keyword-tag">変動費</span>
+          <span class="keyword-tag">固定費</span>
+          <span class="keyword-tag">限界利益</span>
+          <span class="keyword-tag">貸借対照表</span>
+          <span class="keyword-tag">損益計算書</span>
+          <span class="keyword-tag">SWOT分析</span>
+          <span class="keyword-tag">PPM</span>
+        </div>
+      </section>
+
+      <!-- 確認問題 -->
+      <section class="quiz-slide">
+        <h2>確認問題</h2>
+        <div class="quiz-item">
+          <p><strong>1.</strong> 変動費と固定費の違いを説明してください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>2.</strong> 損益分岐点とは何ですか?</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>3.</strong> SWOT分析の4つの要素を説明してください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>4.</strong> PPMの「金のなる木」はどんな製品ですか?</p>
+        </div>
+      </section>
+
+      <!-- 次回予告 -->
+      <section>
+        <h2>次回予告</h2>
+        <div class="next-preview">
+          <h4>セッション23-24h: 法務と知的財産</h4>
+          <ul>
+            <li>知的財産権の種類</li>
+            <li>労働関連法規</li>
+            <li>コンプライアンス</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="assets/init.js"></script>
+</body>
+</html>

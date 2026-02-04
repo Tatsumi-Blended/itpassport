@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07 アルゴリズムと論理的思考 - 製造DX基礎コース</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="assets/custom.css">
+  <script src="assets/auth.js"></script>
+  <script>Auth.requireAuth();</script>
+</head>
+<body>
+  <div class="nav-bar">
+    <a href="index.html">目次</a>
+    <span class="current">07 アルゴリズムと論理的思考</span>
+    <div class="nav-links">
+      <a href="06_情報セキュリティ.html" class="nav-prev">← 前へ</a>
+      <a href="08_システム開発の流れ.html" class="nav-next">次へ →</a>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- タイトル -->
+      <section class="title-slide step2">
+        <p><span class="step-badge">STEP2</span> データを扱う力をつける</p>
+        <h1>アルゴリズムと論理的思考</h1>
+        <p class="subtitle">セッション 13-14h</p>
+        <p class="level-stars">学習レベル: ★★★☆☆（標準レベル）</p>
+      </section>
+
+      <!-- アジェンダ -->
+      <section>
+        <h2>本日のゴール</h2>
+        <ul>
+          <li>アルゴリズムの概念を理解する</li>
+          <li>フローチャートを読み書きできる</li>
+          <li>論理演算（AND、OR、NOT）を理解する</li>
+        </ul>
+        <p style="margin-top:1em;"><strong>対応テキスト:</strong> 第9章 基礎理論（9-02 論理演算、9-05 フローチャート）</p>
+      </section>
+
+      <!-- 1. アルゴリズムとは -->
+      <section>
+        <h2>1. アルゴリズムとは</h2>
+      </section>
+
+      <section>
+        <h3>定義</h3>
+        <p><strong>問題を解くための手順を明確に定義したもの</strong></p>
+        <pre class="ascii">
+身近なアルゴリズム:
+・料理のレシピ
+・組立作業の手順書
+・設備の操作マニュアル
+        </pre>
+      </section>
+
+      <section>
+        <h3>アルゴリズムの特徴</h3>
+        <table>
+          <tr><th>特徴</th><th>説明</th></tr>
+          <tr><td>明確性</td><td>曖昧さがない</td></tr>
+          <tr><td>有限性</td><td>必ず終了する</td></tr>
+          <tr><td>入力</td><td>外部からデータを受け取る</td></tr>
+          <tr><td>出力</td><td>結果を出す</td></tr>
+          <tr><td>有効性</td><td>実行可能な手順である</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>製造現場のアルゴリズム</h3>
+        <p><strong>品質検査の手順:</strong></p>
+        <ol>
+          <li>ワークを取る</li>
+          <li>外観を確認する</li>
+          <li>傷があれば不良品へ</li>
+          <li>傷がなければ寸法を測定</li>
+          <li>規格内なら良品へ</li>
+          <li>規格外なら不良品へ</li>
+        </ol>
+        <blockquote>これも立派なアルゴリズム！</blockquote>
+      </section>
+
+      <!-- 2. フローチャート -->
+      <section>
+        <h2>2. フローチャート</h2>
+      </section>
+
+      <section>
+        <h3>フローチャートの記号</h3>
+        <pre class="ascii">
+┌─────────┐
+│ 開始/終了 │  端子（楕円形）
+└─────────┘
+
+┌─────────┐
+│  処理    │  処理（長方形）
+└─────────┘
+
+    ◇
+   / \       判断（ひし形）
+  / ? \
+ ◇─────◇
+
+┌─────────┐
+│ データ   │  入出力（平行四辺形）
+└─────────┘
+
+    │
+    ↓        流れ線（矢印）
+    │
+
+    ○        結合子（丸）
+        </pre>
+      </section>
+
+      <section>
+        <h3>基本構造 (1) 順次構造</h3>
+        <p><strong>処理を上から順に実行</strong></p>
+        <pre class="ascii">
+┌─────────┐
+│ 開始    │
+└────┬────┘
+     ↓
+┌─────────┐
+│ 処理A   │
+└────┬────┘
+     ↓
+┌─────────┐
+│ 処理B   │
+└────┬────┘
+     ↓
+┌─────────┐
+│ 処理C   │
+└────┬────┘
+     ↓
+┌─────────┐
+│ 終了    │
+└─────────┘
+        </pre>
+      </section>
+
+      <section>
+        <h3>基本構造 (2) 選択構造（分岐）</h3>
+        <p><strong>条件によって処理を分ける</strong></p>
+        <pre class="ascii">
+     ┌─────────┐
+     │ 開始    │
+     └────┬────┘
+          ↓
+        ◇
+       / \
+      /条件\
+     ◇─────◇
+   Yes      No
+    ↓        ↓
+┌──────┐ ┌──────┐
+│処理A │ │処理B │
+└──┬───┘ └──┬───┘
+   └────┬────┘
+        ↓
+     ┌─────────┐
+     │ 終了    │
+     └─────────┘
+        </pre>
+      </section>
+
+      <section>
+        <h3>基本構造 (3) 繰り返し構造（ループ）</h3>
+        <p><strong>条件を満たす間、処理を繰り返す</strong></p>
+        <pre class="ascii">
+     ┌─────────┐
+     │ 開始    │
+     └────┬────┘
+          ↓
+        ◇←────────┐
+       / \         │
+      /条件\       │
+     ◇─────◇      │
+   Yes      No     │
+    ↓        ↓     │
+┌──────┐   │      │
+│ 処理 │   │      │
+└──┬───┘   │      │
+   └───────┼──────┘
+           ↓
+     ┌─────────┐
+     │ 終了    │
+     └─────────┘
+        </pre>
+      </section>
+
+      <section>
+        <h3>演習: 品質検査のフローチャート</h3>
+        <p><strong>検査手順:</strong></p>
+        <ol class="small">
+          <li>ワークを取る</li>
+          <li>外観を目視確認</li>
+          <li>傷があれば不良品置場へ</li>
+          <li>傷がなければ寸法測定</li>
+          <li>規格内なら良品置場へ</li>
+          <li>規格外なら不良品置場へ</li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>品質検査フローチャート（解答）</h3>
+        <pre class="ascii" style="font-size: 0.55em;">
+     ┌─────────┐
+     │ 開始    │
+     └────┬────┘
+          ↓
+     ┌─────────┐
+     │ワークを │
+     │取る     │
+     └────┬────┘
+          ↓
+     ┌─────────┐
+     │外観確認 │
+     └────┬────┘
+          ↓
+        ◇
+       / \
+      /傷あり\
+     ◇───────◇
+   Yes       No
+    │         ↓
+    │    ┌─────────┐
+    │    │寸法測定 │
+    │    └────┬────┘
+    │         ↓
+    │       ◇
+    │      / \
+    │     /規格内\
+    │    ◇───────◇
+    │   Yes       No
+    │    ↓         │
+    │ ┌──────┐    │
+    │ │良品  │    │
+    │ │置場  │    │
+    │ └──┬───┘    │
+    │    │         │
+    ↓    │         ↓
+┌──────┐ │
+│不良品│←┼─────────┘
+│置場  │ │
+└──┬───┘ │
+   └────┬─┘
+        ↓
+     ┌─────────┐
+     │ 終了    │
+     └─────────┘
+        </pre>
+      </section>
+
+      <!-- 3. 論理演算 -->
+      <section>
+        <h2>3. 論理演算</h2>
+      </section>
+
+      <section>
+        <h3>論理演算とは</h3>
+        <p><strong>真（True/1）と偽（False/0）で計算する</strong></p>
+        <p>製造現場での例:</p>
+        <ul>
+          <li>センサーON = 1（真）</li>
+          <li>センサーOFF = 0（偽）</li>
+          <li>PLCのラダー図は論理演算そのもの</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>AND（論理積）</h3>
+        <p><strong>「かつ」- 両方が真のときだけ真</strong></p>
+        <pre class="ascii">
+A AND B = Y
+
+A | B | Y
+─────────
+0 | 0 | 0
+0 | 1 | 0
+1 | 0 | 0
+1 | 1 | 1  ← 両方1のときだけ1
+        </pre>
+        <blockquote>製造例: 「安全扉が閉まっている AND 起動ボタンが押された」<br>→ 両方満たさないと運転しない</blockquote>
+      </section>
+
+      <section>
+        <h3>AND - ラダー図</h3>
+        <pre class="ascii">
+     A          B           Y
+──────┤├─────────┤├──────────(  )───
+    直列接続 = AND
+        </pre>
+        <p>接点が直列に並んでいる = AND条件</p>
+      </section>
+
+      <section>
+        <h3>OR（論理和）</h3>
+        <p><strong>「または」- どちらかが真なら真</strong></p>
+        <pre class="ascii">
+A OR B = Y
+
+A | B | Y
+─────────
+0 | 0 | 0
+0 | 1 | 1  ← どちらか1なら1
+1 | 0 | 1  ←
+1 | 1 | 1
+        </pre>
+        <blockquote>製造例: 「非常停止ボタン1 OR 非常停止ボタン2」<br>→ どちらか押されたら停止</blockquote>
+      </section>
+
+      <section>
+        <h3>OR - ラダー図</h3>
+        <pre class="ascii">
+     A                      Y
+──────┤├───────┬────────────(  )───
+              │
+     B        │
+──────┤├──────┘
+    並列接続 = OR
+        </pre>
+        <p>接点が並列に並んでいる = OR条件</p>
+      </section>
+
+      <section>
+        <h3>NOT（否定）</h3>
+        <p><strong>「ではない」- 真偽を反転</strong></p>
+        <pre class="ascii">
+NOT A = Y
+
+A | Y
+─────
+0 | 1  ← 反転
+1 | 0
+        </pre>
+        <blockquote>製造例: 「NOT 異常検知」<br>→ 異常がないとき運転</blockquote>
+      </section>
+
+      <section>
+        <h3>NOT - ラダー図</h3>
+        <pre class="ascii">
+     A                      Y
+──────┤/├───────────────────(  )───
+     ↑
+   b接点（常閉）= NOT
+        </pre>
+        <p>b接点（常閉接点）を使う = NOT条件</p>
+      </section>
+
+      <section>
+        <h3>複合条件</h3>
+        <p><strong>例: 運転条件</strong></p>
+        <pre class="ascii">
+運転 = (起動ボタン AND 安全扉閉) AND (NOT 非常停止)
+        </pre>
+        <table class="small">
+          <tr><th>起動</th><th>安全扉</th><th>非常停止</th><th>運転</th></tr>
+          <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+          <tr><td>1</td><td>1</td><td>0</td><td><strong>1</strong></td></tr>
+          <tr><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>複合条件 - ラダー図</h3>
+        <pre class="ascii">
+   起動     安全扉   非常停止     運転
+────┤├───────┤├───────┤/├─────────(  )───
+        </pre>
+        <p>起動ボタン AND 安全扉閉 AND (NOT 非常停止)</p>
+      </section>
+
+      <!-- 4. STEP2完了 -->
+      <section>
+        <h2>4. STEP2 完了！</h2>
+      </section>
+
+      <section class="step-complete" style="background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); color: white;">
+        <h3>おめでとうございます！</h3>
+        <p style="font-size: 1.3em;"><strong>STEP2「データを扱う力をつける」が完了しました</strong></p>
+        <div style="background: rgba(255,255,255,0.15); padding: 1em; border-radius: 10px; margin: 1em 0;">
+          <p><strong>学んだこと:</strong></p>
+          <ul style="text-align: left;">
+            <li>データベースの基礎（テーブル、SQL）</li>
+            <li>情報セキュリティ（CIA、脅威と対策）</li>
+            <li>アルゴリズムと論理的思考</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h3>次のステップへ</h3>
+        <p><strong>STEP3「システム構築の知識」</strong></p>
+        <ul>
+          <li>システム開発の流れ</li>
+          <li>プロジェクトマネジメント</li>
+          <li>サービスマネジメント</li>
+        </ul>
+        <p style="margin-top: 1em;">システム構築の全体像を学びます！</p>
+      </section>
+
+      <!-- 5. 演習とまとめ -->
+      <section class="exercise-slide">
+        <h2>5. 演習とまとめ</h2>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習1: フローチャート作成</h3>
+        <p>以下の手順をフローチャートにしてください:</p>
+        <p><strong>「材料の受入検査」</strong></p>
+        <ol class="small">
+          <li>材料を受け取る</li>
+          <li>数量を確認</li>
+          <li>数量が注文と一致しなければ連絡</li>
+          <li>一致すれば外観を確認</li>
+          <li>異常があれば返品</li>
+          <li>異常なければ受入完了</li>
+        </ol>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習2: 論理演算</h3>
+        <p>以下の条件を論理式で表してください:</p>
+        <div class="exercise-box">
+          <p><strong>「搬送ロボットの起動条件」</strong></p>
+          <ul>
+            <li>ワークがセットされている</li>
+            <li>扉が閉まっている</li>
+            <li>非常停止ボタンが押されていない</li>
+          </ul>
+          <p style="margin-top: 1em;">論理式: _______________</p>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習3: 真理値表</h3>
+        <p>演習2の論理式の真理値表を作成してください。</p>
+        <table class="small">
+          <tr><th>ワーク</th><th>扉</th><th>非常停止</th><th>起動</th></tr>
+          <tr><td>0</td><td>0</td><td>0</td><td></td></tr>
+          <tr><td>0</td><td>0</td><td>1</td><td></td></tr>
+          <tr><td>0</td><td>1</td><td>0</td><td></td></tr>
+          <tr><td>0</td><td>1</td><td>1</td><td></td></tr>
+          <tr><td>1</td><td>0</td><td>0</td><td></td></tr>
+          <tr><td>1</td><td>0</td><td>1</td><td></td></tr>
+          <tr><td>1</td><td>1</td><td>0</td><td></td></tr>
+          <tr><td>1</td><td>1</td><td>1</td><td></td></tr>
+        </table>
+      </section>
+
+      <!-- まとめ -->
+      <section>
+        <h2>キーワード</h2>
+        <div class="keywords">
+          <span class="keyword-tag">アルゴリズム</span>
+          <span class="keyword-tag">フローチャート</span>
+          <span class="keyword-tag">順次構造</span>
+          <span class="keyword-tag">選択構造</span>
+          <span class="keyword-tag">繰り返し構造</span>
+          <span class="keyword-tag">論理演算</span>
+          <span class="keyword-tag">AND</span>
+          <span class="keyword-tag">OR</span>
+          <span class="keyword-tag">NOT</span>
+          <span class="keyword-tag">ラダー図</span>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2>確認問題</h2>
+        <div class="quiz-item">
+          <p><strong>1.</strong> アルゴリズムとは何ですか？</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>2.</strong> フローチャートの基本3構造を説明してください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>3.</strong> AND、OR、NOTの違いを説明してください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>4.</strong> 「A AND B」が真になる条件は？</p>
+        </div>
+      </section>
+
+      <!-- 次回予告 -->
+      <section>
+        <h2>次回予告</h2>
+        <div class="next-preview">
+          <h4>セッション15-16h: システム開発の流れ</h4>
+          <p><span class="step-badge" style="background: #28a745;">STEP3</span> システム構築の知識</p>
+          <ul>
+            <li>ウォーターフォールモデル</li>
+            <li>アジャイル開発</li>
+            <li>各工程の役割</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="assets/init.js"></script>
+</body>
+</html>

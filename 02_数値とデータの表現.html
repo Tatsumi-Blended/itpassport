@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02 数値とデータの表現 - 製造DX基礎コース</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="assets/custom.css">
+  <script src="assets/auth.js"></script>
+  <script>Auth.requireAuth();</script>
+</head>
+<body>
+  <div class="nav-bar">
+    <a href="index.html">目次</a>
+    <span class="current">02 数値とデータの表現</span>
+    <div class="nav-links">
+      <a href="01_コンピュータの仕組み.html" class="nav-prev">← 前へ</a>
+      <a href="03_ソフトウェアとOS.html" class="nav-next">次へ →</a>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- タイトル -->
+      <section class="title-slide">
+        <span class="step-badge">STEP1</span>
+        <h1>数値とデータの表現</h1>
+        <p class="subtitle">セッション 3-4h</p>
+        <p class="level-stars">学習レベル: ★☆☆☆☆（IT初心者向け）</p>
+      </section>
+
+      <!-- アジェンダ -->
+      <section>
+        <h2>本日のゴール</h2>
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card">
+            <h4>目標1</h4>
+            <p>2進数の仕組みを理解し、変換ができる</p>
+          </div>
+          <div class="card">
+            <h4>目標2</h4>
+            <p>ビット・バイトの単位を説明できる</p>
+          </div>
+          <div class="card">
+            <h4>目標3</h4>
+            <p>コンピュータがデータを扱う仕組みを理解する</p>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top:1.5em;">
+          <strong>対応テキスト:</strong> 第9章 基礎理論
+        </div>
+      </section>
+
+      <!-- 前回の振り返り -->
+      <section>
+        <h2>前回の振り返り</h2>
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card">
+            <h4>🖥️ 5大装置</h4>
+            <p>入力・出力・制御・演算・記憶</p>
+          </div>
+          <div class="card">
+            <h4>🧠 CPU・メモリ</h4>
+            <p>頭脳と作業台の関係</p>
+          </div>
+          <div class="card">
+            <h4>🏭 製造現場</h4>
+            <p>PLC、検査装置など</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. なぜ2進数を学ぶのか -->
+      <section>
+        <h2>1. なぜ2進数を学ぶのか</h2>
+        <p style="color: var(--text-secondary);">コンピュータの言葉を理解しよう</p>
+      </section>
+
+      <section>
+        <h3>コンピュータの中身</h3>
+        <p><strong>コンピュータは電気で動く</strong></p>
+        <div class="two-column" style="margin-top:1em;">
+          <div>
+            <div class="card-grid" style="grid-template-columns: repeat(2, 1fr); gap:0.5em;">
+              <div class="icon-box">
+                <span class="icon">💡</span>
+                <span class="label">ON = 1</span>
+              </div>
+              <div class="icon-box">
+                <span class="icon">⚫</span>
+                <span class="label">OFF = 0</span>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:left;">
+            <ul>
+              <li class="fragment">電気のON/OFFで情報を表現</li>
+              <li class="fragment">ON = 1、OFF = 0</li>
+              <li class="fragment">これが「2進数」の基本</li>
+            </ul>
+          </div>
+        </div>
+        <div class="binary-display fragment" style="margin-top:1em;">
+          <div><div class="bit one">1</div><div class="bit-label">ON</div></div>
+          <div><div class="bit zero">0</div><div class="bit-label">OFF</div></div>
+          <div><div class="bit one">1</div><div class="bit-label">ON</div></div>
+          <div><div class="bit zero">0</div><div class="bit-label">OFF</div></div>
+          <div><div class="bit one">1</div><div class="bit-label">ON</div></div>
+          <div><div class="bit zero">0</div><div class="bit-label">OFF</div></div>
+          <div><div class="bit zero">0</div><div class="bit-label">OFF</div></div>
+          <div><div class="bit one">1</div><div class="bit-label">ON</div></div>
+        </div>
+      </section>
+
+      <section>
+        <h3>製造現場での2進数</h3>
+        <p><strong>PLCの入出力:</strong></p>
+        <div class="flow-chart" style="margin-bottom:1em;">
+          <div class="flow-box">
+            <span class="icon">📡</span>
+            センサー
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line">→</span>
+            <span class="arrow-label">ON/OFF信号</span>
+          </div>
+          <div class="flow-box">
+            <span class="icon">🎛️</span>
+            PLC
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line">→</span>
+            <span class="arrow-label">ON/OFF指令</span>
+          </div>
+          <div class="flow-box">
+            <span class="icon">⚡</span>
+            リレー
+          </div>
+        </div>
+        <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="card fragment">
+            <h4>センサーON = 1</h4>
+            <p>ワーク検出、リミット到達</p>
+          </div>
+          <div class="card fragment">
+            <h4>センサーOFF = 0</h4>
+            <p>未検出、待機状態</p>
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:1em;">
+          <strong>2進数を理解すると、PLCの動作がわかる</strong>
+        </div>
+      </section>
+
+      <!-- 2. 2進数の仕組み -->
+      <section>
+        <h2>2. 2進数の仕組み</h2>
+        <p style="color: var(--text-secondary);">0と1だけで数を表す方法</p>
+      </section>
+
+      <section>
+        <h3>10進数のおさらい</h3>
+        <p><strong>10進数:</strong> 0〜9の10種類の数字を使う</p>
+        <div class="card" style="max-width:600px; margin:1em auto; padding:1.5em;">
+          <div style="font-size:1.5em; text-align:center; font-weight:700; color:var(--ink-navy-900);">253</div>
+          <div style="display:flex; justify-content:center; gap:2em; margin-top:1em;">
+            <div class="fragment" style="text-align:center;">
+              <div style="font-size:2em; font-weight:700;">2</div>
+              <div>× 100</div>
+              <div style="color:var(--text-secondary);">= 200</div>
+            </div>
+            <div class="fragment" style="text-align:center;">
+              <div style="font-size:2em; font-weight:700;">5</div>
+              <div>× 10</div>
+              <div style="color:var(--text-secondary);">= 50</div>
+            </div>
+            <div class="fragment" style="text-align:center;">
+              <div style="font-size:2em; font-weight:700;">3</div>
+              <div>× 1</div>
+              <div style="color:var(--text-secondary);">= 3</div>
+            </div>
+          </div>
+          <div class="fragment" style="text-align:center; margin-top:1em;">
+            <strong>200 + 50 + 3 = 253</strong>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>2進数とは</h3>
+        <p><strong>2進数:</strong> 0と1の2種類の数字だけを使う</p>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1.5em;">
+          <div style="text-align:center; margin-bottom:1em;">
+            <span style="color:var(--text-secondary);">2進数</span>
+            <span style="font-size:1.5em; font-weight:700; color:var(--ink-navy-900); margin-left:0.5em;">1011</span>
+          </div>
+          <div style="display:flex; justify-content:center; gap:1.5em;">
+            <div class="fragment" style="text-align:center;">
+              <div class="bit one" style="width:40px; height:50px;">1</div>
+              <div>× 8</div>
+              <div style="color:var(--text-secondary);">= 8</div>
+            </div>
+            <div class="fragment" style="text-align:center;">
+              <div class="bit zero" style="width:40px; height:50px;">0</div>
+              <div>× 4</div>
+              <div style="color:var(--text-secondary);">= 0</div>
+            </div>
+            <div class="fragment" style="text-align:center;">
+              <div class="bit one" style="width:40px; height:50px;">1</div>
+              <div>× 2</div>
+              <div style="color:var(--text-secondary);">= 2</div>
+            </div>
+            <div class="fragment" style="text-align:center;">
+              <div class="bit one" style="width:40px; height:50px;">1</div>
+              <div>× 1</div>
+              <div style="color:var(--text-secondary);">= 1</div>
+            </div>
+          </div>
+          <div class="fragment" style="text-align:center; margin-top:1em;">
+            <strong>8 + 0 + 2 + 1 = 11</strong>（10進数）
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>2進数と10進数の対応表</h3>
+        <div class="two-column">
+          <div class="card" style="padding:1em;">
+            <table style="width:100%;">
+              <tr><th>10進数</th><th>2進数</th></tr>
+              <tr><td>0</td><td><code>0000</code></td></tr>
+              <tr><td>1</td><td><code>0001</code></td></tr>
+              <tr><td>2</td><td><code>0010</code></td></tr>
+              <tr><td>3</td><td><code>0011</code></td></tr>
+              <tr><td>4</td><td><code>0100</code></td></tr>
+              <tr><td>5</td><td><code>0101</code></td></tr>
+              <tr><td>6</td><td><code>0110</code></td></tr>
+              <tr><td>7</td><td><code>0111</code></td></tr>
+            </table>
+          </div>
+          <div class="card" style="padding:1em;">
+            <table style="width:100%;">
+              <tr><th>10進数</th><th>2進数</th></tr>
+              <tr><td>8</td><td><code>1000</code></td></tr>
+              <tr><td>9</td><td><code>1001</code></td></tr>
+              <tr><td>10</td><td><code>1010</code></td></tr>
+              <tr><td>11</td><td><code>1011</code></td></tr>
+              <tr><td>12</td><td><code>1100</code></td></tr>
+              <tr><td>13</td><td><code>1101</code></td></tr>
+              <tr><td>14</td><td><code>1110</code></td></tr>
+              <tr><td>15</td><td><code>1111</code></td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:0.8em;">
+          <strong>4ビット（4桁）で 0〜15 の16通りを表現できる</strong>
+        </div>
+      </section>
+
+      <section>
+        <h3>2進数→10進数の変換</h3>
+        <p><strong>手順:</strong> 各桁に重み（2のn乗）をかけて足す</p>
+        <div class="card" style="max-width:650px; margin:1em auto; padding:1.5em;">
+          <div style="display:flex; justify-content:center; gap:1em;">
+            <div style="text-align:center;">
+              <div class="bit one" style="width:45px; height:55px;">1</div>
+              <div style="margin-top:0.3em; font-weight:700;">×8</div>
+            </div>
+            <div style="text-align:center;">
+              <div class="bit one" style="width:45px; height:55px;">1</div>
+              <div style="margin-top:0.3em; font-weight:700;">×4</div>
+            </div>
+            <div style="text-align:center;">
+              <div class="bit zero" style="width:45px; height:55px;">0</div>
+              <div style="margin-top:0.3em; font-weight:700;">×2</div>
+            </div>
+            <div style="text-align:center;">
+              <div class="bit one" style="width:45px; height:55px;">1</div>
+              <div style="margin-top:0.3em; font-weight:700;">×1</div>
+            </div>
+          </div>
+          <div style="text-align:center; margin-top:1em;">
+            <span style="color:var(--ink-navy-800); font-weight:700;">8 + 4 + 0 + 1 = </span>
+            <span style="font-size:1.3em; font-weight:700;">13</span>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top:0.8em;">
+          <strong>練習問題:</strong>
+          <span style="margin-left:1em;">1010 → ?</span>
+          <span style="margin-left:1em;">1111 → ?</span>
+          <span style="margin-left:1em;">0110 → ?</span>
+        </div>
+      </section>
+
+      <section>
+        <h3>10進数→2進数の変換</h3>
+        <p><strong>手順:</strong> 2で割り続け、余りを下から読む</p>
+        <div class="two-column">
+          <div class="card" style="padding:1em;">
+            <div style="text-align:left;">
+              <p style="text-align:center; font-weight:700; color:var(--ink-navy-900);">13を2進数に変換</p>
+              <div style="font-family:'JetBrains Mono', monospace; line-height:1.8;">
+                <div class="fragment">13 ÷ 2 = 6 余り <strong>1</strong></div>
+                <div class="fragment"> 6 ÷ 2 = 3 余り <strong>0</strong></div>
+                <div class="fragment"> 3 ÷ 2 = 1 余り <strong>1</strong></div>
+                <div class="fragment"> 1 ÷ 2 = 0 余り <strong>1</strong></div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:center;">
+            <div class="fragment">
+              <div style="color:var(--text-muted); margin-bottom:0.5em;">↑下から読む</div>
+              <div class="binary-display" style="flex-direction:column; gap:0.2em;">
+                <div class="bit one" style="width:45px; height:45px;">1</div>
+                <div class="bit one" style="width:45px; height:45px;">1</div>
+                <div class="bit zero" style="width:45px; height:45px;">0</div>
+                <div class="bit one" style="width:45px; height:45px;">1</div>
+              </div>
+              <div style="text-align:center; margin-top:0.5em; font-weight:700;">= 1101</div>
+            </div>
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:0.8em;">
+          <strong>練習問題:</strong> 10 → ? , 25 → ? , 7 → ?
+        </div>
+      </section>
+
+      <!-- 3. ビットとバイト -->
+      <section>
+        <h2>3. ビットとバイト</h2>
+        <p style="color: var(--text-secondary);">データ量の単位を理解しよう</p>
+      </section>
+
+      <section>
+        <h3>ビット（bit）</h3>
+        <p><strong>定義:</strong> 情報の最小単位（0か1）</p>
+        <div class="two-column" style="margin-top:1em;">
+          <div style="text-align:center;">
+            <div class="binary-display" style="justify-content:center; flex-direction:column;">
+              <div class="bit one" style="width:80px; height:80px; font-size:2em;">0</div>
+              <div style="margin:0.5em 0;">or</div>
+              <div class="bit one" style="width:80px; height:80px; font-size:2em;">1</div>
+            </div>
+            <p style="margin-top:0.5em;">= <strong>1ビット</strong></p>
+          </div>
+          <div style="text-align:left;">
+            <p><strong>n ビットで表現できる数:</strong></p>
+            <div class="card-grid" style="grid-template-columns: 1fr; gap:0.3em;">
+              <div class="card fragment" style="padding:0.5em 1em;">
+                <strong>1ビット:</strong> 2通り（0, 1）
+              </div>
+              <div class="card fragment" style="padding:0.5em 1em;">
+                <strong>2ビット:</strong> 4通り（00, 01, 10, 11）
+              </div>
+              <div class="card fragment" style="padding:0.5em 1em;">
+                <strong>3ビット:</strong> 8通り
+              </div>
+              <div class="card fragment" style="padding:0.5em 1em;">
+                <strong>4ビット:</strong> 16通り
+              </div>
+              <div class="card featured fragment" style="padding:0.5em 1em;">
+                <strong>8ビット:</strong> 256通り
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:0.8em;">
+          <strong>公式:</strong> n ビット = 2<sup>n</sup> 通り
+        </div>
+      </section>
+
+      <section>
+        <h3>バイト（Byte）</h3>
+        <p><strong>定義:</strong> 8ビット = 1バイト</p>
+        <div class="card" style="max-width:600px; margin:1em auto; padding:1.5em;">
+          <div style="text-align:center;">
+            <p style="margin-bottom:0.5em;">1バイト = 8ビット</p>
+            <div class="binary-display" style="justify-content:center;">
+              <div class="bit zero" style="width:40px; height:50px;">0</div>
+              <div class="bit one" style="width:40px; height:50px;">1</div>
+              <div class="bit zero" style="width:40px; height:50px;">0</div>
+              <div class="bit zero" style="width:40px; height:50px;">0</div>
+              <div class="bit one" style="width:40px; height:50px;">1</div>
+              <div class="bit zero" style="width:40px; height:50px;">0</div>
+              <div class="bit one" style="width:40px; height:50px;">1</div>
+              <div class="bit zero" style="width:40px; height:50px;">0</div>
+            </div>
+            <div style="margin-top:0.8em;">
+              <span style="color:var(--text-secondary);">= 256通り（0〜255）の値を表現</span>
+            </div>
+          </div>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>覚え方:</strong> 1バイト = 英数字1文字を表現できる
+        </div>
+      </section>
+
+      <section>
+        <h3>データ容量の単位</h3>
+        <div class="card-grid" style="grid-template-columns: repeat(5, 1fr);">
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:2em;">📄</div>
+            <h4>1 B</h4>
+            <p>バイト</p>
+            <p><strong>英数字1文字</strong></p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:2em;">📝</div>
+            <h4>1 KB</h4>
+            <p>キロバイト</p>
+            <p><strong>テキストファイル</strong></p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:2em;">🖼️</div>
+            <h4>1 MB</h4>
+            <p>メガバイト</p>
+            <p><strong>写真1枚</strong></p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:2em;">🎬</div>
+            <h4>1 GB</h4>
+            <p>ギガバイト</p>
+            <p><strong>動画数分</strong></p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:2em;">💾</div>
+            <h4>1 TB</h4>
+            <p>テラバイト</p>
+            <p><strong>HDD容量</strong></p>
+          </div>
+        </div>
+        <div class="flow-chart fragment" style="margin-top:1em;">
+          <div>B</div>
+          <div class="labeled-arrow"><span class="arrow-line">→</span><span class="arrow-label">×1024</span></div>
+          <div>KB</div>
+          <div class="labeled-arrow"><span class="arrow-line">→</span><span class="arrow-label">×1024</span></div>
+          <div>MB</div>
+          <div class="labeled-arrow"><span class="arrow-line">→</span><span class="arrow-label">×1024</span></div>
+          <div>GB</div>
+          <div class="labeled-arrow"><span class="arrow-line">→</span><span class="arrow-label">×1024</span></div>
+          <div>TB</div>
+        </div>
+      </section>
+
+      <section>
+        <h3>製造現場でのデータ量</h3>
+        <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="card fragment">
+            <h4>📡 センサーデータ（1回）</h4>
+            <div class="stat-highlight" style="margin:0.5em 0;">
+              <span class="stat-value">数バイト</span>
+            </div>
+            <p>温度、圧力などの数値</p>
+          </div>
+          <div class="card fragment">
+            <h4>📷 検査画像（1枚）</h4>
+            <div class="stat-highlight" style="margin:0.5em 0;">
+              <span class="stat-value">数MB</span>
+            </div>
+            <p>高解像度カメラ画像</p>
+          </div>
+          <div class="card fragment">
+            <h4>📊 1日の生産ログ</h4>
+            <div class="stat-highlight" style="margin:0.5em 0;">
+              <span class="stat-value">数十MB〜GB</span>
+            </div>
+            <p>センサー、検査、稼働データ</p>
+          </div>
+          <div class="card fragment">
+            <h4>📐 CADデータ</h4>
+            <div class="stat-highlight" style="margin:0.5em 0;">
+              <span class="stat-value">数十〜数百MB</span>
+            </div>
+            <p>3D設計データ</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. 文字と画像の表現 -->
+      <section>
+        <h2>4. 文字と画像の表現</h2>
+        <p style="color: var(--text-secondary);">文字や画像も0と1で表現される</p>
+      </section>
+
+      <section>
+        <h3>文字コード</h3>
+        <p><strong>文字をコンピュータで扱うには:</strong> 文字に番号を割り当てる</p>
+        <div class="two-column" style="margin-top:1em;">
+          <div class="card" style="padding:1em;">
+            <h4 style="text-align:center;">ASCII コード</h4>
+            <div style="font-family:'JetBrains Mono', monospace;">
+              <div style="display:flex; justify-content:space-between; padding:0.3em; background:var(--border-subtle); border-radius:4px; margin:0.3em 0;">
+                <span style="font-size:1.5em; font-weight:700;">A</span>
+                <span>= 65 = <code>01000001</code></span>
+              </div>
+              <div style="display:flex; justify-content:space-between; padding:0.3em; background:var(--border-subtle); border-radius:4px; margin:0.3em 0;">
+                <span style="font-size:1.5em; font-weight:700;">B</span>
+                <span>= 66 = <code>01000010</code></span>
+              </div>
+              <div style="display:flex; justify-content:space-between; padding:0.3em; background:var(--border-subtle); border-radius:4px; margin:0.3em 0;">
+                <span style="font-size:1.5em; font-weight:700;">a</span>
+                <span>= 97 = <code>01100001</code></span>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:left;">
+            <p><strong>日本語の文字コード:</strong></p>
+            <div class="card" style="margin:0.5em 0; padding:0.8em;">
+              <h4>Shift-JIS</h4>
+              <p>日本語Windows標準</p>
+            </div>
+            <div class="card" style="margin:0.5em 0; padding:0.8em;">
+              <h4>UTF-8</h4>
+              <p>世界標準、多言語対応</p>
+            </div>
+          </div>
+        </div>
+        <div class="highlight-box warning fragment" style="margin-top:0.8em;">
+          <strong>文字化け</strong> = 文字コードの不一致が原因
+        </div>
+      </section>
+
+      <section>
+        <h3>画像データ</h3>
+        <p><strong>画素（ピクセル）:</strong> 画像を構成する最小単位の点</p>
+        <div class="two-column" style="margin-top:1em;">
+          <div style="text-align:center;">
+            <div style="display:inline-grid; grid-template-columns: repeat(8, 25px); gap:2px; background:var(--ink-navy-900); padding:5px; border-radius:4px;">
+              <div style="background:#fff; height:25px;"></div>
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+              <div style="background:#fff; height:25px;"></div>
+              <div style="background:#fff; height:25px;"></div>
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+              <div style="background:#fff; height:25px;"></div>
+
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+              <div style="background:#fff; height:25px;"></div>
+              <div style="background:#fff; height:25px;"></div>
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+              <div style="background:#fff; height:25px;"></div>
+              <div style="background:#fff; height:25px;"></div>
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+              <div style="background:#fff; height:25px;"></div>
+              <div style="background:#fff; height:25px;"></div>
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+              <div style="background:#fff; height:25px;"></div>
+              <div style="background:#fff; height:25px;"></div>
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+
+              <div style="background:#fff; height:25px;"></div>
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+              <div style="background:#fff; height:25px;"></div>
+              <div style="background:#fff; height:25px;"></div>
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+              <div style="background:var(--ink-navy-800); height:25px;"></div>
+              <div style="background:#fff; height:25px;"></div>
+            </div>
+            <p style="margin-top:0.5em; color:var(--text-secondary);">8×4 = 32ピクセル</p>
+          </div>
+          <div style="text-align:left;">
+            <div class="card" style="margin-bottom:0.5em;">
+              <h4>📐 解像度</h4>
+              <p>画像の細かさ<br>例: 1920×1080 = 約200万ピクセル</p>
+            </div>
+            <div class="card" style="margin-bottom:0.5em;">
+              <h4>🎨 色の表現（RGB）</h4>
+              <p>赤・緑・青 各8ビット<br>= 24ビットカラー<br>= 約1677万色</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. 演習 -->
+      <section class="exercise-slide">
+        <h2>5. 演習とまとめ</h2>
+        <p>学んだ知識を確認しよう</p>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習1: 2進数変換</h3>
+        <div class="two-column">
+          <div class="card">
+            <h4>🔢 2進数→10進数</h4>
+            <ol>
+              <li>10110 → ( )</li>
+              <li>11001 → ( )</li>
+              <li>101010 → ( )</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h4>🔄 10進数→2進数</h4>
+            <ol>
+              <li>20 → ( )</li>
+              <li>33 → ( )</li>
+              <li>50 → ( )</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習2: データ量計算</h3>
+        <div class="card" style="margin-bottom:1em;">
+          <h4>📷 問題1</h4>
+          <p>1920×1080ピクセル、24ビットカラーの画像のデータ量は？</p>
+          <div class="exercise-box">
+            1920 × 1080 × 24ビット = ______ ビット<br>
+            = ______ バイト ≒ ______ MB
+          </div>
+        </div>
+        <div class="card">
+          <h4>💾 問題2</h4>
+          <p>8GBのUSBメモリに、1枚5MBの写真は何枚入る？</p>
+          <div class="exercise-box">
+            8GB = ______ MB ÷ 5MB = ______ 枚
+          </div>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習3: PLCの入出力</h3>
+        <p>8点入力のPLCで、X0〜X7のセンサー状態が以下の時、入力データは？</p>
+        <div class="card" style="padding:1em;">
+          <div style="display:flex; justify-content:center; gap:0.5em; margin-bottom:1em;">
+            <div style="text-align:center;">
+              <div style="font-weight:700;">X7</div>
+              <div class="icon-box" style="padding:0.5em; min-width:50px;">
+                <span style="font-weight:700;">ON</span>
+              </div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-weight:700;">X6</div>
+              <div class="icon-box" style="padding:0.5em; min-width:50px; background:var(--border-subtle);">
+                <span style="color:var(--text-muted);">OFF</span>
+              </div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-weight:700;">X5</div>
+              <div class="icon-box" style="padding:0.5em; min-width:50px;">
+                <span style="font-weight:700;">ON</span>
+              </div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-weight:700;">X4</div>
+              <div class="icon-box" style="padding:0.5em; min-width:50px; background:var(--border-subtle);">
+                <span style="color:var(--text-muted);">OFF</span>
+              </div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-weight:700;">X3</div>
+              <div class="icon-box" style="padding:0.5em; min-width:50px; background:var(--border-subtle);">
+                <span style="color:var(--text-muted);">OFF</span>
+              </div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-weight:700;">X2</div>
+              <div class="icon-box" style="padding:0.5em; min-width:50px;">
+                <span style="font-weight:700;">ON</span>
+              </div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-weight:700;">X1</div>
+              <div class="icon-box" style="padding:0.5em; min-width:50px;">
+                <span style="font-weight:700;">ON</span>
+              </div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-weight:700;">X0</div>
+              <div class="icon-box" style="padding:0.5em; min-width:50px; background:var(--border-subtle);">
+                <span style="color:var(--text-muted);">OFF</span>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center;">
+            2進数: ________ → 10進数: ______
+          </div>
+        </div>
+      </section>
+
+      <!-- まとめ -->
+      <section>
+        <h2>キーワード</h2>
+        <div class="keywords">
+          <span class="keyword-tag">2進数</span>
+          <span class="keyword-tag">10進数</span>
+          <span class="keyword-tag">ビット</span>
+          <span class="keyword-tag">バイト</span>
+          <span class="keyword-tag">文字コード</span>
+          <span class="keyword-tag">ASCII</span>
+          <span class="keyword-tag">UTF-8</span>
+          <span class="keyword-tag">ピクセル</span>
+          <span class="keyword-tag">解像度</span>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2>確認問題</h2>
+        <div class="quiz-item fragment">
+          <p><strong>1.</strong> 2進数「10101」を10進数に変換してください</p>
+        </div>
+        <div class="quiz-item fragment">
+          <p><strong>2.</strong> 10進数「30」を2進数に変換してください</p>
+        </div>
+        <div class="quiz-item fragment">
+          <p><strong>3.</strong> 1GBは何MBですか？</p>
+        </div>
+        <div class="quiz-item fragment">
+          <p><strong>4.</strong> 文字化けが起こる原因を説明してください</p>
+        </div>
+      </section>
+
+      <!-- 次回予告 -->
+      <section>
+        <h2>次回予告</h2>
+        <div class="next-preview">
+          <h4>セッション5-6h: ソフトウェアとOS</h4>
+          <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); margin-top:1em;">
+            <div class="card">
+              <h4>💻 OSの役割</h4>
+              <p>Windows、Linux、組込みOS</p>
+            </div>
+            <div class="card">
+              <h4>📱 アプリケーション</h4>
+              <p>ソフトウェアの種類と役割</p>
+            </div>
+            <div class="card">
+              <h4>📁 ファイル管理</h4>
+              <p>フォルダ構造とパス</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="assets/init.js"></script>
+</body>
+</html>

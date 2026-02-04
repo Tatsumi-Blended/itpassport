@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03 ソフトウェアとOS - 製造DX基礎コース</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="assets/custom.css">
+  <script src="assets/auth.js"></script>
+  <script>Auth.requireAuth();</script>
+</head>
+<body>
+  <div class="nav-bar">
+    <a href="index.html">目次</a>
+    <span class="current">03 ソフトウェアとOS</span>
+    <div class="nav-links">
+      <a href="02_数値とデータの表現.html" class="nav-prev">← 前へ</a>
+      <a href="04_ネットワークの基礎.html" class="nav-next">次へ →</a>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- タイトル -->
+      <section class="title-slide">
+        <span class="step-badge">STEP1</span>
+        <h1>ソフトウェアとOS</h1>
+        <p class="subtitle">セッション 5-6h</p>
+        <p class="level-stars">学習レベル: ★★☆☆☆（基礎知識）</p>
+      </section>
+
+      <!-- アジェンダ -->
+      <section>
+        <h2>本日のゴール</h2>
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card">
+            <h4>目標1</h4>
+            <p>OSの役割と主な機能を説明できる</p>
+          </div>
+          <div class="card">
+            <h4>目標2</h4>
+            <p>ソフトウェアの種類を理解する</p>
+          </div>
+          <div class="card">
+            <h4>目標3</h4>
+            <p>ファイル管理の基本を身につける</p>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top:1.5em;">
+          <strong>対応テキスト:</strong> 第12章 ソフトウェア
+        </div>
+      </section>
+
+      <!-- 前回の振り返り -->
+      <section>
+        <h2>前回の振り返り</h2>
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card">
+            <h4>🔢 2進数</h4>
+            <p>変換方法と計算</p>
+          </div>
+          <div class="card">
+            <h4>📊 ビット・バイト</h4>
+            <p>データ量の単位</p>
+          </div>
+          <div class="card">
+            <h4>🖼️ データ表現</h4>
+            <p>文字コード、画像</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. ソフトウェアとは -->
+      <section>
+        <h2>1. ソフトウェアとは</h2>
+        <p style="color: var(--text-secondary);">コンピュータを動かすプログラム</p>
+      </section>
+
+      <section>
+        <h3>ハードウェアとソフトウェア</h3>
+        <div class="compare-cards">
+          <div class="compare-card">
+            <div class="card-header">🔩 ハードウェア</div>
+            <div style="text-align:left; padding:1em;">
+              <p><strong>定義:</strong> 物理的な機器</p>
+              <ul>
+                <li>PC本体</li>
+                <li>キーボード</li>
+                <li>モニター</li>
+                <li>メモリ、HDD</li>
+              </ul>
+            </div>
+          </div>
+          <div class="compare-card">
+            <div class="card-header">💿 ソフトウェア</div>
+            <div style="text-align:left; padding:1em;">
+              <p><strong>定義:</strong> プログラムやデータ</p>
+              <ul>
+                <li>OS</li>
+                <li>アプリ</li>
+                <li>ファイル</li>
+                <li>ドライバー</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="highlight-box fragment" style="margin-top:1em;">
+          <strong>例え:</strong> ハードウェア = 楽器（ピアノ）、ソフトウェア = 楽譜と演奏技術
+        </div>
+      </section>
+
+      <section>
+        <h3>ソフトウェアの分類</h3>
+        <div class="card" style="max-width:700px; margin:0 auto; padding:1.5em;">
+          <div style="text-align:center; font-weight:700; color:var(--ink-navy-900); margin-bottom:1em;">📦 ソフトウェア</div>
+          <div class="two-column" style="gap:1.5em;">
+            <div class="card" style="padding:1em;">
+              <h4 style="text-align:center;">🔧 システムソフトウェア</h4>
+              <div style="margin-top:0.5em;">
+                <div class="card fragment" style="margin:0.3em 0; padding:0.5em; background:var(--border-subtle);">
+                  <strong>OS（基本ソフト）</strong><br>
+                  <span style="color:var(--text-secondary);">Windows, Linux</span>
+                </div>
+                <div class="card fragment" style="margin:0.3em 0; padding:0.5em; background:var(--border-subtle);">
+                  <strong>ミドルウェア</strong><br>
+                  <span style="color:var(--text-secondary);">データベース, Webサーバー</span>
+                </div>
+              </div>
+            </div>
+            <div class="card" style="padding:1em;">
+              <h4 style="text-align:center;">📱 アプリケーション</h4>
+              <div style="margin-top:0.5em;">
+                <div class="card fragment" style="margin:0.3em 0; padding:0.5em; background:var(--border-subtle);">
+                  <strong>業務用</strong><br>
+                  <span style="color:var(--text-secondary);">生産管理, CAD</span>
+                </div>
+                <div class="card fragment" style="margin:0.3em 0; padding:0.5em; background:var(--border-subtle);">
+                  <strong>汎用</strong><br>
+                  <span style="color:var(--text-secondary);">Office, ブラウザ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. OSの役割と機能 -->
+      <section>
+        <h2>2. OSの役割と機能</h2>
+        <p style="color: var(--text-secondary);">コンピュータの司令塔</p>
+      </section>
+
+      <section>
+        <h3>OSとは</h3>
+        <p><strong>Operating System（基本ソフトウェア）</strong></p>
+        <div class="os-layers" style="margin:1.5em 0;">
+          <div class="os-layer app fragment">
+            📱 アプリケーション
+            <div style="font-weight:400;">Excel、生産管理システムなど</div>
+          </div>
+          <div class="os-layer os fragment">
+            💻 OS（オペレーティングシステム）
+            <div style="font-weight:400;">Windows、Linux、macOSなど</div>
+          </div>
+          <div class="os-layer hardware fragment">
+            🔩 ハードウェア
+            <div style="font-weight:400;">CPU、メモリ、ディスクなど</div>
+          </div>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>OSの役割:</strong> ハードウェアとアプリの仲介役
+        </div>
+      </section>
+
+      <section>
+        <h3>OSの主な機能</h3>
+        <div class="card-grid" style="grid-template-columns: repeat(5, 1fr);">
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:2em;">⚙️</div>
+            <h4>プロセス管理</h4>
+            <p>プログラムの実行管理</p>
+            <p><strong>タスクマネージャー</strong></p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:2em;">📋</div>
+            <h4>メモリ管理</h4>
+            <p>メモリの割り当て</p>
+            <p><strong>仮想メモリ</strong></p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:2em;">📁</div>
+            <h4>ファイル管理</h4>
+            <p>データの保存・整理</p>
+            <p><strong>エクスプローラー</strong></p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:2em;">🖨️</div>
+            <h4>デバイス管理</h4>
+            <p>周辺機器の制御</p>
+            <p><strong>ドライバー</strong></p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:2em;">👤</div>
+            <h4>ユーザー管理</h4>
+            <p>認証・権限管理</p>
+            <p><strong>ログイン</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>プロセス管理</h3>
+        <p><strong>プロセス:</strong> 実行中のプログラム</p>
+        <div class="card" style="max-width:700px; margin:1em auto; padding:1em;">
+          <div style="text-align:center; margin-bottom:0.5em; font-weight:700;">📊 タスクマネージャーの見方</div>
+          <div style="display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:0.5em;">
+            <div style="background:var(--ink-navy-800); color:white; padding:0.5em; font-weight:700;">プロセス名</div>
+            <div style="background:var(--ink-navy-800); color:white; padding:0.5em; font-weight:700;">CPU</div>
+            <div style="background:var(--ink-navy-800); color:white; padding:0.5em; font-weight:700;">メモリ</div>
+            <div style="background:var(--ink-navy-800); color:white; padding:0.5em; font-weight:700;">状態</div>
+
+            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">🏭 生産管理.exe</div>
+            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">
+              <div class="progress-container" style="padding:0;"><div class="progress-bar" style="width:15%; height:15px;"></div></div>
+            </div>
+            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">500MB</div>
+            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">実行中</div>
+
+            <div style="background:white; padding:0.5em;" class="fragment">📊 Excel.exe</div>
+            <div style="background:white; padding:0.5em;" class="fragment">
+              <div class="progress-container" style="padding:0;"><div class="progress-bar" style="width:5%; height:15px;"></div></div>
+            </div>
+            <div style="background:white; padding:0.5em;" class="fragment">300MB</div>
+            <div style="background:white; padding:0.5em;" class="fragment">実行中</div>
+
+            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">🌐 Chrome.exe</div>
+            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">
+              <div class="progress-container" style="padding:0;"><div class="progress-bar" style="width:10%; height:15px;"></div></div>
+            </div>
+            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">800MB</div>
+            <div style="background:var(--border-subtle); padding:0.5em;" class="fragment">実行中</div>
+          </div>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>マルチタスク:</strong> 複数のプログラムを同時に動かす仕組み
+        </div>
+      </section>
+
+      <section>
+        <h3>メモリ管理</h3>
+        <p><strong>仮想メモリ:</strong> 物理メモリが足りない時、HDDの一部を使う</p>
+        <div class="flow-chart" style="margin:1.5em 0;">
+          <div class="flow-box">
+            <span class="icon">📋</span>
+            物理メモリ
+            <small>8GB</small>
+          </div>
+          <div class="labeled-arrow">
+            <span class="arrow-line" style="font-size:2em;">⟷</span>
+            <span class="arrow-label">スワップ</span>
+          </div>
+          <div class="flow-box secondary">
+            <span class="icon">💾</span>
+            仮想メモリ
+            <small>（HDD上）</small>
+          </div>
+        </div>
+        <div class="card" style="max-width:500px; margin:1em auto;">
+          <h4>メモリ不足の症状</h4>
+          <ul style="margin:0;">
+            <li class="fragment">PCの動作が遅い</li>
+            <li class="fragment">アプリが固まる</li>
+            <li class="fragment">「メモリが不足しています」エラー</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h3>主なOSの種類</h3>
+        <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="card fragment">
+            <div style="font-size:2em; text-align:center;">🪟</div>
+            <h4>Windows</h4>
+            <p>GUI充実、普及率高い</p>
+            <p><strong>用途:</strong> 事務PC、HMI端末</p>
+          </div>
+          <div class="card fragment">
+            <div style="font-size:2em; text-align:center;">🐧</div>
+            <h4>Linux</h4>
+            <p>無料、安定、サーバー向き</p>
+            <p><strong>用途:</strong> サーバー、組込み</p>
+          </div>
+          <div class="card fragment">
+            <div style="font-size:2em; text-align:center;">🍎</div>
+            <h4>macOS</h4>
+            <p>Apple製PC用</p>
+            <p><strong>用途:</strong> デザイン、開発</p>
+          </div>
+          <div class="card fragment">
+            <div style="font-size:2em; text-align:center;">⏱️</div>
+            <h4>リアルタイムOS</h4>
+            <p>時間制約を保証</p>
+            <p><strong>用途:</strong> PLC、ロボット制御</p>
+          </div>
+          <div class="card fragment">
+            <div style="font-size:2em; text-align:center;">📱</div>
+            <h4>Android/iOS</h4>
+            <p>スマートフォン用</p>
+            <p><strong>用途:</strong> タブレット端末</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. ファイル管理 -->
+      <section>
+        <h2>3. ファイル管理</h2>
+        <p style="color: var(--text-secondary);">データの整理と管理</p>
+      </section>
+
+      <section>
+        <h3>ファイルとフォルダ</h3>
+        <div class="two-column">
+          <div>
+            <div class="card" style="margin-bottom:0.5em;">
+              <h4>📄 ファイル</h4>
+              <p>データの単位（文書、画像など）</p>
+            </div>
+            <div class="card">
+              <h4>📁 フォルダ</h4>
+              <p>ファイルを整理する入れ物</p>
+            </div>
+          </div>
+          <div class="card" style="padding:1em; font-family:'JetBrains Mono', monospace;">
+            <div style="font-weight:700; margin-bottom:0.5em;">🏭 工場サーバー</div>
+            <div style="padding-left:1em;">
+              <div class="fragment">📁 製造部</div>
+              <div style="padding-left:1.5em;">
+                <div class="fragment">📁 図面</div>
+                <div style="padding-left:1.5em;">
+                  <div class="fragment">📄 製品A.pdf</div>
+                  <div class="fragment">📄 製品B.pdf</div>
+                </div>
+                <div class="fragment">📁 手順書</div>
+                <div style="padding-left:1.5em;">
+                  <div class="fragment">📄 組立手順.docx</div>
+                </div>
+              </div>
+              <div class="fragment">📁 品質管理部</div>
+              <div style="padding-left:1.5em;">
+                <div class="fragment">📁 検査記録</div>
+                <div style="padding-left:1.5em;">
+                  <div class="fragment">📄 2024年01月.xlsx</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>パス（Path）</h3>
+        <p><strong>ファイルの住所を表す文字列</strong></p>
+        <div class="card-grid" style="grid-template-columns: repeat(2, 1fr); margin:1em 0;">
+          <div class="card fragment">
+            <h4>📍 絶対パス</h4>
+            <p>ルート（起点）から完全に記述</p>
+            <div style="background:var(--border-subtle); padding:0.5em; border-radius:4px; font-family:'JetBrains Mono', monospace;">
+              C:\製造部\図面\製品A.pdf
+            </div>
+          </div>
+          <div class="card fragment">
+            <h4>📍 相対パス</h4>
+            <p>現在地からの相対位置</p>
+            <div style="background:var(--border-subtle); padding:0.5em; border-radius:4px; font-family:'JetBrains Mono', monospace;">
+              ..\図面\製品A.pdf
+            </div>
+          </div>
+        </div>
+        <div class="highlight-box fragment">
+          <strong>ポイント:</strong>
+          <code>..</code> = 1つ上のフォルダ、
+          <code>.</code> = 現在のフォルダ
+        </div>
+      </section>
+
+      <section>
+        <h3>拡張子</h3>
+        <p><strong>ファイルの種類を示す末尾の文字</strong></p>
+        <div class="card-grid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:1.8em;">📄</div>
+            <strong>.txt</strong>
+            <p style="margin:0;">テキスト</p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:1.8em;">📕</div>
+            <strong>.pdf</strong>
+            <p style="margin:0;">PDF文書</p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:1.8em;">📊</div>
+            <strong>.xlsx</strong>
+            <p style="margin:0;">Excel</p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:1.8em;">📝</div>
+            <strong>.docx</strong>
+            <p style="margin:0;">Word</p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:1.8em;">🖼️</div>
+            <strong>.jpg .png</strong>
+            <p style="margin:0;">画像</p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:1.8em;">🎬</div>
+            <strong>.mp4</strong>
+            <p style="margin:0;">動画</p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:1.8em;">📋</div>
+            <strong>.csv</strong>
+            <p style="margin:0;">カンマ区切り</p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:1.8em;">⚙️</div>
+            <strong>.exe</strong>
+            <p style="margin:0;">実行ファイル</p>
+          </div>
+        </div>
+        <div class="highlight-box warning fragment" style="margin-top:0.8em;">
+          <strong>注意:</strong> 拡張子を変えてもファイルの中身は変わらない
+        </div>
+      </section>
+
+      <section>
+        <h3>アクセス権限</h3>
+        <p><strong>誰が何をできるかの制御</strong></p>
+        <div class="card-grid" style="grid-template-columns: repeat(4, 1fr); margin:1em 0;">
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:1.5em;">🔓</div>
+            <h4>フルコントロール</h4>
+            <p>全操作可能</p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:1.5em;">✏️</div>
+            <h4>変更</h4>
+            <p>読み書き可能</p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:1.5em;">👁️</div>
+            <h4>読み取り</h4>
+            <p>閲覧のみ</p>
+          </div>
+          <div class="card fragment" style="text-align:center;">
+            <div style="font-size:1.5em;">🚫</div>
+            <h4>なし</h4>
+            <p>アクセス不可</p>
+          </div>
+        </div>
+        <div class="card" style="max-width:500px; margin:0 auto; padding:1em;">
+          <div style="font-weight:700; margin-bottom:0.5em;">📁 共有フォルダ\図面</div>
+          <div style="display:flex; gap:0.5em; flex-wrap:wrap;">
+            <span style="background:var(--ink-navy-800); color:white; padding:0.3em 0.6em; border-radius:4px;">最新版 👁️ 一般社員</span>
+            <span style="background:var(--ink-navy-700); color:white; padding:0.3em 0.6em; border-radius:4px;">作業用 ✏️ 設計担当</span>
+            <span style="background:var(--ink-navy-600); color:white; padding:0.3em 0.6em; border-radius:4px;">承認済 👁️ 全員</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. ソフトウェアのライセンス -->
+      <section>
+        <h2>4. ソフトウェアのライセンス</h2>
+        <p style="color: var(--text-secondary);">ソフトウェアの利用条件</p>
+      </section>
+
+      <section>
+        <h3>ライセンスの種類</h3>
+        <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="card fragment">
+            <h4>💰 プロプライエタリ</h4>
+            <p>有料、ソース非公開</p>
+            <div style="color:var(--text-secondary);">例: Windows、Office、Adobe製品</div>
+          </div>
+          <div class="card fragment">
+            <h4>🆓 オープンソース</h4>
+            <p>無料、ソース公開</p>
+            <div style="color:var(--text-secondary);">例: Linux、LibreOffice、Firefox</div>
+          </div>
+          <div class="card fragment">
+            <h4>🎁 フリーウェア</h4>
+            <p>無料、ソース非公開</p>
+            <div style="color:var(--text-secondary);">例: 各種フリーソフト</div>
+          </div>
+          <div class="card fragment">
+            <h4>⏰ シェアウェア</h4>
+            <p>試用後有料</p>
+            <div style="color:var(--text-secondary);">例: 一部の専門ソフト</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>ライセンス違反に注意</h3>
+        <div class="two-column">
+          <div class="card" style="padding:1em;">
+            <h4>よくある違反</h4>
+            <ul style="margin:0;">
+              <li class="fragment">1ライセンスを複数PCで使用</li>
+              <li class="fragment">会社のソフトを自宅PCにインストール</li>
+              <li class="fragment">ライセンス切れのまま使用</li>
+            </ul>
+          </div>
+          <div class="card" style="padding:1em;">
+            <h4>リスク</h4>
+            <ul style="margin:0;">
+              <li class="fragment">法的問題（著作権法違反）</li>
+              <li class="fragment">セキュリティリスク（更新できない）</li>
+              <li class="fragment">監査時の問題</li>
+            </ul>
+          </div>
+        </div>
+        <div class="highlight-box warning fragment" style="margin-top:1em;">
+          <strong>対策:</strong> ライセンス管理台帳を作成し、定期的に確認する
+        </div>
+      </section>
+
+      <!-- 5. 演習 -->
+      <section class="exercise-slide">
+        <h2>5. 演習とまとめ</h2>
+        <p>学んだ知識を確認しよう</p>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習1: OSの機能確認</h3>
+        <p>Windowsのタスクマネージャーを開いて確認:</p>
+        <div class="card-grid" style="grid-template-columns: 1fr;">
+          <div class="card">
+            <h4>Q1: 現在実行中のプロセス数は？</h4>
+            <div class="exercise-box" style="padding:0.5em;">________ 個</div>
+          </div>
+          <div class="card">
+            <h4>Q2: メモリ使用率は何%？</h4>
+            <div class="exercise-box" style="padding:0.5em;">________ %</div>
+          </div>
+          <div class="card">
+            <h4>Q3: 最もメモリを使っているアプリは？</h4>
+            <div class="exercise-box" style="padding:0.5em;">________________</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習2: ファイル管理</h3>
+        <p>自部門の共有フォルダに必要なフォルダ構造を設計:</p>
+        <div class="card" style="padding:1em; font-family:'JetBrains Mono', monospace;">
+          <div>📁 _________________</div>
+          <div style="padding-left:1.5em;">📁 _________________</div>
+          <div style="padding-left:3em;">📁 _________________</div>
+          <div style="padding-left:3em;">📁 _________________</div>
+          <div style="padding-left:1.5em;">📁 _________________</div>
+          <div style="padding-left:1.5em;">📁 _________________</div>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習3: パスの理解</h3>
+        <p>以下の状況でファイルのパスを書いてください:</p>
+        <div class="card" style="padding:1em;">
+          <p><strong>現在地:</strong> C:\製造部\手順書\</p>
+          <p><strong>目的ファイル:</strong> C:\製造部\図面\製品A.pdf</p>
+          <div class="exercise-box" style="margin-top:1em;">
+            <p>絶対パス: ___________________________</p>
+            <p>相対パス: ___________________________</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- まとめ -->
+      <section>
+        <h2>キーワード</h2>
+        <div class="keywords">
+          <span class="keyword-tag">OS</span>
+          <span class="keyword-tag">プロセス</span>
+          <span class="keyword-tag">メモリ管理</span>
+          <span class="keyword-tag">ファイルシステム</span>
+          <span class="keyword-tag">パス</span>
+          <span class="keyword-tag">拡張子</span>
+          <span class="keyword-tag">アクセス権限</span>
+          <span class="keyword-tag">ライセンス</span>
+          <span class="keyword-tag">オープンソース</span>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2>確認問題</h2>
+        <div class="quiz-item fragment">
+          <p><strong>1.</strong> OSの主な機能を3つ挙げてください</p>
+        </div>
+        <div class="quiz-item fragment">
+          <p><strong>2.</strong> ファイルとフォルダの違いを説明してください</p>
+        </div>
+        <div class="quiz-item fragment">
+          <p><strong>3.</strong> 絶対パスと相対パスの違いは何ですか？</p>
+        </div>
+        <div class="quiz-item fragment">
+          <p><strong>4.</strong> ライセンス違反のリスクを説明してください</p>
+        </div>
+      </section>
+
+      <!-- 次回予告 -->
+      <section>
+        <h2>次回予告</h2>
+        <div class="next-preview">
+          <h4>セッション7-8h: ネットワークの基礎</h4>
+          <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); margin-top:1em;">
+            <div class="card">
+              <h4>🌐 LAN/WAN</h4>
+              <p>ネットワークの仕組み</p>
+            </div>
+            <div class="card">
+              <h4>🔢 IPアドレス</h4>
+              <p>ネットワーク上の住所</p>
+            </div>
+            <div class="card">
+              <h4>🌍 インターネット</h4>
+              <p>Web、メールの仕組み</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="assets/init.js"></script>
+</body>
+</html>

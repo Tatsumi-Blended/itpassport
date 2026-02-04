@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06 情報セキュリティ - 製造DX基礎コース</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="assets/custom.css">
+  <script src="assets/auth.js"></script>
+  <script>Auth.requireAuth();</script>
+</head>
+<body>
+  <div class="nav-bar">
+    <a href="index.html">目次</a>
+    <span class="current">06 情報セキュリティ</span>
+    <div class="nav-links">
+      <a href="05_データベースの基礎.html" class="nav-prev">← 前へ</a>
+      <a href="07_アルゴリズムと論理的思考.html" class="nav-next">次へ →</a>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- タイトル -->
+      <section class="title-slide step2">
+        <p><span class="step-badge">STEP2</span> データを扱う力をつける</p>
+        <h1>情報セキュリティ</h1>
+        <p class="subtitle">セッション 11-12h</p>
+        <p class="level-stars">学習レベル: ★★★☆☆（標準レベル）</p>
+      </section>
+
+      <!-- アジェンダ -->
+      <section>
+        <h2>本日のゴール</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h4>理解</h4>
+            <p>セキュリティの3要素（CIA）と製造業における重要性を理解する</p>
+          </div>
+          <div class="card">
+            <h4>識別</h4>
+            <p>主な脅威の種類を識別し、適切な対策を選択できる</p>
+          </div>
+          <div class="card">
+            <h4>実践</h4>
+            <p>安全なパスワード管理と多要素認証の設定ができる</p>
+          </div>
+        </div>
+        <p class="text-center" style="margin-top:1em;"><strong>対応テキスト:</strong> 第15章 情報セキュリティ</p>
+      </section>
+
+      <!-- 1. 情報セキュリティの基本 -->
+      <section>
+        <h2>1. 情報セキュリティの基本</h2>
+        <p class="text-secondary">なぜ製造業でセキュリティが重要なのか</p>
+      </section>
+
+      <section>
+        <h3>製造業におけるセキュリティ事故の実例</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>ランサムウェアによる生産停止</h4>
+            <p><strong>2020年：大手自動車メーカー</strong></p>
+            <ul>
+              <li>社内ネットワークがランサムウェアに感染</li>
+              <li>世界9カ国11工場が生産停止</li>
+              <li>復旧まで約1週間、巨額の損失</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>設計データの流出</h4>
+            <p><strong>製造業で頻発する事例</strong></p>
+            <ul>
+              <li>CADデータ、金型図面の不正持ち出し</li>
+              <li>競合他社への技術流出</li>
+              <li>数年分の開発投資が無駄に</li>
+            </ul>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top: 1em;">
+          <p><strong>製造業はサイバー攻撃の標的になりやすい</strong></p>
+          <p class="text-secondary">理由：貴重な技術情報、レガシーシステム、可用性重視でセキュリティが後回しになりがち</p>
+        </div>
+      </section>
+
+      <section>
+        <h3>セキュリティ事故がもたらす影響</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>直接的損失</h4>
+            <ul>
+              <li><strong>生産停止</strong>：1日数億円の機会損失</li>
+              <li><strong>身代金要求</strong>：数千万〜数億円</li>
+              <li><strong>復旧費用</strong>：システム再構築、専門家費用</li>
+              <li><strong>調査費用</strong>：フォレンジック調査</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>間接的損失</h4>
+            <ul>
+              <li><strong>信用失墜</strong>：取引先からの信頼低下</li>
+              <li><strong>法的責任</strong>：個人情報保護法違反等</li>
+              <li><strong>取引停止</strong>：サプライチェーンからの排除</li>
+              <li><strong>株価下落</strong>：上場企業の場合</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>セキュリティの3要素：CIA</h3>
+        <div class="flow-chart">
+          <div class="flow-box" style="min-width: 150px;">
+            <strong>機密性</strong><br>
+            <span class="text-secondary small">Confidentiality</span>
+          </div>
+          <div class="flow-box" style="min-width: 150px;">
+            <strong>完全性</strong><br>
+            <span class="text-secondary small">Integrity</span>
+          </div>
+          <div class="flow-box" style="min-width: 150px;">
+            <strong>可用性</strong><br>
+            <span class="text-secondary small">Availability</span>
+          </div>
+        </div>
+        <div class="card-grid cols-3" style="margin-top: 1em;">
+          <div class="card">
+            <h4>機密性</h4>
+            <p>許可された人だけが情報にアクセスできる</p>
+            <p class="text-secondary">例：設計図面の閲覧権限管理</p>
+          </div>
+          <div class="card">
+            <h4>完全性</h4>
+            <p>情報が正確で改ざんされていない</p>
+            <p class="text-secondary">例：品質検査データの改ざん防止</p>
+          </div>
+          <div class="card">
+            <h4>可用性</h4>
+            <p>必要な時に情報やシステムが使える</p>
+            <p class="text-secondary">例：生産管理システムの稼働維持</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>ITセキュリティ vs OTセキュリティ</h3>
+        <div class="compare-cards">
+          <div class="compare-card">
+            <h4>ITセキュリティ（情報系）</h4>
+            <ul>
+              <li><strong>最優先：機密性</strong></li>
+              <li>データ漏洩が最大のリスク</li>
+              <li>定期的なアップデートが基本</li>
+              <li>一時的な停止は許容される</li>
+            </ul>
+            <p class="text-secondary">対象：メール、ファイルサーバー、基幹システム</p>
+          </div>
+          <div class="compare-card">
+            <h4>OTセキュリティ（制御系）</h4>
+            <ul>
+              <li><strong>最優先：可用性</strong></li>
+              <li>停止が最大のリスク（人命・安全）</li>
+              <li>アップデートは慎重に計画</li>
+              <li>24時間365日の稼働が前提</li>
+            </ul>
+            <p class="text-secondary">対象：PLC、SCADA、製造装置</p>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top: 1em;">
+          <p><strong>製造DXの課題</strong>：IT/OT連携が進む中、両方のセキュリティをバランスよく確保する必要がある</p>
+        </div>
+      </section>
+
+      <!-- 2. 脅威の種類 -->
+      <section>
+        <h2>2. 脅威の種類</h2>
+        <p class="text-secondary">技術的・人的・物理的な脅威を知る</p>
+      </section>
+
+      <section>
+        <h3>脅威の3分類</h3>
+        <div class="card-grid">
+          <div class="card">
+            <h4>技術的脅威</h4>
+            <ul>
+              <li>マルウェア（ウイルス、ランサムウェア）</li>
+              <li>不正アクセス</li>
+              <li>DoS/DDoS攻撃</li>
+              <li>SQLインジェクション</li>
+              <li>ゼロデイ攻撃</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>人的脅威</h4>
+            <ul>
+              <li>内部不正（情報持ち出し）</li>
+              <li>ソーシャルエンジニアリング</li>
+              <li>フィッシング詐欺</li>
+              <li>操作ミス・設定ミス</li>
+              <li>パスワードの使い回し</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>物理的脅威</h4>
+            <ul>
+              <li>盗難（PC、USBメモリ）</li>
+              <li>自然災害（地震、水害）</li>
+              <li>火災</li>
+              <li>機器故障</li>
+              <li>不法侵入</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>マルウェアの種類と特徴</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>ウイルス</h4>
+            <p>他のプログラムやファイルに寄生して増殖</p>
+            <p class="text-secondary">感染したファイルを実行すると活動開始</p>
+          </div>
+          <div class="card">
+            <h4>ワーム</h4>
+            <p>単独で自己増殖し、ネットワーク経由で拡散</p>
+            <p class="text-secondary">短時間で大規模感染を引き起こす</p>
+          </div>
+          <div class="card">
+            <h4>トロイの木馬</h4>
+            <p>有用なソフトに偽装して侵入</p>
+            <p class="text-secondary">バックドアを作成し、情報を外部送信</p>
+          </div>
+          <div class="card">
+            <h4>ランサムウェア</h4>
+            <p>データを暗号化し、身代金を要求</p>
+            <p class="text-secondary">近年は「二重脅迫」（暗号化＋公開脅迫）が主流</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>ランサムウェア攻撃の流れ</h3>
+        <div class="flow-chart">
+          <div class="flow-box">侵入<br><span class="text-secondary small">メール添付<br>脆弱性悪用</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">潜伏<br><span class="text-secondary small">情報収集<br>権限昇格</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">暗号化<br><span class="text-secondary small">データ暗号化<br>バックアップ削除</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">脅迫<br><span class="text-secondary small">身代金要求<br>公開脅迫</span></div>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>対策：予防</h4>
+            <ul>
+              <li>OSやソフトウェアを最新に保つ</li>
+              <li>不審なメール・添付ファイルを開かない</li>
+              <li>セキュリティソフトの導入と更新</li>
+              <li>アクセス権限の最小化</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>対策：被害軽減</h4>
+            <ul>
+              <li>定期的なバックアップ（オフライン保管）</li>
+              <li>ネットワーク分離</li>
+              <li>インシデント対応計画の策定</li>
+              <li>サイバー保険の検討</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>フィッシング詐欺の手口</h3>
+        <div class="highlight-box">
+          <p><strong>フィッシング</strong>：偽のメールやWebサイトで個人情報を騙し取る攻撃</p>
+        </div>
+        <div class="flow-chart">
+          <div class="flow-box">偽メール送信<br><span class="text-secondary small">「緊急：アカウント<br>確認が必要です」</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">偽サイトへ誘導<br><span class="text-secondary small">本物そっくりの<br>ログイン画面</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">情報窃取<br><span class="text-secondary small">ID・パスワード<br>カード情報</span></div>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>フィッシングの見分け方</h4>
+            <ul>
+              <li>送信元アドレスのドメインを確認</li>
+              <li>URLをよく確認（1文字違い等）</li>
+              <li>日本語の不自然さ（機械翻訳風）</li>
+              <li>急かす文面（「24時間以内に」等）</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>被害を防ぐ行動</h4>
+            <ul>
+              <li>メール内のリンクを直接クリックしない</li>
+              <li>公式サイトにブックマークからアクセス</li>
+              <li>少しでも怪しいと思ったら確認</li>
+              <li>情報システム部門に報告</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>ソーシャルエンジニアリング</h3>
+        <div class="highlight-box">
+          <p><strong>ソーシャルエンジニアリング</strong>：人間の心理的な隙を突いて情報を入手する手法</p>
+          <p class="text-secondary">技術的な攻撃ではなく、「人」を狙う攻撃</p>
+        </div>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>なりすまし</h4>
+            <p>「IT部門ですが、パスワードを確認させてください」</p>
+            <p class="text-secondary">→ 本当にIT部門か確認する。正規の手順を確認する</p>
+          </div>
+          <div class="card">
+            <h4>ショルダーハッキング</h4>
+            <p>肩越しにパスワード入力や画面を覗き見</p>
+            <p class="text-secondary">→ 覗き見防止フィルター、入力時の周囲確認</p>
+          </div>
+          <div class="card">
+            <h4>トラッシング</h4>
+            <p>ゴミ箱から機密書類や付箋（パスワード）を回収</p>
+            <p class="text-secondary">→ シュレッダー処理、クリアデスクの徹底</p>
+          </div>
+          <div class="card">
+            <h4>テールゲーティング</h4>
+            <p>入退室時に正規社員の後についてすり抜け</p>
+            <p class="text-secondary">→ 1人ずつ入退室、不審者への声かけ</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>内部不正への対策</h3>
+        <div class="highlight-box">
+          <p><strong>内部不正</strong>：従業員や元従業員、取引先による情報漏洩や不正行為</p>
+          <p class="text-secondary">IPA「情報セキュリティ10大脅威」で毎年上位にランクイン</p>
+        </div>
+        <div class="card-grid cols-3">
+          <div class="card">
+            <h4>技術的対策</h4>
+            <ul>
+              <li>アクセスログの記録・監視</li>
+              <li>USBポートの制限</li>
+              <li>メール添付の監視</li>
+              <li>印刷ログの取得</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>組織的対策</h4>
+            <ul>
+              <li>最小権限の原則</li>
+              <li>職務分掌（相互牽制）</li>
+              <li>退職時のアカウント削除</li>
+              <li>定期的なアクセス権限の棚卸し</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>人的対策</h4>
+            <ul>
+              <li>セキュリティ教育</li>
+              <li>誓約書の取得</li>
+              <li>内部通報制度</li>
+              <li>適切な労務管理</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. 暗号化の基礎 -->
+      <section>
+        <h2>3. 暗号化の基礎</h2>
+        <p class="text-secondary">データを守る技術</p>
+      </section>
+
+      <section>
+        <h3>暗号化とは</h3>
+        <div class="highlight-box">
+          <p><strong>暗号化</strong>：データを第三者が読めない形式に変換すること</p>
+          <p><strong>復号</strong>：暗号化されたデータを元の形式に戻すこと</p>
+        </div>
+        <div class="flow-chart">
+          <div class="flow-box">平文<br><span class="text-secondary small">「製品仕様書」</span></div>
+          <div class="flow-arrow">暗号化→</div>
+          <div class="flow-box">暗号文<br><span class="text-secondary small">「xK#9fLm2@qPz」</span></div>
+          <div class="flow-arrow">復号→</div>
+          <div class="flow-box">平文<br><span class="text-secondary small">「製品仕様書」</span></div>
+        </div>
+        <p class="text-secondary text-center" style="margin-top: 1em;">
+          暗号化により、データが流出しても内容を読まれない
+        </p>
+      </section>
+
+      <section>
+        <h3>共通鍵暗号方式</h3>
+        <div class="highlight-box">
+          <p>暗号化と復号に<strong>同じ鍵</strong>を使用する方式</p>
+        </div>
+        <div class="flow-chart">
+          <div class="flow-box">送信者<br><span class="text-secondary small">鍵Aで暗号化</span></div>
+          <div class="flow-arrow">暗号文→</div>
+          <div class="flow-box">受信者<br><span class="text-secondary small">鍵Aで復号</span></div>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>メリット</h4>
+            <ul>
+              <li>処理が高速</li>
+              <li>大量データの暗号化に適する</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>デメリット</h4>
+            <ul>
+              <li>鍵の配送が課題（安全に渡す方法）</li>
+              <li>通信相手ごとに異なる鍵が必要</li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-secondary text-center" style="margin-top: 0.5em;">代表例：AES（Advanced Encryption Standard）</p>
+      </section>
+
+      <section>
+        <h3>公開鍵暗号方式</h3>
+        <div class="highlight-box">
+          <p><strong>公開鍵</strong>（誰でも入手可）と<strong>秘密鍵</strong>（本人のみ保持）のペアを使用</p>
+        </div>
+        <div class="flow-chart">
+          <div class="flow-box">送信者<br><span class="text-secondary small">受信者の<br>公開鍵で暗号化</span></div>
+          <div class="flow-arrow">暗号文→</div>
+          <div class="flow-box">受信者<br><span class="text-secondary small">自分の<br>秘密鍵で復号</span></div>
+        </div>
+        <div class="card-grid cols-2" style="margin-top: 1em;">
+          <div class="card">
+            <h4>メリット</h4>
+            <ul>
+              <li>鍵配送の問題がない</li>
+              <li>デジタル署名に利用可能</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>デメリット</h4>
+            <ul>
+              <li>処理が遅い</li>
+              <li>大量データには不向き</li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-secondary text-center" style="margin-top: 0.5em;">代表例：RSA</p>
+      </section>
+
+      <section>
+        <h3>ハイブリッド暗号方式</h3>
+        <div class="highlight-box">
+          <p><strong>両方式の長所を組み合わせた方式</strong>（実際のHTTPS通信等で使用）</p>
+        </div>
+        <div class="flow-chart">
+          <div class="flow-box">共通鍵を生成<br><span class="text-secondary small">セッションキー</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">公開鍵で<br>共通鍵を暗号化<br><span class="text-secondary small">安全に鍵を配送</span></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-box">共通鍵で<br>データを暗号化<br><span class="text-secondary small">高速処理</span></div>
+        </div>
+        <p class="text-secondary text-center" style="margin-top: 1em;">
+          公開鍵暗号で鍵交換 → 共通鍵暗号でデータ通信
+        </p>
+      </section>
+
+      <section>
+        <h3>デジタル署名</h3>
+        <div class="highlight-box">
+          <p><strong>デジタル署名</strong>：電子データの「作成者」と「改ざんされていないこと」を証明する仕組み</p>
+        </div>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>署名の作成（送信者）</h4>
+            <ol>
+              <li>データからハッシュ値を生成</li>
+              <li>ハッシュ値を<strong>自分の秘密鍵</strong>で暗号化</li>
+              <li>暗号化したハッシュ値＝署名</li>
+            </ol>
+          </div>
+          <div class="card">
+            <h4>署名の検証（受信者）</h4>
+            <ol>
+              <li>署名を<strong>送信者の公開鍵</strong>で復号</li>
+              <li>受信データからハッシュ値を計算</li>
+              <li>両者が一致すれば正当性を確認</li>
+            </ol>
+          </div>
+        </div>
+        <p class="text-secondary text-center" style="margin-top: 1em;">
+          電子契約、ソフトウェア配布、電子申請などで利用
+        </p>
+      </section>
+
+      <section>
+        <h3>HTTPS（SSL/TLS）</h3>
+        <div class="compare-cards">
+          <div class="compare-card">
+            <h4>HTTP（暗号化なし）</h4>
+            <p>通信内容が平文で流れる</p>
+            <p class="text-secondary">傍受されると内容が丸見え</p>
+            <p><code>http://example.com</code></p>
+          </div>
+          <div class="compare-card">
+            <h4>HTTPS（暗号化あり）</h4>
+            <p>SSL/TLSで通信を暗号化</p>
+            <p class="text-secondary">傍受されても内容は解読不能</p>
+            <p><code>https://example.com</code></p>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top: 1em;">
+          <p><strong>確認方法</strong>：ブラウザのアドレスバーに鍵マークが表示される</p>
+          <p class="text-secondary">個人情報やパスワードの入力時は必ずHTTPSを確認</p>
+        </div>
+      </section>
+
+      <!-- 4. セキュリティ対策 -->
+      <section>
+        <h2>4. セキュリティ対策</h2>
+        <p class="text-secondary">日常業務で実践すべき対策</p>
+      </section>
+
+      <section>
+        <h3>パスワード管理の基本</h3>
+        <div class="compare-cards">
+          <div class="compare-card">
+            <h4>脆弱なパスワード</h4>
+            <ul>
+              <li><code>123456</code>、<code>password</code></li>
+              <li>自分の名前、誕生日</li>
+              <li>辞書に載っている単語</li>
+              <li>キーボードの並び（qwerty）</li>
+              <li>複数サービスで同じパスワード</li>
+            </ul>
+          </div>
+          <div class="compare-card">
+            <h4>強固なパスワード</h4>
+            <ul>
+              <li>12文字以上の長さ</li>
+              <li>大文字・小文字・数字・記号を混在</li>
+              <li>推測されにくい文字列</li>
+              <li>サービスごとに異なるパスワード</li>
+              <li>定期的な変更（漏洩時）</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>パスワードの作り方と管理</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>パスフレーズ方式</h4>
+            <p>覚えやすく、長いパスワードを作る</p>
+            <p class="text-secondary">例：「今日も1日頑張ろう!」<br>→ <code>Kyomo1nichiGanbaro!</code></p>
+            <p class="text-secondary">例：「製造業DX推進2024」<br>→ <code>SeizouDX_Suishin2024!</code></p>
+          </div>
+          <div class="card">
+            <h4>パスワードマネージャー</h4>
+            <p>専用ツールで安全に管理</p>
+            <ul>
+              <li>ランダムな強力パスワードを生成</li>
+              <li>マスターパスワード1つで全管理</li>
+              <li>サービスごとに異なるパスワード</li>
+            </ul>
+            <p class="text-secondary">例：1Password、Bitwarden</p>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top: 1em;">
+          <p><strong>絶対にやってはいけないこと</strong></p>
+          <p>付箋にパスワードを書いてモニターに貼る、メールでパスワードを送る</p>
+        </div>
+      </section>
+
+      <section>
+        <h3>多要素認証（MFA）</h3>
+        <div class="highlight-box">
+          <p><strong>多要素認証</strong>：複数の認証要素を組み合わせて本人確認を強化</p>
+        </div>
+        <div class="card-grid cols-3">
+          <div class="card">
+            <h4>知識要素</h4>
+            <p>本人だけが知っている情報</p>
+            <ul>
+              <li>パスワード</li>
+              <li>PINコード</li>
+              <li>秘密の質問</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>所持要素</h4>
+            <p>本人だけが持っているもの</p>
+            <ul>
+              <li>スマートフォン</li>
+              <li>ICカード</li>
+              <li>ハードウェアトークン</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>生体要素</h4>
+            <p>本人固有の身体的特徴</p>
+            <ul>
+              <li>指紋認証</li>
+              <li>顔認証</li>
+              <li>虹彩認証</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flow-chart" style="margin-top: 1em;">
+          <div class="flow-box">パスワード<br><span class="text-secondary small">知識</span></div>
+          <div class="flow-arrow">+</div>
+          <div class="flow-box">スマホ認証<br><span class="text-secondary small">所持</span></div>
+          <div class="flow-arrow">=</div>
+          <div class="flow-box">2要素認証<br><span class="text-secondary small">強固な認証</span></div>
+        </div>
+      </section>
+
+      <section>
+        <h3>ファイアウォールとアクセス制御</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>ファイアウォール</h4>
+            <p>ネットワークの出入口で通信を監視・制御</p>
+            <ul>
+              <li>許可された通信のみを通過させる</li>
+              <li>不正な通信をブロック</li>
+              <li>パケットフィルタリング</li>
+              <li>ステートフルインスペクション</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>アクセス制御</h4>
+            <p>「誰が」「何に」アクセスできるかを管理</p>
+            <ul>
+              <li>最小権限の原則</li>
+              <li>役割ベースのアクセス制御（RBAC）</li>
+              <li>必要な人に必要な権限だけ</li>
+              <li>定期的な棚卸しと見直し</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>バックアップの3-2-1ルール</h3>
+        <div class="highlight-box">
+          <p><strong>3-2-1ルール</strong>：バックアップの基本原則</p>
+        </div>
+        <div class="card-grid cols-3">
+          <div class="card">
+            <h4>3</h4>
+            <p><strong>3つのコピー</strong>を保持</p>
+            <p class="text-secondary">オリジナル + バックアップ2つ</p>
+          </div>
+          <div class="card">
+            <h4>2</h4>
+            <p><strong>2種類のメディア</strong>に保存</p>
+            <p class="text-secondary">例：サーバー + テープ / クラウド</p>
+          </div>
+          <div class="card">
+            <h4>1</h4>
+            <p><strong>1つはオフサイト</strong>に保管</p>
+            <p class="text-secondary">別拠点 or クラウド（災害対策）</p>
+          </div>
+        </div>
+        <div class="highlight-box" style="margin-top: 1em;">
+          <p><strong>ランサムウェア対策</strong>：オフラインバックアップ（ネットワークから切り離す）も重要</p>
+        </div>
+      </section>
+
+      <section>
+        <h3>セキュリティ対策のまとめ</h3>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>日常業務での対策</h4>
+            <ul>
+              <li>不審なメール・添付ファイルを開かない</li>
+              <li>OSやソフトウェアを最新に保つ</li>
+              <li>強固なパスワードと多要素認証</li>
+              <li>離席時は画面ロック</li>
+              <li>クリアデスク・クリアスクリーン</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>インシデント発生時</h4>
+            <ul>
+              <li>ネットワークから切り離す</li>
+              <li>情報システム部門に報告</li>
+              <li>証拠を保全（ログ、画面等）</li>
+              <li>勝手に対処しようとしない</li>
+              <li>事後は再発防止策を検討</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. 演習 -->
+      <section class="exercise-slide">
+        <h2>5. 演習</h2>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習1: 脅威の分類</h3>
+        <p>以下の脅威を「技術的」「人的」「物理的」に分類してください：</p>
+        <table>
+          <tr><th>脅威</th><th>分類</th></tr>
+          <tr><td>ランサムウェア感染</td><td class="exercise-box"></td></tr>
+          <tr><td>パスワードの使い回し</td><td class="exercise-box"></td></tr>
+          <tr><td>地震によるサーバー故障</td><td class="exercise-box"></td></tr>
+          <tr><td>フィッシングメール</td><td class="exercise-box"></td></tr>
+          <tr><td>ノートPCの盗難</td><td class="exercise-box"></td></tr>
+          <tr><td>内部者による情報持ち出し</td><td class="exercise-box"></td></tr>
+        </table>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習2: パスワード強度チェック</h3>
+        <p>以下のパスワードの問題点を指摘し、改善案を考えてください：</p>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4><code>tanaka1985</code></h4>
+            <p>問題点: _______________</p>
+            <p>改善案: _______________</p>
+          </div>
+          <div class="card">
+            <h4><code>Password123</code></h4>
+            <p>問題点: _______________</p>
+            <p>改善案: _______________</p>
+          </div>
+          <div class="card">
+            <h4><code>qwerty</code></h4>
+            <p>問題点: _______________</p>
+            <p>改善案: _______________</p>
+          </div>
+          <div class="card">
+            <h4><code>abc</code></h4>
+            <p>問題点: _______________</p>
+            <p>改善案: _______________</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習3: フィッシングメールの判別</h3>
+        <p>以下のメールの怪しいポイントを見つけてください：</p>
+        <div class="highlight-box" style="text-align: left;">
+          <p><strong>送信元：</strong> support@amaz0n-security.com</p>
+          <p><strong>件名：</strong> 【重要】アカウントが停止されました</p>
+          <p><strong>本文：</strong></p>
+          <p>お客様各位</p>
+          <p>あなたのアカウントに不審なアクセスを検出しました。<br>
+          24時間以内に下記リンクから確認しないと、アカウントは永久に停止されます。</p>
+          <p>http://amazon-verify.xyz/login</p>
+          <p>Amazon カスタマーサービス</p>
+        </div>
+        <div class="exercise-box">
+          <p>怪しいポイント: _______________</p>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習4: セキュリティチェックリスト</h3>
+        <p>自分の職場や日常で以下を確認してください：</p>
+        <div class="card-grid cols-2">
+          <div class="card">
+            <h4>確認事項</h4>
+            <ul>
+              <li>□ PCにセキュリティソフトは入っているか</li>
+              <li>□ OSは最新に更新されているか</li>
+              <li>□ 重要なアカウントに多要素認証を設定しているか</li>
+              <li>□ パスワードを複数サービスで使い回していないか</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>確認事項（続き）</h4>
+            <ul>
+              <li>□ 重要データのバックアップはあるか</li>
+              <li>□ 不審なメールの報告先を知っているか</li>
+              <li>□ 離席時に画面ロックをしているか</li>
+              <li>□ クリアデスクを実践しているか</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- まとめ -->
+      <section>
+        <h2>キーワード</h2>
+        <div class="keywords">
+          <span class="keyword-tag">情報セキュリティ</span>
+          <span class="keyword-tag">CIA</span>
+          <span class="keyword-tag">機密性</span>
+          <span class="keyword-tag">完全性</span>
+          <span class="keyword-tag">可用性</span>
+          <span class="keyword-tag">マルウェア</span>
+          <span class="keyword-tag">ランサムウェア</span>
+          <span class="keyword-tag">フィッシング</span>
+          <span class="keyword-tag">ソーシャルエンジニアリング</span>
+          <span class="keyword-tag">共通鍵暗号</span>
+          <span class="keyword-tag">公開鍵暗号</span>
+          <span class="keyword-tag">デジタル署名</span>
+          <span class="keyword-tag">HTTPS</span>
+          <span class="keyword-tag">多要素認証</span>
+          <span class="keyword-tag">ファイアウォール</span>
+          <span class="keyword-tag">3-2-1ルール</span>
+        </div>
+      </section>
+
+      <section class="quiz-slide">
+        <h2>確認問題</h2>
+        <div class="quiz-item">
+          <p><strong>1.</strong> セキュリティの3要素（CIA）をそれぞれ説明してください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>2.</strong> ランサムウェアとは何ですか？主な対策を3つ挙げてください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>3.</strong> 共通鍵暗号と公開鍵暗号の違いを説明してください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>4.</strong> 多要素認証の「3つの要素」とは何ですか？</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>5.</strong> バックアップの「3-2-1ルール」を説明してください</p>
+        </div>
+      </section>
+
+      <!-- 次回予告 -->
+      <section>
+        <h2>次回予告</h2>
+        <div class="next-preview">
+          <h4>セッション13-14h: アルゴリズムと論理的思考</h4>
+          <div class="card-grid cols-3">
+            <div class="card">
+              <h4>アルゴリズム</h4>
+              <p>問題解決の手順<br>探索・整列の基本</p>
+            </div>
+            <div class="card">
+              <h4>フローチャート</h4>
+              <p>処理の流れを図式化<br>分岐・繰り返し</p>
+            </div>
+            <div class="card">
+              <h4>論理演算</h4>
+              <p>AND・OR・NOT<br>条件の組み合わせ</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="assets/init.js"></script>
+</body>
+</html>

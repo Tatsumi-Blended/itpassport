@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08 システム開発の流れ - 製造DX基礎コース</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="assets/custom.css">
+  <script src="assets/auth.js"></script>
+  <script>Auth.requireAuth();</script>
+</head>
+<body>
+  <div class="nav-bar">
+    <a href="index.html">目次</a>
+    <span class="current">08 システム開発の流れ</span>
+    <div class="nav-links">
+      <a href="07_アルゴリズムと論理的思考.html" class="nav-prev">← 前へ</a>
+      <a href="09_プロジェクトマネジメント.html" class="nav-next">次へ →</a>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- STEP3開始スライド -->
+      <section data-background-color="#6f42c1">
+        <h1 style="color: white;">STEP3 開始!</h1>
+        <p style="color: white; font-size: 1.3em;">システム構築の知識</p>
+        <p style="color: rgba(255,255,255,0.9);">現場でシステム導入に関わる際に必要な知識です。</p>
+      </section>
+
+      <!-- タイトル -->
+      <section class="title-slide step3">
+        <p><span class="step-badge">STEP3</span> システム構築の知識</p>
+        <h1>システム開発の流れ</h1>
+        <p class="subtitle">セッション 15-16h</p>
+        <p class="level-stars">学習レベル: ★★★☆☆（標準レベル）</p>
+      </section>
+
+      <!-- アジェンダ -->
+      <section>
+        <h2>本日のゴール</h2>
+        <ul>
+          <li>システム開発の全体像を理解する</li>
+          <li>要件定義の重要性を説明できる</li>
+          <li>主な開発モデルの特徴を理解する</li>
+        </ul>
+        <p style="margin-top:1em;"><strong>対応テキスト:</strong> 第6章 開発技術、第5章 システム戦略（5-07 要件定義）</p>
+      </section>
+
+      <!-- 1. システム開発の全体像 -->
+      <section>
+        <h2>1. システム開発の全体像</h2>
+      </section>
+
+      <section>
+        <h3>なぜ開発の流れを知る必要があるか</h3>
+        <p><strong>製造現場で起こること:</strong></p>
+        <ul>
+          <li>「使いにくいシステムが導入された」</li>
+          <li>「現場の意見が反映されていない」</li>
+          <li>「何を伝えればいいかわからない」</li>
+        </ul>
+        <blockquote>開発の流れを知れば、適切なタイミングで意見を言える</blockquote>
+      </section>
+
+      <section>
+        <h3>システム開発の基本フェーズ</h3>
+        <pre class="ascii">
+[企画] → [要件定義] → [設計] → [開発] → [テスト] → [運用]
+  │         │           │        │         │         │
+  │     ★最重要★      │        │         │         │
+  │   ここで決まる      │        │    現場が      現場が
+  │                     │        │    確認       使用
+  │                     │        │
+ 何を作るか        どう作るか   作る
+        </pre>
+      </section>
+
+      <section>
+        <h3>各フェーズの役割</h3>
+        <table>
+          <tr><th>フェーズ</th><th>内容</th><th>現場の関わり</th></tr>
+          <tr><td>企画</td><td>目的・予算・範囲を決める</td><td>課題を伝える</td></tr>
+          <tr><td>要件定義</td><td>何を作るか明確にする</td><td><strong>要望を詳しく伝える</strong></td></tr>
+          <tr><td>設計</td><td>どう作るか決める</td><td>画面イメージ確認</td></tr>
+          <tr><td>開発</td><td>プログラミング</td><td>―</td></tr>
+          <tr><td>テスト</td><td>動作確認</td><td><strong>受入テストに参加</strong></td></tr>
+          <tr><td>運用</td><td>使い始める</td><td>実際に使用</td></tr>
+        </table>
+      </section>
+
+      <!-- 2. 要件定義の重要性 -->
+      <section>
+        <h2>2. 要件定義の重要性</h2>
+      </section>
+
+      <section>
+        <h3>要件定義とは</h3>
+        <p><strong>システムが「何をすべきか」を明確にするプロセス</strong></p>
+        <pre class="ascii">
+現場の声: 「在庫がすぐ見たい」
+            ↓
+要件定義: 「在庫照会画面で、部品番号を入力すると
+           3秒以内に現在在庫数と保管場所が表示される」
+        </pre>
+      </section>
+
+      <section>
+        <h3>要件定義が不十分だと...</h3>
+        <p><strong>よくある失敗:</strong></p>
+        <pre class="ascii">
+現場: 「すぐ見たい」
+  ↓ 曖昧なまま開発
+ベンダー: 「表示は1秒で出ます」（技術的な速度）
+  ↓
+現場: 「3回もクリックしないと見れない！」（操作が多い）
+  ↓
+「思っていたのと違う...」
+        </pre>
+      </section>
+
+      <section>
+        <h3>機能要件と非機能要件</h3>
+        <table>
+          <tr><th>種類</th><th>内容</th><th>例</th></tr>
+          <tr><td>機能要件</td><td>何ができるか</td><td>在庫検索、発注登録</td></tr>
+          <tr><td>非機能要件</td><td>どのように動くか</td><td>応答3秒以内、稼働率99%</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>非機能要件の例</h3>
+        <table class="small">
+          <tr><th>カテゴリ</th><th>要件例</th></tr>
+          <tr><td>性能</td><td>検索応答3秒以内、同時100人アクセス</td></tr>
+          <tr><td>可用性</td><td>稼働率99.5%、障害時2時間以内復旧</td></tr>
+          <tr><td>セキュリティ</td><td>パスワード認証、操作ログ記録</td></tr>
+          <tr><td>使用性</td><td>3クリック以内で主要機能にアクセス</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>要件の伝え方（悪い例）</h3>
+        <blockquote>「在庫管理を楽にしてほしい」</blockquote>
+        <p style="color: #dc3545; font-size: 0.9em;">曖昧すぎて、何をどう改善すればよいかわからない</p>
+      </section>
+
+      <section>
+        <h3>要件の伝え方（良い例）</h3>
+        <blockquote>「現在、部品番号を調べるのに平均5分かかっている。<br>
+部品番号を入力したら3秒以内に在庫数と棚番号が<br>
+表示されるようにしたい。対象は約5,000品目。<br>
+使用者は現場スタッフ30名。」</blockquote>
+      </section>
+
+      <section>
+        <h3>伝えるべきこと</h3>
+        <ol>
+          <li>現状の課題（定量的に）</li>
+          <li>期待する動作（具体的に）</li>
+          <li>対象データの規模</li>
+          <li>使用者の情報</li>
+        </ol>
+      </section>
+
+      <!-- 3. 開発モデル -->
+      <section>
+        <h2>3. 開発モデル</h2>
+      </section>
+
+      <section>
+        <h3>ウォーターフォールモデル</h3>
+        <p><strong>工程を順番に進める（後戻りしにくい）</strong></p>
+        <pre class="ascii">
+[要件定義]
+     ↓ 完了してから
+[設計]
+     ↓ 完了してから
+[開発]
+     ↓ 完了してから
+[テスト]
+     ↓ 完了してから
+[運用]
+        </pre>
+      </section>
+
+      <section>
+        <h3>ウォーターフォールの特徴</h3>
+        <p><strong>特徴:</strong></p>
+        <ul>
+          <li>計画が立てやすい</li>
+          <li>進捗管理しやすい</li>
+          <li>要件変更に弱い</li>
+        </ul>
+        <p><strong>向いているケース:</strong></p>
+        <ul>
+          <li>要件が明確で変わらない</li>
+          <li>大規模システム</li>
+          <li>品質重視</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>V字モデル</h3>
+        <p><strong>開発とテストを対応づけ</strong></p>
+        <pre class="ascii">
+[要件定義] ─────────────────── [受入テスト]
+     ↓                              ↑
+  [基本設計] ─────────────── [結合テスト]
+       ↓                        ↑
+    [詳細設計] ──────── [単体テスト]
+         ↓                  ↑
+        [開発] ─────────────┘
+        </pre>
+      </section>
+
+      <section>
+        <h3>V字モデルのテスト対応</h3>
+        <table>
+          <tr><th>工程</th><th>テスト</th><th>確認内容</th></tr>
+          <tr><td>要件定義</td><td>受入テスト</td><td>要件を満たすか</td></tr>
+          <tr><td>基本設計</td><td>結合テスト</td><td>機能間の連携</td></tr>
+          <tr><td>詳細設計</td><td>単体テスト</td><td>個々の機能</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>アジャイル開発</h3>
+        <p><strong>短いサイクルで開発・フィードバックを繰り返す</strong></p>
+        <pre class="ascii">
+┌────────────────────────────┐
+│ スプリント1（2週間）       │
+│ [計画]→[開発]→[レビュー]  │
+└────────────┬───────────────┘
+             ↓ フィードバック反映
+┌────────────────────────────┐
+│ スプリント2（2週間）       │
+│ [計画]→[開発]→[レビュー]  │
+└────────────┬───────────────┘
+             ↓ 繰り返し
+        </pre>
+      </section>
+
+      <section>
+        <h3>アジャイルの特徴</h3>
+        <p><strong>特徴:</strong></p>
+        <ul>
+          <li>変更に柔軟</li>
+          <li>早期にフィードバック</li>
+          <li>密なコミュニケーション必要</li>
+        </ul>
+        <p><strong>向いているケース:</strong></p>
+        <ul>
+          <li>要件が変わりやすい</li>
+          <li>小〜中規模</li>
+          <li>スピード重視</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>開発モデルの比較</h3>
+        <table class="small">
+          <tr><th>項目</th><th>ウォーターフォール</th><th>アジャイル</th></tr>
+          <tr><td>計画性</td><td>高い</td><td>低い</td></tr>
+          <tr><td>柔軟性</td><td>低い</td><td>高い</td></tr>
+          <tr><td>成果物の早さ</td><td>遅い</td><td>早い</td></tr>
+          <tr><td>文書量</td><td>多い</td><td>少ない</td></tr>
+          <tr><td>向いている規模</td><td>大規模</td><td>小〜中規模</td></tr>
+        </table>
+      </section>
+
+      <!-- 4. テストの種類 -->
+      <section>
+        <h2>4. テストの種類</h2>
+      </section>
+
+      <section>
+        <h3>テストの段階</h3>
+        <table>
+          <tr><th>テスト</th><th>実施者</th><th>内容</th></tr>
+          <tr><td>単体テスト</td><td>開発者</td><td>個々の機能を確認</td></tr>
+          <tr><td>結合テスト</td><td>開発者</td><td>機能間の連携を確認</td></tr>
+          <tr><td>システムテスト</td><td>開発者</td><td>全体の動作を確認</td></tr>
+          <tr><td>受入テスト</td><td><strong>発注者</strong></td><td>要件を満たすか確認</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h3>受入テストの重要性</h3>
+        <p><strong>現場がチェックすべきこと:</strong></p>
+        <ul>
+          <li>要件通りの機能があるか</li>
+          <li>操作が想定通りか</li>
+          <li>エラー時の動作は適切か</li>
+          <li>性能は問題ないか（応答速度など）</li>
+          <li>実際のデータで問題ないか</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>テストケースの例</h3>
+        <table class="small">
+          <tr><th>No</th><th>操作</th><th>期待結果</th><th>OK/NG</th></tr>
+          <tr><td>1</td><td>存在する部品番号で検索</td><td>在庫数が表示される</td><td></td></tr>
+          <tr><td>2</td><td>存在しない部品番号で検索</td><td>エラーメッセージが表示される</td><td></td></tr>
+          <tr><td>3</td><td>在庫0の部品番号で検索</td><td>0と表示される</td><td></td></tr>
+        </table>
+      </section>
+
+      <!-- 5. 演習とまとめ -->
+      <section class="exercise-slide">
+        <h2>5. 演習とまとめ</h2>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習1: 要件の書き出し</h3>
+        <p>以下のシステムの要件を考えてください:</p>
+        <p><strong>「生産日報のデジタル化」</strong></p>
+        <div class="exercise-box">
+          <p><strong>機能要件:</strong></p>
+          <p>1. _______________</p>
+          <p>2. _______________</p>
+          <p>3. _______________</p>
+          <p><strong>非機能要件:</strong></p>
+          <p>1. _______________</p>
+          <p>2. _______________</p>
+        </div>
+      </section>
+
+      <section class="exercise-slide">
+        <h3>演習2: 開発モデルの選択</h3>
+        <p>以下のケースに適した開発モデルは?</p>
+        <table class="small">
+          <tr><th>ケース</th><th>適したモデル</th><th>理由</th></tr>
+          <tr><td>基幹システムの刷新（2年計画）</td><td></td><td></td></tr>
+          <tr><td>新サービスのアプリ開発</td><td></td><td></td></tr>
+          <tr><td>法改正対応の緊急改修</td><td></td><td></td></tr>
+        </table>
+      </section>
+
+      <!-- キーワード -->
+      <section>
+        <h2>キーワード</h2>
+        <div class="keywords">
+          <span class="keyword-tag">システム開発</span>
+          <span class="keyword-tag">要件定義</span>
+          <span class="keyword-tag">機能要件</span>
+          <span class="keyword-tag">非機能要件</span>
+          <span class="keyword-tag">ウォーターフォール</span>
+          <span class="keyword-tag">V字モデル</span>
+          <span class="keyword-tag">アジャイル</span>
+          <span class="keyword-tag">受入テスト</span>
+        </div>
+      </section>
+
+      <!-- 確認問題 -->
+      <section class="quiz-slide">
+        <h2>確認問題</h2>
+        <div class="quiz-item">
+          <p><strong>1.</strong> 要件定義とは何ですか?なぜ重要ですか?</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>2.</strong> 機能要件と非機能要件の違いを説明してください</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>3.</strong> ウォーターフォールとアジャイルの違いは?</p>
+        </div>
+        <div class="quiz-item">
+          <p><strong>4.</strong> 受入テストで現場がチェックすべきことは?</p>
+        </div>
+      </section>
+
+      <!-- 次回予告 -->
+      <section>
+        <h2>次回予告</h2>
+        <div class="next-preview">
+          <h4>セッション17-18h: プロジェクトマネジメント</h4>
+          <ul>
+            <li>プロジェクトとは</li>
+            <li>WBSとガントチャート</li>
+            <li>進捗管理</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script src="assets/init.js"></script>
+</body>
+</html>
